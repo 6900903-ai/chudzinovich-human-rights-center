@@ -26,6 +26,11 @@ export async function schedulerPlan(env=process.env) {
   const legal = getLegallyReadyMediaEndpoints(registry);
   const live = getLiveSchedulableMediaEndpoints(registry,env);
   const technicalSources = new Set(technical.map(({source}) => source.source_id));
+  const liveSourceIds = [...new Set(live.map(({source}) => source.source_id))];
+  const pending = eligible.filter(source => !technicalSources.has(source.source_id)).map(source => ({
+    source_id:source.source_id,
+    audit_state:source.endpoint_audit?.audit_state || 'NOT_AUDITED'
+  }));
 
   return {
     registry_version:registry.registry_version,
@@ -39,10 +44,11 @@ export async function schedulerPlan(env=process.env) {
     live_schedulable_endpoints:live.map(endpointRef),
     live_network_gates_pass:globalMediaNetworkGatesPass(env),
     live_polling_enabled:live.length > 0,
-    pending_endpoint_or_parser_sources:eligible.filter(source => !technicalSources.has(source.source_id)).map(source => ({
-      source_id:source.source_id,
-      audit_state:source.endpoint_audit?.audit_state || 'NOT_AUDITED'
-    }))
+    pending_endpoint_or_parser_sources:pending,
+    // Wave 4 compatibility aliases. These now represent fully live-authorized
+    // sources, not merely sources with a technically visible endpoint.
+    schedulable_sources:liveSourceIds,
+    pending_endpoint_verification:pending.map(item => item.source_id)
   };
 }
 
