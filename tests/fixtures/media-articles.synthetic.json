@@ -1,0 +1,70 @@
+[
+  {
+    "group_id": "case-a",
+    "source_id": "src-zerkalo",
+    "article_url": "https://zerkalo.io/test/synthetic-a1",
+    "title": "Синтетический пример: задержан Алексей Тестовый за участие в протестах",
+    "summary": "По сообщению МВД, речь идет о событиях 2020 года.",
+    "published_at": "2026-08-28T10:00:00Z",
+    "person_names": ["Алексей Тестовый"],
+    "upstream_source": "by-mvd"
+  },
+  {
+    "group_id": "case-a",
+    "source_id": "src-nasha-niva",
+    "article_url": "https://nashaniva.com/test/synthetic-a2",
+    "title": "Сінтэтычны прыклад: затрыманы Аляксей Тэставы за ўдзел у пратэстах",
+    "summary": "Паводле паведамлення МУС пра падзеі 2020 года.",
+    "published_at": "2026-08-28T10:10:00Z",
+    "person_names": ["Аляксей Тэставы"],
+    "upstream_source": "by-mvd"
+  },
+  {
+    "group_id": "case-a",
+    "source_id": "src-reform",
+    "article_url": "https://reform.news/test/synthetic-a3",
+    "title": "Синтетический пример: активиста задержали по делу о протестах",
+    "summary": "Источник публикации — сообщение МВД.",
+    "published_at": "2026-08-28T10:20:00Z",
+    "person_names": ["Алексей Тестовый"],
+    "upstream_source": "by-mvd"
+  },
+  {
+    "group_id": "case-a",
+    "source_id": "src-belta",
+    "article_url": "https://belta.by/test/synthetic-a4",
+    "title": "Синтетический пример: МВД сообщило о задержании участника протестов",
+    "summary": "Официальное сообщение МВД.",
+    "published_at": "2026-08-28T10:30:00Z",
+    "person_names": ["Алексей Тестовый"],
+    "upstream_source": "by-mvd"
+  },
+  {
+    "group_id": "case-a",
+    "source_id": "src-belsat",
+    "article_url": "https://belsat.eu/test/synthetic-a5",
+    "title": "Синтетический пример: очевидец рассказал о задержании активиста",
+    "summary": "Редакция ссылается на собственного независимого свидетеля; контекст — протесты.",
+    "published_at": "2026-08-28T10:40:00Z",
+    "person_names": ["Алексей Тестовый"],
+    "upstream_source": null
+  },
+  {
+    "group_id": "case-b",
+    "source_id": "src-onliner",
+    "article_url": "https://onliner.by/test/synthetic-b1",
+    "title": "Синтетический пример: мужчину задержали за незаконный оборот наркотиков",
+    "summary": "Обычное уголовное дело, политический контекст отсутствует.",
+    "published_at": "2026-08-28T11:00:00Z",
+    "person_names": ["Петр Тестовый"]
+  },
+  {
+    "group_id": "case-c",
+    "source_id": "src-mediazona-belarus",
+    "article_url": "https://mediazona.by/test/synthetic-c1",
+    "title": "Синтетический пример: сообщается о пытках заключенного",
+    "summary": "Правозащитная тематика, сведения требуют отдельной проверки.",
+    "published_at": "2026-08-28T12:00:00Z",
+    "person_names": ["Иван Тестовый"]
+  }
+]
