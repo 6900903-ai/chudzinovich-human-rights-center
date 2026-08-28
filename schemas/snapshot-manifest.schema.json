@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/snapshot-manifest.schema.json",
+  "title": "Published Snapshot Manifest",
+  "type": "object",
+  "required": ["snapshot_id", "created_at", "publication_state", "counts", "files"],
+  "properties": {
+    "snapshot_id": {"type": "string", "pattern": "^snap-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$"},
+    "created_at": {"type": "string"},
+    "publication_state": {"enum": ["DEVELOPMENT_EMPTY", "PUBLISHED"]},
+    "counts": {
+      "type": "object",
+      "required": ["people", "political_prisoners_current", "former_political_prisoners", "repressed_total"],
+      "properties": {
+        "people": {"type": "integer", "minimum": 0},
+        "political_prisoners_current": {"type": "integer", "minimum": 0},
+        "former_political_prisoners": {"type": "integer", "minimum": 0},
+        "repressed_total": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "files": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}

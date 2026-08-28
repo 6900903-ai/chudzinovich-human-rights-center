@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/person.schema.json",
+  "title": "Canonical Public Person",
+  "type": "object",
+  "required": [
+    "person_id", "canonical_name", "aliases", "birth_date", "cases", "detentions",
+    "charges", "judgments", "sentences", "prison_placements", "release_events",
+    "status_events", "health_claims", "risk_assessments", "sources", "evidence",
+    "publication_state"
+  ],
+  "properties": {
+    "person_id": {"type": "string", "pattern": "^p-[0-9]{7}$"},
+    "canonical_name": {
+      "type": "object",
+      "required": ["ru"],
+      "properties": {
+        "ru": {"type": "string", "minLength": 1},
+        "be": {"type": ["string", "null"]},
+        "en": {"type": ["string", "null"]},
+        "pl": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "birth_date": {"$ref": "#/$defs/partialDate"},
+    "cases": {"type": "array"},
+    "detentions": {"type": "array"},
+    "charges": {"type": "array"},
+    "judgments": {"type": "array"},
+    "sentences": {"type": "array"},
+    "prison_placements": {"type": "array"},
+    "release_events": {"type": "array"},
+    "status_events": {"type": "array"},
+    "health_claims": {"type": "array"},
+    "risk_assessments": {"type": "array"},
+    "sources": {"type": "array"},
+    "evidence": {"type": "array"},
+    "publication_state": {"enum": ["PUBLIC_CONFIRMED", "PUBLIC_SOURCE_ATTRIBUTED", "PUBLIC_DISPUTED"]},
+    "fixture": {"type": "boolean"}
+  },
+  "$defs": {
+    "partialDate": {
+      "type": ["object", "null"],
+      "properties": {
+        "value": {"type": "string"},
+        "precision": {"enum": ["day", "month", "year", "unknown"]}
+      },
+      "required": ["value", "precision"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

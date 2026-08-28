@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/source.schema.json",
+  "title": "Human Rights Source",
+  "type": "object",
+  "required": ["source_id", "name", "tier", "canonical_domains", "legal_reuse_state"],
+  "properties": {
+    "source_id": {"type": "string", "pattern": "^src-[a-z0-9-]+$"},
+    "name": {"type": "string", "minLength": 1},
+    "tier": {"enum": ["HUMAN_RIGHTS", "INDEPENDENT_MEDIA", "OFFICIAL_PUBLIC"]},
+    "canonical_domains": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "legal_reuse_state": {"enum": ["UNREVIEWED", "PERMITTED", "LEGAL_REVIEWED", "BLOCKED"]},
+    "structured_endpoint": {"type": ["string", "null"]},
+    "parser_version": {"type": "string"},
+    "runtime_allowed": {"const": false}
+  },
+  "additionalProperties": false
+}

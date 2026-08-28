@@ -1,0 +1,13 @@
+node_modules/
+_site/
+.DS_Store
+.env
+.env.*
+
+# ABSOLUTE BOUNDARY: private editorial material must never enter public Git.
+data/review/
+private-review/
+.private/
+editorial-private/
+*.private.json
+*.review.json

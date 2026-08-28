@@ -1,0 +1,32 @@
+[
+  {
+    "source_id": "src-viasna",
+    "name": "Human Rights Center Viasna",
+    "tier": "HUMAN_RIGHTS",
+    "canonical_domains": ["prisoners.spring96.org", "spring96.org"],
+    "legal_reuse_state": "UNREVIEWED",
+    "structured_endpoint": null,
+    "parser_version": "0.1.0",
+    "runtime_allowed": false
+  },
+  {
+    "source_id": "src-zerkalo",
+    "name": "Zerkalo",
+    "tier": "INDEPENDENT_MEDIA",
+    "canonical_domains": ["zerkalo.io"],
+    "legal_reuse_state": "UNREVIEWED",
+    "structured_endpoint": null,
+    "parser_version": "0.1.0",
+    "runtime_allowed": false
+  },
+  {
+    "source_id": "src-nasha-niva",
+    "name": "Nasha Niva",
+    "tier": "INDEPENDENT_MEDIA",
+    "canonical_domains": ["nashaniva.com"],
+    "legal_reuse_state": "UNREVIEWED",
+    "structured_endpoint": null,
+    "parser_version": "0.1.0",
+    "runtime_allowed": false
+  }
+]

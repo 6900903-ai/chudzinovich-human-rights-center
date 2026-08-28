@@ -1,0 +1,27 @@
+[
+  {
+    "fixture": true,
+    "person_id": "p-0000001",
+    "canonical_name": {
+      "ru": "Тестовый Человек А",
+      "be": "Тэставы Чалавек А",
+      "en": "Test Person A",
+      "pl": "Osoba Testowa A"
+    },
+    "aliases": ["Test Person A"],
+    "birth_date": {"value": "1980", "precision": "year"},
+    "cases": [],
+    "detentions": [],
+    "charges": [],
+    "judgments": [],
+    "sentences": [],
+    "prison_placements": [],
+    "release_events": [],
+    "status_events": [],
+    "health_claims": [],
+    "risk_assessments": [],
+    "sources": [],
+    "evidence": [],
+    "publication_state": "PUBLIC_SOURCE_ATTRIBUTED"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/fact.schema.json",
+  "title": "Provenanced Fact",
+  "type": "object",
+  "required": [
+    "value", "source_id", "source_url", "source_published_at", "source_observed_at",
+    "source_fetched_at", "human_verified_at", "confidence", "publication_state"
+  ],
+  "properties": {
+    "value": {},
+    "source_id": {"type": "string"},
+    "source_url": {"type": "string", "format": "uri"},
+    "source_published_at": {"type": ["string", "null"]},
+    "source_observed_at": {"type": "string"},
+    "source_fetched_at": {"type": "string"},
+    "human_verified_at": {"type": ["string", "null"]},
+    "confidence": {"enum": ["LOW", "MEDIUM", "HIGH", "CONFIRMED", "DISPUTED"]},
+    "publication_state": {"enum": ["PRIVATE_REVIEW", "PUBLIC_SOURCE_ATTRIBUTED", "PUBLIC_CONFIRMED", "PUBLIC_DISPUTED"]}
+  },
+  "additionalProperties": false
+}
