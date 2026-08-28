@@ -1,0 +1,26 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://chudzinovich.pp.ua/schemas/media-source.schema.json",
+  "title":"Belarus media discovery source",
+  "type":"object",
+  "required":["source_id","name","media_class","canonical_domains","homepage_url","monitoring_state","candidate_discovery_enabled","corroboration_weight","ownership_group","legal_reuse_state","endpoint_verified","claim_semantics","runtime_allowed","discovery_basis","discovery_endpoint"],
+  "properties":{
+    "source_id":{"type":"string","pattern":"^src-[a-z0-9-]+$"},
+    "name":{"type":"string","minLength":1},
+    "media_class":{"type":"string","minLength":1},
+    "canonical_domains":{"type":"array","items":{"type":"string","pattern":"^[A-Za-z0-9.-]+$"},"uniqueItems":true},
+    "homepage_url":{"type":["string","null"],"format":"uri"},
+    "monitoring_state":{"enum":["ACTIVE_VERIFIED","DISCOVERED_NEEDS_RECHECK","DISCOVERED_NEEDS_ENDPOINT","SOCIAL_ONLY_OR_PAUSED","DORMANT","DORMANT_OR_SUCCESSOR","DORMANT_OR_UNVERIFIED","LEGACY_ALIAS","HISTORICAL"]},
+    "candidate_discovery_enabled":{"type":"boolean"},
+    "corroboration_weight":{"enum":["NORMAL","LOW","SPECIALIST"]},
+    "ownership_group":{"type":"string","minLength":1},
+    "legal_reuse_state":{"enum":["UNREVIEWED","PERMITTED","LEGAL_REVIEWED","BLOCKED"]},
+    "endpoint_verified":{"type":"boolean"},
+    "claim_semantics":{"const":"SOURCE_CLAIM_ONLY"},
+    "runtime_allowed":{"const":false},
+    "notes":{"type":["string","null"]},
+    "discovery_basis":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true},
+    "discovery_endpoint":{"type":["string","null"],"format":"uri"}
+  },
+  "additionalProperties":false
+}
