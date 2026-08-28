@@ -1,0 +1,126 @@
+{
+  "endpoint_registry_version": "0.5.0",
+  "audited_at": "2026-08-28T22:22:00+02:00",
+  "policy": {
+    "minimum_poll_interval_minutes": 60,
+    "html_listing_parser_ready": false,
+    "legal_clearance_required_for_live_polling": true,
+    "global_network_gates_required": true
+  },
+  "verified_rss": [
+    {
+      "source_id": "src-zerkalo",
+      "poll_interval_minutes": 60,
+      "evidence_url": "https://news.zerkalo.io/latest/",
+      "feeds": [
+        {"url": "https://news.zerkalo.io/rss/latest.rss", "scope": "general"}
+      ]
+    },
+    {
+      "source_id": "src-nasha-niva",
+      "poll_interval_minutes": 60,
+      "evidence_url": "https://nashaniva.com/en/rss/",
+      "feeds": [
+        {"url": "https://nashaniva.com/en/rss-ca/615/", "scope": "society"},
+        {"url": "https://nashaniva.com/en/rss-ca/611/", "scope": "incidents"}
+      ]
+    },
+    {
+      "source_id": "src-radio-svaboda",
+      "poll_interval_minutes": 60,
+      "evidence_url": "https://www.svaboda.org/rssfeeds",
+      "feeds": [
+        {"url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv", "scope": "all_news"},
+        {"url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm", "scope": "incidents"},
+        {"url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq", "scope": "political_prisoners"},
+        {"url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py", "scope": "courts_repression"}
+      ]
+    },
+    {
+      "source_id": "src-charter97",
+      "poll_interval_minutes": 60,
+      "evidence_url": "https://charter97.org/ru/page/rss/",
+      "feeds": [
+        {"url": "https://charter97.org/ru/rss/all/", "scope": "all_news"},
+        {"url": "https://charter97.org/ru/rss/politics/", "scope": "politics"},
+        {"url": "https://charter97.org/ru/rss/society/", "scope": "society"}
+      ]
+    },
+    {
+      "source_id": "src-salidarnasts",
+      "poll_interval_minutes": 60,
+      "evidence_url": "https://gazetaby.com/rss/",
+      "feeds": [
+        {"url": "https://gazetaby.com/rss/", "scope": "general"}
+      ]
+    },
+    {
+      "source_id": "src-gomel-pravda",
+      "poll_interval_minutes": 120,
+      "evidence_url": "https://gp.by/",
+      "feeds": [
+        {"url": "https://gp.by/feed/", "scope": "general"}
+      ]
+    }
+  ],
+  "verified_html_listings": [
+    ["src-belsat", "https://belsat.eu/", 60],
+    ["src-reform", "https://reform.news/category/news/", 60],
+    ["src-pozirk", "https://pozirk.online/ru/", 60],
+    ["src-malanka", "https://malanka.media/", 60],
+    ["src-novy-chas", "https://novychas.online/", 60],
+    ["src-dw-belarus", "https://www.dw.com/ru/belarus/t-18168178", 120],
+    ["src-bic", "https://investigatebel.org/", 120],
+    ["src-buro-media", "https://buromedia.io/", 120],
+    ["src-radio-racyja", "https://racyja.com/by/", 60],
+    ["src-hrodna-life", "https://hrodna.life/", 120],
+    ["src-bgmedia", "https://bgmedia.site/", 120],
+    ["src-most-media", "https://mostmedia.io/", 120],
+    ["src-this-minsk", "https://thisminsk.media/", 120],
+    ["src-mogilev-media", "https://mogilev.media/", 120],
+    ["src-media-polesye", "https://media-polesye.com/", 120],
+    ["src-ganc-chas", "https://ganc-chas.com/", 120],
+    ["src-baj", "https://baj.media/", 120],
+    ["src-budzma", "https://budzma.org/", 180],
+    ["src-greenbelarus", "https://greenbelarus.info/", 180],
+    ["src-citydog", "https://citydog.io/", 180],
+    ["src-devby", "https://devby.io/", 180],
+    ["src-belmarket", "https://belmarket.by/", 180],
+    ["src-probusiness", "https://probusiness.io/", 180],
+    ["src-smartpress", "https://smartpress.by/", 180],
+    ["src-belta", "https://belta.by/", 60],
+    ["src-first-info", "https://news.by/", 60],
+    ["src-ont", "https://ont.by/", 60],
+    ["src-ctv", "https://ctv.by/", 60],
+    ["src-zviazda", "https://zviazda.by/", 120],
+    ["src-mlyn", "https://mlyn.by/", 120],
+    ["src-zarya-brest", "https://zarya.by/", 120],
+    ["src-grodno-pravda", "https://grodnonews.by/", 120],
+    ["src-mogilev-vedomosti", "https://mogilevnews.by/", 120],
+    ["src-sputnik-belarus", "https://sputnik.by/", 60],
+    ["src-palatno", "https://palatno.media/", 120]
+  ],
+  "pending": [
+    ["src-euroradio", "BOT_PROTECTED_OR_ACCESS_RESTRICTED", "ROOT_RETURNED_403_MAIN_NEWS_RSS_NOT_VERIFIED"],
+    ["src-mediazona-belarus", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-nexta", "TIMEOUT_OR_ACCESS_RESTRICTED", "ROOT_TIMED_OUT_MAIN_FEED_NOT_VERIFIED"],
+    ["src-narodnaya-volya", "BOT_PROTECTED_OR_ACCESS_RESTRICTED", "CLOUDFLARE_CHALLENGE"],
+    ["src-udf", "UPSTREAM_ERROR", "ROOT_RETURNED_502"],
+    ["src-kp-belarus", "PENDING_SHARED_DOMAIN_SCOPING", "SHARED_DOMAIN_SUBSITE_NEEDS_STABLE_LISTING_VERIFICATION"],
+    ["src-flagshtok", "BOT_PROTECTED_OR_ACCESS_RESTRICTED", "CLOUDFLARE_CHALLENGE"],
+    ["src-vkurier-news", "RATE_LIMITED", "ROOT_RETURNED_429"],
+    ["src-intex-press", "PENDING_TECHNICAL_VERIFICATION", "CURRENT_DOMAIN_KNOWN_ENDPOINT_NOT_RELIABLY_VERIFIED"],
+    ["src-gazeta-slonimskaya", "PENDING_TECHNICAL_VERIFICATION", "CURRENT_DOMAIN_KNOWN_ENDPOINT_NOT_RELIABLY_VERIFIED"],
+    ["src-tribuna-belarus", "PENDING_SHARED_DOMAIN_SCOPING", "SHARED_DOMAIN_SUBSITE_RESEARCH_TOOL_NOT_RELIABLE"],
+    ["src-onliner", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-tochka", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-belnovosti", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-sb", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-belteleradio", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-minsknews", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-vitebskie-vesti", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-telegraf-news", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-s13", "PENDING_TECHNICAL_VERIFICATION", "ROOT_NOT_RELIABLY_FETCHABLE_BY_RESEARCH_TOOL"],
+    ["src-znadniemna", "DOMAIN_MIGRATION_PENDING", "CURRENT_SITE_REDIRECTS_TO_GLOSNADNIEMNA_PL"]
+  ]
+}
