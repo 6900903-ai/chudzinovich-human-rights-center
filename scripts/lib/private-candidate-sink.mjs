@@ -15,6 +15,8 @@ function inside(parent, child) {
 export async function resolvePrivateReviewDir(input = process.env.CHRC_PRIVATE_REVIEW_DIR) {
   if (!input) throw new Error('PRIVATE_EDITORIAL_STORAGE_NOT_CONFIGURED');
   const requested = resolve(input);
+  // Reject repository-local paths before creating anything on disk.
+  if (inside(REPO_ROOT, requested)) throw new Error('PRIVATE_REVIEW_DIR_INSIDE_PUBLIC_REPO');
   await mkdir(requested, { recursive:true, mode:0o700 });
   const [repo, target] = await Promise.all([realpath(REPO_ROOT), realpath(requested)]);
   if (inside(repo, target)) throw new Error('PRIVATE_REVIEW_DIR_INSIDE_PUBLIC_REPO');
