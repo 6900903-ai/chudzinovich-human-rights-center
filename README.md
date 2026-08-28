@@ -30,7 +30,7 @@ Forbidden here:
 
 Synthetic parser/test data lives only under `tests/fixtures/` and carries `fixture: true`.
 
-## Implemented through Wave 2
+## Implemented through Wave 3
 
 The repository now contains:
 
@@ -48,6 +48,11 @@ The repository now contains:
 - live Viasna fetch fail-closed behind both legal-reuse and fetcher-security gates;
 - anomaly detection for future dates, mass record loss, source-count mismatch and prison-field degradation;
 - immutable snapshot integrity helpers with SHA-256 verification;
+- current/former/repressed public catalogs with strict status separation;
+- immutable-ID multilingual person profiles with provenance and correction history;
+- prison catalog and institution detail pages;
+- local client-side search/filtering over a compact same-origin index;
+- disputed-profile noindex policy and synthetic Wave 3 integration tests;
 - public/private boundary validation;
 - smoke tests.
 
@@ -65,7 +70,7 @@ The build output is `_site/`.
 
 1. Public shell + canonical data schema — COMPLETE.
 2. Viasna structured adapter + synthetic parser fixtures + anomaly/snapshot foundation — COMPLETE FOR DEVELOPMENT; LIVE INGESTION GATED.
-3. Search, prisoner/prison pages backed by an approved snapshot.
+3. Search, prisoner/prison pages backed by an approved snapshot — COMPLETE FOR DEVELOPMENT; REAL DATA GATED.
 4. Belarus media discovery adapters and private candidate queue boundary.
 5. Editorial review integration.
 6. Production release only after all gates pass.

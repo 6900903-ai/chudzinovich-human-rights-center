@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/status-event.schema.json",
+  "title": "Public human-rights status event",
+  "type": "object",
+  "required": ["event_id", "status", "state", "designation", "effective_date", "source_id"],
+  "properties": {
+    "event_id": {"type":"string", "minLength":1},
+    "status": {"enum":["POLITICAL_PRISONER","FORMER_POLITICAL_PRISONER","REPRESSION_DOCUMENTED"]},
+    "state": {"enum":["ACTIVE","CORRECTED","RETRACTED","SUPERSEDED","DISPUTED"]},
+    "designation": {"enum":["SOURCE_ATTRIBUTED","EDITORIAL_CONFIRMED"]},
+    "effective_date": {"$ref":"person.schema.json#/$defs/partialDate"},
+    "source_id": {"type":["string","null"]},
+    "source_published_at": {"type":["string","null"]},
+    "source_observed_at": {"type":["string","null"]},
+    "human_verified_at": {"type":["string","null"]},
+    "summary": {"oneOf":[{"type":"string"},{"type":"object"}]}
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"designation":{"const":"SOURCE_ATTRIBUTED"}}},
+      "then": {"properties":{"source_id":{"type":"string","minLength":1}}}
+    }
+  ],
+  "additionalProperties": false
+}

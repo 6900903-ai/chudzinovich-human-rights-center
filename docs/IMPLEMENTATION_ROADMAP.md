@@ -18,13 +18,14 @@
 - exact production structured endpoint remains intentionally unfrozen pending review;
 - Viasna source status never becomes an autonomous CHUDZINOVICH designation.
 
-## Wave 3 — public database views
-- prisoner profile pages;
-- repressed/former views;
-- prisons and placements;
-- fact-level provenance;
-- correction history;
-- pagination and search index.
+## Wave 3 — public database views — DEVELOPMENT IMPLEMENTATION COMPLETE
+- current/former/repressed catalog separation implemented;
+- immutable-ID multilingual profile pages implemented;
+- prison catalog and current-placement linkage implemented;
+- public event/fact provenance guard implemented;
+- correction history and disputed noindex behavior implemented;
+- pagination, cards/table modes, local search/filter index implemented;
+- only synthetic fixture data used for integration testing; real production data remains gated.
 
 ## Wave 4 — media discovery
 - per-source adapters;
