@@ -18,11 +18,13 @@ A media report may create only:
 
 `source-registry/media-sources/` is a **broad discovery registry**, not a claim to be a complete legal census of every media outlet ever registered in Belarus.
 
-The initial Wave 4 registry contains 108 discovered current, historical or needs-recheck source identities, including national and regional independent media, investigative and specialist projects, foreign Belarus-focused services, commercial domestic news media, business/thematic media, state national/regional media and historical successor identities.
+The Wave 4 registry contains **126 discovered current, historical or needs-recheck source identities**. It covers national and regional independent media, investigative and specialist projects, foreign Belarus-focused services, commercial domestic news media, business/thematic and minority media, state national/regional media, video/social projects and historical successor identities.
+
+**62 active sources are candidate-eligible. Automatic scheduled polling remains at 0** until each individual source has a verified feed/endpoint and the required legal/security gates are closed.
 
 Sources discovered but lacking a confidently verified current website are retained with monitoring disabled instead of inventing an endpoint.
 
-The research baseline includes the Belarusian Association of Journalists Media Assembly registry (2026), BAJ media-sector and regional-press materials, current Belarus media guides, and public media-monitoring references.
+The research baseline includes the Belarusian Association of Journalists Media Assembly registry (2026), BAJ media-sector and regional-press materials, current Belarus media guides, current public media pages, and public media-monitoring references. The registry is designed to be extendable as outlets appear, close, rename, move domains or become social-only.
 
 ## Eligibility vs automatic polling
 
