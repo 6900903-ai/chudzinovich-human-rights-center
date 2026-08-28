@@ -7,6 +7,7 @@ import {
   getLiveSchedulableMediaEndpoints
 } from '../scripts/lib/media-registry.mjs';
 import { parseDiscoveryFeed } from '../scripts/lib/feed-parser.mjs';
+import { fetchEndpointObservations } from '../scripts/adapters/media-generic.mjs';
 import { schedulerPlan } from '../scripts/media-scheduler.mjs';
 
 const registry = await loadMediaRegistry();
@@ -47,6 +48,25 @@ assert.equal(plan.technically_ready_endpoints.length,12);
 assert.equal(plan.legally_ready_endpoint_count,0);
 assert.equal(plan.live_schedulable_endpoints.length,0);
 assert.equal(plan.live_polling_enabled,false);
+
+const savedGates = {
+  MEDIA_MONITOR_NETWORK_GATE:process.env.MEDIA_MONITOR_NETWORK_GATE,
+  FETCHER_SECURITY_GATE:process.env.FETCHER_SECURITY_GATE,
+  MEDIA_SOURCE_REUSE_GATE:process.env.MEDIA_SOURCE_REUSE_GATE
+};
+process.env.MEDIA_MONITOR_NETWORK_GATE='PASS';
+process.env.FETCHER_SECURITY_GATE='PASS';
+process.env.MEDIA_SOURCE_REUSE_GATE='PASS';
+try {
+  await assert.rejects(
+    () => fetchEndpointObservations('src-zerkalo','src-zerkalo-rss-01'),
+    /MEDIA_SOURCE_LEGAL_REUSE_NOT_CLEARED/
+  );
+} finally {
+  for (const [key,value] of Object.entries(savedGates)) {
+    if (value === undefined) delete process.env[key]; else process.env[key]=value;
+  }
+}
 
 const rss = `<?xml version="1.0"?>
 <rss version="2.0"><channel><title>Test</title>
