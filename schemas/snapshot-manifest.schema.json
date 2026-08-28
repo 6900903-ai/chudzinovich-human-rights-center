@@ -6,7 +6,7 @@
   "required": ["snapshot_id", "created_at", "publication_state", "counts", "files"],
   "properties": {
     "snapshot_id": {"type": "string", "pattern": "^snap-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$"},
-    "created_at": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
     "publication_state": {"enum": ["DEVELOPMENT_EMPTY", "PUBLISHED"]},
     "counts": {
       "type": "object",
@@ -19,7 +19,32 @@
       },
       "additionalProperties": false
     },
-    "files": {"type": "array", "items": {"type": "object"}}
+    "source_snapshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "observed_at"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "observed_at": {"type": "string", "format": "date-time"},
+          "source_manifest_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^[A-Za-z0-9._/-]+$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    }
   },
   "additionalProperties": false
 }

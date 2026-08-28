@@ -30,9 +30,9 @@ Forbidden here:
 
 Synthetic parser/test data lives only under `tests/fixtures/` and carries `fixture: true`.
 
-## First increment
+## Implemented through Wave 2
 
-This scaffold contains:
+The repository now contains:
 
 - branded multi-page static UI shell;
 - mobile-first fixed header, horizontal navigation, accessible side menu;
@@ -44,7 +44,10 @@ This scaffold contains:
 - same-origin-only runtime policy;
 - security headers template;
 - source adapter registry;
-- Viasna adapter boundary with live fetch fail-closed behind a legal gate;
+- Viasna structured-data parser with RU/BE/EN header normalization;
+- live Viasna fetch fail-closed behind both legal-reuse and fetcher-security gates;
+- anomaly detection for future dates, mass record loss, source-count mismatch and prison-field degradation;
+- immutable snapshot integrity helpers with SHA-256 verification;
 - public/private boundary validation;
 - smoke tests.
 
@@ -60,8 +63,8 @@ The build output is `_site/`.
 
 ## Planned order
 
-1. Public shell + canonical data schema — this increment.
-2. Viasna structured adapter + parser fixtures.
+1. Public shell + canonical data schema — COMPLETE.
+2. Viasna structured adapter + synthetic parser fixtures + anomaly/snapshot foundation — COMPLETE FOR DEVELOPMENT; LIVE INGESTION GATED.
 3. Search, prisoner/prison pages backed by an approved snapshot.
 4. Belarus media discovery adapters and private candidate queue boundary.
 5. Editorial review integration.

@@ -9,12 +9,14 @@
 - runtime privacy boundary;
 - public/private Git guard.
 
-## Wave 2 — Viasna adapter
-- confirm legal/reuse state;
-- identify preferred structured export;
-- build parser fixtures from legally usable, minimized samples;
-- implement normalization and anomaly detection;
-- never map a media report directly to political-prisoner status.
+## Wave 2 — Viasna adapter — DEVELOPMENT IMPLEMENTATION COMPLETE
+- parser and source-observation normalization implemented;
+- synthetic multilingual parser fixtures implemented;
+- partial-date precision preservation implemented;
+- anomaly detection and immutable snapshot integrity implemented;
+- live fetch remains fail-closed until legal/reuse and fetcher-security gates pass;
+- exact production structured endpoint remains intentionally unfrozen pending review;
+- Viasna source status never becomes an autonomous CHUDZINOVICH designation.
 
 ## Wave 3 — public database views
 - prisoner profile pages;

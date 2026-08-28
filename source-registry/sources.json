@@ -3,17 +3,23 @@
     "source_id": "src-viasna",
     "name": "Human Rights Center Viasna",
     "tier": "HUMAN_RIGHTS",
-    "canonical_domains": ["prisoners.spring96.org", "spring96.org"],
+    "canonical_domains": [
+      "prisoners.spring96.org",
+      "spring96.org"
+    ],
     "legal_reuse_state": "UNREVIEWED",
     "structured_endpoint": null,
-    "parser_version": "0.1.0",
-    "runtime_allowed": false
+    "parser_version": "0.2.0",
+    "runtime_allowed": false,
+    "discovery_state": "STRUCTURED_EXPORT_VISIBLE_ENDPOINT_NOT_FROZEN"
   },
   {
     "source_id": "src-zerkalo",
     "name": "Zerkalo",
     "tier": "INDEPENDENT_MEDIA",
-    "canonical_domains": ["zerkalo.io"],
+    "canonical_domains": [
+      "zerkalo.io"
+    ],
     "legal_reuse_state": "UNREVIEWED",
     "structured_endpoint": null,
     "parser_version": "0.1.0",
@@ -23,7 +29,9 @@
     "source_id": "src-nasha-niva",
     "name": "Nasha Niva",
     "tier": "INDEPENDENT_MEDIA",
-    "canonical_domains": ["nashaniva.com"],
+    "canonical_domains": [
+      "nashaniva.com"
+    ],
     "legal_reuse_state": "UNREVIEWED",
     "structured_endpoint": null,
     "parser_version": "0.1.0",
