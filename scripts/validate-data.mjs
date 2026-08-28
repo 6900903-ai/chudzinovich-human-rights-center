@@ -1,8 +1,11 @@
+import { fileURLToPath } from 'node:url';
 import { readJson } from './lib/fs.mjs';
+import { verifySnapshot } from './lib/snapshot.mjs';
 
-const base = new URL('../data/public/current/', import.meta.url);
-const manifest = await readJson(new URL('manifest.json', base));
-const people = await readJson(new URL('people.json', base));
+const baseUrl = new URL('../data/public/current/', import.meta.url);
+const basePath = fileURLToPath(baseUrl);
+const manifest = await readJson(new URL('manifest.json', baseUrl));
+const people = await readJson(new URL('people.json', baseUrl));
 
 if (!/^snap-\d{8}T\d{6}Z-[a-f0-9]{8}$/.test(manifest.snapshot_id)) {
   throw new Error('Invalid snapshot_id');
@@ -18,4 +21,14 @@ for (const person of people) {
 if (manifest.counts.people !== people.length) {
   throw new Error(`Snapshot count mismatch: manifest=${manifest.counts.people}, people=${people.length}`);
 }
+
+const integrity = await verifySnapshot(basePath);
+if (!integrity.ok) {
+  throw new Error(`Snapshot integrity failed: ${JSON.stringify(integrity.failures)}`);
+}
+
+for (const required of ['people.json', 'prisons.json', 'news.json', 'reports.json']) {
+  if (!manifest.files.some(file => file.path === required)) throw new Error(`Snapshot manifest missing ${required}`);
+}
+
 console.log('DATA_VALIDATION=PASS');
