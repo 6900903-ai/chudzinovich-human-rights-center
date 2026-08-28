@@ -1,0 +1,353 @@
+[
+  {
+    "fixture": true,
+    "person_id": "p-0000001",
+    "canonical_name": {
+      "ru": "Тестовый Человек А",
+      "be": "Тэставы Чалавек А",
+      "en": "Test Person A",
+      "pl": "Osoba Testowa A"
+    },
+    "aliases": [
+      "Test Person A",
+      "Testovy Chelovek A"
+    ],
+    "birth_date": {
+      "value": "1980",
+      "precision": "year"
+    },
+    "gender": "MALE",
+    "region": {
+      "ru": "Минск",
+      "be": "Мінск",
+      "en": "Minsk",
+      "pl": "Mińsk"
+    },
+    "photo": null,
+    "facts": {
+      "birth_date": {
+        "value": {
+          "value": "1980",
+          "precision": "year"
+        },
+        "source_id": "src-viasna",
+        "source_url": "https://example.invalid/source/a",
+        "source_published_at": "2026-01-10T08:00:00Z",
+        "source_observed_at": "2026-01-10T10:00:00Z",
+        "source_fetched_at": "2026-01-10T10:00:00Z",
+        "human_verified_at": null,
+        "confidence": "CONFIRMED",
+        "publication_state": "PUBLIC_SOURCE_ATTRIBUTED"
+      }
+    },
+    "cases": [],
+    "detentions": [
+      {
+        "event_id": "det-a-1",
+        "date": {
+          "value": "2026-01-05",
+          "precision": "day"
+        },
+        "summary": {
+          "ru": "Задержание — синтетический тест",
+          "be": "Затрыманне — сінтэтычны тэст",
+          "en": "Detention — synthetic test",
+          "pl": "Zatrzymanie — test syntetyczny"
+        },
+        "location": {
+          "ru": "Минск",
+          "be": "Мінск",
+          "en": "Minsk",
+          "pl": "Mińsk"
+        },
+        "source_id": "src-viasna",
+        "source_observed_at": "2026-01-10T10:00:00Z",
+        "state": "ACTIVE"
+      }
+    ],
+    "charges": [
+      {
+        "event_id": "charge-a-1",
+        "articles": [
+          "130 ч. 1"
+        ],
+        "summary": {
+          "ru": "Тестовое обвинение",
+          "be": "Тэставае абвінавачанне",
+          "en": "Synthetic charge",
+          "pl": "Zarzut syntetyczny"
+        },
+        "source_id": "src-viasna",
+        "source_observed_at": "2026-01-10T10:00:00Z",
+        "state": "ACTIVE"
+      }
+    ],
+    "judgments": [
+      {
+        "event_id": "jud-a-1",
+        "date": {
+          "value": "2026-02",
+          "precision": "month"
+        },
+        "verdict": {
+          "ru": "Тестовый приговор",
+          "be": "Тэставы прысуд",
+          "en": "Synthetic verdict",
+          "pl": "Wyrok syntetyczny"
+        },
+        "judge": "Тестовый судья",
+        "prosecutor": "Тестовый прокурор",
+        "source_id": "src-viasna",
+        "source_observed_at": "2026-02-15T10:00:00Z",
+        "state": "ACTIVE"
+      }
+    ],
+    "sentences": [
+      {
+        "event_id": "sen-a-1",
+        "date": {
+          "value": "2026-02",
+          "precision": "month"
+        },
+        "value": {
+          "ru": "3 года — синтетический тест",
+          "be": "3 гады — сінтэтычны тэст",
+          "en": "3 years — synthetic test",
+          "pl": "3 lata — test syntetyczny"
+        },
+        "source_id": "src-viasna",
+        "source_observed_at": "2026-02-15T10:00:00Z",
+        "state": "ACTIVE"
+      }
+    ],
+    "prison_placements": [
+      {
+        "event_id": "place-a-1",
+        "started_at": {
+          "value": "2026-02-20",
+          "precision": "day"
+        },
+        "current": true,
+        "prison_id": "pr-sizo-test",
+        "prison_name": {
+          "ru": "СИЗО № TEST",
+          "be": "СІЗА № TEST",
+          "en": "SIZO TEST",
+          "pl": "Areszt TEST"
+        },
+        "source_id": "src-viasna",
+        "source_observed_at": "2026-03-01T12:00:00Z",
+        "state": "ACTIVE"
+      }
+    ],
+    "release_events": [],
+    "status_events": [
+      {
+        "event_id": "status-a-1",
+        "status": "POLITICAL_PRISONER",
+        "state": "ACTIVE",
+        "designation": "SOURCE_ATTRIBUTED",
+        "effective_date": {
+          "value": "2026-01-10",
+          "precision": "day"
+        },
+        "source_id": "src-viasna",
+        "source_published_at": "2026-01-10T08:00:00Z",
+        "source_observed_at": "2026-01-10T10:00:00Z",
+        "human_verified_at": null,
+        "summary": {
+          "ru": "Статус источника — синтетический тест",
+          "be": "Статус крыніцы — сінтэтычны тэст",
+          "en": "Source status — synthetic test",
+          "pl": "Status źródła — test syntetyczny"
+        }
+      }
+    ],
+    "health_claims": [],
+    "risk_assessments": [],
+    "sources": [
+      {
+        "source_id": "src-viasna",
+        "name": {
+          "ru": "Правозащитный центр «Вясна» — тестовый источник",
+          "be": "Праваабарончы цэнтр «Вясна» — тэставы крыніца",
+          "en": "Human Rights Center Viasna — test source",
+          "pl": "Centrum Praw Człowieka Viasna — źródło testowe"
+        },
+        "url": "https://example.invalid/source/a",
+        "published_at": "2026-01-10T08:00:00Z",
+        "observed_at": "2026-03-01T12:00:00Z",
+        "human_verified_at": null
+      }
+    ],
+    "evidence": [],
+    "change_history": [
+      {
+        "change_id": "chg-a-1",
+        "changed_at": "2026-03-01T12:00:00Z",
+        "kind": "PRISON_PLACEMENT",
+        "summary": {
+          "ru": "Добавлено тестовое место заключения",
+          "be": "Дададзена тэставае месца зняволення",
+          "en": "Synthetic place of detention added",
+          "pl": "Dodano syntetyczne miejsce osadzenia"
+        },
+        "publication_state": "PUBLIC_SOURCE_ATTRIBUTED",
+        "source_ids": [
+          "src-viasna"
+        ]
+      }
+    ],
+    "publication_state": "PUBLIC_SOURCE_ATTRIBUTED"
+  },
+  {
+    "fixture": true,
+    "person_id": "p-0000002",
+    "canonical_name": {
+      "ru": "Тестовый Человек Б",
+      "be": "Тэставы Чалавек Б",
+      "en": "Test Person B",
+      "pl": "Osoba Testowa B"
+    },
+    "aliases": [
+      "Test Person B"
+    ],
+    "birth_date": {
+      "value": "1990-05",
+      "precision": "month"
+    },
+    "gender": "FEMALE",
+    "region": {
+      "ru": "Брест",
+      "be": "Брэст",
+      "en": "Brest",
+      "pl": "Brześć"
+    },
+    "cases": [],
+    "detentions": [],
+    "charges": [],
+    "judgments": [],
+    "sentences": [],
+    "prison_placements": [],
+    "release_events": [
+      {
+        "event_id": "rel-b-1",
+        "date": {
+          "value": "2026-04-01",
+          "precision": "day"
+        },
+        "summary": {
+          "ru": "Освобождение — синтетический тест",
+          "be": "Вызваленне — сінтэтычны тэст",
+          "en": "Release — synthetic test",
+          "pl": "Zwolnienie — test syntetyczny"
+        },
+        "source_id": "src-viasna",
+        "source_observed_at": "2026-04-01T13:00:00Z",
+        "state": "ACTIVE"
+      }
+    ],
+    "status_events": [
+      {
+        "event_id": "status-b-1",
+        "status": "FORMER_POLITICAL_PRISONER",
+        "state": "ACTIVE",
+        "designation": "SOURCE_ATTRIBUTED",
+        "effective_date": {
+          "value": "2026-04-01",
+          "precision": "day"
+        },
+        "source_id": "src-viasna",
+        "source_published_at": "2026-04-01T12:00:00Z",
+        "source_observed_at": "2026-04-01T13:00:00Z",
+        "human_verified_at": null
+      }
+    ],
+    "health_claims": [],
+    "risk_assessments": [],
+    "sources": [
+      {
+        "source_id": "src-viasna",
+        "name": {
+          "ru": "Правозащитный центр «Вясна» — тестовый источник",
+          "be": "Праваабарончы цэнтр «Вясна» — тэставы крыніца",
+          "en": "Human Rights Center Viasna — test source",
+          "pl": "Centrum Praw Człowieka Viasna — źródło testowe"
+        },
+        "url": "https://example.invalid/source/b",
+        "published_at": "2026-04-01T12:00:00Z",
+        "observed_at": "2026-04-01T13:00:00Z",
+        "human_verified_at": null
+      }
+    ],
+    "evidence": [],
+    "change_history": [],
+    "publication_state": "PUBLIC_SOURCE_ATTRIBUTED",
+    "facts": {
+      "birth_date": {
+        "value": {
+          "value": "1990-05",
+          "precision": "month"
+        },
+        "source_id": "src-viasna",
+        "source_url": "https://example.invalid/source/b",
+        "source_published_at": "2026-04-01T12:00:00Z",
+        "source_observed_at": "2026-04-01T13:00:00Z",
+        "source_fetched_at": "2026-04-01T13:00:00Z",
+        "human_verified_at": null,
+        "confidence": "CONFIRMED",
+        "publication_state": "PUBLIC_SOURCE_ATTRIBUTED"
+      }
+    }
+  },
+  {
+    "fixture": true,
+    "person_id": "p-0000003",
+    "canonical_name": {
+      "ru": "Тестовый Человек В",
+      "be": "Тэставы Чалавек В",
+      "en": "Test Person C",
+      "pl": "Osoba Testowa C"
+    },
+    "aliases": [
+      "Test Person C"
+    ],
+    "birth_date": null,
+    "gender": "UNKNOWN",
+    "region": {
+      "ru": "Гомель",
+      "be": "Гомель",
+      "en": "Homiel",
+      "pl": "Homel"
+    },
+    "cases": [],
+    "detentions": [],
+    "charges": [],
+    "judgments": [],
+    "sentences": [],
+    "prison_placements": [],
+    "release_events": [],
+    "status_events": [
+      {
+        "event_id": "status-c-1",
+        "status": "REPRESSION_DOCUMENTED",
+        "state": "DISPUTED",
+        "designation": "EDITORIAL_CONFIRMED",
+        "effective_date": {
+          "value": "2026",
+          "precision": "year"
+        },
+        "source_id": null,
+        "source_published_at": null,
+        "source_observed_at": null,
+        "human_verified_at": "2026-05-01T10:00:00Z"
+      }
+    ],
+    "health_claims": [],
+    "risk_assessments": [],
+    "sources": [],
+    "evidence": [],
+    "change_history": [],
+    "publication_state": "PUBLIC_DISPUTED"
+  }
+]

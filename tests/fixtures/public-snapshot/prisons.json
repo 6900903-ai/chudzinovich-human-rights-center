@@ -1,0 +1,40 @@
+[
+  {
+    "prison_id": "pr-sizo-test",
+    "name": {
+      "ru": "СИЗО № TEST",
+      "be": "СІЗА № TEST",
+      "en": "SIZO TEST",
+      "pl": "Areszt TEST"
+    },
+    "type": "SIZO",
+    "address": {
+      "ru": "Тестовый публичный адрес учреждения",
+      "be": "Тэставы публічны адрас установы",
+      "en": "Synthetic public institution address",
+      "pl": "Syntetyczny publiczny adres placówki"
+    },
+    "region": {
+      "ru": "Минск",
+      "be": "Мінск",
+      "en": "Minsk",
+      "pl": "Mińsk"
+    },
+    "publication_state": "PUBLIC_CONFIRMED",
+    "sources": [
+      {
+        "source_id": "src-viasna",
+        "name": {
+          "ru": "Правозащитный центр «Вясна» — тестовый источник",
+          "be": "Праваабарончы цэнтр «Вясна» — тэставы крыніца",
+          "en": "Human Rights Center Viasna — test source",
+          "pl": "Centrum Praw Człowieka Viasna — źródło testowe"
+        },
+        "url": "https://example.invalid/prison/source",
+        "published_at": "2026-03-01T12:00:00Z",
+        "observed_at": "2026-03-01T12:00:00Z",
+        "human_verified_at": null
+      }
+    ]
+  }
+]

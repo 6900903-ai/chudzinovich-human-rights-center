@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/prison.schema.json",
+  "title": "Public detention institution",
+  "type": "object",
+  "required": ["prison_id", "name", "type", "address", "region", "publication_state"],
+  "properties": {
+    "prison_id": {"type":"string", "pattern":"^pr-[a-z0-9-]+$"},
+    "name": {"oneOf":[{"type":"string"},{"type":"object"}]},
+    "type": {"type":"string"},
+    "address": {"oneOf":[{"type":"string"},{"type":"object"}]},
+    "region": {"oneOf":[{"type":"string"},{"type":"object"}]},
+    "publication_state": {"enum":["PUBLIC_CONFIRMED","PUBLIC_SOURCE_ATTRIBUTED","PUBLIC_DISPUTED"]},
+    "sources": {"type":"array", "items":{"$ref":"public-source-ref.schema.json"}}
+  },
+  "additionalProperties": false
+}

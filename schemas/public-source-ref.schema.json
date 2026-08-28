@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/public-source-ref.schema.json",
+  "title": "Public source reference",
+  "type": "object",
+  "required": ["source_id", "name", "url"],
+  "properties": {
+    "source_id": {"type": "string", "pattern": "^src-[a-z0-9-]+$"},
+    "name": {"oneOf": [{"type":"string"},{"type":"object"}]},
+    "url": {"type": "string", "format": "uri"},
+    "published_at": {"type": ["string", "null"]},
+    "observed_at": {"type": ["string", "null"]},
+    "human_verified_at": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}
