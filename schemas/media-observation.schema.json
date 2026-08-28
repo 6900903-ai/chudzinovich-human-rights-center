@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://chudzinovich.pp.ua/schemas/media-observation.schema.json",
+  "title":"Private media discovery observation",
+  "type":"object",
+  "required":["observation_id","source_id","article_url","title","published_at","observed_at","event_hint","person_names","upstream_source","origin_claim_id","independence_group","classification","high_risk_flags","source_claim_only","publication_state"],
+  "properties":{
+    "observation_id":{"type":"string","pattern":"^mo-[a-f0-9]{16}$"},
+    "source_id":{"type":"string","pattern":"^src-[a-z0-9-]+$"},
+    "article_url":{"type":"string","format":"uri"},
+    "title":{"type":"string"},"summary":{"type":"string"},
+    "published_at":{"type":["string","null"]},"observed_at":{"type":"string"},
+    "event_hint":{"enum":["DETENTION","ARREST","SEARCH","CRIMINAL_CASE","TRIAL","SENTENCE","TRANSFER","RELEASE","DEATH","TORTURE","CONDITIONS","UNKNOWN"]},
+    "person_names":{"type":"array","items":{"type":"string"}},
+    "upstream_source":{"type":["string","null"]},"origin_claim_id":{"type":"string"},"independence_group":{"type":"string"},
+    "classification":{"enum":["POLITICAL_REPRESSION_CANDIDATE","ORDINARY_CRIME","UNKNOWN","HUMAN_RIGHTS_RELEVANT","FOREIGN_JURISDICTION","FALSE_POSITIVE"]},
+    "high_risk_flags":{"type":"array","items":{"enum":["DEATH","SUICIDE","TORTURE","SEXUAL_VIOLENCE","SERIOUS_HEALTH","DISAPPEARANCE","MINOR","SENSITIVE_LOCATION","IDENTITY_CONFLICT"]},"uniqueItems":true},
+    "source_claim_only":{"const":true},"publication_state":{"const":"PRIVATE_DISCOVERY_ONLY"}
+  },
+  "additionalProperties":false
+}

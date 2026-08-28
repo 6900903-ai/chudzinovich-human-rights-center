@@ -1,6 +1,6 @@
 # Implementation roadmap
 
-## Wave 1 — public foundation (this scaffold)
+## Wave 1 — public foundation
 - static multi-page shell;
 - canonical schema;
 - immutable identity;
@@ -27,17 +27,24 @@
 - pagination, cards/table modes, local search/filter index implemented;
 - only synthetic fixture data used for integration testing; real production data remains gated.
 
-## Wave 4 — media discovery
-- per-source adapters;
-- source independence graph;
-- candidate events into a private boundary only;
-- no high-risk news autopublish.
+## Wave 4 — Belarus media discovery — DEVELOPMENT IMPLEMENTATION COMPLETE
+- broad discovery registry implemented; it is explicitly not an exhaustive legal census of every registered Belarusian publication;
+- current registry contains 126 discovered source identities and 62 candidate-eligible active sources across independent national, regional, investigative, specialist, minority, commercial, state, foreign Belarus-focused, social/video and historical media/project classes;
+- media reports remain source claims and never create a political-prisoner designation;
+- multilingual discovery classifier separates political-repression candidates from ordinary-crime signals;
+- upstream-origin grouping prevents multiple rewrites of one police/government claim from inflating corroboration;
+- candidate queue records can be written only to a private directory outside the public repository;
+- high-risk candidates remain publication-blocked;
+- allowlisted HTTPS fetcher blocks redirects, private/loopback/link-local destinations and oversized/non-text responses;
+- automatic polling requires a separately verified discovery endpoint for each source; no endpoint is guessed or activated by default;
+- initial schedulable live source count remains zero until those per-source legal/technical gates are closed.
 
-## Wave 5 — release gates
+## Wave 5 — editorial integration and release gates
+- verified per-source feeds/endpoints and rate-limit policy;
+- private editorial review storage and UI;
 - legal data reuse;
 - DPIA/privacy;
-- private editorial storage;
-- fetcher security;
+- fetcher security independent review;
 - CI supply chain;
 - image rights;
 - source attribution;

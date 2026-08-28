@@ -28,9 +28,9 @@ Forbidden here:
 - private editorial notes;
 - sensitive admin/review reports.
 
-Synthetic parser/test data lives only under `tests/fixtures/` and carries `fixture: true`.
+Synthetic parser/test data lives only under `tests/fixtures/` and carries explicit synthetic/test semantics.
 
-## Implemented through Wave 3
+## Implemented through Wave 4
 
 The repository now contains:
 
@@ -53,6 +53,13 @@ The repository now contains:
 - prison catalog and institution detail pages;
 - local client-side search/filtering over a compact same-origin index;
 - disputed-profile noindex policy and synthetic Wave 3 integration tests;
+- broad Belarus media discovery registry: **126 discovered source identities**, including independent, regional, commercial, specialist, minority, state, foreign Belarus-focused and historical media/projects;
+- **62 candidate-eligible active sources**, while automatic scheduled polling remains at **0** until per-source endpoints and reuse gates are explicitly verified;
+- multilingual repression/ordinary-crime discovery classifier;
+- source-origin independence accounting (`source_count != independent_origin_count`);
+- private-only candidate queue writer that rejects any path inside the public repository;
+- hardened allowlisted media article fetcher with live-network and legal gates;
+- scheduler foundation that refuses automatic polling until an individual discovery endpoint is explicitly verified;
 - public/private boundary validation;
 - smoke tests.
 
@@ -62,6 +69,7 @@ The repository now contains:
 npm run validate
 npm run build
 npm test
+npm run wave4:check
 ```
 
 The build output is `_site/`.
@@ -71,6 +79,6 @@ The build output is `_site/`.
 1. Public shell + canonical data schema — COMPLETE.
 2. Viasna structured adapter + synthetic parser fixtures + anomaly/snapshot foundation — COMPLETE FOR DEVELOPMENT; LIVE INGESTION GATED.
 3. Search, prisoner/prison pages backed by an approved snapshot — COMPLETE FOR DEVELOPMENT; REAL DATA GATED.
-4. Belarus media discovery adapters and private candidate queue boundary.
-5. Editorial review integration.
+4. Belarus media discovery registry, classifier, source-independence and private candidate boundary — COMPLETE FOR DEVELOPMENT; LIVE SOURCE POLLING GATED PER SOURCE.
+5. Editorial review integration and verified per-source discovery endpoints.
 6. Production release only after all gates pass.

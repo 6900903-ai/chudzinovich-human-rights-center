@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://chudzinovich.pp.ua/schemas/detention-candidate.schema.json",
+  "title":"Private repression candidate",
+  "type":"object",
+  "required":["candidate_id","possible_person_id","name_as_reported","aliases","event_type","event_date","location","reported_charge","article_urls","source_ids","source_count","independent_origin_count","confidence","discovered_at","review_status","classifier_label","high_risk_flags","publication_blocked","private_record"],
+  "properties":{
+    "candidate_id":{"type":"string","pattern":"^cand-[a-f0-9]{16}$"},
+    "possible_person_id":{"type":["string","null"],"pattern":"^p-[0-9]{7}$"},
+    "name_as_reported":{"type":"string"},"aliases":{"type":"array","items":{"type":"string"}},
+    "event_type":{"enum":["DETENTION","ARREST","SEARCH","CRIMINAL_CASE","TRIAL","SENTENCE","TRANSFER","RELEASE","DEATH","TORTURE","CONDITIONS","UNKNOWN"]},
+    "event_date":{"type":["string","null"]},"location":{"type":["string","null"]},"reported_charge":{"type":["string","null"]},
+    "article_urls":{"type":"array","items":{"type":"string","format":"uri"},"minItems":1},
+    "source_ids":{"type":"array","items":{"type":"string"},"minItems":1},
+    "source_count":{"type":"integer","minimum":1},"independent_origin_count":{"type":"integer","minimum":1},
+    "confidence":{"enum":["LOW","MEDIUM","HIGH","CORROBORATED"]},"discovered_at":{"type":"string"},
+    "review_status":{"enum":["NEW","MATCHED_EXISTING_PERSON","NEEDS_IDENTITY_REVIEW","CORROBORATED","REJECTED_NON_POLITICAL","PUBLISHED_AS_REPRESSION_EVENT","WAITING_FOR_HUMAN_RIGHTS_STATUS"]},
+    "classifier_label":{"enum":["POLITICAL_REPRESSION_CANDIDATE","ORDINARY_CRIME","UNKNOWN","HUMAN_RIGHTS_RELEVANT","FOREIGN_JURISDICTION","FALSE_POSITIVE"]},
+    "high_risk_flags":{"type":"array","items":{"type":"string"}},
+    "publication_blocked":{"const":true},"private_record":{"const":true}
+  },
+  "additionalProperties":false
+}
