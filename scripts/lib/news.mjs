@@ -16,8 +16,14 @@ export function assertPublicNewsItem(item) {
   if (!localizedNewsValue(item.title,'ru')) throw new Error(`NEWS_TITLE_MISSING:${item.news_id}`);
   if (!localizedNewsValue(item.summary,'ru')) throw new Error(`NEWS_SUMMARY_MISSING:${item.news_id}`);
   if (!Array.isArray(item.high_risk_flags)) throw new Error(`NEWS_HIGH_RISK_FLAGS_INVALID:${item.news_id}`);
-  if (item.high_risk_flags.length > 0 && item.editorial_reviewed !== true) throw new Error(`HIGH_RISK_NEWS_NOT_REVIEWED:${item.news_id}`);
-  if (item.source_kind === 'TELEGRAM' && item.source_claim_only !== true) throw new Error(`TELEGRAM_NEWS_MUST_BE_SOURCE_CLAIM:${item.news_id}`);
+
+  const attributedTelegram = item.source_kind === 'TELEGRAM' && item.source_claim_only === true;
+  if (item.high_risk_flags.length > 0 && item.editorial_reviewed !== true && !attributedTelegram) {
+    throw new Error(`HIGH_RISK_NEWS_NOT_REVIEWED:${item.news_id}`);
+  }
+  if (item.source_kind === 'TELEGRAM' && item.source_claim_only !== true) {
+    throw new Error(`TELEGRAM_NEWS_MUST_BE_SOURCE_CLAIM:${item.news_id}`);
+  }
   return true;
 }
 
