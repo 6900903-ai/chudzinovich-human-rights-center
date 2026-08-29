@@ -53,7 +53,7 @@ export async function fetchTelegramPreview(source, input = source.preview_url, {
   try {
     const response = await fetchImpl(url, {
       redirect:'manual', signal:controller.signal,
-      headers:{'user-agent':'CHUDO-HRC-TelegramMonitor/0.1 (+https://chudzinovich.pp.ua)'}
+      headers:{'user-agent':'CHUDO-HRC-TelegramMonitor/0.2 (+https://chudzinovich.pp.ua)'}
     });
     if (response.status >= 300 && response.status < 400) throw new Error('TELEGRAM_REDIRECT_BLOCKED');
     if (!response.ok) throw new Error(`TELEGRAM_HTTP_STATUS:${response.status}`);
@@ -87,13 +87,18 @@ export function assessTelegramMaterial(source, material) {
     || /\+?\d[\d() .-]{8,}\d/u.test(material.text)
     || /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/iu.test(material.text);
   const allegation = /(?:агент(?:ура)?|доносчик|предатель|коллаборант|коррупц|мошенник|вор\b|сотрудник\s+(?:кгб|мвд)|работает\s+на\s+(?:кгб|фсб))/iu.test(material.text);
-  const highRisk = classification.high_risk_flags.length > 0;
-  const strictSource = source.publication_policy === 'STRICT_REVIEW_NO_PRIVATE_DATA';
-  const allegationReview = source.publication_policy === 'REVIEW_REQUIRED_FOR_ALLEGATIONS' && allegation;
 
-  if (privateData) return { state:'BLOCK_PRIVATE_DATA', classification, allegation, private_data:true, publication_allowed:false };
-  if (highRisk || strictSource || allegationReview) return { state:'PRIVATE_REVIEW_REQUIRED', classification, allegation, private_data:false, publication_allowed:false };
-  return { state:'PUBLIC_SUMMARY_ELIGIBLE', classification, allegation, private_data:false, publication_allowed:true };
+  if (privateData) {
+    return {
+      state:'BLOCK_PRIVATE_DATA', classification, allegation, private_data:true,
+      publication_allowed:false, fact_check_required:false, editorial_review_required:false
+    };
+  }
+
+  return {
+    state:'PUBLIC_SOURCE_MATERIAL_ELIGIBLE', classification, allegation, private_data:false,
+    publication_allowed:true, fact_check_required:false, editorial_review_required:false
+  };
 }
 
 export function parseTelegramPublicPreview(html, source) {
@@ -118,8 +123,10 @@ export function parseTelegramPublicPreview(html, source) {
       text,
       published_at: publishedAt,
       source_claim_only: true,
-      full_republication_allowed: false,
-      publication_mode: 'ATTRIBUTED_SUMMARY_AND_SHORT_QUOTE'
+      fact_check_required: false,
+      editorial_review_required: false,
+      full_republication_allowed: source.full_republication_allowed === true,
+      publication_mode: 'AUTO_PUBLISH_ATTRIBUTED_SOURCE_MATERIAL'
     };
     material.assessment = assessTelegramMaterial(source, material);
     materials.push(material);
@@ -136,8 +143,10 @@ export async function parseRequiredTelegramChannel(handle, html) {
 
 export const TELEGRAM_PUBLICATION_POLICY = Object.freeze({
   political_prisoner_autodesignation:false,
+  source_claim_autopublish:true,
+  fact_check_required:false,
+  editorial_review_required:false,
   full_republication_default:false,
-  high_risk_autopublish:false,
   private_data_republication:false,
   visitor_runtime_requests:false
 });
