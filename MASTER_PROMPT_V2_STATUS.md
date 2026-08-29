@@ -18,6 +18,9 @@ CORRECTION_HISTORY_IMPLEMENTATION=AUTHORIZED
 
 PROJECT_OWNER_VIASNA_USE_AUTHORIZATION=GRANTED
 PROJECT_OWNER_REQUIRED_TELEGRAM_SOURCES=9
+TELEGRAM_SOURCE_CLAIM_AUTOPUBLISH=AUTHORIZED
+TELEGRAM_FACT_CHECK_REQUIRED=false
+TELEGRAM_EDITORIAL_REVIEW_REQUIRED=false
 
 UNVERIFIED_EDITORIAL_DATA_IN_PUBLIC_GIT=FORBIDDEN
 POLITICAL_PRISONER_AUTODESIGNATION=FORBIDDEN
@@ -41,10 +44,12 @@ PUBLIC_PRODUCTION_RELEASE=BLOCKED_PENDING:
 
 `MEDIA_REPORT != POLITICAL_PRISONER_DESIGNATION`
 
-`TELEGRAM_POST != VERIFIED_FACT`
+`TELEGRAM_POST != CHUDO_VERIFIED_FACT`
 
 `SOURCE != FACT`
 
-A media or Telegram report can create discovery evidence, a source-attributed news item, or a private candidate event. It cannot itself grant the public status `POLITICAL_PRISONER` or silently mutate the canonical person record.
+Selected Telegram channels are source-attributed publication feeds. Their posts may be published automatically without CHUDO fact-checking or manual editorial approval. The public item must identify the originating channel/post and must remain a source claim; it cannot silently mutate the canonical person database or grant `POLITICAL_PRISONER` status.
 
-Project-owner authorization to use a third-party public source is an implementation instruction; it does not by itself transfer third-party copyright/database rights. Long-form copying and image reuse remain subject to the applicable reuse gates.
+The global high-risk database/news gates remain fail-closed for CHUDO-authored or canonical-data changes. The Telegram source-claim exception applies only to clearly attributed Telegram materials. Non-public personal data and doxxing material remain excluded from automatic republication.
+
+Project-owner authorization to use a third-party public source is an implementation instruction; it does not by itself transfer third-party copyright/database rights. Full verbatim republication of third-party material remains subject to source-specific reuse rights.
