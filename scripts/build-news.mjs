@@ -19,15 +19,15 @@ function outputPath(lang, path) {
 }
 
 function sourceLabel(lang) { return ({ru:'Источник',be:'Крыніца',en:'Source',pl:'Źródło'})[lang]; }
-function sourceClaimLabel(lang) { return ({ru:'По данным источника',be:'Паводле крыніцы',en:'According to the source',pl:'Według źródła'})[lang]; }
-function openSourceLabel(lang) { return ({ru:'Открыть первоисточник',be:'Адкрыць першакрыніцу',en:'Open primary source',pl:'Otwórz źródło pierwotne'})[lang]; }
+function sourceClaimLabel(lang) { return ({ru:'Материал источника',be:'Матэрыял крыніцы',en:'Source material',pl:'Materiał źródłowy'})[lang]; }
+function openSourceLabel(lang) { return ({ru:'Открыть оригинал',be:'Адкрыць арыгінал',en:'Open original',pl:'Otwórz oryginał'})[lang]; }
 function noNewsLabel(lang) { return ({ru:'Опубликованных материалов пока нет.',be:'Апублікаваных матэрыялаў пакуль няма.',en:'No published materials yet.',pl:'Brak opublikowanych materiałów.'})[lang]; }
 function publicationNote(lang) {
   return ({
-    ru:'CHUDO публикует собственный краткий пересказ с атрибуцией и ссылкой на первоисточник, а не автоматически копирует полный текст третьей стороны.',
-    be:'CHUDO публікуе ўласны кароткі пераказ з атрыбуцыяй і спасылкай на першакрыніцу, а не аўтаматычна капіруе поўны тэкст трэцяга боку.',
-    en:'CHUDO publishes its own concise attributed summary with a link to the primary source instead of automatically copying the third party’s full text.',
-    pl:'CHUDO publikuje własne krótkie streszczenie z atrybucją i linkiem do źródła pierwotnego, zamiast automatycznie kopiować pełny tekst strony trzeciej.'
+    ru:'Материалы выбранных Telegram-каналов могут публиковаться автоматически без факт-чека и ручного подтверждения CHUDO. Канал и ссылка на оригинальный пост сохраняются в каждой публикации.',
+    be:'Матэрыялы выбраных Telegram-каналаў могуць публікавацца аўтаматычна без фактчэку і ручнога пацверджання CHUDO. Канал і спасылка на арыгінальны допіс захоўваюцца ў кожнай публікацыі.',
+    en:'Materials from selected Telegram channels may be published automatically without CHUDO fact-checking or manual approval. Every item keeps the channel attribution and original-post link.',
+    pl:'Materiały z wybranych kanałów Telegram mogą być publikowane automatycznie bez fact-checkingu i ręcznej akceptacji CHUDO. Każdy materiał zachowuje nazwę kanału i link do oryginalnego wpisu.'
   })[lang];
 }
 
