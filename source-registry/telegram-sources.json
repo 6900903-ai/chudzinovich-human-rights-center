@@ -1,6 +1,6 @@
 {
-  "registry_version": "0.1.0",
-  "updated_at": "2026-08-29T09:40:00Z",
+  "registry_version": "0.2.0",
+  "updated_at": "2026-08-29T10:57:00Z",
   "policy": {
     "publication_mode": "ATTRIBUTED_SUMMARY_AND_SHORT_QUOTE",
     "full_republication_default": false,
@@ -101,6 +101,32 @@
       "publication_policy": "STRICT_REVIEW_NO_PRIVATE_DATA",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
       "notes": "Never republish home addresses, private phone numbers, private contacts, doxxing data, or uncorroborated accusations about identifiable persons."
+    },
+    {
+      "source_id": "tg-evanews25",
+      "handle": "evanews25",
+      "display_name": "Elena Vasileva news",
+      "canonical_url": "https://t.me/evanews25",
+      "preview_url": "https://t.me/s/evanews25",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "NEWS_OPINION_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "News, commentary and forwarded material require source attribution; allegations about identifiable people require corroboration/editorial review."
+    },
+    {
+      "source_id": "tg-narodnireporter",
+      "handle": "narodnireporter",
+      "display_name": "НАРОДНЫЙ РЕПОРТЕР",
+      "canonical_url": "https://t.me/narodnireporter",
+      "preview_url": "https://t.me/s/narodnireporter",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "POLITICAL_OPINION_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "Public channel associated with Sergey Petrukhin; political commentary and third-party claims are attributed and reviewed before publication when sensitive."
     }
   ]
 }
