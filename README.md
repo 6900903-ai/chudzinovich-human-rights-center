@@ -26,7 +26,7 @@ Forbidden here: detention candidate queues, identity conflicts, unpublished heal
 
 Synthetic parser/test data lives only under `tests/fixtures/` and carries explicit synthetic/test semantics.
 
-## Implemented through Wave 7 development
+## Implemented through Wave 8 development
 
 The repository contains:
 
@@ -40,9 +40,10 @@ The repository contains:
 - source-attributed news rendering with high-risk and private-data gates;
 - no third-party visitor-runtime search/analytics/media requests;
 - public methodology, sources, corrections, privacy, security, terms and contacts pages;
-- fail-closed release registry, including an explicit Viasna source-acquisition gate;
+- fail-closed release registry, including explicit Viasna acquisition and deployment-validation gates;
+- operator-side live deployment validator for exact HTTPS/DNS/brand/security-header checks on `chudzinovich.pp.ua`;
 - pinned read-only GitHub CI;
-- synthetic integration and regression tests across Waves 1–7.
+- synthetic integration and regression tests across Waves 1–8.
 
 ## Core commands
 
@@ -53,7 +54,8 @@ npm test
 npm run release:status
 npm run release:gate
 npm run viasna:stage-file
-npm run wave7:check
+CHRC_DEPLOYMENT_VALIDATION_NETWORK_GATE=PASS npm run deployment:validate
+npm run wave8:check
 ```
 
 `release:gate` intentionally fails until every production gate is genuinely closed and the public snapshot is non-empty, immutable and `PUBLISHED`.
@@ -65,7 +67,7 @@ npm run wave7:check
 3. Obtain a real Viasna CSV export through the public interface or identify and legally clear the exact structured endpoint. Offline private staging is already implemented and does not require bypassing a 403-protected page.
 4. Stage the first real Viasna import privately, resolve identities, review anomalies and approve public records.
 5. Build the first non-empty immutable public snapshot and validate source attribution/image rights.
-6. Validate hosting, HTTPS, DNS and production security headers for `chudzinovich.pp.ua`.
+6. Deploy the exact release candidate and run the implemented live HTTPS/DNS/security-header validator against `chudzinovich.pp.ua`.
 7. Run the final exact-snapshot release suite and only then set `production_authorized=true`.
 
 No code path is allowed to bypass these steps.
