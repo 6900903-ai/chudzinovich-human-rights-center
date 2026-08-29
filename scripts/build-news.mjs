@@ -18,17 +18,17 @@ function outputPath(lang, path) {
   return join(out,prefix,clean,'index.html');
 }
 
-function sourceLabel(lang) {
-  return ({ru:'Источник',be:'Крыніца',en:'Source',pl:'Źródło'})[lang];
-}
-function sourceClaimLabel(lang) {
-  return ({ru:'По данным источника',be:'Паводле крыніцы',en:'According to the source',pl:'Według źródła'})[lang];
-}
-function openSourceLabel(lang) {
-  return ({ru:'Открыть первоисточник',be:'Адкрыць першакрыніцу',en:'Open primary source',pl:'Otwórz źródło pierwotne'})[lang];
-}
-function noNewsLabel(lang) {
-  return ({ru:'Опубликованных материалов пока нет.',be:'Апублікаваных матэрыялаў пакуль няма.',en:'No published materials yet.',pl:'Brak opublikowanych materiałów.'})[lang];
+function sourceLabel(lang) { return ({ru:'Источник',be:'Крыніца',en:'Source',pl:'Źródło'})[lang]; }
+function sourceClaimLabel(lang) { return ({ru:'По данным источника',be:'Паводле крыніцы',en:'According to the source',pl:'Według źródła'})[lang]; }
+function openSourceLabel(lang) { return ({ru:'Открыть первоисточник',be:'Адкрыць першакрыніцу',en:'Open primary source',pl:'Otwórz źródło pierwotne'})[lang]; }
+function noNewsLabel(lang) { return ({ru:'Опубликованных материалов пока нет.',be:'Апублікаваных матэрыялаў пакуль няма.',en:'No published materials yet.',pl:'Brak opublikowanych materiałów.'})[lang]; }
+function publicationNote(lang) {
+  return ({
+    ru:'CHUDO публикует собственный краткий пересказ с атрибуцией и ссылкой на первоисточник, а не автоматически копирует полный текст третьей стороны.',
+    be:'CHUDO публікуе ўласны кароткі пераказ з атрыбуцыяй і спасылкай на першакрыніцу, а не аўтаматычна капіруе поўны тэкст трэцяга боку.',
+    en:'CHUDO publishes its own concise attributed summary with a link to the primary source instead of automatically copying the third party’s full text.',
+    pl:'CHUDO publikuje własne krótkie streszczenie z atrybucją i linkiem do źródła pierwotnego, zamiast automatycznie kopiować pełny tekst strony trzeciej.'
+  })[lang];
 }
 
 function formatDate(value, lang) {
@@ -45,7 +45,7 @@ function card(item, lang) {
 
 function indexBody(lang) {
   const t = translations(lang);
-  return `<section class="container page news-feed-section"><p class="eyebrow">CHUDO HUMAN RIGHTS CENTER</p><h1>${esc(t.news)}</h1><p class="catalog-note">${esc(sourceClaimLabel(lang))}. CHUDO публикует собственный краткий пересказ и атрибуцию, а не автоматически копирует полный текст третьей стороны.</p>${items.length ? `<div class="news-grid">${items.map(item=>card(item,lang)).join('')}</div>` : `<div class="empty-state"><p>${esc(noNewsLabel(lang))}</p></div>`}</section>`;
+  return `<section class="container page news-feed-section"><p class="eyebrow">CHUDO HUMAN RIGHTS CENTER</p><h1>${esc(t.news)}</h1><p class="catalog-note">${esc(publicationNote(lang))}</p>${items.length ? `<div class="news-grid">${items.map(item=>card(item,lang)).join('')}</div>` : `<div class="empty-state"><p>${esc(noNewsLabel(lang))}</p></div>`}</section>`;
 }
 
 function itemBody(item, lang) {
