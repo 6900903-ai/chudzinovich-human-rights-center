@@ -25,7 +25,7 @@ const index=await readFile(join(root,'_site/videos/index.html'),'utf8');
 const item=await readFile(join(root,`_site/videos/${current.video_id}/index.html`),'utf8');
 const home=await readFile(join(root,'_site/index.html'),'utf8');
 const search=JSON.parse(await readFile(join(root,'_site/assets/search/ru.json'),'utf8'));
-assert.ok(index.includes(stored.channel_title));
+assert.ok(index.includes(current.title));
 assert.ok(index.includes(`/videos/${current.video_id}/`));
 assert.ok(item.includes('"@type":"VideoObject"'));
 assert.ok(item.includes(current.url));
