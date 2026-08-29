@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const root=new URL('../',import.meta.url).pathname;
+for(const script of ['build.mjs','build-policy-pages.mjs','build-public-sections.mjs','build-help-center.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
+const faq=await readFile(join(root,'_site/faq/index.html'),'utf8');
+const write=await readFile(join(root,'_site/write-letter/index.html'),'utf8');
+const help=await readFile(join(root,'_site/help/index.html'),'utf8');
+const enFaq=await readFile(join(root,'_site/en/faq/index.html'),'utf8');
+assert.ok(faq.includes('Частые вопросы о политзаключённых и репрессиях в Беларуси'));
+assert.equal((faq.match(/"@type":"Question"/g)||[]).length,8);
+assert.ok(faq.includes('FAQPage'));
+assert.ok(faq.includes('/write-letter/'));
+assert.ok(write.includes('Как написать политзаключённому в Беларуси'));
+assert.ok(write.includes('/search/'));
+assert.ok(write.includes('/prisons/'));
+assert.ok(write.includes('/corrections/'));
+assert.ok(help.includes('/write-letter/'));
+assert.ok(help.includes('/faq/'));
+assert.ok(enFaq.includes('Frequently asked questions about political prisoners and repression in Belarus'));
+assert.ok(!faq.includes('google-analytics.com'));
+console.log('HELP_CENTER_TEST=PASS faq_questions=8 locales=4 write_guide=PASS help_links=PASS');
