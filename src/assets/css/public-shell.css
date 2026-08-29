@@ -1,0 +1,7 @@
+.side-links-secondary{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.14)}
+.side-links-secondary a{font-size:.78rem;color:#d9e5ee}
+.site-footer small{color:#d9e5ee;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin:10px auto;max-width:900px}
+.footer-links a{color:#fff;text-decoration:none;font-size:.78rem;font-weight:800;border-bottom:1px solid rgba(255,255,255,.24)}
+.footer-links a:hover,.footer-links a:focus-visible{color:#6ee7b7;border-bottom-color:#6ee7b7}
+@media(min-width:900px){.site-footer{padding-inline:32px}.footer-links{gap:10px 22px}}
