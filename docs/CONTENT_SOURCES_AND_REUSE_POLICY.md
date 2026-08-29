@@ -11,6 +11,8 @@ The project owner has explicitly directed CHUDO HUMAN RIGHTS CENTER to use publi
 - `@statkevichm`
 - `@oshorg`
 - `@doska_pozora_lida`
+- `@evanews25`
+- `@narodnireporter`
 
 This is an internal project authorization to build the ingestion/publication functionality. It does **not** by itself establish ownership of third-party copyright/database rights or close a third-party legal-reuse gate.
 
