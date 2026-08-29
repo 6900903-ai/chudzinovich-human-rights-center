@@ -1,0 +1,22 @@
+{
+  "evidence_type": "PAGES_DEPLOYMENT_GUARD",
+  "recorded_at": "2026-08-29T10:33:15Z",
+  "initial_ungated_deployment": {
+    "main_sha": "f88b587e35891eb5e0cc1fc96667646ae52592db",
+    "workflow_run_id": 33247957716,
+    "result": "SUCCESS",
+    "snapshot_people": 0,
+    "production_release_gate_enforced_before_deploy": false,
+    "reported_environment_url": "http://chudzinovich.pp.ua/"
+  },
+  "fail_closed_hotfix": {
+    "main_sha": "c6014b9dc1e09acba768ba8a0e437a6096596c31",
+    "workflow_run_id": 33248081436,
+    "validation_build_tests": "PASS",
+    "release_gate": "FAIL_AS_DESIGNED",
+    "pages_artifact_upload": "SKIPPED",
+    "pages_deploy": "SKIPPED",
+    "future_deployment_requires_release_gate_pass": true
+  },
+  "production_authorized": false
+}
