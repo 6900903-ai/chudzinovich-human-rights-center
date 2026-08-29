@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const root=new URL('../',import.meta.url).pathname;
-for(const script of ['build.mjs','build-news.mjs','build-news-indexes.mjs','build-policy-pages.mjs','build-sources-page.mjs','build-public-sections.mjs','build-channel-pages.mjs','build-media-pages.mjs','build-global-search.mjs','enhance-public-shell.mjs','finalize-site.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
+for(const script of ['build.mjs','build-news.mjs','build-news-indexes.mjs','build-policy-pages.mjs','build-sources-page.mjs','build-public-sections.mjs','build-channel-pages.mjs','build-media-pages.mjs','build-case-index.mjs','build-global-search.mjs','enhance-public-shell.mjs','finalize-site.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
 const sitemap=await readFile(join(root,'_site/sitemap.xml'),'utf8');
 const robots=await readFile(join(root,'_site/robots.txt'),'utf8');
 const search=await readFile(join(root,'_site/search/index.html'),'utf8');
