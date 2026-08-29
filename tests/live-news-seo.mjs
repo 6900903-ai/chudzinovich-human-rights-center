@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import { loadTelegramRegistry } from '../scripts/lib/telegram-registry.mjs';
 import { loadMediaRegistry } from '../scripts/lib/media-registry.mjs';
 import { loadCombinedPublicNewsWithMedia } from '../scripts/lib/media-feed.mjs';
+import { newsRelativePath } from '../scripts/lib/news.mjs';
 
 const root=new URL('../',import.meta.url).pathname;
 for(const script of ['build.mjs','build-news.mjs','build-public-sections.mjs','enhance-live-news-home.mjs','enhance-public-shell.mjs','enhance-seo.mjs','finalize-site.mjs','finalize-live-news-seo.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
@@ -23,4 +24,6 @@ assert.ok(feed.includes('<pubDate>'));
 assert.ok(sitemap.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"'));
 assert.ok(robots.includes('Sitemap: https://chudzinovich.pp.ua/news-sitemap.xml'));
 assert.ok(!feed.includes('<script'));
-console.log(`LIVE_NEWS_SEO_TEST=PASS total_news=${news.length} rss_items=${itemCount} news_sitemap=PASS robots=PASS locales=4`);
+const sourceOnly=news.find(item=>item.source_claim_only===true);
+if(sourceOnly)assert.ok(!sitemap.includes(`https://chudzinovich.pp.ua${newsRelativePath(sourceOnly)}`),'source-only mirror leaked into Google News sitemap');
+console.log(`LIVE_NEWS_SEO_TEST=PASS total_news=${news.length} rss_items=${itemCount} news_sitemap=PASS source_only_excluded=PASS robots=PASS locales=4`);

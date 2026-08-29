@@ -10,7 +10,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -22,7 +22,9 @@ jobs:
         run: npm --version && node --version
       - name: Validate public boundaries and registries
         run: npm run validate
-      - name: Build static site
-        run: npm run build
-      - name: Run complete test suite
+      - name: Run complete test suite before final build
         run: npm test
+      - name: Build fresh final static site
+        run: npm run build
+      - name: Validate exact final artifact contract
+        run: node scripts/validate-pages-artifact.mjs
