@@ -33,50 +33,48 @@ Default content rule:
 
 ## Telegram publication
 
-Default mode:
+Selected Telegram channels are configured as **automatic source feeds**.
 
-`ATTRIBUTED_SUMMARY_AND_SHORT_QUOTE`
+Default publication mode:
 
-Every Telegram-derived public item should preserve:
+`AUTO_PUBLISH_ATTRIBUTED_SOURCE_MATERIAL`
 
-- channel handle/name;
-- source post URL;
-- source publication time when available;
-- CHUDO publication time;
-- label indicating that the information comes from the named source.
+For Telegram source materials:
 
-Full verbatim republication of third-party posts is **not** assumed permitted by default.
+- CHUDO fact-check is not required before publication;
+- manual editorial approval is not required before publication;
+- allegations and high-risk statements may appear automatically as statements of the named source;
+- every item must retain the channel name/handle, original post link and source timestamp when available;
+- Telegram material remains `SOURCE_CLAIM_ONLY` and does not silently become an independently verified CHUDO fact;
+- Telegram posts cannot directly grant `POLITICAL_PRISONER` status or mutate the canonical person database.
 
-## Safety/editorial rules
+Full verbatim republication of third-party posts is not assumed licensed by default. The system may reproduce full text only for a source where reuse rights are explicitly recorded; otherwise the public item must use the permitted representation while preserving the original-source link.
 
-Telegram reports can become public news materials, but they cannot directly grant `POLITICAL_PRISONER` status or silently mutate a person's canonical record.
+## Minimum privacy boundary
 
-The following require editorial review before public publication:
-
-- allegations of crime, corruption, collaboration, agency or wrongdoing about an identifiable person;
-- death, suicide, torture, sexual violence, serious health claims, disappearance or minors;
-- identity conflicts;
-- sensitive locations;
-- claims that materially change a person's legal/human-rights status.
-
-The following must not be republished from Telegram:
+Automatic publication does not include non-public personal data or doxxing material. The following remain excluded from automatic republication:
 
 - private phone numbers;
 - home addresses;
 - private emails or private contacts;
 - passport/identity-document data;
-- doxxing material;
-- other non-public personal information that creates additional risk.
+- other non-public identifying data that materially increases risk.
+
+This boundary is not a fact-check or political/editorial filter; it is a privacy and safety boundary.
 
 ## Absolute semantics
 
 `MEDIA_REPORT != POLITICAL_PRISONER_DESIGNATION`
 
-`TELEGRAM_POST != VERIFIED_FACT`
+`TELEGRAM_POST != CHUDO_VERIFIED_FACT`
 
 `SOURCE != FACT`
 
-`HIGH_RISK_NEWS_AUTOPUBLISH=false`
+`TELEGRAM_SOURCE_CLAIM_AUTOPUBLISH=true`
+
+`TELEGRAM_FACT_CHECK_REQUIRED=false`
+
+`TELEGRAM_EDITORIAL_REVIEW_REQUIRED=false`
 
 `HIGH_RISK_DATABASE_AUTOPUBLISH=false`
 
