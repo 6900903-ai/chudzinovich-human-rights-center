@@ -15,7 +15,10 @@ export function validateTelegramRegistry(registry) {
   if (!registry || registry.policy?.media_report_is_political_prisoner_designation !== false) {
     throw new Error('TELEGRAM_POLITICAL_PRISONER_AUTODESIGNATION_POLICY_MISSING');
   }
-  if (registry.policy?.high_risk_news_autopublish !== false) throw new Error('TELEGRAM_HIGH_RISK_AUTOPUBLISH_FORBIDDEN');
+  if (registry.policy?.fact_check_required !== false) throw new Error('TELEGRAM_FACT_CHECK_MUST_BE_DISABLED');
+  if (registry.policy?.editorial_review_required !== false) throw new Error('TELEGRAM_EDITORIAL_REVIEW_MUST_BE_DISABLED');
+  if (registry.policy?.telegram_source_claim_autopublish !== true) throw new Error('TELEGRAM_SOURCE_CLAIM_AUTOPUBLISH_MISSING');
+  if (registry.policy?.high_risk_news_autopublish !== false) throw new Error('GLOBAL_HIGH_RISK_AUTOPUBLISH_MUST_REMAIN_DISABLED');
   if (registry.policy?.private_data_republication !== false) throw new Error('TELEGRAM_PRIVATE_DATA_REPUBLICATION_FORBIDDEN');
   if (registry.policy?.runtime_allowed !== false) throw new Error('TELEGRAM_RUNTIME_REQUESTS_FORBIDDEN');
   if (!Array.isArray(registry.channels) || registry.channels.length === 0) throw new Error('TELEGRAM_REGISTRY_EMPTY');
@@ -32,6 +35,12 @@ export function validateTelegramRegistry(registry) {
     if (source.canonical_url !== `https://t.me/${source.handle}`) throw new Error(`TELEGRAM_CANONICAL_URL_MISMATCH:${source.source_id}`);
     if (source.preview_url !== `https://t.me/s/${source.handle}`) throw new Error(`TELEGRAM_PREVIEW_URL_MISMATCH:${source.source_id}`);
     if (source.publication_enabled !== true) throw new Error(`TELEGRAM_REQUIRED_SOURCE_NOT_ENABLED:${source.source_id}`);
+    if (!['AUTO_PUBLISH_ATTRIBUTED','AUTO_PUBLISH_ATTRIBUTED_NO_PRIVATE_DATA'].includes(source.publication_policy)) {
+      throw new Error(`TELEGRAM_SOURCE_NOT_AUTO_PUBLISH:${source.source_id}`);
+    }
+    if (source.claim_semantics !== 'SOURCE_CLAIM_ONLY' && source.claim_semantics !== 'FIRST_PARTY_OR_SOURCE_CLAIM') {
+      throw new Error(`TELEGRAM_CLAIM_SEMANTICS_INVALID:${source.source_id}`);
+    }
   }
 
   return { channel_count: registry.channels.length };
