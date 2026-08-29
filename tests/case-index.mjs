@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const root=new URL('../',import.meta.url).pathname;
-const testEnv={...process.env,CHRC_TEST_MODE:'1'};
+const testEnv={...process.env,CHRC_TEST_MODE:'1',CHRC_PUBLIC_DATA_DIR:'tests/fixtures/public-snapshot'};
 execFileSync(process.execPath,[join(root,'scripts/build.mjs')],{stdio:'inherit',env:testEnv});
 execFileSync(process.execPath,[join(root,'scripts/build-case-index.mjs')],{stdio:'inherit',env:testEnv});
 execFileSync(process.execPath,[join(root,'scripts/build-global-search.mjs')],{stdio:'inherit',env:testEnv});
