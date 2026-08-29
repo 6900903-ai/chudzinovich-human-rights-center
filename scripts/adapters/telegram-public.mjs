@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { lookup } from 'node:dns/promises';
 import { classifyMediaText } from '../lib/media-classifier.mjs';
 import { loadTelegramRegistry, telegramSourceByHandle } from '../lib/telegram-registry.mjs';
+import { assertPublicDns } from './media-generic.mjs';
 
 const MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
 
@@ -33,17 +34,20 @@ export function validateTelegramPreviewUrl(source, input) {
   return url;
 }
 
-function sourceNetworkGate() {
+function sourceNetworkGate(source) {
   if (process.env.TELEGRAM_NETWORK_GATE !== 'PASS') throw new Error('TELEGRAM_NETWORK_GATE_NOT_PASS');
   if (process.env.FETCHER_SECURITY_GATE !== 'PASS') throw new Error('FETCHER_SECURITY_GATE_NOT_PASS');
   if (process.env.TELEGRAM_SOURCE_REUSE_GATE !== 'PASS') throw new Error('TELEGRAM_SOURCE_REUSE_GATE_NOT_PASS');
+  if (source.publication_enabled !== true) throw new Error(`TELEGRAM_SOURCE_NOT_ENABLED:${source.source_id}`);
+  if (!['PUBLIC_PREVIEW_CONFIRMED','PUBLIC_REFERENCE_CONFIRMED'].includes(source.verification_state)) {
+    throw new Error(`TELEGRAM_SOURCE_NOT_VERIFIED:${source.source_id}`);
+  }
 }
 
 export async function fetchTelegramPreview(source, input = source.preview_url, { fetchImpl = fetch, resolver = lookup, timeoutMs = 15000 } = {}) {
-  sourceNetworkGate();
+  sourceNetworkGate(source);
   const url = validateTelegramPreviewUrl(source, input);
-  const records = await resolver('t.me', { all:true, verbatim:true });
-  if (!records.length) throw new Error('TELEGRAM_DNS_EMPTY');
+  await assertPublicDns('t.me', resolver);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
