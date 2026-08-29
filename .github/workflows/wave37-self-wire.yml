@@ -1,0 +1,86 @@
+name: CHUDO Wave 37 Self Wire
+
+on:
+  push:
+    branches: [wave37-original-search-authority]
+    paths: ['.github/workflows/wave37-self-wire.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wave37-self-wire
+  cancel-in-progress: true
+
+jobs:
+  wire:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: wave37-original-search-authority
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Wire build, tests and exact artifact controls
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs');
+          const pkgPath='package.json';
+          const pkg=JSON.parse(fs.readFileSync(pkgPath,'utf8'));
+          pkg.version='0.37.0';
+          if(!pkg.scripts.build.includes('build-search-guides.mjs')){
+            pkg.scripts.build=pkg.scripts.build.replace(
+              'node scripts/build-help-center.mjs &&',
+              'node scripts/build-help-center.mjs && node scripts/build-search-guides.mjs &&'
+            );
+          }
+          if(!pkg.scripts.build.includes('enhance-original-authority-links.mjs')){
+            pkg.scripts.build=pkg.scripts.build.replace(
+              'node scripts/finalize-live-news-seo.mjs && node scripts/enhance-search-authority.mjs',
+              'node scripts/finalize-live-news-seo.mjs && node scripts/enhance-original-authority-links.mjs && node scripts/enhance-search-authority.mjs'
+            );
+          }
+          pkg.scripts['test:original-search-authority']='node tests/original-search-authority.mjs';
+          if(!pkg.scripts.test.includes('test:original-search-authority')){
+            pkg.scripts.test=pkg.scripts.test.replace(
+              'npm run test:search-authority &&',
+              'npm run test:search-authority && npm run test:original-search-authority &&'
+            );
+          }
+          pkg.scripts['wave37:check']='npm run validate && npm run build && npm run test:original-search-authority && node scripts/validate-pages-artifact.mjs && npm run pages:gate';
+          fs.writeFileSync(pkgPath,JSON.stringify(pkg,null,2)+'\n');
+
+          const validatorPath='scripts/validate-pages-artifact.mjs';
+          let validator=fs.readFileSync(validatorPath,'utf8');
+          if(!validator.includes("'guides/index.html'")){
+            validator=validator.replace(
+              "'about/index.html','methodology/index.html','editorial-policy/index.html','corrections/index.html','contacts/index.html',",
+              "'about/index.html','methodology/index.html','editorial-policy/index.html','guides/index.html','guides/political-prisoner-status/index.html','guides/verify-repression-record/index.html','guides/source-attribution/index.html','guides/cite-the-database/index.html','guides/data-quality-report-2026-08/index.html','corrections/index.html','contacts/index.html',"
+            );
+            validator=validator.replace(
+              "'be/editorial-policy/index.html','en/editorial-policy/index.html','pl/editorial-policy/index.html'",
+              "'be/editorial-policy/index.html','en/editorial-policy/index.html','pl/editorial-policy/index.html','be/guides/index.html','en/guides/index.html','pl/guides/index.html'"
+            );
+          }
+          if(!validator.includes('PAGES_ARTIFACT_ORIGINAL_GUIDE_MISSING')){
+            validator=validator.replace(
+              "const authority=JSON.parse(await text('search-authority.json'));",
+              `const guideSlugs=['political-prisoner-status','verify-repression-record','source-attribution','cite-the-database','data-quality-report-2026-08'];\nfor(const lang of ['ru','be','en','pl']){\n  const prefix=lang==='ru'?'':lang+'/';\n  const hub=await text(prefix+'guides/index.html');\n  if(hub.includes('content=\\"noindex'))throw new Error('PAGES_ARTIFACT_GUIDES_HUB_NOINDEX:'+lang);\n  for(const slug of guideSlugs){\n    const path=prefix+'guides/'+slug+'/index.html';\n    let html;try{html=await text(path);}catch{throw new Error('PAGES_ARTIFACT_ORIGINAL_GUIDE_MISSING:'+path);}\n    if(html.includes('content=\\"noindex'))throw new Error('PAGES_ARTIFACT_ORIGINAL_GUIDE_NOINDEX:'+path);\n    if(!html.includes('\\"@type\\":\\"Article\\"')||!html.includes('CHUDO Human Rights Center'))throw new Error('PAGES_ARTIFACT_ORIGINAL_GUIDE_SCHEMA_INVALID:'+path);\n    const url=SITE+(lang==='ru'?'':'/'+lang)+'/guides/'+slug+'/';\n    if(!sitemap.includes('<loc>'+url+'</loc>'))throw new Error('PAGES_ARTIFACT_ORIGINAL_GUIDE_NOT_IN_SITEMAP:'+url);\n  }\n  const home=await text(prefix+'index.html');\n  if(!home.includes('data-original-authority-home')||!home.includes('data-guides-link'))throw new Error('PAGES_ARTIFACT_ORIGINAL_GUIDES_NOT_LINKED:'+lang);\n}\nconst authority=JSON.parse(await text('search-authority.json'));`
+            );
+          }
+          fs.writeFileSync(validatorPath,validator);
+          NODE
+          rm -f .github/workflows/wave37-self-wire.yml
+      - name: Commit wiring and remove temporary workflow
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package.json scripts/validate-pages-artifact.mjs .github/workflows/wave37-self-wire.yml
+          git commit -m 'Wave 37: wire original guides into production and artifact validation'
+          git push origin HEAD:wave37-original-search-authority
