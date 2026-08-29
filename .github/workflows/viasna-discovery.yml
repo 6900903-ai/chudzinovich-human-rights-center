@@ -1,0 +1,72 @@
+name: CHUDO Viasna Export Discovery
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/viasna-discovery.yml'
+      - 'scripts/discover-viasna-export.mjs'
+      - 'scripts/lib/viasna-export-discovery.mjs'
+      - 'scripts/adapters/viasna.mjs'
+      - 'tests/viasna-export-discovery.mjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/viasna-discovery.yml'
+      - 'scripts/discover-viasna-export.mjs'
+      - 'scripts/lib/viasna-export-discovery.mjs'
+      - 'scripts/adapters/viasna.mjs'
+      - 'tests/viasna-export-discovery.mjs'
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: viasna-export-discovery-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Test fail-closed export discovery
+        run: node tests/viasna-export-discovery.mjs
+
+  live-discovery:
+    if: github.event_name != 'pull_request' && github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Discover and parse official Viasna CSV export
+        env:
+          VIASNA_DATA_REUSE_GATE: PASS
+          FETCHER_SECURITY_GATE: PASS
+          VIASNA_SOURCE_PAGE_URL: https://prisoners.spring96.org/ru/list
+          VIASNA_SOURCE_LOCALE: ru
+          VIASNA_MIN_OBSERVATIONS: '5000'
+        shell: bash
+        run: |
+          node scripts/discover-viasna-export.mjs | tee /tmp/viasna-export-discovery.txt
+          {
+            echo '## Viasna export discovery'
+            echo '```text'
+            cat /tmp/viasna-export-discovery.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
