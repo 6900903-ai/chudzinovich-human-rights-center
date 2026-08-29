@@ -22,6 +22,13 @@ function tag(block, name) {
   return match ? decodeXml(match[1]).trim() : '';
 }
 
+function normalizeFeedChannelId(value) {
+  const raw = String(value || '').trim();
+  if (raw === YOUTUBE_CHANNEL_ID) return raw;
+  if (/^[A-Za-z0-9_-]{22}$/.test(raw) && `UC${raw}` === YOUTUBE_CHANNEL_ID) return `UC${raw}`;
+  return raw;
+}
+
 function safeDate(value) {
   const text = String(value || '').trim();
   if (!text) return null;
@@ -56,8 +63,9 @@ export function parseYoutubeAtom(xml, fetchedAt = new Date().toISOString()) {
   const text = String(xml || '');
   if (!text || Buffer.byteLength(text, 'utf8') > YOUTUBE_MAX_FEED_BYTES) throw new Error('YOUTUBE_FEED_SIZE_INVALID');
   if (/<!DOCTYPE|<!ENTITY/i.test(text)) throw new Error('YOUTUBE_FEED_DTD_FORBIDDEN');
-  const channelId = tag(text, 'yt:channelId');
-  if (channelId !== YOUTUBE_CHANNEL_ID) throw new Error(`YOUTUBE_FEED_CHANNEL_MISMATCH:${channelId}`);
+  const rawChannelId = tag(text, 'yt:channelId');
+  const channelId = normalizeFeedChannelId(rawChannelId);
+  if (channelId !== YOUTUBE_CHANNEL_ID) throw new Error(`YOUTUBE_FEED_CHANNEL_MISMATCH:${rawChannelId}`);
   const channelTitle = tag(text, 'title') || 'ТОЧКА НЕВОЗВРАТА Чудинович Юра';
   const entries = [...text.matchAll(/<entry\b[^>]*>([\s\S]*?)<\/entry>/gi)].slice(0, YOUTUBE_MAX_VIDEOS);
   const videos = [];
