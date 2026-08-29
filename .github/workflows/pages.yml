@@ -34,6 +34,8 @@ jobs:
         run: npm run build
       - name: Test
         run: npm test
+      - name: Enforce production release gate
+        run: npm run release:gate
       - name: Record custom domain in artifact
         run: printf '%s\n' 'chudzinovich.pp.ua' > _site/CNAME
       - name: Upload Pages artifact
