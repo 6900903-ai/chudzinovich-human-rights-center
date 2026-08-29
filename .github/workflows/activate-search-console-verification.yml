@@ -1,0 +1,101 @@
+name: CHUDO Activate Search Console Verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: activate-search-console-verification
+  cancel-in-progress: false
+
+jobs:
+  build-dispatch-verify:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+      GH_TOKEN: ${{ github.token }}
+      SITE: https://chudzinovich.pp.ua
+    steps:
+      - name: Require a real owner-provided token
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$GOOGLE_SITE_VERIFICATION" ]]; then
+            echo 'GOOGLE_SITE_VERIFICATION repository variable is not configured.' >&2
+            echo 'Create the URL-prefix property in Google Search Console, copy its exact HTML-tag token, then add it as repository variable GOOGLE_SITE_VERIFICATION.' >&2
+            exit 1
+          fi
+          [[ "$GOOGLE_SITE_VERIFICATION" =~ ^[A-Za-z0-9_-]{20,200}$ ]] || { echo 'GOOGLE_SITE_VERIFICATION format is invalid.' >&2; exit 1; }
+          printf '%s' "$GOOGLE_SITE_VERIFICATION" | sha256sum | awk '{print $1}' > /tmp/token.sha256
+      - name: Checkout main
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Build and validate verification-bearing artifact locally
+        run: |
+          npm run validate
+          npm run build
+          node scripts/validate-pages-artifact.mjs
+          grep -Fq "<meta name=\"google-site-verification\" content=\"$GOOGLE_SITE_VERIFICATION\">" _site/index.html
+          python - <<'PY'
+          import json
+          report=json.load(open('_site/search-console-readiness.json',encoding='utf-8'))
+          assert report['state']=='CONFIGURED_FOR_URL_PREFIX_VERIFICATION'
+          assert report['localized_homepages_with_tag']==4
+          assert report['token_value_exposed_in_report'] is False
+          PY
+      - name: Dispatch the guarded Pages workflow
+        id: dispatch
+        shell: bash
+        run: |
+          set -euo pipefail
+          started="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "started=$started" >> "$GITHUB_OUTPUT"
+          gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main
+      - name: Wait for the dispatched Pages run
+        shell: bash
+        run: |
+          set -euo pipefail
+          run_id=''
+          for attempt in $(seq 1 60); do
+            run_id="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow pages.yml --branch main --event workflow_dispatch --limit 10 --json databaseId,createdAt,status --jq '.[] | select(.createdAt >= "${{ steps.dispatch.outputs.started }}") | .databaseId' | head -1)"
+            [[ -n "$run_id" ]] && break
+            sleep 5
+          done
+          [[ -n "$run_id" ]] || { echo 'Dispatched Pages run was not found.' >&2; exit 1; }
+          echo "$run_id" > /tmp/pages-run-id
+          gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status --interval 10
+      - name: Verify the token on the live canonical homepage
+        shell: bash
+        run: |
+          set -euo pipefail
+          found='false'
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 --max-time 30 "$SITE/" -o /tmp/live-home.html && \
+               grep -Fq "<meta name=\"google-site-verification\" content=\"$GOOGLE_SITE_VERIFICATION\">" /tmp/live-home.html; then
+              found='true'; break
+            fi
+            sleep 10
+          done
+          [[ "$found" == 'true' ]] || { echo 'Verification token did not appear on the live homepage.' >&2; exit 1; }
+          {
+            echo '## Google Search Console verification readiness'
+            echo
+            echo '- Real repository variable: PASS'
+            echo '- Verification-bearing production build: PASS'
+            echo '- Exact Pages artifact validation: PASS'
+            echo "- Pages workflow: PASS (run $(cat /tmp/pages-run-id))"
+            echo '- Live HTTPS homepage tag: PASS'
+            echo "- Token SHA-256: $(cat /tmp/token.sha256)"
+            echo
+            echo 'The owner can now press Verify for the URL-prefix property https://chudzinovich.pp.ua/ in Google Search Console.'
+          } >> "$GITHUB_STEP_SUMMARY"
