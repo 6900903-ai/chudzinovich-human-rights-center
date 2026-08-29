@@ -11,8 +11,8 @@ execFileSync(process.execPath,[join(root,'scripts/build-global-search.mjs')],{st
 
 const hub=await readFile(join(root,'_site/case-index/index.html'),'utf8');
 const article=await readFile(join(root,'_site/criminal-code/130-ch-1/index.html'),'utf8');
-const judge=await readFile(join(root,'_site/judges/testovyy-sudya/index.html'),'utf8');
-const prosecutor=await readFile(join(root,'_site/prosecutors/testovyy-prokuror/index.html'),'utf8');
+const judge=await readFile(join(root,'_site/judges/testovyi-sudya/index.html'),'utf8');
+const prosecutor=await readFile(join(root,'_site/prosecutors/testovyi-prokuror/index.html'),'utf8');
 const search=JSON.parse(await readFile(join(root,'_site/assets/search/ru.json'),'utf8'));
 
 assert.ok(hub.includes('Суды и статьи УК'));
@@ -23,8 +23,8 @@ assert.ok(judge.includes('Тестовый судья'));
 assert.ok(judge.includes('Тестовый Человек А'));
 assert.ok(prosecutor.includes('Тестовый прокурор'));
 assert.ok(search.some(item=>item.t==='case'&&item.n.includes('130 ч. 1')&&item.u==='/criminal-code/130-ch-1/'));
-assert.ok(search.some(item=>item.t==='case'&&item.n.includes('Тестовый судья')&&item.u==='/judges/testovyy-sudya/'));
-assert.ok(search.some(item=>item.t==='case'&&item.n.includes('Тестовый прокурор')&&item.u==='/prosecutors/testovyy-prokuror/'));
+assert.ok(search.some(item=>item.t==='case'&&item.n.includes('Тестовый судья')&&item.u==='/judges/testovyi-sudya/'));
+assert.ok(search.some(item=>item.t==='case'&&item.n.includes('Тестовый прокурор')&&item.u==='/prosecutors/testovyi-prokuror/'));
 
 execFileSync(process.execPath,[join(root,'scripts/build.mjs')],{stdio:'inherit',env:{...process.env,CHRC_TEST_MODE:'0'}});
 console.log('CASE_INDEX_TEST=PASS article=PASS judge=PASS prosecutor=PASS search=PASS fixture_cleanup=PASS');
