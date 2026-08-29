@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { loadMediaRegistry, sourceById, normalizeHost } from '../lib/media-registry.mjs';
 import { classifyMediaText } from '../lib/media-classifier.mjs';
 import { assignOrigin } from '../lib/source-independence.mjs';
+import { parseDiscoveryFeed } from '../lib/feed-parser.mjs';
 
 const MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
 const CONTENT_TYPES = ['text/html','text/plain','application/rss+xml','application/atom+xml','application/xml','text/xml'];
@@ -58,7 +59,7 @@ export async function fetchMediaText(source,input,{timeoutMs=15000,fetchImpl=fet
   const url=validateSourceUrl(source,input); await assertPublicDns(url.hostname,resolver);
   const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),timeoutMs);
   try {
-    const response=await fetchImpl(url,{redirect:'manual',signal:controller.signal,headers:{'user-agent':'CHUDZINOVICH-HRC-MediaMonitor/0.4 (+https://chudzinovich.pp.ua)'}});
+    const response=await fetchImpl(url,{redirect:'manual',signal:controller.signal,headers:{'user-agent':'CHUDZINOVICH-HRC-MediaMonitor/0.5 (+https://chudzinovich.pp.ua)'}});
     if (response.status>=300 && response.status<400) throw new Error('MEDIA_REDIRECT_BLOCKED');
     if (!response.ok) throw new Error(`MEDIA_HTTP_STATUS:${response.status}`);
     const contentType=(response.headers.get('content-type')||'').split(';')[0].trim().toLowerCase();
@@ -91,4 +92,24 @@ export async function fetchObservation(sourceId,articleUrl,options={}) {
   return buildMediaObservation(source,extractArticleMetadata(html,articleUrl),options);
 }
 
-export const MEDIA_FETCH_POLICY=Object.freeze({arbitrary_urls:false,redirects:false,runtime_browser_requests:false,live_network_gated:true});
+export async function fetchEndpointObservations(sourceId,endpointId,options={}) {
+  const registry = await loadMediaRegistry();
+  const source = sourceById(registry,sourceId);
+  if (!source) throw new Error(`UNKNOWN_MEDIA_SOURCE:${sourceId}`);
+  const endpoint = (source.endpoint_audit?.endpoints || []).find(item => item.endpoint_id === endpointId);
+  if (!endpoint) throw new Error(`UNKNOWN_MEDIA_ENDPOINT:${sourceId}:${endpointId}`);
+  if (!endpoint.parser_ready || !['RSS','ATOM'].includes(endpoint.kind)) throw new Error(`MEDIA_ENDPOINT_PARSER_NOT_READY:${endpointId}`);
+  const xml = await fetchMediaText(source,endpoint.url,options);
+  const items = parseDiscoveryFeed(xml,endpoint.url);
+  const observations = [];
+  const seen = new Set();
+  for (const item of items) {
+    const articleUrl = validateSourceUrl(source,item.article_url).toString();
+    if (seen.has(articleUrl)) continue;
+    seen.add(articleUrl);
+    observations.push(buildMediaObservation(source,{...item,article_url:articleUrl},options));
+  }
+  return {source_id:sourceId,endpoint_id:endpointId,scope:endpoint.scope,observations};
+}
+
+export const MEDIA_FETCH_POLICY=Object.freeze({arbitrary_urls:false,redirects:false,runtime_browser_requests:false,live_network_gated:true,verified_endpoint_only:true});

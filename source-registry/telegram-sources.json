@@ -1,0 +1,106 @@
+{
+  "registry_version": "0.1.0",
+  "updated_at": "2026-08-29T09:40:00Z",
+  "policy": {
+    "publication_mode": "ATTRIBUTED_SUMMARY_AND_SHORT_QUOTE",
+    "full_republication_default": false,
+    "media_report_is_political_prisoner_designation": false,
+    "person_database_mutation_from_telegram": false,
+    "high_risk_news_autopublish": false,
+    "private_data_republication": false,
+    "runtime_allowed": false
+  },
+  "channels": [
+    {
+      "source_id": "tg-z690002",
+      "handle": "Z690002",
+      "display_name": "CHUDO / Юрий Чудинович",
+      "canonical_url": "https://t.me/Z690002",
+      "preview_url": "https://t.me/s/Z690002",
+      "verification_state": "PUBLIC_REFERENCE_CONFIRMED",
+      "source_class": "PROJECT_RELATED_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "ATTRIBUTED_SUMMARY",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "Explicitly requested for publication by the project owner. Full third-party text is not assumed licensed by default."
+    },
+    {
+      "source_id": "tg-phoenixosintvirus",
+      "handle": "phoenixosintvirus",
+      "display_name": "Кондратенко Виталий virus",
+      "canonical_url": "https://t.me/phoenixosintvirus",
+      "preview_url": "https://t.me/s/phoenixosintvirus",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "OSINT_OPINION_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "Claims identifying alleged agents or wrongdoing require corroboration and editorial review before publication."
+    },
+    {
+      "source_id": "tg-dw-belarus",
+      "handle": "dw_belarus",
+      "display_name": "DW Беларусь",
+      "canonical_url": "https://t.me/dw_belarus",
+      "preview_url": "https://t.me/s/dw_belarus",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "PROFESSIONAL_MEDIA_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "ATTRIBUTED_SUMMARY",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": null
+    },
+    {
+      "source_id": "tg-shtabonoshko",
+      "handle": "shtabonoshko",
+      "display_name": "ШТАБ ОНОШКО",
+      "canonical_url": "https://t.me/shtabonoshko",
+      "preview_url": "https://t.me/s/shtabonoshko",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "POLITICAL_OPINION_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "Political analysis and allegations are attributed to the channel and are not treated as established fact without corroboration."
+    },
+    {
+      "source_id": "tg-statkevichm",
+      "handle": "statkevichm",
+      "display_name": "STATKEVICH M",
+      "canonical_url": "https://t.me/statkevichm",
+      "preview_url": "https://t.me/s/statkevichm",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "FIRST_PARTY_PUBLIC_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "ATTRIBUTED_SUMMARY",
+      "claim_semantics": "FIRST_PARTY_OR_SOURCE_CLAIM",
+      "notes": "First-person statements may be attributed as the speaker's own account; claims about other persons remain source claims."
+    },
+    {
+      "source_id": "tg-oshorg",
+      "handle": "oshorg",
+      "display_name": "ОШС",
+      "canonical_url": "https://t.me/oshorg",
+      "preview_url": "https://t.me/s/oshorg",
+      "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
+      "source_class": "POLITICAL_ANALYSIS_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "Analysis and source-based assertions are published only with explicit attribution."
+    },
+    {
+      "source_id": "tg-doska-pozora-lida",
+      "handle": "doska_pozora_lida",
+      "display_name": "Народный трибунал / Доска позора, Лида",
+      "canonical_url": "https://t.me/doska_pozora_lida",
+      "preview_url": "https://t.me/s/doska_pozora_lida",
+      "verification_state": "PUBLIC_REFERENCE_CONFIRMED",
+      "source_class": "LOCAL_ACTIVIST_CHANNEL",
+      "publication_enabled": true,
+      "publication_policy": "STRICT_REVIEW_NO_PRIVATE_DATA",
+      "claim_semantics": "SOURCE_CLAIM_ONLY",
+      "notes": "Never republish home addresses, private phone numbers, private contacts, doxxing data, or uncorroborated accusations about identifiable persons."
+    }
+  ]
+}

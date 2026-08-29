@@ -11,7 +11,8 @@ const home = await readFile(join(root, '_site/index.html'), 'utf8');
 const js = await readFile(join(root, '_site/assets/js/main.js'), 'utf8');
 const manifest = JSON.parse(await readFile(join(root, '_site/build-manifest.json'), 'utf8'));
 
-if (!home.includes('CHUDZINOVICH HUMAN RIGHTS CENTER')) throw new Error('Home brand missing');
+if (!home.includes('CHUDO HUMAN RIGHTS CENTER')) throw new Error('CHUDO home brand missing');
+if (home.includes('CHUDZINOVICH HUMAN RIGHTS CENTER')) throw new Error('Legacy public brand still rendered');
 if (!home.includes('Публичная база ещё не опубликована')) throw new Error('Empty-data fallback missing');
 if (/https?:\/\//.test(js)) throw new Error('Runtime JS contains external URL');
 if (manifest.third_party_runtime_requests !== 0) throw new Error('Third-party runtime policy violated');

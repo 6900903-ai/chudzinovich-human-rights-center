@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chudzinovich.pp.ua/schemas/telegram-source.schema.json",
+  "title": "Telegram publication source",
+  "type": "object",
+  "required": [
+    "source_id", "handle", "display_name", "canonical_url", "preview_url",
+    "verification_state", "source_class", "publication_enabled",
+    "publication_policy", "claim_semantics"
+  ],
+  "properties": {
+    "source_id": {"type":"string", "pattern":"^tg-[a-z0-9-]+$"},
+    "handle": {"type":"string", "pattern":"^[A-Za-z0-9_]{5,}$"},
+    "display_name": {"type":"string", "minLength":1},
+    "canonical_url": {"type":"string", "format":"uri", "pattern":"^https://t\\.me/"},
+    "preview_url": {"type":"string", "format":"uri", "pattern":"^https://t\\.me/s/"},
+    "verification_state": {"enum":["PUBLIC_PREVIEW_CONFIRMED","PUBLIC_REFERENCE_CONFIRMED","USER_REQUESTED_UNVERIFIED"]},
+    "source_class": {"type":"string", "minLength":1},
+    "publication_enabled": {"type":"boolean"},
+    "publication_policy": {"enum":["ATTRIBUTED_SUMMARY","REVIEW_REQUIRED_FOR_ALLEGATIONS","STRICT_REVIEW_NO_PRIVATE_DATA"]},
+    "claim_semantics": {"enum":["SOURCE_CLAIM_ONLY","FIRST_PARTY_OR_SOURCE_CLAIM"]},
+    "notes": {"type":["string","null"]}
+  },
+  "additionalProperties": false
+}

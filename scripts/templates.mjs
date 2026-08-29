@@ -1,4 +1,20 @@
 const SITE = 'https://chudzinovich.pp.ua';
+export const BRAND = Object.freeze({
+  short: 'CHUDO',
+  long: 'CHUDO HUMAN RIGHTS CENTER',
+  ru: 'ПРАВОЗАЩИТНЫЙ ЦЕНТР CHUDO'
+});
+
+function brandText(value = '') {
+  return String(value).replaceAll('CHUDZINOVICH HUMAN RIGHTS CENTER', BRAND.long);
+}
+
+function brandBody(value = '') {
+  return brandText(value).replaceAll(
+    '<span class="holo-text">CHUDZINOVICH</span><br>HUMAN RIGHTS CENTER',
+    '<span class="holo-text">CHUDO</span><br>HUMAN RIGHTS CENTER'
+  );
+}
 
 const I18N = {
   ru: {
@@ -57,6 +73,9 @@ function navLinks(items, lang, currentPath) {
 
 export function layout({ lang='ru', title, description, path='/', body, pageType='website', noIndex=false, alternatePaths=null }) {
   const t = I18N[lang];
+  const normalizedTitle = brandText(title);
+  const normalizedDescription = brandText(description);
+  const normalizedBody = brandBody(body);
   const canonical = `${SITE}${route(lang, path)}`;
   const links = navLinks(topNav(lang), lang, path);
   const side = navLinks(sideNav(lang), lang, path);
@@ -69,20 +88,21 @@ export function layout({ lang='ru', title, description, path='/', body, pageType
     const alternatePath = alternatePaths?.[l] || path;
     return `<a href="${route(l, alternatePath)}"${l===lang?' aria-current="page"':''}>${I18N[l].langName}</a>`;
   }).join('');
+  const footerBrand = lang === 'ru' ? BRAND.ru : BRAND.long;
   return `<!doctype html>
 <html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)} | CHUDZINOVICH HUMAN RIGHTS CENTER</title>
-<meta name="description" content="${esc(description)}">
+<title>${esc(normalizedTitle)} | ${BRAND.long}</title>
+<meta name="description" content="${esc(normalizedDescription)}">
 <link rel="canonical" href="${canonical}">
 ${hreflangs}
 <link rel="alternate" hreflang="x-default" href="${SITE}${route('ru', xDefaultPath)}">
 ${noIndex ? '<meta name="robots" content="noindex,follow">' : ''}
 <meta property="og:type" content="${pageType}">
-<meta property="og:title" content="${esc(title)} | CHUDZINOVICH HUMAN RIGHTS CENTER">
-<meta property="og:description" content="${esc(description)}">
+<meta property="og:title" content="${esc(normalizedTitle)} | ${BRAND.long}">
+<meta property="og:description" content="${esc(normalizedDescription)}">
 <meta property="og:url" content="${canonical}">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="/assets/css/main.css">
@@ -93,19 +113,19 @@ ${noIndex ? '<meta name="robots" content="noindex,follow">' : ''}
 <header class="site-header">
   <div class="header-main">
     <button id="menu-open" class="icon-btn" type="button" aria-controls="side-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
-    <a class="brand holo-text" href="${route(lang,'/')}">CHUDZINOVICH</a>
+    <a class="brand holo-text" href="${route(lang,'/')}">${BRAND.short}</a>
     <a class="help-chip" href="${route(lang,'/help/')}">${esc(t.help)}</a>
   </div>
   <div class="nav-shell"><button class="nav-arrow" data-nav="left" aria-label="Previous">❮</button><nav id="top-nav" class="top-nav">${links}</nav><button class="nav-arrow" data-nav="right" aria-label="Next">❯</button></div>
 </header>
 <div id="side-overlay" class="side-overlay" hidden></div>
 <aside id="side-menu" class="side-menu" aria-hidden="true" aria-label="Site menu">
-  <div class="side-head"><span class="holo-text">CHUDZINOVICH</span><button id="menu-close" class="close-btn" aria-label="Close menu">×</button></div>
+  <div class="side-head"><span class="holo-text">${BRAND.short}</span><button id="menu-close" class="close-btn" aria-label="Close menu">×</button></div>
   <nav class="side-links">${side}</nav>
   <div class="language-links" aria-label="Languages">${langs}</div>
 </aside>
-<main id="main">${body}</main>
-<footer class="site-footer"><strong>CHUDZINOVICH HUMAN RIGHTS CENTER</strong><span>${esc(t.buildNotice)}</span></footer>
+<main id="main">${normalizedBody}</main>
+<footer class="site-footer"><strong>${footerBrand}</strong><span>${esc(t.buildNotice)}</span></footer>
 </body></html>`;
 }
 

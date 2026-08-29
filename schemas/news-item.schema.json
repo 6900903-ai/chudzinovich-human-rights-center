@@ -1,0 +1,29 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://chudzinovich.pp.ua/schemas/news-item.schema.json",
+  "title":"CHUDO public news item",
+  "type":"object",
+  "required":[
+    "news_id","slug","title","summary","published_at","source_kind","source_id",
+    "source_name","source_url","source_published_at","publication_state",
+    "source_claim_only","editorial_reviewed","high_risk_flags"
+  ],
+  "properties":{
+    "news_id":{"type":"string","pattern":"^news-[a-z0-9-]+$"},
+    "slug":{"type":"string","pattern":"^[a-z0-9-]+$"},
+    "title":{"oneOf":[{"type":"string"},{"type":"object"}]},
+    "summary":{"oneOf":[{"type":"string"},{"type":"object"}]},
+    "published_at":{"type":"string","format":"date-time"},
+    "source_kind":{"enum":["TELEGRAM","MEDIA","HUMAN_RIGHTS","OFFICIAL_PUBLIC","CHUDO_EDITORIAL"]},
+    "source_id":{"type":"string"},
+    "source_name":{"type":"string"},
+    "source_url":{"type":"string","format":"uri"},
+    "source_published_at":{"type":["string","null"]},
+    "publication_state":{"enum":["PUBLIC_SOURCE_ATTRIBUTED","PUBLIC_CONFIRMED","PUBLIC_DISPUTED"]},
+    "source_claim_only":{"type":"boolean"},
+    "editorial_reviewed":{"type":"boolean"},
+    "high_risk_flags":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "category":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}
