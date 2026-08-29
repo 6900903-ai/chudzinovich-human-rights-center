@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "wave": 35,
+  "updated_at": "2026-08-29T00:00:00Z",
+  "index_strategy": "CHUDO_OWNED_HIGH_VALUE_PAGES_FIRST",
+  "required": {
+    "organization_schema_locales": 4,
+    "editorial_policy_locales": 4,
+    "social_preview": "1200x630_png",
+    "brand_icon": "512x512_png",
+    "sitemap_index": true,
+    "live_seo_monitor": true,
+    "third_party_runtime_requests": 0
+  },
+  "preserved": {
+    "source_only_detail_noindex": true,
+    "derivative_archive_noindex": true,
+    "empty_database_noindex": true,
+    "political_prisoner_autodesignation": false,
+    "ranking_guaranteed": false
+  }
+}
