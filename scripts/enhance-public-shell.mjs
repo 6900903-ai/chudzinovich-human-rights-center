@@ -5,13 +5,13 @@ import { writeText } from './lib/fs.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = join(root, '_site');
-const MARKER = '<!-- CHUDO_PUBLIC_NAV_V1 -->';
+const MARKER = '<!-- CHUDO_PUBLIC_NAV_V2 -->';
 
 const COPY = {
-  ru:{sources:'Источники',methodology:'Методология',corrections:'Исправления',contacts:'Контакты',privacy:'Конфиденциальность',security:'Безопасность',terms:'Условия использования',archive:'Публичный правозащитный архив'},
-  be:{sources:'Крыніцы',methodology:'Метадалогія',corrections:'Выпраўленні',contacts:'Кантакты',privacy:'Прыватнасць',security:'Бяспека',terms:'Умовы выкарыстання',archive:'Публічны праваабарончы архіў'},
-  en:{sources:'Sources',methodology:'Methodology',corrections:'Corrections',contacts:'Contacts',privacy:'Privacy',security:'Security',terms:'Terms of use',archive:'Public human-rights archive'},
-  pl:{sources:'Źródła',methodology:'Metodologia',corrections:'Korekty',contacts:'Kontakt',privacy:'Prywatność',security:'Bezpieczeństwo',terms:'Warunki korzystania',archive:'Publiczne archiwum praw człowieka'}
+  ru:{sources:'Источники',channels:'Telegram-источники',methodology:'Методология',corrections:'Исправления',contacts:'Контакты',privacy:'Конфиденциальность',security:'Безопасность',terms:'Условия использования',archive:'Публичный правозащитный архив'},
+  be:{sources:'Крыніцы',channels:'Telegram-крыніцы',methodology:'Метадалогія',corrections:'Выпраўленні',contacts:'Кантакты',privacy:'Прыватнасць',security:'Бяспека',terms:'Умовы выкарыстання',archive:'Публічны праваабарончы архіў'},
+  en:{sources:'Sources',channels:'Telegram sources',methodology:'Methodology',corrections:'Corrections',contacts:'Contacts',privacy:'Privacy',security:'Security',terms:'Terms of use',archive:'Public human-rights archive'},
+  pl:{sources:'Źródła',channels:'Źródła Telegram',methodology:'Metodologia',corrections:'Korekty',contacts:'Kontakt',privacy:'Prywatność',security:'Bezpieczeństwo',terms:'Warunki korzystania',archive:'Publiczne archiwum praw człowieka'}
 };
 
 function langFor(path) {
@@ -28,8 +28,8 @@ function href(lang,path) { return `${prefix(lang)}${path}`; }
 function utilityLinks(lang, cls='') {
   const c = COPY[lang];
   const items = [
-    ['/sources/',c.sources],['/methodology/',c.methodology],['/corrections/',c.corrections],['/contacts/',c.contacts],
-    ['/privacy/',c.privacy],['/security/',c.security],['/terms/',c.terms]
+    ['/sources/',c.sources],['/channels/',c.channels],['/methodology/',c.methodology],['/corrections/',c.corrections],
+    ['/contacts/',c.contacts],['/privacy/',c.privacy],['/security/',c.security],['/terms/',c.terms]
   ];
   return `<nav class="${cls}" aria-label="${c.archive}">${items.map(([path,label])=>`<a href="${href(lang,path)}">${label}</a>`).join('')}</nav>`;
 }
@@ -53,18 +53,9 @@ for (const path of await htmlFiles(out)) {
   const c = COPY[lang];
 
   const langMarker = '<div class="language-links" aria-label="Languages">';
-  if (html.includes(langMarker)) {
-    html = html.replace(langMarker, `${utilityLinks(lang,'side-links side-links-secondary')}${langMarker}`);
-  }
-
-  if (html.includes('<footer class="site-footer">')) {
-    html = html.replace('</footer>', `<small>${c.archive}</small>${utilityLinks(lang,'footer-links')}</footer>`);
-  }
-
-  if (!html.includes('/assets/css/public-shell.css')) {
-    html = html.replace('<link rel="stylesheet" href="/assets/css/main.css">','<link rel="stylesheet" href="/assets/css/main.css">\n<link rel="stylesheet" href="/assets/css/public-shell.css">');
-  }
-
+  if (html.includes(langMarker)) html = html.replace(langMarker, `${utilityLinks(lang,'side-links side-links-secondary')}${langMarker}`);
+  if (html.includes('<footer class="site-footer">')) html = html.replace('</footer>', `<small>${c.archive}</small>${utilityLinks(lang,'footer-links')}</footer>`);
+  if (!html.includes('/assets/css/public-shell.css')) html = html.replace('<link rel="stylesheet" href="/assets/css/main.css">','<link rel="stylesheet" href="/assets/css/main.css">\n<link rel="stylesheet" href="/assets/css/public-shell.css">');
   html = html.replace('</body>', `${MARKER}</body>`);
   await writeText(path,html);
   changed++;
