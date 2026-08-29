@@ -1,11 +1,11 @@
 {
   "name": "chudzinovich-human-rights-center",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "type": "module",
-  "description": "Static-first public portal scaffold for CHUDZINOVICH HUMAN RIGHTS CENTER",
+  "description": "Static-first public portal for CHUDO HUMAN RIGHTS CENTER",
   "scripts": {
-    "validate": "node scripts/validate-public-boundary.mjs && node scripts/validate-data.mjs && node scripts/validate-provenance.mjs && node scripts/validate-media-registry.mjs",
+    "validate": "node scripts/validate-public-boundary.mjs && node scripts/validate-data.mjs && node scripts/validate-provenance.mjs && node scripts/validate-media-registry.mjs && node scripts/validate-telegram-registry.mjs",
     "build": "npm run validate && node scripts/build.mjs",
     "test:adapter": "node tests/viasna-adapter.mjs",
     "test:anomaly": "node tests/anomaly.mjs",
@@ -13,12 +13,13 @@
     "test:wave3": "node tests/wave3-public-views.mjs",
     "test:wave4": "node tests/wave4-media-monitor.mjs",
     "test:wave5": "node tests/wave5-source-endpoints.mjs",
+    "test:telegram": "node tests/telegram-sources.mjs",
     "test:smoke": "node tests/smoke.mjs",
-    "test": "npm run test:adapter && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:smoke",
+    "test": "npm run test:adapter && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:telegram && npm run test:smoke",
     "wave2:check": "npm run validate && npm test",
     "wave3:check": "npm run validate && npm test",
     "wave4:check": "npm run validate && npm run test:wave4",
-    "wave5:check": "npm run validate && npm run test:wave5 && npm run test:smoke"
+    "wave5:check": "npm run validate && npm run test:wave5 && npm run test:telegram && npm run test:smoke"
   },
   "engines": {
     "node": ">=22"
