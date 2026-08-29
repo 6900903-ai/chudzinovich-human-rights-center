@@ -61,9 +61,14 @@ export function telegramMaterialsToNews(snapshot,registry){
 
 async function optionalJson(path,fallback){try{return JSON.parse(await readFile(path,'utf8'));}catch(error){if(error.code==='ENOENT')return fallback;throw error;}}
 
-export async function loadCombinedPublicNews(root,dataDir,registry){
-  const canonical=await optionalJson(join(dataDir,'news.json'),[]);
+export async function loadTelegramFeed(root,registry){
   const telegram=await optionalJson(join(root,'data','public','telegram.json'),{schema_version:TELEGRAM_FEED_SCHEMA,fetched_at:null,materials:[]});
   validateTelegramFeedSnapshot(telegram,registry);
+  return telegram;
+}
+
+export async function loadCombinedPublicNews(root,dataDir,registry){
+  const canonical=await optionalJson(join(dataDir,'news.json'),[]);
+  const telegram=await loadTelegramFeed(root,registry);
   return publicNewsItems([...canonical,...telegramMaterialsToNews(telegram,registry)]);
 }

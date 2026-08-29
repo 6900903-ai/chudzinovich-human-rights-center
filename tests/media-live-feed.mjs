@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import { loadMediaRegistry } from '../scripts/lib/media-registry.mjs';
+import { parseDiscoveryFeed } from '../scripts/lib/feed-parser.mjs';
+import { mediaMaterialId, mediaMaterialsToNews, validateMediaFeedSnapshot } from '../scripts/lib/media-feed.mjs';
+
+const registry=await loadMediaRegistry();
+const source=registry.sources.find(x=>x.source_id==='src-zerkalo');
+assert.ok(source);
+const xml=`<?xml version="1.0"?><rss version="2.0"><channel><item><title>Тестовый заголовок СМИ</title><link>https://news.zerkalo.io/test-wave27.html</link><pubDate>Sat, 29 Aug 2026 12:00:00 GMT</pubDate><description>Этот текст не должен попадать в публичный media snapshot.</description></item></channel></rss>`;
+const parsed=parseDiscoveryFeed(xml,'https://news.zerkalo.io/rss/latest.rss');
+assert.equal(parsed.length,1);
+const material={material_id:mediaMaterialId(source.source_id,parsed[0].article_url),source_id:source.source_id,source_name:source.name,source_url:parsed[0].article_url,title:parsed[0].title,published_at:parsed[0].published_at,feed_scope:'general',endpoint_url:'https://news.zerkalo.io/rss/latest.rss',metadata_only:true};
+const snapshot={schema_version:'1.0.0',fetched_at:'2026-08-29T12:05:00Z',materials:[material]};
+assert.doesNotThrow(()=>validateMediaFeedSnapshot(snapshot,registry));
+const news=mediaMaterialsToNews(snapshot,registry);
+assert.equal(news.length,1);
+assert.equal(news[0].source_kind,'MEDIA');
+assert.equal(news[0].source_claim_only,true);
+assert.ok(news[0].summary.ru.includes('Полный материал доступен по ссылке'));
+assert.ok(!JSON.stringify(snapshot).includes('Этот текст не должен'));
+assert.throws(()=>validateMediaFeedSnapshot({...snapshot,materials:[{...material,summary:'forbidden'}]},registry),/FULLTEXT_FORBIDDEN/);
+assert.throws(()=>parseDiscoveryFeed('<!DOCTYPE rss><rss></rss>','https://news.zerkalo.io/rss/latest.rss'),/DTD_FORBIDDEN/);
+console.log('MEDIA_LIVE_FEED_TEST=PASS metadata_only=true fulltext=ZERO dtd_block=PASS');
