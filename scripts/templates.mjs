@@ -6,9 +6,14 @@ export const BRAND = Object.freeze({
 });
 
 function brandText(value = '') {
-  return String(value)
-    .replaceAll('CHUDZINOVICH HUMAN RIGHTS CENTER', BRAND.long)
-    .replaceAll('CHUDZINOVICH', BRAND.short);
+  return String(value).replaceAll('CHUDZINOVICH HUMAN RIGHTS CENTER', BRAND.long);
+}
+
+function brandBody(value = '') {
+  return brandText(value).replaceAll(
+    '<span class="holo-text">CHUDZINOVICH</span><br>HUMAN RIGHTS CENTER',
+    '<span class="holo-text">CHUDO</span><br>HUMAN RIGHTS CENTER'
+  );
 }
 
 const I18N = {
@@ -70,7 +75,7 @@ export function layout({ lang='ru', title, description, path='/', body, pageType
   const t = I18N[lang];
   const normalizedTitle = brandText(title);
   const normalizedDescription = brandText(description);
-  const normalizedBody = brandText(body);
+  const normalizedBody = brandBody(body);
   const canonical = `${SITE}${route(lang, path)}`;
   const links = navLinks(topNav(lang), lang, path);
   const side = navLinks(sideNav(lang), lang, path);
