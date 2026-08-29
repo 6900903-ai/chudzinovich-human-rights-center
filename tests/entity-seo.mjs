@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const root=new URL('../',import.meta.url).pathname;
+const env={...process.env,CHRC_TEST_MODE:'1',CHRC_PUBLIC_DATA_DIR:'tests/fixtures/public-snapshot'};
+for(const script of ['build.mjs','enhance-entity-seo.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit',env});
+const person=await readFile(join(root,'_site/prisoners/p-0000001-testovyi-chelovek-a/index.html'),'utf8');
+const prison=await readFile(join(root,'_site/prisons/pr-sizo-test-sizo-test/index.html'),'utf8');
+assert.ok(person.includes('"@type":"Person"'));
+assert.ok(person.includes('"identifier":"p-0000001"'));
+assert.ok(!person.includes('"birthDate"'), 'Year-only birth date must not be promoted to an exact schema.org birthDate');
+assert.ok(person.includes('Тестовый Человек А'));
+assert.equal((person.match(/CHUDO_ENTITY_SEO_V1/g)||[]).length,1);
+assert.ok(prison.includes('"@type":"Place"'));
+assert.ok(prison.includes('"identifier":"pr-sizo-test"'));
+assert.ok(prison.includes('"addressCountry":"BY"'));
+assert.ok(prison.includes('Тестовый публичный адрес учреждения'));
+assert.equal((prison.match(/CHUDO_ENTITY_SEO_V1/g)||[]).length,1);
+execFileSync(process.execPath,[join(root,'scripts/build.mjs')],{stdio:'inherit',env:{...process.env,CHRC_TEST_MODE:'0'}});
+console.log('ENTITY_SEO_TEST=PASS person=PASS prison=PASS partial_birth_not_fabricated=PASS fixture_cleanup=PASS');
