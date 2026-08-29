@@ -19,9 +19,20 @@ for(const lang of ['ru','be','en','pl']){
   try{let html=await readFile(path,'utf8');if(!html.includes('name="robots"'))html=html.replace('<meta name="description"','<meta name="robots" content="noindex,follow">\n<meta name="description"');await writeText(path,html);}catch{}
 }
 
-const notFoundBody=`<article class="container page"><p class="eyebrow">CHUDO HUMAN RIGHTS CENTER</p><h1>404</h1><div class="profile-section"><p>${esc('Страница не найдена. Возможно, адрес изменился или запись ещё не опубликована.')}</p><p><a class="primary-btn" href="/">На главную</a> <a class="secondary-btn" href="/search/">Поиск</a></p></div></article>`;
-const notFound=layout({lang:'ru',title:'Страница не найдена',description:'Страница не найдена — CHUDO Human Rights Center',path:'/404.html',body:notFoundBody,noIndex:true});
-await writeText(join(out,'404.html'),notFound);
+const NOT_FOUND={
+  ru:{title:'Страница не найдена',text:'Страница не найдена. Возможно, адрес изменился или запись ещё не опубликована.',home:'На главную',search:'Поиск'},
+  be:{title:'Старонка не знойдзена',text:'Старонка не знойдзена. Магчыма, адрас змяніўся або запіс яшчэ не апублікаваны.',home:'На галоўную',search:'Пошук'},
+  en:{title:'Page not found',text:'The page was not found. Its address may have changed or the record may not be published yet.',home:'Home',search:'Search'},
+  pl:{title:'Nie znaleziono strony',text:'Nie znaleziono strony. Adres mógł się zmienić albo wpis nie został jeszcze opublikowany.',home:'Strona główna',search:'Szukaj'}
+};
+for(const lang of ['ru','be','en','pl']){
+  const copy=NOT_FOUND[lang];
+  const prefix=lang==='ru'?'':`/${lang}`;
+  const pagePath='/404.html';
+  const body=`<article class="container page"><p class="eyebrow">CHUDO HUMAN RIGHTS CENTER</p><h1>404</h1><div class="profile-section"><p>${esc(copy.text)}</p><p><a class="primary-btn" href="${prefix||'/'}">${esc(copy.home)}</a> <a class="secondary-btn" href="${prefix}/search/">${esc(copy.search)}</a></p></div></article>`;
+  const html=layout({lang,title:copy.title,description:`${copy.title} — CHUDO Human Rights Center`,path:pagePath,body,noIndex:true});
+  await writeText(join(out,prefix.replace(/^\//,''),'404.html'),html);
+}
 
 const entries=[];
 for(const file of await htmlFiles(out)){

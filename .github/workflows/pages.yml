@@ -18,26 +18,31 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 1
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
       - name: Configure GitHub Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
-      - name: Validate
+      - name: Validate source and public data boundaries
         run: npm run validate
-      - name: Build
-        run: npm run build
-      - name: Test
+      - name: Run complete test suite in an isolated workspace
         run: npm test
+      - name: Build the final production artifact once
+        run: npm run build
       - name: Enforce Pages release gate
         run: npm run pages:gate
       - name: Record custom domain in artifact
         run: printf '%s\n' 'chudzinovich.pp.ua' > _site/CNAME
+      - name: Validate the exact artifact that will be deployed
+        run: npm run artifact:validate
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
