@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { writeText } from './lib/fs.mjs';
 import { loadTelegramRegistry } from './lib/telegram-registry.mjs';
 import { loadMediaRegistry } from './lib/media-registry.mjs';
-import { layout, route, esc } from './templates.mjs';
+import { layout, esc } from './templates.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = join(root, '_site');
@@ -15,32 +15,32 @@ const mediaEnabled = mediaRegistry.sources.filter(source => source.candidate_dis
 
 const COPY = {
   ru: {
-    title:'Источники', intro:'CHUDO использует только явно зарегистрированные источники. Источник не равен подтверждённому факту: сообщения сохраняются с атрибуцией и проходят отдельные проверки перед изменением публичной базы.',
+    title:'Источники', intro:'CHUDO использует явно зарегистрированные источники и всегда показывает происхождение материала. Публикация источника не означает, что CHUDO независимо подтвердил каждое утверждение.',
     viasna:'Правозащитный центр «Вясна»', viasnaText:'Основной структурированный публичный источник для сведений о политзаключённых и репрессиях. Квалификация «политзаключённый» от «Вясны» публикуется как атрибутированная правозащитная квалификация, если CHUDO отдельно не принял собственное редакционное решение.',
     media:'Белорусские и международные СМИ', mediaText:`В discovery-реестре ${mediaRegistry.sources.length} медиа-источников; ${mediaEnabled.length} из них допускаются к поиску кандидатов. Перепечатки одного первоисточника не считаются независимыми подтверждениями.`,
-    telegram:'Утверждённые Telegram-каналы', telegramText:'Материалы Telegram по умолчанию публикуются как краткий пересказ CHUDO с указанием канала и ссылкой на исходный пост. Обвинения, персональные данные и высокорисковые сообщения требуют отдельной проверки.',
-    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
+    telegram:'Telegram-каналы', telegramText:'Материалы выбранных Telegram-каналов публикуются автоматически без факт-чека CHUDO и без ручного редакционного подтверждения. На сайте всегда указываются канал и ссылка на исходный пост. Материал остаётся сообщением источника. Непубличные телефоны, домашние адреса, паспортные данные и явный доксинг автоматически не размножаются.',
+    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ CHUDO VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
   },
   be: {
-    title:'Крыніцы', intro:'CHUDO выкарыстоўвае толькі выразна зарэгістраваныя крыніцы. Крыніца не роўная пацверджанаму факту: паведамленні захоўваюцца з атрыбуцыяй і праходзяць асобную праверку перад змяненнем публічнай базы.',
+    title:'Крыніцы', intro:'CHUDO выкарыстоўвае выразна зарэгістраваныя крыніцы і заўсёды паказвае паходжанне матэрыялу. Публікацыя крыніцы не азначае, што CHUDO незалежна пацвердзіў кожнае сцвярджэнне.',
     viasna:'Праваабарончы цэнтр «Вясна»', viasnaText:'Асноўная структураваная публічная крыніца звестак пра палітвязняў і рэпрэсіі. Кваліфікацыя «палітвязень» ад «Вясны» паказваецца як атрыбутаваная праваабарончая кваліфікацыя, калі CHUDO асобна не прыняў уласнае рэдакцыйнае рашэнне.',
     media:'Беларускія і міжнародныя СМІ', mediaText:`У discovery-рэестры ${mediaRegistry.sources.length} медыя-крыніц; ${mediaEnabled.length} з іх дапускаюцца да пошуку кандыдатаў. Перадрукі адной першакрыніцы не лічацца незалежнымі пацверджаннямі.`,
-    telegram:'Зацверджаныя Telegram-каналы', telegramText:'Матэрыялы Telegram па змаўчанні публікуюцца як кароткі пераказ CHUDO з указаннем канала і спасылкай на зыходны пост. Абвінавачанні, персанальныя даныя і высокарызыкоўныя паведамленні патрабуюць асобнай праверкі.',
-    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
+    telegram:'Telegram-каналы', telegramText:'Матэрыялы выбраных Telegram-каналаў публікуюцца аўтаматычна без фактчэку CHUDO і без ручнога рэдакцыйнага пацверджання. На сайце заўсёды паказваюцца канал і спасылка на зыходны пост. Матэрыял застаецца паведамленнем крыніцы. Непублічныя тэлефоны, хатнія адрасы, пашпартныя даныя і відавочны доксінг аўтаматычна не распаўсюджваюцца.',
+    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ CHUDO VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
   },
   en: {
-    title:'Sources', intro:'CHUDO uses only explicitly registered sources. A source is not the same as a verified fact: reports retain attribution and pass separate checks before the public database can change.',
+    title:'Sources', intro:'CHUDO uses explicitly registered sources and always preserves provenance. Publishing a source item does not mean CHUDO independently verified every statement in it.',
     viasna:'Human Rights Center Viasna', viasnaText:'The main structured public source for political-prisoner and repression data. A Viasna political-prisoner designation is displayed as an attributed human-rights designation unless CHUDO separately makes its own approved editorial determination.',
     media:'Belarusian and international media', mediaText:`The discovery registry contains ${mediaRegistry.sources.length} media sources; ${mediaEnabled.length} are candidate-discovery eligible. Rewrites of one original claim do not count as independent confirmations.`,
-    telegram:'Approved Telegram channels', telegramText:'Telegram material is published by default as a CHUDO summary with the channel and original-post link. Allegations, personal data and high-risk reports require separate review.',
-    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
+    telegram:'Telegram channels', telegramText:'Selected Telegram channels are published automatically without CHUDO fact-checking or manual editorial approval. The site always identifies the channel and links to the original post. The material remains a source statement. Non-public phone numbers, home addresses, identity-document data and explicit doxxing are not automatically replicated.',
+    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ CHUDO VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
   },
   pl: {
-    title:'Źródła', intro:'CHUDO korzysta wyłącznie z jawnie zarejestrowanych źródeł. Źródło nie jest równoznaczne ze zweryfikowanym faktem: informacje zachowują atrybucję i przechodzą odrębne kontrole przed zmianą publicznej bazy.',
+    title:'Źródła', intro:'CHUDO korzysta z jawnie zarejestrowanych źródeł i zawsze zachowuje informację o pochodzeniu. Publikacja materiału źródłowego nie oznacza, że CHUDO niezależnie potwierdziło każde zawarte w nim twierdzenie.',
     viasna:'Centrum Praw Człowieka „Wiasna”', viasnaText:'Główne uporządkowane publiczne źródło danych o więźniach politycznych i represjach. Kwalifikacja „więzień polityczny” pochodząca od Wiasny jest prezentowana jako przypisana kwalifikacja organizacji praw człowieka, chyba że CHUDO podejmie odrębną decyzję redakcyjną.',
     media:'Media białoruskie i międzynarodowe', mediaText:`Rejestr discovery obejmuje ${mediaRegistry.sources.length} źródeł medialnych; ${mediaEnabled.length} może służyć do wyszukiwania kandydatów. Przedruki jednego pierwotnego komunikatu nie są niezależnymi potwierdzeniami.`,
-    telegram:'Zatwierdzone kanały Telegram', telegramText:'Materiały z Telegramu są domyślnie publikowane jako streszczenie CHUDO z nazwą kanału i linkiem do oryginalnego wpisu. Zarzuty, dane osobowe i informacje wysokiego ryzyka wymagają osobnej weryfikacji.',
-    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
+    telegram:'Kanały Telegram', telegramText:'Materiały z wybranych kanałów Telegram są publikowane automatycznie bez fact-checkingu CHUDO i bez ręcznej akceptacji redakcyjnej. Serwis zawsze wskazuje kanał i link do oryginalnego wpisu. Materiał pozostaje twierdzeniem źródła. Niepubliczne numery telefonów, adresy domowe, dane dokumentów tożsamości i jawny doxxing nie są automatycznie powielane.',
+    rule:'SOURCE ≠ FACT · TELEGRAM POST ≠ CHUDO VERIFIED FACT · MEDIA REPORT ≠ POLITICAL PRISONER DESIGNATION'
   }
 };
 
