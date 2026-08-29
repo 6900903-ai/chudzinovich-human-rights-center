@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { loadTelegramRegistry } from '../scripts/lib/telegram-registry.mjs';
+import { loadMediaRegistry } from '../scripts/lib/media-registry.mjs';
+import { loadCombinedPublicNewsWithMedia } from '../scripts/lib/media-feed.mjs';
+
+const root=new URL('../',import.meta.url).pathname;
+for(const script of ['build.mjs','build-news.mjs','build-public-sections.mjs','enhance-live-news-home.mjs','enhance-public-shell.mjs','enhance-seo.mjs','finalize-site.mjs','finalize-live-news-seo.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
+const telegram=await loadTelegramRegistry();
+const media=await loadMediaRegistry();
+const news=await loadCombinedPublicNewsWithMedia(root,join(root,'data/public/current'),telegram,media);
+const feed=await readFile(join(root,'_site/feed.xml'),'utf8');
+const beFeed=await readFile(join(root,'_site/be/feed.xml'),'utf8');
+const sitemap=await readFile(join(root,'_site/news-sitemap.xml'),'utf8');
+const robots=await readFile(join(root,'_site/robots.txt'),'utf8');
+const itemCount=(feed.match(/<item>/g)||[]).length;
+assert.equal(itemCount,Math.min(news.length,100));
+assert.equal((beFeed.match(/<item>/g)||[]).length,itemCount);
+assert.ok(feed.includes('<source url="https://'));
+assert.ok(feed.includes('<pubDate>'));
+assert.ok(sitemap.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"'));
+assert.ok(robots.includes('Sitemap: https://chudzinovich.pp.ua/news-sitemap.xml'));
+assert.ok(!feed.includes('<script'));
+console.log(`LIVE_NEWS_SEO_TEST=PASS total_news=${news.length} rss_items=${itemCount} news_sitemap=PASS robots=PASS locales=4`);
