@@ -3,8 +3,8 @@ import { loadTelegramRegistry, telegramSourceByHandle } from '../scripts/lib/tel
 import { parseTelegramPublicPreview, fetchTelegramPreview, TELEGRAM_PUBLICATION_POLICY } from '../scripts/adapters/telegram-public.mjs';
 
 const registry = await loadTelegramRegistry();
-assert.equal(registry.channels.length, 7);
-for (const handle of ['Z690002','phoenixosintvirus','dw_belarus','shtabonoshko','statkevichm','oshorg','doska_pozora_lida']) {
+assert.equal(registry.channels.length, 9);
+for (const handle of ['Z690002','phoenixosintvirus','dw_belarus','shtabonoshko','statkevichm','oshorg','doska_pozora_lida','evanews25','narodnireporter']) {
   const source = telegramSourceByHandle(registry, handle);
   assert.ok(source, `missing ${handle}`);
   assert.equal(source.publication_enabled, true);
@@ -25,6 +25,16 @@ const allegation = parseTelegramPublicPreview(allegationHtml, telegramSourceByHa
 assert.equal(allegation[0].assessment.state,'PRIVATE_REVIEW_REQUIRED');
 assert.equal(allegation[0].assessment.publication_allowed,false);
 
+const evaAllegationHtml = `<div class="tgme_widget_message_wrap" data-post="evanews25/404">
+<div class="tgme_widget_message_text">Сообщается, что человек является агентом и работает на КГБ.</div><time datetime="2026-08-29T08:20:00Z"></time></div>`;
+const evaAllegation = parseTelegramPublicPreview(evaAllegationHtml, telegramSourceByHandle(registry,'evanews25'));
+assert.equal(evaAllegation[0].assessment.state,'PRIVATE_REVIEW_REQUIRED');
+
+const reporterAllegationHtml = `<div class="tgme_widget_message_wrap" data-post="narodnireporter/505">
+<div class="tgme_widget_message_text">Автор утверждает, что человек является доносчиком.</div><time datetime="2026-08-29T08:30:00Z"></time></div>`;
+const reporterAllegation = parseTelegramPublicPreview(reporterAllegationHtml, telegramSourceByHandle(registry,'narodnireporter'));
+assert.equal(reporterAllegation[0].assessment.state,'PRIVATE_REVIEW_REQUIRED');
+
 const privateDataHtml = `<div class="tgme_widget_message_wrap" data-post="doska_pozora_lida/303">
 <div class="tgme_widget_message_text">Номер телефона: +375 29 123 45 67. Адрес проживания указан в сообщении.</div></div>`;
 const privateData = parseTelegramPublicPreview(privateDataHtml, telegramSourceByHandle(registry,'doska_pozora_lida'));
@@ -40,4 +50,4 @@ await assert.rejects(
   /TELEGRAM_NETWORK_GATE_NOT_PASS/
 );
 
-console.log('TELEGRAM_SOURCE_TEST=PASS channels=7 safe_summary=1 allegation_review=PASS private_data_block=PASS');
+console.log('TELEGRAM_SOURCE_TEST=PASS channels=9 safe_summary=1 allegation_review=PASS private_data_block=PASS');
