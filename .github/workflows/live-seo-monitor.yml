@@ -1,0 +1,84 @@
+name: CHUDO Live SEO Monitor
+
+on:
+  schedule:
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-seo-monitor
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITE: https://chudzinovich.pp.ua
+    steps:
+      - name: Verify DNS, HTTPS and high-value search surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          host='chudzinovich.pp.ua'
+          getent ahosts "$host" | tee /tmp/dns.txt
+
+          fetch() {
+            local path="$1" out="$2"
+            curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
+              --retry 3 --retry-delay 3 --retry-all-errors --max-time 30 \
+              -H 'Accept: text/html,application/xml;q=0.9,*/*;q=0.5' \
+              "$SITE$path" -o "$out"
+          }
+
+          fetch '/' /tmp/home.html
+          fetch '/robots.txt' /tmp/robots.txt
+          fetch '/sitemap-index.xml' /tmp/sitemap-index.xml
+          fetch '/sitemap.xml' /tmp/sitemap.xml
+          fetch '/news-sitemap.xml' /tmp/news-sitemap.xml
+          fetch '/editorial-policy/' /tmp/editorial.html
+          fetch '/assets/brand/social-card.png' /tmp/social-card.png
+
+          grep -Fq 'CHUDO_SEARCH_AUTHORITY_V1' /tmp/home.html
+          grep -Fq '<title>Правозащитный центр CHUDO' /tmp/home.html
+          grep -Fq 'property="og:image" content="https://chudzinovich.pp.ua/assets/brand/social-card.png"' /tmp/home.html
+          grep -Fq '"@type":"Organization"' /tmp/home.html
+          grep -Fq '"@type":"WebSite"' /tmp/home.html
+          ! grep -Fq 'content="noindex' /tmp/home.html
+
+          grep -Fq 'Sitemap: https://chudzinovich.pp.ua/sitemap-index.xml' /tmp/robots.txt
+          grep -Fq 'https://chudzinovich.pp.ua/sitemap.xml' /tmp/sitemap-index.xml
+          grep -Fq 'https://chudzinovich.pp.ua/news-sitemap.xml' /tmp/sitemap-index.xml
+          grep -Fq '<loc>https://chudzinovich.pp.ua/editorial-policy/</loc>' /tmp/sitemap.xml
+          grep -Fq 'Источник не равен установленному факту' /tmp/editorial.html
+          ! grep -Fq 'content="noindex' /tmp/editorial.html
+
+          python3 - <<'PY'
+          from pathlib import Path
+          data=Path('/tmp/social-card.png').read_bytes()
+          assert data[:8] == b'\x89PNG\r\n\x1a\n'
+          assert int.from_bytes(data[16:20],'big') == 1200
+          assert int.from_bytes(data[20:24],'big') == 630
+          print('SOCIAL_CARD=PASS 1200x630')
+          PY
+
+          {
+            echo '## CHUDO live SEO monitor'
+            echo
+            echo '- DNS: PASS'
+            echo '- HTTPS fetches: PASS'
+            echo '- Homepage indexability: PASS'
+            echo '- Organization/WebSite identity: PASS'
+            echo '- Editorial policy: PASS'
+            echo '- Sitemap index: PASS'
+            echo '- Social preview image: PASS (1200×630)'
+            echo
+            echo '### DNS answers'
+            echo '```text'
+            cat /tmp/dns.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
