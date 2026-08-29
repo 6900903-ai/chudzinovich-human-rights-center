@@ -59,7 +59,7 @@ await requireFile(join(out, 'news-sitemap.xml'), 'news-sitemap');
 await requireFile(join(out, 'feed.xml'), 'rss');
 await requireFile(join(out, 'build-manifest.json'), 'build-manifest');
 
-const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/'];
+const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/'];
 for (const lang of langs) {
   await requireFile(outputPath(lang, '/'), `${lang}:home`);
   for (const routePath of requiredRoutes) await requireFile(outputPath(lang, routePath), `${lang}:${routePath}`);
@@ -84,16 +84,23 @@ if (videos.length > 0) {
 }
 
 const html = await htmlFiles(out);
-const minimumHtml = 20 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
+const minimumHtml = 28 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
 if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
 
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
-for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`]) {
+for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`, `${SITE}/transparency/`, `${SITE}/editorial-policy/`]) {
   if (!sitemap.includes(`<loc>${requiredUrl}</loc>`)) throw new Error(`PAGES_ARTIFACT_SITEMAP_ROUTE_MISSING:${requiredUrl}`);
 }
 const robots = await readFile(join(out, 'robots.txt'), 'utf8');
 if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_MAIN_SITEMAP_MISSING');
 if (!robots.includes(`Sitemap: ${SITE}/news-sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_NEWS_SITEMAP_MISSING');
+
+for (const lang of langs) {
+  for (const routePath of ['/transparency/','/editorial-policy/']) {
+    const page=await readFile(outputPath(lang,routePath),'utf8');
+    if(hasNoIndex(page))throw new Error(`TRUST_PAGE_NOT_INDEXABLE:${lang}:${routePath}`);
+  }
+}
 
 const sourceOnly = news.find(item => item.source_claim_only === true);
 if (sourceOnly) {
@@ -106,8 +113,6 @@ if (sourceOnly) {
   }
 }
 
-// Scaled source-detail and derivative archive pages stay accessible to users and links,
-// but must not compete with CHUDO's primary pages in Google.
 if (channels.length) {
   const handle=channels[0].handle.toLowerCase();
   for (const lang of langs) {
@@ -143,4 +148,4 @@ if (manifest.publication_state !== 'PUBLISHED') {
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} index_quality=PASS publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
