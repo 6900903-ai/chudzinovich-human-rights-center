@@ -13,12 +13,12 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -28,17 +28,19 @@ jobs:
           node-version: '22'
       - name: Configure GitHub Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d
-      - name: Validate
+      - name: Validate source inputs
         run: npm run validate
-      - name: Build
-        run: npm run build
-      - name: Test
+      - name: Run complete test suite before production build
         run: npm test
       - name: Enforce Pages release gate
         run: npm run pages:gate
+      - name: Build fresh final static artifact
+        run: npm run build
+      - name: Audit exact final Pages artifact
+        run: node scripts/validate-pages-artifact.mjs
       - name: Record custom domain in artifact
         run: printf '%s\n' 'chudzinovich.pp.ua' > _site/CNAME
-      - name: Upload Pages artifact
+      - name: Upload exact audited Pages artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
           path: _site
@@ -51,6 +53,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy audited artifact to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128
