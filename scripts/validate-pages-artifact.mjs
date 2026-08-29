@@ -1,5 +1,5 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
-import { join, relative, sep } from 'node:path';
+import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readJson } from './lib/fs.mjs';
 import { resolvePublicDataDir } from './lib/public-data.mjs';
@@ -16,25 +16,17 @@ const SITE = 'https://chudzinovich.pp.ua';
 const langs = ['ru', 'be', 'en', 'pl'];
 
 async function exists(path) {
-  try {
-    const info = await stat(path);
-    return info.isFile();
-  } catch (error) {
-    if (error?.code === 'ENOENT') return false;
-    throw error;
-  }
+  try { return (await stat(path)).isFile(); }
+  catch (error) { if (error?.code === 'ENOENT') return false; throw error; }
 }
-
 async function requireFile(path, label) {
   if (!(await exists(path))) throw new Error(`PAGES_ARTIFACT_REQUIRED_FILE_MISSING:${label}:${relative(out, path)}`);
 }
-
 function outputPath(lang, routePath) {
   const prefix = lang === 'ru' ? '' : lang;
   const clean = String(routePath || '/').replace(/^\//, '').replace(/\/$/, '');
   return clean ? join(out, prefix, clean, 'index.html') : join(out, prefix, 'index.html');
 }
-
 async function htmlFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   const files = [];
@@ -45,10 +37,8 @@ async function htmlFiles(dir) {
   }
   return files;
 }
-
-function hasNoIndex(html) {
-  return /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html);
-}
+function hasNoIndex(html) { return /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html); }
+function absolute(lang, routePath) { const prefix=lang==='ru'?'':`/${lang}`; return `${SITE}${prefix}${routePath}`; }
 
 const manifest = await readJson(join(dataDir, 'manifest.json'));
 const telegramRegistry = await loadTelegramRegistry();
@@ -95,15 +85,12 @@ if (videos.length > 0) {
 
 const html = await htmlFiles(out);
 const minimumHtml = 20 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
-if (html.length < minimumHtml) {
-  throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
-}
+if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
 
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
 for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`]) {
   if (!sitemap.includes(`<loc>${requiredUrl}</loc>`)) throw new Error(`PAGES_ARTIFACT_SITEMAP_ROUTE_MISSING:${requiredUrl}`);
 }
-
 const robots = await readFile(join(out, 'robots.txt'), 'utf8');
 if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_MAIN_SITEMAP_MISSING');
 if (!robots.includes(`Sitemap: ${SITE}/news-sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_NEWS_SITEMAP_MISSING');
@@ -119,13 +106,41 @@ if (sourceOnly) {
   }
 }
 
+// Scaled source-detail and derivative archive pages stay accessible to users and links,
+// but must not compete with CHUDO's primary pages in Google.
+if (channels.length) {
+  const handle=channels[0].handle.toLowerCase();
+  for (const lang of langs) {
+    const routePath=`/channels/${handle}/`;
+    const page=await readFile(outputPath(lang,routePath),'utf8');
+    if(!hasNoIndex(page))throw new Error(`DERIVATIVE_CHANNEL_PAGE_INDEXABLE:${lang}:${handle}`);
+    if(sitemap.includes(`<loc>${absolute(lang,routePath)}</loc>`))throw new Error(`DERIVATIVE_CHANNEL_PAGE_IN_SITEMAP:${lang}:${handle}`);
+  }
+}
+if (mediaSources.length) {
+  const slug=mediaSources[0].source_id.replace(/^src-/,'');
+  for (const lang of langs) {
+    const routePath=`/media/${slug}/`;
+    const page=await readFile(outputPath(lang,routePath),'utf8');
+    if(!hasNoIndex(page))throw new Error(`DERIVATIVE_MEDIA_PAGE_INDEXABLE:${lang}:${slug}`);
+    if(sitemap.includes(`<loc>${absolute(lang,routePath)}</loc>`))throw new Error(`DERIVATIVE_MEDIA_PAGE_IN_SITEMAP:${lang}:${slug}`);
+  }
+}
+for (const lang of langs) {
+  for (const routePath of ['/news/archive/','/news/kind/telegram/','/news/kind/media/']) {
+    const page=await readFile(outputPath(lang,routePath),'utf8');
+    if(!hasNoIndex(page))throw new Error(`DERIVATIVE_NEWS_INDEX_INDEXABLE:${lang}:${routePath}`);
+    if(sitemap.includes(`<loc>${absolute(lang,routePath)}</loc>`))throw new Error(`DERIVATIVE_NEWS_INDEX_IN_SITEMAP:${lang}:${routePath}`);
+  }
+}
+
 if (manifest.publication_state !== 'PUBLISHED') {
   for (const lang of langs) {
-    for (const routePath of ['/prisoners/', '/former-prisoners/', '/repressed/', '/prisons/']) {
+    for (const routePath of ['/prisoners/', '/former-prisoners/', '/repressed/', '/prisons/', '/case-index/', '/judges/', '/prosecutors/', '/criminal-code/']) {
       const page = await readFile(outputPath(lang, routePath), 'utf8');
       if (!hasNoIndex(page)) throw new Error(`EMPTY_CANONICAL_DATABASE_PAGE_INDEXABLE:${lang}:${routePath}`);
     }
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} index_quality=PASS publication_state=${manifest.publication_state}`);
