@@ -26,3 +26,7 @@ jobs:
         run: npm run build
       - name: Run complete test suite
         run: npm test
+      - name: Research live production deployment
+        env:
+          CHRC_DEPLOYMENT_VALIDATION_NETWORK_GATE: PASS
+        run: npm run deployment:validate
