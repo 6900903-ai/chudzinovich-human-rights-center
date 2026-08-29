@@ -1,6 +1,6 @@
 {
   "name": "chudzinovich-human-rights-center",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "type": "module",
   "description": "Static-first public portal for CHUDO HUMAN RIGHTS CENTER",
@@ -32,7 +32,8 @@
     "wave7:check": "npm run validate && npm run build && npm test && npm run release:status",
     "wave8:check": "npm run validate && npm run build && npm test && npm run release:status",
     "wave9:check": "npm run validate && npm run build && npm test && npm run release:status",
-    "wave10:check": "npm run validate && npm run build && npm test && npm run release:status"
+    "wave10:check": "npm run validate && npm run build && npm test && npm run release:status",
+    "wave11:check": "npm run validate && npm run build && npm test && npm run release:status"
   },
   "engines": {
     "node": ">=22"
