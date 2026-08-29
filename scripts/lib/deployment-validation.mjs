@@ -17,13 +17,16 @@ export function validateDeploymentUrl(input = PRODUCTION_URL) {
 function publicIpv4(ip) {
   const p = ip.split('.').map(Number);
   if (p.length !== 4 || p.some(n => !Number.isInteger(n) || n < 0 || n > 255)) return false;
-  const [a,b] = p;
+  const [a,b,c] = p;
   if (a === 0 || a === 10 || a === 127 || a >= 224) return false;
   if (a === 100 && b >= 64 && b <= 127) return false;
   if (a === 169 && b === 254) return false;
   if (a === 172 && b >= 16 && b <= 31) return false;
   if (a === 192 && b === 168) return false;
+  if (a === 192 && b === 0 && c === 2) return false;
   if (a === 198 && (b === 18 || b === 19)) return false;
+  if (a === 198 && b === 51 && c === 100) return false;
+  if (a === 203 && b === 0 && c === 113) return false;
   return true;
 }
 
@@ -33,6 +36,7 @@ function publicIpv6(ip) {
   if (v.startsWith('fc') || v.startsWith('fd')) return false;
   if (/^fe[89ab]/.test(v)) return false;
   if (v.startsWith('ff')) return false;
+  if (v.startsWith('2001:db8:')) return false;
   const mapped = v.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
   return mapped ? publicIpv4(mapped[1]) : true;
 }
