@@ -12,7 +12,11 @@ for(const href of ['/search/','/videos/','/faq/','/regions/','/case-index/','/so
 for(const href of ['/be/search/','/be/videos/','/be/faq/','/be/regions/','/be/case-index/','/be/sources/','/be/media/','/be/channels/','/be/press/','/be/methodology/','/be/corrections/','/be/contacts/','/be/privacy/','/be/security/','/be/terms/'])assert.ok(be.includes(`href="${href}"`),`BE shell missing ${href}`);
 assert.ok(enProfileShell.includes('Public human-rights archive'));
 assert.ok(enProfileShell.includes('/assets/css/public-shell.css'));
-assert.equal((ru.match(/CHUDO_PUBLIC_NAV_V9/g)||[]).length,1);
+assert.equal((ru.match(/CHUDO_PUBLIC_NAV_V10/g)||[]).length,1);
 assert.ok(ru.includes('Публичный правозащитный архив'));
 assert.ok(be.includes('Публічны праваабарончы архіў'));
-console.log('PUBLIC_NAVIGATION_TEST=PASS utility_links=15 locales=4 footer=PASS');
+assert.ok(ru.includes('aria-label="Открыть меню"'));
+assert.ok(ru.includes('aria-label="Закрыть меню"'));
+assert.ok(ru.includes('aria-label="Языки"'));
+assert.ok(be.includes('aria-label="Мовы"'));
+console.log('PUBLIC_NAVIGATION_TEST=PASS utility_links=15 locales=4 footer=PASS localized_a11y=PASS');
