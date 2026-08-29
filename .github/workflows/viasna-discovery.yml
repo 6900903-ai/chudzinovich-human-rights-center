@@ -56,7 +56,7 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Fetch and parse official Viasna CSV export
+      - name: Probe official Viasna CSV export
         env:
           VIASNA_DATA_REUSE_GATE: PASS
           FETCHER_SECURITY_GATE: PASS
@@ -66,10 +66,20 @@ jobs:
           VIASNA_MIN_OBSERVATIONS: '5000'
         shell: bash
         run: |
-          node scripts/discover-viasna-export.mjs | tee /tmp/viasna-export-discovery.txt
+          set +e
+          node scripts/discover-viasna-export.mjs 2>&1 | tee /tmp/viasna-export-discovery.txt
+          status=${PIPESTATUS[0]}
+          set -e
           {
             echo '## Viasna export discovery'
             echo '```text'
             cat /tmp/viasna-export-discovery.txt
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" -ne 0 ]; then
+            if grep -q 'VIASNA_DISCOVERY_HTTP_403' /tmp/viasna-export-discovery.txt; then
+              echo 'VIASNA_EXPORT_DISCOVERY=BLOCKED_HTTP_403 manual_or_authorized_export_required=true public_database_mutated=false' | tee -a "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            exit "$status"
+          fi
