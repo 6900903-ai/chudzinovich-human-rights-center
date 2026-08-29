@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { publicNewsItems } from './news.mjs';
 import { normalizeHost, sourceById } from './media-registry.mjs';
+import { loadTelegramFeed, telegramMaterialsToNews } from './telegram-feed.mjs';
 
 export const MEDIA_FEED_SCHEMA='1.0.0';
 export const MEDIA_FEED_MAX_MATERIALS=180;
@@ -68,9 +69,9 @@ export async function loadMediaFeed(root,registry){
   return snapshot;
 }
 
-export async function loadCombinedPublicNewsWithMedia(root,dataDir,telegramRegistry,mediaRegistry,telegramFeedApi){
+export async function loadCombinedPublicNewsWithMedia(root,dataDir,telegramRegistry,mediaRegistry){
   const canonical=await optionalJson(join(dataDir,'news.json'),[]);
-  const telegram=await telegramFeedApi.loadTelegramFeed(root,telegramRegistry);
+  const telegram=await loadTelegramFeed(root,telegramRegistry);
   const media=await loadMediaFeed(root,mediaRegistry);
-  return publicNewsItems([...canonical,...telegramFeedApi.telegramMaterialsToNews(telegram,telegramRegistry),...mediaMaterialsToNews(media,mediaRegistry)]);
+  return publicNewsItems([...canonical,...telegramMaterialsToNews(telegram,telegramRegistry),...mediaMaterialsToNews(media,mediaRegistry)]);
 }
