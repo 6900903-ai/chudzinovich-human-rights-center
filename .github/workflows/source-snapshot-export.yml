@@ -1,0 +1,33 @@
+name: CHUDO Source Snapshot Export
+
+on:
+  push:
+    branches: [ops-source-snapshot-export]
+    paths: ['.github/workflows/source-snapshot-export.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact branch snapshot
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Package current authority-indexed source snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar --exclude='.git' --exclude='.github/workflows/source-snapshot-export.yml' -czf "$RUNNER_TEMP/chudo-hrc-source.tar.gz" .
+          sha256sum "$RUNNER_TEMP/chudo-hrc-source.tar.gz"
+      - name: Upload source snapshot
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: chudo-hrc-source
+          path: ${{ runner.temp }}/chudo-hrc-source.tar.gz
+          retention-days: 1
+          if-no-files-found: error
