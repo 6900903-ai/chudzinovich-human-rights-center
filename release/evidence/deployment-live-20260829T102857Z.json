@@ -1,0 +1,18 @@
+{
+  "evidence_type": "DEPLOYMENT_LIVE_CHECK",
+  "checked_at": "2026-08-29T10:28:57Z",
+  "target_url": "https://chudzinovich.pp.ua/",
+  "validated_main_sha": "0877dc42edfd0cd7ff511b376387c97558a2f600",
+  "execution_environment": "GITHUB_HOSTED_UBUNTU_24_04",
+  "workflow_run_id": 33247914742,
+  "research_pr": 9,
+  "pre_live_validation_suite": "PASS",
+  "dns": {
+    "hostname": "chudzinovich.pp.ua",
+    "result": "ENOTFOUND"
+  },
+  "http_reached": false,
+  "deployment_result": "FAIL_DNS_ENOTFOUND",
+  "hosting_headers_validated": false,
+  "production_authorized": false
+}
