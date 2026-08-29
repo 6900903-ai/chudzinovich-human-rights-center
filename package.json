@@ -14,12 +14,13 @@
     "test:wave4": "node tests/wave4-media-monitor.mjs",
     "test:wave5": "node tests/wave5-source-endpoints.mjs",
     "test:telegram": "node tests/telegram-sources.mjs",
+    "test:news": "node tests/news-publication.mjs",
     "test:smoke": "node tests/smoke.mjs",
-    "test": "npm run test:adapter && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:telegram && npm run test:smoke",
+    "test": "npm run test:adapter && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:telegram && npm run test:news && npm run test:smoke",
     "wave2:check": "npm run validate && npm test",
     "wave3:check": "npm run validate && npm test",
     "wave4:check": "npm run validate && npm run test:wave4",
-    "wave5:check": "npm run validate && npm run test:wave5 && npm run test:telegram && npm run test:smoke"
+    "wave5:check": "npm run validate && npm run test:wave5 && npm run test:telegram && npm run test:news && npm run test:smoke"
   },
   "engines": {
     "node": ">=22"
