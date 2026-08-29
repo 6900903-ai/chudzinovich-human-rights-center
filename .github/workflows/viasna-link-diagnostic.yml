@@ -1,0 +1,101 @@
+name: CHUDO Temporary Viasna Export Link Diagnostic
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/viasna-link-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: viasna-link-diagnostic-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  discover:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Discover only official Viasna export-link candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          output="$(mktemp)"
+          fetched='false'
+          for reader_url in \
+            'https://r.jina.ai/http://prisoners.spring96.org/ru/list' \
+            'https://r.jina.ai/https://prisoners.spring96.org/ru/list'
+          do
+            if curl --fail --silent --show-error --location --max-time 45 \
+              --header 'Accept: text/plain' \
+              --header 'X-Retain-Links: all' \
+              --header 'X-With-Links-Summary: true' \
+              "$reader_url" --output "$output"
+            then
+              fetched='true'
+              break
+            fi
+          done
+          if [[ "$fetched" != 'true' ]]; then
+            echo 'VIASNA_READER_FETCH=FAIL'
+            exit 1
+          fi
+
+          python3 - "$output" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+          from urllib.parse import urljoin, urlsplit, urlunsplit
+
+          path = Path(sys.argv[1])
+          text = path.read_text(encoding='utf-8', errors='replace')
+          base = 'https://prisoners.spring96.org/ru/list'
+          allowed = {'prisoners.spring96.org', 'spring96.org'}
+          candidates = {}
+
+          def consider(raw, label='', reason=''):
+              raw = raw.strip().strip('<>"\'')
+              if not raw or raw.startswith(('#', 'javascript:', 'data:', 'mailto:', 'tel:')):
+                  return
+              try:
+                  absolute = urljoin(base, raw)
+                  parts = urlsplit(absolute)
+              except Exception:
+                  return
+              host = (parts.hostname or '').lower().rstrip('.')
+              if parts.scheme != 'https' or host not in allowed:
+                  return
+              clean = urlunsplit((parts.scheme, parts.netloc, parts.path, parts.query, ''))
+              haystack = f'{label} {clean}'.lower()
+              score = 0
+              if re.search(r'(^|\W)csv($|\W)', label.lower()): score += 100
+              if re.search(r'\.csv(?:$|[?#])', clean, re.I): score += 80
+              if re.search(r'(?:^|[?&])(?:csv|format|type|output|download|export|file)=(?:csv|1|true)(?:&|$)', parts.query, re.I): score += 70
+              if re.search(r'(?:^|/)(?:csv|export|download)(?:/|\.|$)', parts.path, re.I): score += 45
+              if score < 45:
+                  return
+              current = candidates.get(clean)
+              item = {'url': clean, 'score': score, 'label': label.strip(), 'reason': reason}
+              if current is None or item['score'] > current['score']:
+                  candidates[clean] = item
+
+          for match in re.finditer(r'\[([^\]]{0,250})\]\(([^)\s]+)(?:\s+"[^"]*")?\)', text):
+              consider(match.group(2), label=match.group(1), reason='markdown-link')
+
+          for match in re.finditer(r'https?://[^\s<>()"\']+', text, re.I):
+              consider(match.group(0), reason='absolute-url')
+
+          ordered = sorted(candidates.values(), key=lambda item: (-item['score'], item['url']))
+          print(f'VIASNA_READER_BYTES={len(text.encode("utf-8"))}')
+          print(f'VIASNA_EXPORT_LINK_CANDIDATES={len(ordered)}')
+          for index, item in enumerate(ordered, start=1):
+              print(f'CANDIDATE_{index}_SCORE={item["score"]}')
+              print(f'CANDIDATE_{index}_URL={item["url"]}')
+          if not ordered:
+              raise SystemExit('VIASNA_EXPORT_LINK_NOT_DISCOVERED')
+          PY
+
+          rm -f "$output"
