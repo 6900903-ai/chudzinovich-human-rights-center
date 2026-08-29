@@ -17,10 +17,13 @@ for (const handle of ['Z690002','phoenixosintvirus','dw_belarus','shtabonoshko',
 }
 
 assert.ok(ru.includes('SOURCE ≠ FACT'));
+assert.ok(ru.includes('без факт-чека CHUDO'));
+assert.ok(ru.includes('без ручного редакционного подтверждения'));
+assert.ok(en.includes('without CHUDO fact-checking or manual editorial approval'));
 assert.ok(ru.includes('Правозащитный центр «Вясна»'));
 assert.ok(ru.includes('126'));
 assert.ok(ru.includes('62'));
 assert.ok(!ru.includes('telegram.org/js'));
 assert.ok(!ru.includes('<iframe'));
 
-console.log('SOURCES_PAGE_TEST=PASS telegram=9 media_total=126 media_enabled=62');
+console.log('SOURCES_PAGE_TEST=PASS telegram=9 auto_publish_policy=VISIBLE media_total=126 media_enabled=62');
