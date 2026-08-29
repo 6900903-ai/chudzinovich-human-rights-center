@@ -169,7 +169,12 @@ export async function fetchViasnaDiscoveryResource(input, {
       headers: {
         accept: acceptHeader(kind),
         'accept-encoding': 'identity',
-        'user-agent': 'CHUDO-HRC-Viasna-Export-Discovery/0.1 (+https://chudzinovich.pp.ua)'
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
+        'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.7,en;q=0.6',
+        'cache-control': 'no-cache',
+        pragma: 'no-cache',
+        referer: 'https://prisoners.spring96.org/ru',
+        from: 'security@chudzinovich.pp.ua'
       }
     });
     if (response.status >= 300 && response.status < 400) throw new Error('VIASNA_DISCOVERY_REDIRECT_REQUIRES_REVALIDATION');
