@@ -29,3 +29,9 @@ The validator then checks:
 - required CSP directives including same-origin script/connect and blocked objects/frames/frame ancestors.
 
 A successful validator run is evidence for live DNS/header review only. `HOSTING_SECURITY_HEADERS_GATE` and `DNS_DOMAIN_GATE` must remain non-PASS until the exact production deployment has been checked, and production still requires every other release gate plus the exact real-data snapshot.
+
+## Current live evidence
+
+The first live production check ran from a GitHub-hosted Ubuntu runner at `2026-08-29T10:28:57Z`. All repository validation, build and regression tests passed before the live check. DNS resolution then failed with `ENOTFOUND chudzinovich.pp.ua`, so HTTP and security headers could not be reached.
+
+Canonical evidence: `release/evidence/deployment-live-20260829T102857Z.json`.
