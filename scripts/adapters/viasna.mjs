@@ -9,7 +9,7 @@ import {
   stableIdentityKey
 } from '../lib/normalization.mjs';
 
-export const VIASNA_PARSER_VERSION = '0.2.0';
+export const VIASNA_PARSER_VERSION = '0.6.0';
 const ALLOWED_HOSTS = new Set(['prisoners.spring96.org', 'spring96.org']);
 const MAX_RESPONSE_BYTES = 8 * 1024 * 1024;
 const ALLOWED_CONTENT_TYPES = ['text/csv', 'application/csv', 'text/plain', 'application/octet-stream'];
@@ -136,7 +136,7 @@ export async function fetchViasnaText(input, { timeoutMs = 15000, expectedKind =
       signal: controller.signal,
       headers: {
         accept: expectedKind === 'csv' ? 'text/csv,application/csv;q=0.9,text/plain;q=0.5' : 'text/plain',
-        'user-agent': `CHUDZINOVICH-HRC-Research-Sync/${VIASNA_PARSER_VERSION}`
+        'user-agent': `CHUDO-HRC-Research-Sync/${VIASNA_PARSER_VERSION} (+https://chudzinovich.pp.ua)`
       }
     });
     if (response.status >= 300 && response.status < 400) throw new Error('REDIRECT_REQUIRES_REVALIDATION');
@@ -166,61 +166,40 @@ export function classifyStatusClaim(text) {
   const exPostFacto = /(recognized ex post facto|признан.*постфактум|прызнан.*постфактум)/iu.test(raw);
   if (!normalized) {
     return {
-      claim_type: 'NO_DESIGNATION',
-      raw,
-      human_rights_source_asserts: false,
-      attribution_required: false,
-      auto_designation_allowed: false,
-      recognized_ex_post_facto: false
+      claim_type: 'NO_DESIGNATION', raw, human_rights_source_asserts: false,
+      attribution_required: false, auto_designation_allowed: false, recognized_ex_post_facto: false
     };
   }
   if (/(former political prisoner|бывш[^\s]*\s+политзаключ|был[^\s]*\s+палітвяз)/iu.test(raw)) {
     return {
-      claim_type: 'FORMER_POLITICAL_PRISONER',
-      raw,
-      human_rights_source_asserts: true,
-      attribution_required: true,
-      auto_designation_allowed: false,
-      recognized_ex_post_facto: exPostFacto
+      claim_type: 'FORMER_POLITICAL_PRISONER', raw, human_rights_source_asserts: true,
+      attribution_required: true, auto_designation_allowed: false, recognized_ex_post_facto: exPostFacto
     };
   }
   if (/(political prisoner|политзаключ|палітвяз)/iu.test(raw)) {
     return {
-      claim_type: 'CURRENT_POLITICAL_PRISONER',
-      raw,
-      human_rights_source_asserts: true,
-      attribution_required: true,
-      auto_designation_allowed: false,
-      recognized_ex_post_facto: exPostFacto
+      claim_type: 'CURRENT_POLITICAL_PRISONER', raw, human_rights_source_asserts: true,
+      attribution_required: true, auto_designation_allowed: false, recognized_ex_post_facto: exPostFacto
     };
   }
   return {
-    claim_type: 'UNKNOWN_DESIGNATION',
-    raw,
-    human_rights_source_asserts: false,
-    attribution_required: true,
-    auto_designation_allowed: false,
-    recognized_ex_post_facto: exPostFacto
+    claim_type: 'UNKNOWN_DESIGNATION', raw, human_rights_source_asserts: false,
+    attribution_required: true, auto_designation_allowed: false, recognized_ex_post_facto: exPostFacto
   };
 }
 
 function parsePrison(value) {
   const raw = normalizeWhitespace(value);
-  const normalized = normalizeForMatch(raw);
   const releaseClaim = /^(released|освобожден|освобожденa|освобождён|освобождена|вызвалены|вызвалена)$/iu.test(raw);
-  if (!raw || /^(unknown|неизвестно|невядома)$/iu.test(raw)) {
-    return { raw, facility: null, address: null, release_claim: false };
-  }
+  if (!raw || /^(unknown|неизвестно|невядома)$/iu.test(raw)) return { raw, facility: null, address: null, release_claim: false };
   if (releaseClaim) return { raw, facility: null, address: null, release_claim: true };
   const lines = raw.split('\n').map(line => line.trim()).filter(Boolean);
   return { raw, facility: lines[0] || null, address: lines.slice(1).join(', ') || null, release_claim: false };
 }
 
 export function parseViasnaCsv(csvText, {
-  locale = 'en',
-  sourceUrl = 'https://prisoners.spring96.org/en/list',
-  fetchedAt = new Date().toISOString(),
-  observedAt = fetchedAt
+  locale = 'en', sourceUrl = 'https://prisoners.spring96.org/en/list',
+  fetchedAt = new Date().toISOString(), observedAt = fetchedAt
 } = {}) {
   const parsed = parseCsv(csvText, { strictColumns: true });
   const headerMap = mapHeaders(parsed.headers);
@@ -236,50 +215,27 @@ export function parseViasnaCsv(csvText, {
     const prison = parsePrison(get(record, headerMap, 'prison'));
     const chargesRaw = get(record, headerMap, 'charges');
 
-    const observation = {
-      source_id: 'src-viasna',
-      source_url: sourceUrl,
-      parser_version: VIASNA_PARSER_VERSION,
-      source_locale: locale,
-      row_number,
-      source_observed_at: observedAt,
-      source_fetched_at: fetchedAt,
-      canonical_person_id: null,
-      identity_resolution_state: 'SOURCE_OBSERVATION_ONLY',
-      reported_name: reportedName,
-      normalized_name: normalizeForMatch(reportedName),
+    observations.push({
+      source_id: 'src-viasna', source_url: sourceUrl, parser_version: VIASNA_PARSER_VERSION,
+      source_locale: locale, row_number, source_observed_at: observedAt, source_fetched_at: fetchedAt,
+      canonical_person_id: null, identity_resolution_state: 'SOURCE_OBSERVATION_ONLY',
+      reported_name: reportedName, normalized_name: normalizeForMatch(reportedName),
       source_identity_key: reportedName ? stableIdentityKey({ name: reportedName, birthDate }) : null,
-      birth_date: birthDate,
-      gender_raw: get(record, headerMap, 'gender'),
-      detention_date: detentionDate,
-      charges_raw: chargesRaw,
-      charge_articles: extractCriminalArticles(chargesRaw),
-      verdict_date: verdictDate,
-      sentence_raw: get(record, headerMap, 'sentence'),
-      penalty_raw: get(record, headerMap, 'penalty'),
-      judge_raw: get(record, headerMap, 'judge'),
-      prosecutor_raw: get(record, headerMap, 'prosecutor'),
-      prison,
-      release_claim: prison.release_claim,
-      source_status_claim: statusClaim,
-      political_prisoner_autodesignation: false,
-      publication_state: 'STAGING_OBSERVATION_ONLY'
-    };
-    observations.push(observation);
+      birth_date: birthDate, gender_raw: get(record, headerMap, 'gender'), detention_date: detentionDate,
+      charges_raw: chargesRaw, charge_articles: extractCriminalArticles(chargesRaw), verdict_date: verdictDate,
+      sentence_raw: get(record, headerMap, 'sentence'), penalty_raw: get(record, headerMap, 'penalty'),
+      judge_raw: get(record, headerMap, 'judge'), prosecutor_raw: get(record, headerMap, 'prosecutor'),
+      prison, release_claim: prison.release_claim, source_status_claim: statusClaim,
+      political_prisoner_autodesignation: false, publication_state: 'STAGING_OBSERVATION_ONLY'
+    });
   }
 
   const mappedCanonicalHeaders = [...headerMap.keys()];
   const coverage = mappedCanonicalHeaders.length / Object.keys(HEADER_ALIASES).length;
   if (coverage < 0.75) diagnostics.push({ code: 'VIASNA_HEADER_COVERAGE_LOW', coverage });
-
   return {
-    source_id: 'src-viasna',
-    parser_version: VIASNA_PARSER_VERSION,
-    delimiter: parsed.delimiter,
-    headers: parsed.headers,
-    mapped_headers: mappedCanonicalHeaders,
-    parser_coverage: coverage,
-    observations,
-    diagnostics
+    source_id: 'src-viasna', parser_version: VIASNA_PARSER_VERSION,
+    delimiter: parsed.delimiter, headers: parsed.headers, mapped_headers: mappedCanonicalHeaders,
+    parser_coverage: coverage, observations, diagnostics
   };
 }
