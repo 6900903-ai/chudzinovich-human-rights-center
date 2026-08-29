@@ -1,8 +1,11 @@
 {
-  "registry_version": "0.2.0",
-  "updated_at": "2026-08-29T10:57:00Z",
+  "registry_version": "0.3.0",
+  "updated_at": "2026-08-29T11:20:00Z",
   "policy": {
-    "publication_mode": "ATTRIBUTED_SUMMARY_AND_SHORT_QUOTE",
+    "publication_mode": "AUTO_PUBLISH_ATTRIBUTED_SOURCE_MATERIAL",
+    "fact_check_required": false,
+    "editorial_review_required": false,
+    "telegram_source_claim_autopublish": true,
     "full_republication_default": false,
     "media_report_is_political_prisoner_designation": false,
     "person_database_mutation_from_telegram": false,
@@ -20,9 +23,10 @@
       "verification_state": "PUBLIC_REFERENCE_CONFIRMED",
       "source_class": "PROJECT_RELATED_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "ATTRIBUTED_SUMMARY",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "Explicitly requested for publication by the project owner. Full third-party text is not assumed licensed by default."
+      "full_republication_allowed": true,
+      "notes": "Project-related channel. Posts may be auto-published with source attribution; no fact-check or manual editorial approval is required."
     },
     {
       "source_id": "tg-phoenixosintvirus",
@@ -33,9 +37,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "OSINT_OPINION_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "Claims identifying alleged agents or wrongdoing require corroboration and editorial review before publication."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish as an attributed source claim without fact-check or manual editorial approval. Non-public personal data remains excluded."
     },
     {
       "source_id": "tg-dw-belarus",
@@ -46,9 +51,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "PROFESSIONAL_MEDIA_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "ATTRIBUTED_SUMMARY",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": null
+      "full_republication_allowed": false,
+      "notes": "Auto-publish as an attributed source claim without fact-check or manual editorial approval."
     },
     {
       "source_id": "tg-shtabonoshko",
@@ -59,9 +65,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "POLITICAL_OPINION_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "Political analysis and allegations are attributed to the channel and are not treated as established fact without corroboration."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish with explicit channel attribution; statements remain source claims, not CHUDO-verified facts."
     },
     {
       "source_id": "tg-statkevichm",
@@ -72,9 +79,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "FIRST_PARTY_PUBLIC_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "ATTRIBUTED_SUMMARY",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "FIRST_PARTY_OR_SOURCE_CLAIM",
-      "notes": "First-person statements may be attributed as the speaker's own account; claims about other persons remain source claims."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish with source attribution; first-person statements remain attributed to the speaker."
     },
     {
       "source_id": "tg-oshorg",
@@ -85,9 +93,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "POLITICAL_ANALYSIS_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "Analysis and source-based assertions are published only with explicit attribution."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish with explicit attribution; no fact-check or manual editorial approval is required."
     },
     {
       "source_id": "tg-doska-pozora-lida",
@@ -98,9 +107,10 @@
       "verification_state": "PUBLIC_REFERENCE_CONFIRMED",
       "source_class": "LOCAL_ACTIVIST_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "STRICT_REVIEW_NO_PRIVATE_DATA",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED_NO_PRIVATE_DATA",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "Never republish home addresses, private phone numbers, private contacts, doxxing data, or uncorroborated accusations about identifiable persons."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish source-attributed material. Non-public phone numbers, home addresses, identity-document data and doxxing material remain excluded."
     },
     {
       "source_id": "tg-evanews25",
@@ -111,9 +121,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "NEWS_OPINION_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "News, commentary and forwarded material require source attribution; allegations about identifiable people require corroboration/editorial review."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish with channel attribution; no fact-check or manual editorial approval is required."
     },
     {
       "source_id": "tg-narodnireporter",
@@ -124,9 +135,10 @@
       "verification_state": "PUBLIC_PREVIEW_CONFIRMED",
       "source_class": "POLITICAL_OPINION_CHANNEL",
       "publication_enabled": true,
-      "publication_policy": "REVIEW_REQUIRED_FOR_ALLEGATIONS",
+      "publication_policy": "AUTO_PUBLISH_ATTRIBUTED",
       "claim_semantics": "SOURCE_CLAIM_ONLY",
-      "notes": "Public channel associated with Sergey Petrukhin; political commentary and third-party claims are attributed and reviewed before publication when sensitive."
+      "full_republication_allowed": false,
+      "notes": "Auto-publish with channel attribution; no fact-check or manual editorial approval is required."
     }
   ]
 }
