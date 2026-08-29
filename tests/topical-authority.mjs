@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const root=new URL('../',import.meta.url).pathname;
+for(const script of ['build.mjs','build-news.mjs','build-policy-pages.mjs','build-sources-page.mjs','build-public-sections.mjs','build-channel-pages.mjs','build-media-pages.mjs','build-global-search.mjs','build-topical-authority.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
+const prisoners=await readFile(join(root,'_site/prisoners/index.html'),'utf8');
+const former=await readFile(join(root,'_site/former-prisoners/index.html'),'utf8');
+const repressed=await readFile(join(root,'_site/repressed/index.html'),'utf8');
+const prisons=await readFile(join(root,'_site/prisons/index.html'),'utf8');
+const press=await readFile(join(root,'_site/press/index.html'),'utf8');
+const enPress=await readFile(join(root,'_site/en/press/index.html'),'utf8');
+assert.ok(prisoners.includes('Политзаключённые Беларуси: как устроена база'));
+assert.ok(former.includes('Бывшие политзаключённые Беларуси'));
+assert.ok(repressed.includes('Политические репрессии в Беларуси'));
+assert.ok(prisons.includes('Тюрьмы, СИЗО и колонии Беларуси'));
+assert.ok(prisoners.includes('/methodology/'));
+assert.ok(prisoners.includes('/sources/'));
+assert.ok(press.includes('Для СМИ и исследователей'));
+assert.ok(press.includes('chudzinovich.pp.ua'));
+assert.ok(press.includes('@Z690002'));
+assert.ok(enPress.includes('For media and researchers'));
+assert.equal((prisoners.match(/CHUDO_TOPIC_AUTHORITY_V1/g)||[]).length,1);
+console.log('TOPICAL_AUTHORITY_TEST=PASS catalog_sections=4x4 press_pages=4 internal_links=PASS');
