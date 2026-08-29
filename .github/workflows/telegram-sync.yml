@@ -1,0 +1,61 @@
+name: CHUDO Telegram Sync
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/telegram-sync.yml']
+  schedule:
+    - cron: '37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: telegram-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Fetch registered Telegram public previews
+        env:
+          TELEGRAM_NETWORK_GATE: PASS
+          FETCHER_SECURITY_GATE: PASS
+          TELEGRAM_SOURCE_REUSE_GATE: PASS
+        run: npm run telegram:sync
+      - name: Validate sanitized Telegram snapshot
+        run: node scripts/validate-telegram-feed.mjs
+      - name: Run Telegram feed regression
+        run: npm run test:telegram-live
+      - name: Commit only sanitized public Telegram feed
+        id: commit
+        shell: bash
+        run: |
+          if git diff --quiet -- data/public/telegram.json; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- data/public/telegram.json
+          git commit -m 'Sync registered Telegram source feeds'
+          git push origin HEAD:main
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+      - name: Dispatch Pages build after feed change
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
