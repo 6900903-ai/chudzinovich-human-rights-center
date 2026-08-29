@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const root=new URL('../',import.meta.url).pathname;
+const env={...process.env,CHRC_TEST_MODE:'1',CHRC_PUBLIC_DATA_DIR:'tests/fixtures/public-snapshot'};
+execFileSync(process.execPath,[join(root,'scripts/build.mjs')],{stdio:'inherit',env});
+execFileSync(process.execPath,[join(root,'scripts/build-regional-timeline.mjs')],{stdio:'inherit',env});
+const regions=await readFile(join(root,'_site/regions/index.html'),'utf8');
+const minsk=await readFile(join(root,'_site/regions/minsk/index.html'),'utf8');
+const brest=await readFile(join(root,'_site/regions/brest/index.html'),'utf8');
+const years=await readFile(join(root,'_site/years/index.html'),'utf8');
+const y2026=await readFile(join(root,'_site/years/2026/index.html'),'utf8');
+assert.ok(regions.includes('Минск'));
+assert.ok(regions.includes('Брест'));
+assert.ok(minsk.includes('Тестовый Человек А'));
+assert.ok(brest.includes('Тестовый Человек Б'));
+assert.ok(years.includes('2026'));
+assert.ok(y2026.includes('Тестовый Человек А'));
+assert.ok(y2026.includes('Тестовый Человек Б'));
+execFileSync(process.execPath,[join(root,'scripts/build.mjs')],{stdio:'inherit',env:{...process.env,CHRC_TEST_MODE:'0'}});
+execFileSync(process.execPath,[join(root,'scripts/build-regional-timeline.mjs')],{stdio:'inherit',env:{...process.env,CHRC_TEST_MODE:'0'}});
+const emptyRegions=await readFile(join(root,'_site/regions/index.html'),'utf8');
+const emptyYears=await readFile(join(root,'_site/years/index.html'),'utf8');
+assert.ok(emptyRegions.includes('noindex,follow'));
+assert.ok(emptyYears.includes('noindex,follow'));
+console.log('REGIONAL_TIMELINE_TEST=PASS fixture_regions=2 fixture_years=1 empty_noindex=PASS');
