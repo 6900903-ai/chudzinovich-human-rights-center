@@ -6,6 +6,7 @@ on:
       - '.github/workflows/viasna-discovery.yml'
       - 'scripts/discover-viasna-export.mjs'
       - 'scripts/lib/viasna-export-discovery.mjs'
+      - 'scripts/lib/viasna-direct-export.mjs'
       - 'scripts/adapters/viasna.mjs'
       - 'tests/viasna-export-discovery.mjs'
   push:
@@ -14,6 +15,7 @@ on:
       - '.github/workflows/viasna-discovery.yml'
       - 'scripts/discover-viasna-export.mjs'
       - 'scripts/lib/viasna-export-discovery.mjs'
+      - 'scripts/lib/viasna-direct-export.mjs'
       - 'scripts/adapters/viasna.mjs'
       - 'tests/viasna-export-discovery.mjs'
   schedule:
@@ -54,11 +56,12 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Discover and parse official Viasna CSV export
+      - name: Fetch and parse official Viasna CSV export
         env:
           VIASNA_DATA_REUSE_GATE: PASS
           FETCHER_SECURITY_GATE: PASS
           VIASNA_SOURCE_PAGE_URL: https://prisoners.spring96.org/ru/list
+          VIASNA_SOURCE_CSV_URL: https://prisoners.spring96.org/ru/list?format=csv
           VIASNA_SOURCE_LOCALE: ru
           VIASNA_MIN_OBSERVATIONS: '5000'
         shell: bash
