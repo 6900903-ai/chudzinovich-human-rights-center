@@ -57,13 +57,15 @@ for (const path of await htmlFiles(out)) {
     html = html.replace(langMarker, `${utilityLinks(lang,'side-links side-links-secondary')}${langMarker}`);
   }
 
-  const footerRe = /<footer class="site-footer"><strong>CHUDO HUMAN RIGHTS CENTER<\/strong><span>([\s\S]*?)<\/span><\/footer>/;
-  html = html.replace(footerRe, (_,notice) => `<footer class="site-footer">${MARKER}<strong>CHUDO HUMAN RIGHTS CENTER</strong><small>${c.archive}</small>${utilityLinks(lang,'footer-links')}<span>${notice}</span></footer>`);
+  if (html.includes('<footer class="site-footer">')) {
+    html = html.replace('</footer>', `<small>${c.archive}</small>${utilityLinks(lang,'footer-links')}</footer>`);
+  }
 
   if (!html.includes('/assets/css/public-shell.css')) {
     html = html.replace('<link rel="stylesheet" href="/assets/css/main.css">','<link rel="stylesheet" href="/assets/css/main.css">\n<link rel="stylesheet" href="/assets/css/public-shell.css">');
   }
 
+  html = html.replace('</body>', `${MARKER}</body>`);
   await writeText(path,html);
   changed++;
 }
