@@ -1,6 +1,6 @@
 {
   "name": "chudzinovich-human-rights-center",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "private": true,
   "type": "module",
   "description": "Static-first public portal for CHUDO HUMAN RIGHTS CENTER",
@@ -24,11 +24,13 @@
     "test:viasna-offline": "node tests/viasna-offline-staging.mjs",
     "test:deployment": "node tests/deployment-validation.mjs",
     "test:pages-release-gate": "node tests/pages-release-gate.mjs",
+    "test:deployment-evidence": "node tests/deployment-evidence.mjs",
     "test:smoke": "node tests/smoke.mjs",
-    "test": "npm run test:adapter && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:telegram && npm run test:news && npm run test:release && npm run test:policy && npm run test:viasna-offline && npm run test:deployment && npm run test:pages-release-gate && npm run test:smoke",
+    "test": "npm run test:adapter && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:telegram && npm run test:news && npm run test:release && npm run test:policy && npm run test:viasna-offline && npm run test:deployment && npm run test:pages-release-gate && npm run test:deployment-evidence && npm run test:smoke",
     "wave6:check": "npm run validate && npm run build && npm test && npm run release:status",
     "wave7:check": "npm run validate && npm run build && npm test && npm run release:status",
-    "wave8:check": "npm run validate && npm run build && npm test && npm run release:status"
+    "wave8:check": "npm run validate && npm run build && npm test && npm run release:status",
+    "wave9:check": "npm run validate && npm run build && npm test && npm run release:status"
   },
   "engines": {
     "node": ">=22"
