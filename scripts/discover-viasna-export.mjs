@@ -1,13 +1,23 @@
 import { parseViasnaCsv } from './adapters/viasna.mjs';
 import { discoverViasnaCsvExport, fetchViasnaDiscoveryResource } from './lib/viasna-export-discovery.mjs';
+import { configuredViasnaCsvExport } from './lib/viasna-direct-export.mjs';
 
 const pageUrl = process.env.VIASNA_SOURCE_PAGE_URL || 'https://prisoners.spring96.org/ru/list';
+const configuredCsvUrl = String(process.env.VIASNA_SOURCE_CSV_URL || '').trim();
 const locale = process.env.VIASNA_SOURCE_LOCALE || 'ru';
 const minimumObservations = Number.parseInt(process.env.VIASNA_MIN_OBSERVATIONS || '5000', 10);
 if (!Number.isInteger(minimumObservations) || minimumObservations < 1) throw new Error('VIASNA_MIN_OBSERVATIONS_INVALID');
 
-const listPage = await fetchViasnaDiscoveryResource(pageUrl, { kind: 'html' });
-const discovery = discoverViasnaCsvExport(listPage.text, listPage.source_url);
+let listPage = null;
+let discovery;
+if (configuredCsvUrl) {
+  discovery = configuredViasnaCsvExport(pageUrl, configuredCsvUrl);
+} else {
+  listPage = await fetchViasnaDiscoveryResource(pageUrl, { kind: 'html' });
+  discovery = discoverViasnaCsvExport(listPage.text, listPage.source_url);
+  discovery.discovery_mode = 'DISCOVERED_FROM_LIST_PAGE';
+}
+
 const csvExport = await fetchViasnaDiscoveryResource(discovery.selected_url, { kind: 'csv' });
 const parsed = parseViasnaCsv(csvExport.text, {
   locale,
@@ -35,9 +45,10 @@ for (const observation of parsed.observations) {
 const summary = {
   state: 'LIVE_EXPORT_DISCOVERED_AND_PARSED',
   source_id: 'src-viasna',
-  source_page_url: listPage.source_url,
-  source_page_fetched_at: listPage.fetched_at,
-  source_page_sha256: listPage.sha256,
+  discovery_mode: discovery.discovery_mode || 'DISCOVERED_FROM_LIST_PAGE',
+  source_page_url: discovery.page_url || pageUrl,
+  source_page_fetched_at: listPage?.fetched_at || null,
+  source_page_sha256: listPage?.sha256 || null,
   export_url: discovery.selected_url,
   export_label: discovery.selected_label,
   export_candidate_count: discovery.candidate_count,
@@ -59,5 +70,5 @@ const summary = {
   next_gate: 'PRIVATE_IMMUTABLE_SNAPSHOT_PREPARATION'
 };
 
-console.log(`VIASNA_EXPORT_DISCOVERY=PASS observations=${summary.observations} bytes=${summary.export_bytes} coverage=${summary.parser_coverage.toFixed(3)} candidates=${summary.export_candidate_count}`);
+console.log(`VIASNA_EXPORT_DISCOVERY=PASS mode=${summary.discovery_mode} observations=${summary.observations} bytes=${summary.export_bytes} coverage=${summary.parser_coverage.toFixed(3)} candidates=${summary.export_candidate_count}`);
 console.log(JSON.stringify(summary, null, 2));
