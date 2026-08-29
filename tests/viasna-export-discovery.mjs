@@ -1,4 +1,5 @@
 import { discoverViasnaCsvExport, decodeBasicHtmlEntities, fetchViasnaDiscoveryResource } from '../scripts/lib/viasna-export-discovery.mjs';
+import { configuredViasnaCsvExport } from '../scripts/lib/viasna-direct-export.mjs';
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -17,6 +18,25 @@ const discovered = discoverViasnaCsvExport(html, 'https://prisoners.spring96.org
 assert(discovered.selected_url === 'https://prisoners.spring96.org/ru/list?format=csv&status%5B%5D=0', `Unexpected selected URL: ${discovered.selected_url}`);
 assert(discovered.candidate_count === 1, `Expected deduplicated candidate, got ${discovered.candidate_count}`);
 assert(discovered.selected_score >= 200, 'CSV candidate score unexpectedly low');
+
+const configured = configuredViasnaCsvExport(
+  'https://prisoners.spring96.org/ru/list',
+  'https://prisoners.spring96.org/ru/list?format=csv'
+);
+assert(configured.selected_url === 'https://prisoners.spring96.org/ru/list?format=csv', 'Configured direct CSV URL changed unexpectedly');
+assert(configured.discovery_mode === 'CONFIGURED_DIRECT_CSV', 'Configured discovery mode missing');
+let configuredHostBlocked = false;
+try { configuredViasnaCsvExport('https://prisoners.spring96.org/ru/list', 'https://evil.example/ru/list?format=csv'); }
+catch (error) { configuredHostBlocked = error.message === 'VIASNA_CONFIGURED_CSV_HOST_MISMATCH'; }
+assert(configuredHostBlocked, 'Cross-host configured CSV was accepted');
+let configuredPathBlocked = false;
+try { configuredViasnaCsvExport('https://prisoners.spring96.org/ru/list', 'https://prisoners.spring96.org/ru/export?format=csv'); }
+catch (error) { configuredPathBlocked = error.message === 'VIASNA_CONFIGURED_CSV_PATH_MISMATCH'; }
+assert(configuredPathBlocked, 'Cross-path configured CSV was accepted');
+let configuredSignalBlocked = false;
+try { configuredViasnaCsvExport('https://prisoners.spring96.org/ru/list', 'https://prisoners.spring96.org/ru/list?page=1'); }
+catch (error) { configuredSignalBlocked = error.message === 'VIASNA_CONFIGURED_CSV_SIGNAL_MISSING'; }
+assert(configuredSignalBlocked, 'Configured URL without CSV signal was accepted');
 
 let missingFailed = false;
 try {
@@ -67,4 +87,4 @@ try {
 }
 assert(htmlAsCsvFailed, 'HTML masquerading as CSV was accepted');
 
-console.log('VIASNA_EXPORT_DISCOVERY_TEST=PASS');
+console.log('VIASNA_EXPORT_DISCOVERY_TEST=PASS direct_config=PASS');
