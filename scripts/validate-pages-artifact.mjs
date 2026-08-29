@@ -14,6 +14,12 @@ const out = join(root, '_site');
 const dataDir = resolvePublicDataDir(root);
 const SITE = 'https://chudzinovich.pp.ua';
 const langs = ['ru', 'be', 'en', 'pl'];
+const authorityRoutes = [
+  '/human-rights-belarus/',
+  '/political-prisoners-belarus/',
+  '/political-repression-belarus/',
+  '/research-and-citation-guide/'
+];
 
 async function exists(path) {
   try { return (await stat(path)).isFile(); }
@@ -39,6 +45,10 @@ async function htmlFiles(dir) {
 }
 function hasNoIndex(html) { return /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html); }
 function absolute(lang, routePath) { const prefix=lang==='ru'?'':`/${lang}`; return `${SITE}${prefix}${routePath}`; }
+function metaValue(html, name) {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return html.match(new RegExp(`<meta\\s+name=["']${escaped}["']\\s+content=["']([^"']*)["']`, 'i'))?.[1] || '';
+}
 
 const manifest = await readJson(join(dataDir, 'manifest.json'));
 const telegramRegistry = await loadTelegramRegistry();
@@ -58,8 +68,10 @@ await requireFile(join(out, 'sitemap.xml'), 'sitemap');
 await requireFile(join(out, 'news-sitemap.xml'), 'news-sitemap');
 await requireFile(join(out, 'feed.xml'), 'rss');
 await requireFile(join(out, 'build-manifest.json'), 'build-manifest');
+await requireFile(join(out, 'site.webmanifest'), 'webmanifest');
+await requireFile(join(out, 'assets', 'brand', 'chudo-mark.svg'), 'brand-mark');
 
-const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/'];
+const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', ...authorityRoutes];
 for (const lang of langs) {
   await requireFile(outputPath(lang, '/'), `${lang}:home`);
   for (const routePath of requiredRoutes) await requireFile(outputPath(lang, routePath), `${lang}:${routePath}`);
@@ -84,8 +96,8 @@ if (videos.length > 0) {
 }
 
 const html = await htmlFiles(out);
-const minimumHtml = 20 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
-if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
+const minimumHtml = 20 + langs.length * (authorityRoutes.length + news.length + channels.length + mediaSources.length + videos.length);
+if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}:authority=${authorityRoutes.length * langs.length}`);
 
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
 for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`]) {
@@ -94,6 +106,28 @@ for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${
 const robots = await readFile(join(out, 'robots.txt'), 'utf8');
 if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_MAIN_SITEMAP_MISSING');
 if (!robots.includes(`Sitemap: ${SITE}/news-sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_NEWS_SITEMAP_MISSING');
+
+for (const lang of langs) {
+  const home = await readFile(outputPath(lang,'/'),'utf8');
+  if (!home.includes('CHUDO_TRUST_SIGNALS_V1')) throw new Error(`TRUST_SIGNALS_MISSING:${lang}:home`);
+  if (!home.includes('data-chudo-trust-schema')) throw new Error(`TRUST_SCHEMA_MISSING:${lang}:home`);
+  if (!home.includes('"@type":"NGO"') || !home.includes('"@type":"WebSite"')) throw new Error(`ORGANIZATION_SCHEMA_INVALID:${lang}:home`);
+  if (!home.includes('/assets/brand/chudo-mark.svg') || !home.includes('/site.webmanifest')) throw new Error(`SITE_IDENTITY_LINKS_MISSING:${lang}:home`);
+  if (!home.includes('authority-hub')) throw new Error(`AUTHORITY_HUB_MISSING:${lang}:home`);
+  const title = home.match(/<title>(.*?)<\/title>/i)?.[1] || '';
+  const description = metaValue(home,'description');
+  if (title.length < 35 || title.length > 90 || /CHUDO HUMAN RIGHTS CENTER\s*\|\s*CHUDO HUMAN RIGHTS CENTER/i.test(title)) throw new Error(`HOME_TITLE_QUALITY_FAIL:${lang}:${title.length}:${title}`);
+  if (description.length < 100 || description.length > 230) throw new Error(`HOME_DESCRIPTION_QUALITY_FAIL:${lang}:${description.length}`);
+
+  for (const routePath of authorityRoutes) {
+    const page = await readFile(outputPath(lang,routePath),'utf8');
+    if (hasNoIndex(page)) throw new Error(`AUTHORITY_PAGE_NOINDEX:${lang}:${routePath}`);
+    if (!page.includes('data-authority-page="true"')) throw new Error(`AUTHORITY_CONTENT_MARKER_MISSING:${lang}:${routePath}`);
+    if (!page.includes('"@type":"Article"') || !page.includes('"publisher":{"@id":"https://chudzinovich.pp.ua/#organization"}')) throw new Error(`AUTHORITY_ARTICLE_SCHEMA_INVALID:${lang}:${routePath}`);
+    if ((page.match(/<p[ >]/g) || []).length < 9) throw new Error(`AUTHORITY_PAGE_TOO_THIN:${lang}:${routePath}`);
+    if (!sitemap.includes(`<loc>${absolute(lang,routePath)}</loc>`)) throw new Error(`AUTHORITY_PAGE_NOT_IN_SITEMAP:${lang}:${routePath}`);
+  }
+}
 
 const sourceOnly = news.find(item => item.source_claim_only === true);
 if (sourceOnly) {
@@ -106,8 +140,6 @@ if (sourceOnly) {
   }
 }
 
-// Scaled source-detail and derivative archive pages stay accessible to users and links,
-// but must not compete with CHUDO's primary pages in Google.
 if (channels.length) {
   const handle=channels[0].handle.toLowerCase();
   for (const lang of langs) {
@@ -143,4 +175,4 @@ if (manifest.publication_state !== 'PUBLISHED') {
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} index_quality=PASS publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} authority=${authorityRoutes.length * langs.length} trust=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
