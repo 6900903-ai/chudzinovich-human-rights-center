@@ -63,7 +63,7 @@ assert.match(audit.stdout,/people=3 active=1 former=1 np=1 prisons=1/);
 assert.match(audit.stdout,/private_leaks=0 published=false/);
 const auditJson=JSON.parse(audit.stdout.trim().split('\n').at(-1));
 assert.equal(auditJson.state,'REAL_VIASNA_CANDIDATE_AUDIT_PASS_NOT_PUBLISHED');
-assert.equal(auditJson.next_gate,'EXPLICIT_SNAPSHOT_PROMOTION');
+assert.equal(auditJson.next_gate,'FULL_CANDIDATE_BUILD_AUDIT');
 assert.equal(auditJson.projected_profile_pages,12);
 assert.ok(auditJson.projected_sitemap_with_reserve<50000);
 assert.equal(auditJson.public_repo_mutated,false);
@@ -76,5 +76,5 @@ const budgetFail=spawnSync(process.execPath,[join(root,'scripts/audit-viasna-can
 assert.notEqual(budgetFail.status,0);
 assert.match((budgetFail.stderr||'')+(budgetFail.stdout||''),/VIASNA_CANDIDATE_CORE_URL_BUDGET_EXCEEDED/);
 
-console.log('VIASNA_SNAPSHOT_PREPARER_TEST=PASS people=3 prisons=1 field_review_private=PASS raw_csv_public=ZERO current_mutation=ZERO candidate_scale_audit=PASS');
+console.log('VIASNA_SNAPSHOT_PREPARER_TEST=PASS people=3 prisons=1 field_review_private=PASS raw_csv_public=ZERO current_mutation=ZERO candidate_scale_audit=PASS next_gate=FULL_CANDIDATE_BUILD_AUDIT');
 await import('./viasna-snapshot-promotion.mjs');
