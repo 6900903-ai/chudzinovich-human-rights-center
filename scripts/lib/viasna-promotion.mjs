@@ -5,6 +5,12 @@ import { normalizeForMatch, stableIdentityKey } from './normalization.mjs';
 const HIGH = new Set(['HIGH','BLOCK']);
 
 function publicDate(partial){return partial?.parse_state==='PARSED'&&partial.value?{value:partial.value,precision:partial.precision}:null;}
+function eventDate(partial,asOf){
+  const value=publicDate(partial);if(!value)return null;
+  const day=String(asOf).slice(0,10),month=day.slice(0,7),year=day.slice(0,4);
+  const future=value.precision==='day'?value.value>day:value.precision==='month'?value.value>month:value.precision==='year'?value.value>year:false;
+  return future?null:value;
+}
 function localized(value){const clean=String(value||'').trim();return {ru:clean,be:clean,en:clean,pl:clean};}
 function gender(value){const n=normalizeForMatch(value);if(['male','мужчина','мужской','мужчына'].includes(n))return 'MALE';if(['female','женщина','женский','жанчына'].includes(n))return 'FEMALE';return 'UNKNOWN';}
 function idNum(id){const m=String(id||'').match(/^p-(\d{7})$/);return m?Number(m[1]):0;}
@@ -50,7 +56,7 @@ export function promoteViasnaObservations(observations,{existingPeople=[],asOf=n
     const birth=publicDate(observation.birth_date);
     const type=observation.source_status_claim?.claim_type||'NO_DESIGNATION';
     const status=statusValue(type);
-    const detDate=publicDate(observation.detention_date);const verdictDate=publicDate(observation.verdict_date);const releaseDate=publicDate(observation.release_date);
+    const detDate=eventDate(observation.detention_date,asOf);const verdictDate=eventDate(observation.verdict_date,asOf);const releaseDate=eventDate(observation.release_date,asOf);
     const sourceUrl=obsUrl(observation);
     const person={person_id:personId,canonical_name:localized(observation.reported_name),aliases:[observation.reported_name],source_identity_keys:[identity],birth_date:birth,gender:gender(observation.gender_raw),region:null,photo:null,facts:{},cases:[],detentions:[],charges:[],judgments:[],sentences:[],prison_placements:[],release_events:[],status_events:[],health_claims:[],risk_assessments:[],sources:[sourceRecord(observation)],evidence:[],change_history:[],publication_state:'PUBLIC_SOURCE_ATTRIBUTED'};
     if(birth)person.facts.birth_date=fact(birth,observation);
@@ -65,5 +71,6 @@ export function promoteViasnaObservations(observations,{existingPeople=[],asOf=n
   }
   const current=people.filter(p=>p.status_events[0]?.status==='POLITICAL_PRISONER').length;
   const former=people.filter(p=>p.status_events[0]?.status==='FORMER_POLITICAL_PRISONER').length;
-  return {people,prisons:[...prisonsById.values()].sort((a,b)=>a.prison_id.localeCompare(b.prison_id)),counts:{people:people.length,political_prisoners_current:current,former_political_prisoners:former,repressed_total:people.length},quarantine:{rows:partition.blocked_rows,count:partition.quarantined.length,anomalies:partition.anomalies.filter(x=>HIGH.has(x.severity))},diagnostics:partition.anomalies.filter(x=>!HIGH.has(x.severity))};
+  const reviewFindings=partition.anomalies.filter(x=>x.severity==='REVIEW');
+  return {people,prisons:[...prisonsById.values()].sort((a,b)=>a.prison_id.localeCompare(b.prison_id)),counts:{people:people.length,political_prisoners_current:current,former_political_prisoners:former,repressed_total:people.length},quarantine:{rows:partition.blocked_rows,count:partition.quarantined.length,anomalies:partition.anomalies.filter(x=>HIGH.has(x.severity))},review:{count:reviewFindings.length,findings:reviewFindings},diagnostics:partition.anomalies.filter(x=>!HIGH.has(x.severity)&&x.severity!=='REVIEW')};
 }
