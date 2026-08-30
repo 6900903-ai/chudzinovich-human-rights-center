@@ -14,6 +14,7 @@ const out = join(root, '_site');
 const dataDir = resolvePublicDataDir(root);
 const SITE = 'https://chudzinovich.pp.ua';
 const langs = ['ru', 'be', 'en', 'pl'];
+const guideRoutes=['/guide/','/guide/political-prisoner/','/guide/detention/','/guide/trial-sentence/','/guide/detention-places/','/guide/release/','/guide/verification/'];
 
 async function exists(path) {
   try { return (await stat(path)).isFile(); }
@@ -59,10 +60,11 @@ await requireFile(join(out, 'news-sitemap.xml'), 'news-sitemap');
 await requireFile(join(out, 'feed.xml'), 'rss');
 await requireFile(join(out, 'build-manifest.json'), 'build-manifest');
 
-const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/'];
+const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/', ...guideRoutes];
 for (const lang of langs) {
   await requireFile(outputPath(lang, '/'), `${lang}:home`);
   for (const routePath of requiredRoutes) await requireFile(outputPath(lang, routePath), `${lang}:${routePath}`);
+  await requireFile(join(out,'assets','guide-index',`${lang}.json`), `${lang}:guide-search-index`);
 }
 
 if (news.length > 0) {
@@ -84,11 +86,11 @@ if (videos.length > 0) {
 }
 
 const html = await htmlFiles(out);
-const minimumHtml = 28 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
+const minimumHtml = 56 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
 if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
 
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
-for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`, `${SITE}/transparency/`, `${SITE}/editorial-policy/`]) {
+for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`, `${SITE}/transparency/`, `${SITE}/editorial-policy/`, ...guideRoutes.map(path=>`${SITE}${path}`)]) {
   if (!sitemap.includes(`<loc>${requiredUrl}</loc>`)) throw new Error(`PAGES_ARTIFACT_SITEMAP_ROUTE_MISSING:${requiredUrl}`);
 }
 const robots = await readFile(join(out, 'robots.txt'), 'utf8');
@@ -96,9 +98,9 @@ if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) throw new Error('PAGES_ART
 if (!robots.includes(`Sitemap: ${SITE}/news-sitemap.xml`)) throw new Error('PAGES_ARTIFACT_ROBOTS_NEWS_SITEMAP_MISSING');
 
 for (const lang of langs) {
-  for (const routePath of ['/transparency/','/editorial-policy/']) {
+  for (const routePath of ['/transparency/','/editorial-policy/',...guideRoutes]) {
     const page=await readFile(outputPath(lang,routePath),'utf8');
-    if(hasNoIndex(page))throw new Error(`TRUST_PAGE_NOT_INDEXABLE:${lang}:${routePath}`);
+    if(hasNoIndex(page))throw new Error(`PRIMARY_CONTENT_PAGE_NOT_INDEXABLE:${lang}:${routePath}`);
   }
 }
 
@@ -148,4 +150,4 @@ if (manifest.publication_state !== 'PUBLISHED') {
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} guide_pages=${guideRoutes.length*langs.length} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
