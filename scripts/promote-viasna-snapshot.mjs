@@ -73,6 +73,9 @@ if(expectedBuildAuditSha){assertHexSha('CHRC_EXPECTED_VIASNA_BUILD_AUDIT_RECEIPT
 const buildAudit=JSON.parse(buildAuditRaw.toString('utf8'));
 if(buildAudit.state!=='REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED')throw new Error(`VIASNA_PROMOTION_BUILD_AUDIT_STATE_INVALID:${buildAudit.state||'missing'}`);
 if(buildAudit.next_gate!=='EXPLICIT_SNAPSHOT_PROMOTION')throw new Error(`VIASNA_PROMOTION_BUILD_AUDIT_NEXT_GATE_INVALID:${buildAudit.next_gate||'missing'}`);
+if(buildAudit.candidate_publication_state!=='CANDIDATE_REVIEW')throw new Error(`VIASNA_PROMOTION_BUILD_AUDIT_CANDIDATE_STATE_INVALID:${buildAudit.candidate_publication_state||'missing'}`);
+if(buildAudit.rendered_publication_state!=='PUBLISHED')throw new Error(`VIASNA_PROMOTION_BUILD_AUDIT_RENDER_STATE_INVALID:${buildAudit.rendered_publication_state||'missing'}`);
+if(buildAudit.published_preview_ephemeral!==true||buildAudit.preview_removed!==true)throw new Error('VIASNA_PROMOTION_BUILD_AUDIT_PREVIEW_CLEANUP_INVALID');
 if(buildAudit.snapshot_id!==candidateManifest.snapshot_id)throw new Error(`VIASNA_PROMOTION_BUILD_AUDIT_SNAPSHOT_ID_MISMATCH:${buildAudit.snapshot_id}:${candidateManifest.snapshot_id}`);
 if(buildAudit.candidate_manifest_sha256!==candidateManifestSha256)throw new Error('VIASNA_PROMOTION_BUILD_AUDIT_MANIFEST_SHA_MISMATCH');
 if(buildAudit.candidate_audit_receipt_sha256!==auditSha256)throw new Error('VIASNA_PROMOTION_BUILD_AUDIT_CANDIDATE_AUDIT_SHA_MISMATCH');
