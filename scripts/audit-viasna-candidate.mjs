@@ -154,7 +154,7 @@ const result={
   search_index_bytes:searchIndexBytes,
   public_repo_mutated:false,
   production_published:false,
-  next_gate:'EXPLICIT_SNAPSHOT_PROMOTION'
+  next_gate:'FULL_CANDIDATE_BUILD_AUDIT'
 };
 
 const receiptInput=String(process.env.CHRC_VIASNA_AUDIT_RECEIPT_FILE||'').trim();
@@ -166,5 +166,5 @@ if(receiptInput){
   console.log(`VIASNA_CANDIDATE_AUDIT_RECEIPT=${receiptPath}`);
 }
 
-console.log(`REAL_VIASNA_CANDIDATE_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} active=${result.active} former=${result.former} np=${result.np} prisons=${result.prisons} core_urls=${result.projected_core_urls} sitemap_with_reserve=${result.projected_sitemap_with_reserve} private_leaks=0 published=false`);
+console.log(`REAL_VIASNA_CANDIDATE_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} active=${result.active} former=${result.former} np=${result.np} prisons=${result.prisons} core_urls=${result.projected_core_urls} sitemap_with_reserve=${result.projected_sitemap_with_reserve} private_leaks=0 published=false next_gate=${result.next_gate}`);
 console.log(JSON.stringify(result));

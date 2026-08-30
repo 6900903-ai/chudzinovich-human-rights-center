@@ -1,15 +1,20 @@
 import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { readJson } from './lib/fs.mjs';
+import { resolvePublicDataDir } from './lib/public-data.mjs';
 import { verifySnapshot } from './lib/snapshot.mjs';
 
-const baseUrl = new URL('../data/public/current/', import.meta.url);
-const basePath = fileURLToPath(baseUrl);
-const manifest = await readJson(new URL('manifest.json', baseUrl));
-const people = await readJson(new URL('people.json', baseUrl));
+const root=fileURLToPath(new URL('../',import.meta.url));
+const basePath=resolvePublicDataDir(root);
+const manifest=await readJson(join(basePath,'manifest.json'));
+const people=await readJson(join(basePath,'people.json'));
+const candidateAuditMode=process.env.CHRC_CANDIDATE_BUILD_MODE==='AUDIT_ONLY';
 
 if (!/^snap-\d{8}T\d{6}Z-[a-f0-9]{8}$/.test(manifest.snapshot_id)) {
   throw new Error('Invalid snapshot_id');
 }
+if(candidateAuditMode&&manifest.publication_state!=='PUBLISHED')throw new Error(`Candidate full-build preview requires PUBLISHED render state: ${manifest.publication_state||'missing'}`);
+if(!candidateAuditMode&&!['DEVELOPMENT_EMPTY','PUBLISHED'].includes(manifest.publication_state))throw new Error(`Invalid public snapshot state: ${manifest.publication_state||'missing'}`);
 if (!Array.isArray(people)) throw new Error('people.json must be an array');
 const ids = new Set();
 for (const person of people) {
@@ -31,4 +36,4 @@ for (const required of ['people.json', 'prisons.json', 'news.json', 'reports.jso
   if (!manifest.files.some(file => file.path === required)) throw new Error(`Snapshot manifest missing ${required}`);
 }
 
-console.log('DATA_VALIDATION=PASS');
+console.log(`DATA_VALIDATION=PASS state=${manifest.publication_state} candidate_audit_mode=${candidateAuditMode}`);

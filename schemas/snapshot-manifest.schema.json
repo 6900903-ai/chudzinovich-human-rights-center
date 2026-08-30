@@ -38,7 +38,8 @@
           "identity_resolution_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
           "candidate_snapshot_id": {"type": ["string", "null"], "pattern": "^snap-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$"},
           "candidate_manifest_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
-          "candidate_audit_receipt_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+          "candidate_audit_receipt_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "candidate_build_audit_receipt_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
         },
         "additionalProperties": false
       }
