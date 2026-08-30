@@ -1,11 +1,12 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
-import { join, relative } from 'node:path';
+import { basename, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readJson } from './lib/fs.mjs';
 import { resolvePublicDataDir } from './lib/public-data.mjs';
 import { loadTelegramRegistry } from './lib/telegram-registry.mjs';
 import { loadMediaRegistry } from './lib/media-registry.mjs';
 import { loadCombinedPublicNewsWithMedia } from './lib/media-feed.mjs';
+import { isSitemapIndex, sitemapLocs, DEFAULT_SITEMAP_SHARD_SIZE } from './lib/sitemap.mjs';
 import { newsRelativePath } from './lib/news.mjs';
 import { prisonRelativePath, profileRelativePath, publishedPeople } from './lib/catalog.mjs';
 import { validateYoutubeSnapshot } from './lib/youtube.mjs';
@@ -42,6 +43,42 @@ async function htmlFiles(dir) {
 }
 function hasNoIndex(html) { return /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(html); }
 function absolute(lang, routePath) { const prefix=lang==='ru'?'':`/${lang}`; return `${SITE}${prefix}${routePath}`; }
+
+async function loadValidatedSitemap() {
+  const mainPath=join(out,'sitemap.xml');
+  const main=await readFile(mainPath,'utf8');
+  if(!isSitemapIndex(main)){
+    if(!/<urlset\b/i.test(main))throw new Error('PAGES_ARTIFACT_SITEMAP_ROOT_INVALID');
+    const urls=sitemapLocs(main);
+    if(urls.length>50000)throw new Error(`PAGES_ARTIFACT_SITEMAP_URL_LIMIT_EXCEEDED:${urls.length}`);
+    if(new Set(urls).size!==urls.length)throw new Error('PAGES_ARTIFACT_SITEMAP_DUPLICATE_URL');
+    for(const url of urls)if(!url.startsWith(`${SITE}/`))throw new Error(`PAGES_ARTIFACT_SITEMAP_EXTERNAL_URL:${url}`);
+    return {combined:main,sharded:false,shardCount:1,urlCount:urls.length};
+  }
+
+  const shardUrls=sitemapLocs(main);
+  if(!shardUrls.length)throw new Error('PAGES_ARTIFACT_SITEMAP_INDEX_EMPTY');
+  if(shardUrls.length>1000)throw new Error(`PAGES_ARTIFACT_SITEMAP_INDEX_TOO_LARGE:${shardUrls.length}`);
+  if(new Set(shardUrls).size!==shardUrls.length)throw new Error('PAGES_ARTIFACT_SITEMAP_INDEX_DUPLICATE_SHARD');
+  const combined=[main];
+  const pageUrls=[];
+  for(const shardUrl of shardUrls){
+    if(!new RegExp(`^${SITE.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}/sitemap-\\d{3}\\.xml$`).test(shardUrl))throw new Error(`PAGES_ARTIFACT_SITEMAP_INDEX_EXTERNAL_OR_INVALID_SHARD:${shardUrl}`);
+    const fileName=basename(new URL(shardUrl).pathname);
+    const shardPath=join(out,fileName);
+    await requireFile(shardPath,`sitemap-shard:${fileName}`);
+    const xml=await readFile(shardPath,'utf8');
+    if(!/<urlset\b/i.test(xml)||isSitemapIndex(xml))throw new Error(`PAGES_ARTIFACT_SITEMAP_SHARD_INVALID:${fileName}`);
+    const urls=sitemapLocs(xml);
+    if(!urls.length)throw new Error(`PAGES_ARTIFACT_SITEMAP_SHARD_EMPTY:${fileName}`);
+    if(urls.length>DEFAULT_SITEMAP_SHARD_SIZE)throw new Error(`PAGES_ARTIFACT_SITEMAP_SHARD_URL_LIMIT_EXCEEDED:${fileName}:${urls.length}:${DEFAULT_SITEMAP_SHARD_SIZE}`);
+    for(const url of urls)if(!url.startsWith(`${SITE}/`))throw new Error(`PAGES_ARTIFACT_SITEMAP_EXTERNAL_URL:${fileName}:${url}`);
+    pageUrls.push(...urls);
+    combined.push(xml);
+  }
+  if(new Set(pageUrls).size!==pageUrls.length)throw new Error('PAGES_ARTIFACT_SITEMAP_DUPLICATE_URL_ACROSS_SHARDS');
+  return {combined:combined.join('\n'),sharded:true,shardCount:shardUrls.length,urlCount:pageUrls.length};
+}
 
 const manifest = await readJson(join(dataDir, 'manifest.json'));
 const people=publishedPeople(await readJson(join(dataDir,'people.json')),{allowFixtures:testMode});
@@ -116,7 +153,8 @@ const html = await htmlFiles(out);
 const minimumHtml = 60 + langs.length * (news.length + channels.length + mediaSources.length + videos.length + people.length + prisons.length);
 if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:people=${people.length}:prisons=${prisons.length}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
 
-const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
+const sitemapValidation=await loadValidatedSitemap();
+const sitemap=sitemapValidation.combined;
 for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`, `${SITE}/transparency/`, `${SITE}/editorial-policy/`, ...guideRoutes.map(path=>`${SITE}${path}`)]) {
   if (!sitemap.includes(`<loc>${requiredUrl}</loc>`)) throw new Error(`PAGES_ARTIFACT_SITEMAP_ROUTE_MISSING:${requiredUrl}`);
 }
@@ -216,4 +254,4 @@ if (manifest.publication_state !== 'PUBLISHED') {
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} people=${people.length} prisons=${prisons.length} profile_context=PASS detention_directory=PASS guide_pages=${guideRoutes.length*langs.length} database_hub=PASS news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} sitemap_urls=${sitemapValidation.urlCount} sitemap_sharded=${sitemapValidation.sharded} sitemap_shards=${sitemapValidation.shardCount} people=${people.length} prisons=${prisons.length} profile_context=PASS detention_directory=PASS guide_pages=${guideRoutes.length*langs.length} database_hub=PASS news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
