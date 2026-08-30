@@ -112,3 +112,5 @@ try{
   if(!siteExisted)await rm(site,{recursive:true,force:true});
   await rm(work,{recursive:true,force:true});
 }
+
+await import('./viasna-release-rehearsal.mjs');

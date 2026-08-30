@@ -1,0 +1,41 @@
+{
+  "profile_id": "viasna-real-export-2026-08-30",
+  "source_id": "src-viasna",
+  "source_page_url": "https://prisoners.spring96.org/ru/list",
+  "source_locale": "ru",
+  "source_sha256": "0c0b5eeb9108e850a3d021a41913726824d0ba1fe2a43a545af2fa084c22b661",
+  "source_bytes": 6045829,
+  "parsed_rows": 8696,
+  "source_status_counts": {
+    "active": 889,
+    "former": 3953,
+    "np": 3854
+  },
+  "review_required_findings": 11,
+  "identity_collision": {
+    "components": 22,
+    "rows": 54,
+    "baseline_policy": "QUARANTINE_UNRESOLVED_NO_AUTOMATIC_DECISIONS"
+  },
+  "candidate_without_identity_resolution": {
+    "people": 8642,
+    "prisons": 40,
+    "quarantined_rows": 54,
+    "active": 889,
+    "former": 3952,
+    "np": 3801
+  },
+  "candidate_audit_budgets": {
+    "sitemap_url_reserve": 5000,
+    "max_core_urls": 45000,
+    "max_search_index_bytes_per_lang": 16777216
+  },
+  "full_build_budgets": {
+    "max_site_bytes": 900000000,
+    "max_build_seconds": 480,
+    "max_total_audit_seconds": 600,
+    "max_single_file_bytes": 25000000
+  },
+  "publication_authorized": false,
+  "notes": "Aggregate technical profile only. Raw CSV, identity conflicts, reviewer notes and decisions remain private outside the public repository."
+}
