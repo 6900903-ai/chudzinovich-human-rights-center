@@ -38,8 +38,6 @@ jobs:
         run: npm run build
       - name: Audit exact final Pages artifact
         run: node scripts/validate-pages-artifact.mjs
-      - name: Record custom domain in artifact
-        run: printf '%s\n' 'chudzinovich.pp.ua' > _site/CNAME
       - name: Upload exact audited Pages artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
