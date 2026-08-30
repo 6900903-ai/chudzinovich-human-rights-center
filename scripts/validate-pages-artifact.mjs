@@ -60,7 +60,7 @@ await requireFile(join(out, 'news-sitemap.xml'), 'news-sitemap');
 await requireFile(join(out, 'feed.xml'), 'rss');
 await requireFile(join(out, 'build-manifest.json'), 'build-manifest');
 
-const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/', ...guideRoutes];
+const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/', '/database/', ...guideRoutes];
 for (const lang of langs) {
   await requireFile(outputPath(lang, '/'), `${lang}:home`);
   for (const routePath of requiredRoutes) await requireFile(outputPath(lang, routePath), `${lang}:${routePath}`);
@@ -86,7 +86,7 @@ if (videos.length > 0) {
 }
 
 const html = await htmlFiles(out);
-const minimumHtml = 56 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
+const minimumHtml = 60 + langs.length * (news.length + channels.length + mediaSources.length + videos.length);
 if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
 
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
@@ -101,6 +101,18 @@ for (const lang of langs) {
   for (const routePath of ['/transparency/','/editorial-policy/',...guideRoutes]) {
     const page=await readFile(outputPath(lang,routePath),'utf8');
     if(hasNoIndex(page))throw new Error(`PRIMARY_CONTENT_PAGE_NOT_INDEXABLE:${lang}:${routePath}`);
+  }
+}
+
+for(const lang of langs){
+  const database=await readFile(outputPath(lang,'/database/'),'utf8');
+  const databaseUrl=absolute(lang,'/database/');
+  if(manifest.publication_state==='PUBLISHED'){
+    if(hasNoIndex(database))throw new Error(`PUBLISHED_DATABASE_HUB_NOT_INDEXABLE:${lang}`);
+    if(!sitemap.includes(`<loc>${databaseUrl}</loc>`))throw new Error(`PUBLISHED_DATABASE_HUB_MISSING_FROM_SITEMAP:${lang}`);
+  }else{
+    if(!hasNoIndex(database))throw new Error(`EMPTY_DATABASE_HUB_INDEXABLE:${lang}`);
+    if(sitemap.includes(`<loc>${databaseUrl}</loc>`))throw new Error(`EMPTY_DATABASE_HUB_IN_SITEMAP:${lang}`);
   }
 }
 
@@ -143,11 +155,11 @@ for (const lang of langs) {
 
 if (manifest.publication_state !== 'PUBLISHED') {
   for (const lang of langs) {
-    for (const routePath of ['/prisoners/', '/former-prisoners/', '/repressed/', '/prisons/', '/case-index/', '/judges/', '/prosecutors/', '/criminal-code/']) {
+    for (const routePath of ['/database/', '/prisoners/', '/former-prisoners/', '/repressed/', '/prisons/', '/case-index/', '/judges/', '/prosecutors/', '/criminal-code/']) {
       const page = await readFile(outputPath(lang, routePath), 'utf8');
       if (!hasNoIndex(page)) throw new Error(`EMPTY_CANONICAL_DATABASE_PAGE_INDEXABLE:${lang}:${routePath}`);
     }
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} guide_pages=${guideRoutes.length*langs.length} news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} guide_pages=${guideRoutes.length*langs.length} database_hub=PASS news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
