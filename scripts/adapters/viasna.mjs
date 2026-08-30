@@ -59,6 +59,19 @@ function get(record, headerMap, key) {
   return sourceHeader ? normalizeWhitespace(record[sourceHeader] ?? '') : '';
 }
 
+function cleanSourceText(value) {
+  return String(value ?? '')
+    .replace(/\u00a0/g, ' ')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\s*\n\s*/g, '\n')
+    .trim();
+}
+
+function getRaw(record, headerMap, key) {
+  const sourceHeader = headerMap.get(key);
+  return sourceHeader ? cleanSourceText(record[sourceHeader] ?? '') : '';
+}
+
 export function validateViasnaUrl(input) {
   const url = new URL(input);
   if (url.protocol !== 'https:') throw new Error('HTTPS_ONLY');
@@ -173,7 +186,7 @@ export function classifyStatusClaim(text) {
 }
 
 function parsePrison(value) {
-  const raw = normalizeWhitespace(value);
+  const raw = cleanSourceText(value);
   const releaseClaim = /^(released|освобожден|освобожденa|освобождён|освобождена|вызвалены|вызвалена)$/iu.test(raw);
   const atLibertyClaim = /^(находится на свободе до начала отбывания наказания|at liberty before serving sentence);?$/iu.test(raw);
   if (!raw || /^(unknown|неизвестно|невядома)$/iu.test(raw)) return { raw, facility:null, address:null, release_claim:false, at_liberty_claim:false };
@@ -204,7 +217,7 @@ export function parseViasnaCsv(csvText, { locale='en', sourceUrl='https://prison
     const verdictDate = parsePartialDate(get(record, headerMap, 'verdict_date'));
     const releaseDate = parsePartialDate(get(record, headerMap, 'release_date'));
     const statusClaim = classifyStatusClaim(get(record, headerMap, 'status'));
-    const prison = parsePrison(get(record, headerMap, 'prison'));
+    const prison = parsePrison(getRaw(record, headerMap, 'prison'));
     const chargesRaw = get(record, headerMap, 'charges');
     observations.push({
       source_id:'src-viasna', source_url:sourceUrl, source_record_id:sourceRecordId || null, source_person_url:sourcePersonUrl,
