@@ -72,7 +72,7 @@ function safeSourcePersonUrl(raw) {
   if (!raw) return null;
   try {
     const url = validateViasnaUrl(raw);
-    if (!/^\/(?:ru|be|en|pl)?\/?person\//.test(url.pathname) && !url.pathname.includes('/person/')) return null;
+    if (!url.pathname.includes('/person/')) return null;
     return url.href;
   } catch {
     return null;
@@ -118,26 +118,20 @@ export function isPublicIp(ip) {
 export async function assertPublicDns(hostname) {
   const results = await lookup(hostname, { all: true, verbatim: true });
   if (!results.length) throw new Error('SOURCE_DNS_EMPTY');
-  for (const result of results) {
-    if (!isPublicIp(result.address)) throw new Error(`SOURCE_DNS_NON_PUBLIC:${result.address}`);
-  }
+  for (const result of results) if (!isPublicIp(result.address)) throw new Error(`SOURCE_DNS_NON_PUBLIC:${result.address}`);
   return results;
 }
 
 function assertExpectedContentType(response, expectedKind) {
   const raw = (response.headers.get('content-type') || '').toLowerCase();
   const type = raw.split(';', 1)[0].trim();
-  if (expectedKind === 'csv' && !ALLOWED_CONTENT_TYPES.includes(type)) {
-    throw new Error(`SOURCE_CONTENT_TYPE_UNEXPECTED:${type || 'missing'}`);
-  }
+  if (expectedKind === 'csv' && !ALLOWED_CONTENT_TYPES.includes(type)) throw new Error(`SOURCE_CONTENT_TYPE_UNEXPECTED:${type || 'missing'}`);
   return type;
 }
 
 function rejectErrorLikeBody(text) {
   const prefix = text.slice(0, 4096).toLocaleLowerCase('en');
-  if (/<html[\s>]/i.test(prefix) && /(login|sign in|forbidden|access denied|captcha|cloudflare|error)/i.test(prefix)) {
-    throw new Error('SOURCE_ERROR_OR_LOGIN_HTML');
-  }
+  if (/<html[\s>]/i.test(prefix) && /(login|sign in|forbidden|access denied|captcha|cloudflare|error)/i.test(prefix)) throw new Error('SOURCE_ERROR_OR_LOGIN_HTML');
 }
 
 export async function fetchViasnaText(input, { timeoutMs = 15000, expectedKind = 'csv' } = {}) {
@@ -181,10 +175,19 @@ export function classifyStatusClaim(text) {
 function parsePrison(value) {
   const raw = normalizeWhitespace(value);
   const releaseClaim = /^(released|освобожден|освобожденa|освобождён|освобождена|вызвалены|вызвалена)$/iu.test(raw);
-  if (!raw || /^(unknown|неизвестно|невядома)$/iu.test(raw)) return { raw, facility:null, address:null, release_claim:false };
-  if (releaseClaim) return { raw, facility:null, address:null, release_claim:true };
+  const atLibertyClaim = /^(находится на свободе до начала отбывания наказания|at liberty before serving sentence);?$/iu.test(raw);
+  if (!raw || /^(unknown|неизвестно|невядома)$/iu.test(raw)) return { raw, facility:null, address:null, release_claim:false, at_liberty_claim:false };
+  if (releaseClaim) return { raw, facility:null, address:null, release_claim:true, at_liberty_claim:false };
+  if (atLibertyClaim) return { raw, facility:null, address:null, release_claim:false, at_liberty_claim:true };
   const lines = raw.split('\n').map(line => line.trim()).filter(Boolean);
-  return { raw, facility:lines[0] || null, address:lines.slice(1).join(', ') || null, release_claim:false };
+  if (lines.length > 1) return { raw, facility:lines[0] || null, address:lines.slice(1).join(', ') || null, release_claim:false, at_liberty_claim:false };
+  const semi = raw.indexOf(';');
+  if (semi >= 0) {
+    const facility = raw.slice(0, semi).trim();
+    const address = raw.slice(semi + 1).trim().replace(/;$/, '').trim();
+    return { raw, facility:facility || null, address:address || null, release_claim:false, at_liberty_claim:false };
+  }
+  return { raw, facility:raw || null, address:null, release_claim:false, at_liberty_claim:false };
 }
 
 export function parseViasnaCsv(csvText, { locale='en', sourceUrl='https://prisoners.spring96.org/en/list', fetchedAt=new Date().toISOString(), observedAt=fetchedAt } = {}) {
