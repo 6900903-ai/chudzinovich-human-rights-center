@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFile, realpath, stat } from 'node:fs/promises';
+import { mkdir, readFile, realpath, stat, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { verifySnapshot } from './lib/snapshot.mjs';
@@ -133,6 +133,8 @@ for(const lang of LANGS){
 
 const result={
   state:'REAL_VIASNA_CANDIDATE_AUDIT_PASS_NOT_PUBLISHED',
+  audit_version:1,
+  audited_at:new Date().toISOString(),
   snapshot_id:manifest.snapshot_id,
   candidate_manifest_sha256:sha256(manifestRaw),
   source_sha256:sourceSnapshot.source_sha256||null,
@@ -152,7 +154,17 @@ const result={
   search_index_bytes:searchIndexBytes,
   public_repo_mutated:false,
   production_published:false,
-  next_gate:'PRIVATE_IDENTITY_RESOLUTION_THEN_EXPLICIT_SNAPSHOT_PROMOTION'
+  next_gate:'EXPLICIT_SNAPSHOT_PROMOTION'
 };
+
+const receiptInput=String(process.env.CHRC_VIASNA_AUDIT_RECEIPT_FILE||'').trim();
+if(receiptInput){
+  const receiptPath=resolve(receiptInput);
+  if(process.env.CHRC_TEST_MODE!=='1'&&inside(repo,receiptPath))throw new Error('VIASNA_AUDIT_RECEIPT_INSIDE_PUBLIC_REPO');
+  await mkdir(dirname(receiptPath),{recursive:true,mode:0o700});
+  await writeFile(receiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
+  console.log(`VIASNA_CANDIDATE_AUDIT_RECEIPT=${receiptPath}`);
+}
+
 console.log(`REAL_VIASNA_CANDIDATE_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} active=${result.active} former=${result.former} np=${result.np} prisons=${result.prisons} core_urls=${result.projected_core_urls} sitemap_with_reserve=${result.projected_sitemap_with_reserve} private_leaks=0 published=false`);
 console.log(JSON.stringify(result));
