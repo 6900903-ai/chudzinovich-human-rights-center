@@ -61,11 +61,16 @@ try{
   });
   assert.equal(run.status,0,run.stderr||run.stdout);
   assert.match(run.stdout,/REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS/);
-  assert.match(run.stdout,/restored=true published=false deploy=false/);
+  assert.match(run.stdout,/render_state=PUBLISHED/);
+  assert.match(run.stdout,/restored=true preview_removed=true published=false deploy=false/);
 
   const receipt=JSON.parse(await readFile(buildReceipt,'utf8'));
   assert.equal(receipt.state,'REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED');
   assert.equal(receipt.snapshot_id,prepared.snapshotId);
+  assert.equal(receipt.candidate_publication_state,'CANDIDATE_REVIEW');
+  assert.equal(receipt.rendered_publication_state,'PUBLISHED');
+  assert.equal(receipt.published_preview_ephemeral,true);
+  assert.equal(receipt.preview_removed,true);
   assert.equal(receipt.people,3);
   assert.equal(receipt.artifact_contract_pass,true);
   assert.equal(receipt.private_file_leaks,0);
@@ -101,7 +106,7 @@ try{
   await assert.rejects(readFile(badReceipt,'utf8'));
   assert.equal(await readFile(sentinel,'utf8'),'PUBLIC_SITE_MUST_BE_RESTORED\n','failed audit must also restore pre-existing _site');
 
-  console.log('VIASNA_CANDIDATE_BUILD_AUDIT_TEST=PASS full_build=PASS artifact_contract=PASS private_leak=ZERO workspace_restore=PASS public_mutation=ZERO deployment=ZERO');
+  console.log('VIASNA_CANDIDATE_BUILD_AUDIT_TEST=PASS published_preview=PASS full_build=PASS artifact_contract=PASS private_leak=ZERO workspace_restore=PASS preview_cleanup=PASS public_mutation=ZERO deployment=ZERO');
 }finally{
   await rm(sentinel,{force:true});
   if(!siteExisted)await rm(site,{recursive:true,force:true});
