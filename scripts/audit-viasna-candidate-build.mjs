@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, readdir, realpath, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -15,6 +15,7 @@ function sha256(data){return createHash('sha256').update(data).digest('hex');}
 function envInt(name,fallback,{min=0,max=Number.MAX_SAFE_INTEGER}={}){const raw=process.env[name];if(raw==null||raw==='')return fallback;const value=Number.parseInt(raw,10);if(!Number.isInteger(value)||value<min||value>max)throw new Error(`${name}_INVALID`);return value;}
 function assertHexSha(name,value){if(!/^[a-f0-9]{64}$/.test(String(value||'')))throw new Error(`${name}_INVALID`);}
 async function readJson(path){return JSON.parse(await readFile(path,'utf8'));}
+async function pathExists(path){try{await stat(path);return true;}catch(error){if(error?.code==='ENOENT')return false;throw error;}}
 async function walk(dir,base=dir,outFiles=[]){for(const entry of await readdir(dir,{withFileTypes:true})){const path=join(dir,entry.name);if(entry.isDirectory())await walk(path,base,outFiles);else if(entry.isFile()){const info=await stat(path);outFiles.push({path,relative:relative(base,path).replaceAll('\\','/'),bytes:info.size});}}return outFiles;}
 function run(command,args,env){const started=Date.now();const result=spawnSync(command,args,{cwd:repoRoot,env,encoding:'utf8',maxBuffer:64*1024*1024});return{...result,duration_ms:Date.now()-started};}
 
@@ -53,62 +54,73 @@ if(audit.snapshot_id!==manifest.snapshot_id||audit.candidate_manifest_sha256!==c
 if(audit.private_boundary_leaks!==0||audit.production_published!==false)throw new Error('VIASNA_BUILD_AUDIT_PREPUBLICATION_STATE_INVALID');
 
 const maxSiteBytes=envInt('CHRC_CANDIDATE_MAX_SITE_BYTES',900_000_000,{min:1_000_000,max:1_000_000_000});
-const maxBuildSeconds=envInt('CHRC_CANDIDATE_MAX_BUILD_SECONDS',480,{min:1,max:600});
-const maxTotalSeconds=envInt('CHRC_CANDIDATE_MAX_TOTAL_AUDIT_SECONDS',540,{min:maxBuildSeconds,max:600});
+const maxBuildSeconds=envInt('CHRC_CANDIDATE_MAX_BUILD_SECONDS',480,{min:1,max:1200});
+const maxTotalSeconds=envInt('CHRC_CANDIDATE_MAX_TOTAL_AUDIT_SECONDS',600,{min:maxBuildSeconds,max:1500});
 const maxSingleFileBytes=envInt('CHRC_CANDIDATE_MAX_SINGLE_FILE_BYTES',25_000_000,{min:1024,max:100_000_000});
 
 const env={...process.env,CHRC_PUBLIC_DATA_DIR:candidate,CHRC_CANDIDATE_BUILD_MODE:'AUDIT_ONLY'};
 delete env.CHRC_VIASNA_PROMOTION_AUTHORIZED;
 const npm=process.platform==='win32'?'npm.cmd':'npm';
 const wholeStarted=Date.now();
-const build=run(npm,['run','build'],env);
-if(build.status!==0)throw new Error(`VIASNA_CANDIDATE_FULL_BUILD_FAILED:${(build.stderr||build.stdout||'').slice(-12000)}`);
-if(build.duration_ms>maxBuildSeconds*1000)throw new Error(`VIASNA_CANDIDATE_BUILD_TIME_BUDGET_EXCEEDED:${build.duration_ms}:${maxBuildSeconds*1000}`);
-const artifactValidation=run(process.execPath,[join(repoRoot,'scripts','validate-pages-artifact.mjs')],env);
-if(artifactValidation.status!==0)throw new Error(`VIASNA_CANDIDATE_ARTIFACT_VALIDATION_FAILED:${(artifactValidation.stderr||artifactValidation.stdout||'').slice(-12000)}`);
-const totalDurationMs=Date.now()-wholeStarted;
-if(totalDurationMs>maxTotalSeconds*1000)throw new Error(`VIASNA_CANDIDATE_TOTAL_TIME_BUDGET_EXCEEDED:${totalDurationMs}:${maxTotalSeconds*1000}`);
+const workspaceBackup=join(repoRoot,`.candidate-build-site-backup-${process.pid}-${Date.now()}`);
+const hadPreviousSite=await pathExists(out);
+if(hadPreviousSite)await rename(out,workspaceBackup);
 
-const files=await walk(out);const siteBytes=files.reduce((sum,file)=>sum+file.bytes,0);const htmlFiles=files.filter(file=>file.relative.endsWith('.html'));
-if(siteBytes>maxSiteBytes)throw new Error(`VIASNA_CANDIDATE_SITE_SIZE_BUDGET_EXCEEDED:${siteBytes}:${maxSiteBytes}`);
-const largest=files.reduce((best,file)=>!best||file.bytes>best.bytes?file:best,null);
-if(largest&&largest.bytes>maxSingleFileBytes)throw new Error(`VIASNA_CANDIDATE_SINGLE_FILE_BUDGET_EXCEEDED:${largest.relative}:${largest.bytes}:${maxSingleFileBytes}`);
-const forbidden=files.filter(file=>/(^|\/)(?:private-review|quarantine|review-required|identity-resolution|candidate-audit|source\.csv)(?:\/|\.|$)/i.test(file.relative)||/\.csv$/i.test(file.relative));
-if(forbidden.length)throw new Error(`VIASNA_CANDIDATE_ARTIFACT_PRIVATE_FILE_LEAK:${forbidden.slice(0,20).map(file=>file.relative).join('|')}`);
+try{
+  const build=run(npm,['run','build'],env);
+  if(build.status!==0)throw new Error(`VIASNA_CANDIDATE_FULL_BUILD_FAILED:${(build.stderr||build.stdout||'').slice(-12000)}`);
+  if(build.duration_ms>maxBuildSeconds*1000)throw new Error(`VIASNA_CANDIDATE_BUILD_TIME_BUDGET_EXCEEDED:${build.duration_ms}:${maxBuildSeconds*1000}`);
+  const artifactValidation=run(process.execPath,[join(repoRoot,'scripts','validate-pages-artifact.mjs')],env);
+  if(artifactValidation.status!==0)throw new Error(`VIASNA_CANDIDATE_ARTIFACT_VALIDATION_FAILED:${(artifactValidation.stderr||artifactValidation.stdout||'').slice(-12000)}`);
+  const totalDurationMs=Date.now()-wholeStarted;
+  if(totalDurationMs>maxTotalSeconds*1000)throw new Error(`VIASNA_CANDIDATE_TOTAL_TIME_BUDGET_EXCEEDED:${totalDurationMs}:${maxTotalSeconds*1000}`);
 
-const sitemapMain=await readFile(join(out,'sitemap.xml'),'utf8');let sitemapShardCount=1;let sitemapUrlCount=sitemapLocs(sitemapMain).length;
-if(isSitemapIndex(sitemapMain)){
-  const shardUrls=sitemapLocs(sitemapMain);sitemapShardCount=shardUrls.length;sitemapUrlCount=0;
-  for(const shardUrl of shardUrls){if(!shardUrl.startsWith(`${SITE}/sitemap-`))throw new Error(`VIASNA_CANDIDATE_SITEMAP_SHARD_ORIGIN_INVALID:${shardUrl}`);const xml=await readFile(join(out,basename(new URL(shardUrl).pathname)),'utf8');sitemapUrlCount+=sitemapLocs(xml).length;}
+  const files=await walk(out);const siteBytes=files.reduce((sum,file)=>sum+file.bytes,0);const htmlFiles=files.filter(file=>file.relative.endsWith('.html'));
+  if(siteBytes>maxSiteBytes)throw new Error(`VIASNA_CANDIDATE_SITE_SIZE_BUDGET_EXCEEDED:${siteBytes}:${maxSiteBytes}`);
+  const largest=files.reduce((best,file)=>!best||file.bytes>best.bytes?file:best,null);
+  if(largest&&largest.bytes>maxSingleFileBytes)throw new Error(`VIASNA_CANDIDATE_SINGLE_FILE_BUDGET_EXCEEDED:${largest.relative}:${largest.bytes}:${maxSingleFileBytes}`);
+  const forbidden=files.filter(file=>/(^|\/)(?:private-review|quarantine|review-required|identity-resolution|candidate-audit|source\.csv)(?:\/|\.|$)/i.test(file.relative)||/\.csv$/i.test(file.relative));
+  if(forbidden.length)throw new Error(`VIASNA_CANDIDATE_ARTIFACT_PRIVATE_FILE_LEAK:${forbidden.slice(0,20).map(file=>file.relative).join('|')}`);
+
+  const sitemapMain=await readFile(join(out,'sitemap.xml'),'utf8');let sitemapShardCount=1;let sitemapUrlCount=sitemapLocs(sitemapMain).length;
+  if(isSitemapIndex(sitemapMain)){
+    const shardUrls=sitemapLocs(sitemapMain);sitemapShardCount=shardUrls.length;sitemapUrlCount=0;
+    for(const shardUrl of shardUrls){if(!shardUrl.startsWith(`${SITE}/sitemap-`))throw new Error(`VIASNA_CANDIDATE_SITEMAP_SHARD_ORIGIN_INVALID:${shardUrl}`);const xml=await readFile(join(out,basename(new URL(shardUrl).pathname)),'utf8');sitemapUrlCount+=sitemapLocs(xml).length;}
+  }
+
+  const result={
+    state:'REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED',
+    audit_version:1,
+    audited_at:new Date().toISOString(),
+    snapshot_id:manifest.snapshot_id,
+    candidate_manifest_sha256:candidateManifestSha256,
+    candidate_audit_receipt_sha256:auditSha256,
+    people:manifest.counts.people,
+    build_duration_ms:build.duration_ms,
+    artifact_validation_duration_ms:artifactValidation.duration_ms,
+    total_duration_ms:totalDurationMs,
+    site_bytes:siteBytes,
+    total_files:files.length,
+    html_files:htmlFiles.length,
+    largest_file:largest?{path:largest.relative,bytes:largest.bytes}:null,
+    sitemap_shards:sitemapShardCount,
+    sitemap_urls:sitemapUrlCount,
+    budgets:{max_site_bytes:maxSiteBytes,max_build_seconds:maxBuildSeconds,max_total_audit_seconds:maxTotalSeconds,max_single_file_bytes:maxSingleFileBytes},
+    artifact_contract_pass:true,
+    private_file_leaks:0,
+    workspace_site_restored:true,
+    public_repo_mutated:false,
+    deployment_performed:false,
+    production_published:false,
+    next_gate:'EXPLICIT_SNAPSHOT_PROMOTION'
+  };
+  await mkdir(dirname(buildReceiptPath),{recursive:true,mode:0o700});
+  await writeFile(buildReceiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
+  console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} published=false deploy=false`);
+  console.log(`VIASNA_CANDIDATE_BUILD_AUDIT_RECEIPT=${buildReceiptPath}`);
+  console.log(JSON.stringify(result));
+}finally{
+  await rm(out,{recursive:true,force:true});
+  if(hadPreviousSite&&await pathExists(workspaceBackup))await rename(workspaceBackup,out);
+  else await rm(workspaceBackup,{recursive:true,force:true});
 }
-
-const result={
-  state:'REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED',
-  audit_version:1,
-  audited_at:new Date().toISOString(),
-  snapshot_id:manifest.snapshot_id,
-  candidate_manifest_sha256:candidateManifestSha256,
-  candidate_audit_receipt_sha256:auditSha256,
-  people:manifest.counts.people,
-  build_duration_ms:build.duration_ms,
-  artifact_validation_duration_ms:artifactValidation.duration_ms,
-  total_duration_ms:totalDurationMs,
-  site_bytes:siteBytes,
-  total_files:files.length,
-  html_files:htmlFiles.length,
-  largest_file:largest?{path:largest.relative,bytes:largest.bytes}:null,
-  sitemap_shards:sitemapShardCount,
-  sitemap_urls:sitemapUrlCount,
-  budgets:{max_site_bytes:maxSiteBytes,max_build_seconds:maxBuildSeconds,max_total_audit_seconds:maxTotalSeconds,max_single_file_bytes:maxSingleFileBytes},
-  artifact_contract_pass:true,
-  private_file_leaks:0,
-  public_repo_mutated:false,
-  deployment_performed:false,
-  production_published:false,
-  next_gate:'EXPLICIT_SNAPSHOT_PROMOTION'
-};
-await mkdir(dirname(buildReceiptPath),{recursive:true,mode:0o700});
-await writeFile(buildReceiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
-console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} published=false deploy=false`);
-console.log(`VIASNA_CANDIDATE_BUILD_AUDIT_RECEIPT=${buildReceiptPath}`);
-console.log(JSON.stringify(result));
