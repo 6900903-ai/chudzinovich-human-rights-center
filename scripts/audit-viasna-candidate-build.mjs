@@ -48,7 +48,7 @@ const auditRaw=await readFile(auditReceipt);const auditSha256=sha256(auditRaw);c
 const expectedAuditSha=String(process.env.CHRC_EXPECTED_VIASNA_AUDIT_RECEIPT_SHA256||'').trim().toLowerCase();
 if(!testMode&&!expectedAuditSha)throw new Error('CHRC_EXPECTED_VIASNA_AUDIT_RECEIPT_SHA256_REQUIRED');
 if(expectedAuditSha){assertHexSha('CHRC_EXPECTED_VIASNA_AUDIT_RECEIPT_SHA256',expectedAuditSha);if(expectedAuditSha!==auditSha256)throw new Error(`VIASNA_BUILD_AUDIT_RECEIPT_SHA256_MISMATCH:${auditSha256}:${expectedAuditSha}`);}
-if(audit.state!=='REAL_VIASNA_CANDIDATE_AUDIT_PASS_NOT_PUBLISHED'||audit.next_gate!=='EXPLICIT_SNAPSHOT_PROMOTION')throw new Error('VIASNA_BUILD_AUDIT_CANDIDATE_AUDIT_STATE_INVALID');
+if(audit.state!=='REAL_VIASNA_CANDIDATE_AUDIT_PASS_NOT_PUBLISHED'||audit.next_gate!=='FULL_CANDIDATE_BUILD_AUDIT')throw new Error('VIASNA_BUILD_AUDIT_CANDIDATE_AUDIT_STATE_INVALID');
 if(audit.snapshot_id!==manifest.snapshot_id||audit.candidate_manifest_sha256!==candidateManifestSha256)throw new Error('VIASNA_BUILD_AUDIT_CANDIDATE_BINDING_MISMATCH');
 if(audit.private_boundary_leaks!==0||audit.production_published!==false)throw new Error('VIASNA_BUILD_AUDIT_PREPUBLICATION_STATE_INVALID');
 
@@ -124,6 +124,6 @@ if(!result)throw new Error('VIASNA_CANDIDATE_BUILD_AUDIT_RESULT_MISSING');
 result.workspace_site_restored=true;
 await mkdir(dirname(buildReceiptPath),{recursive:true,mode:0o700});
 await writeFile(buildReceiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
-console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} restored=true published=false deploy=false`);
+console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} restored=true published=false deploy=false next_gate=${result.next_gate}`);
 console.log(`VIASNA_CANDIDATE_BUILD_AUDIT_RECEIPT=${buildReceiptPath}`);
 console.log(JSON.stringify(result));
