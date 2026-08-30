@@ -7,6 +7,7 @@ import { profileRelativePath } from '../scripts/lib/catalog.mjs';
 const root=new URL('../',import.meta.url).pathname;
 const env={...process.env,CHRC_TEST_MODE:'1',CHRC_PUBLIC_DATA_DIR:'tests/fixtures/public-snapshot'};
 const people=JSON.parse(await readFile(join(root,'tests/fixtures/public-snapshot/people.json'),'utf8'));
+const manifest=JSON.parse(await readFile(join(root,'tests/fixtures/public-snapshot/manifest.json'),'utf8'));
 
 try{
   execFileSync(process.execPath,[join(root,'scripts/build.mjs')],{stdio:'inherit',env});
@@ -22,11 +23,11 @@ try{
   assert.ok(html.includes('data-copy-current'));
   assert.ok(html.includes('/assets/js/profile-tools.js'));
   assert.ok(html.includes('Совпадение места заключения или статьи УК не означает связи между людьми'));
-  assert.ok(html.includes('Snapshot: snap-20260828T000000Z-a1b2c3d4'));
+  assert.ok(html.includes(`Snapshot: ${manifest.snapshot_id}`));
   assert.equal((html.match(/CHUDO_PROFILE_CONTEXT_V1/g)||[]).length,1);
 
   const enPath=profileRelativePath(people[0],'en');
-  const en=await readFile(join(root,'_site/en',enPath.replace(/^\/en\//,'').replace(/\/$/,''),'index.html'),'utf8');
+  const en=await readFile(join(root,'_site',enPath.replace(/^\//,'').replace(/\/$/,''),'index.html'),'utf8');
   assert.ok(en.includes('People database'));
   assert.ok(en.includes('COPY LINK'));
 
