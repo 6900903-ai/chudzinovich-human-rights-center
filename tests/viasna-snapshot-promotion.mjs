@@ -62,7 +62,7 @@ try{
   assert.match(audit.stdout,/REAL_VIASNA_CANDIDATE_AUDIT=PASS/);
   const receipt=JSON.parse(await readFile(auditReceipt,'utf8'));
   assert.equal(receipt.state,'REAL_VIASNA_CANDIDATE_AUDIT_PASS_NOT_PUBLISHED');
-  assert.equal(receipt.next_gate,'EXPLICIT_SNAPSHOT_PROMOTION');
+  assert.equal(receipt.next_gate,'FULL_CANDIDATE_BUILD_AUDIT');
   assert.equal(receipt.production_published,false);
 
   const buildAudit=spawnSync(process.execPath,[join(root,'scripts/audit-viasna-candidate-build.mjs')],{
@@ -83,6 +83,7 @@ try{
   assert.match(buildAudit.stdout,/REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS/);
   const buildReceipt=JSON.parse(await readFile(buildAuditReceipt,'utf8'));
   assert.equal(buildReceipt.state,'REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED');
+  assert.equal(buildReceipt.next_gate,'EXPLICIT_SNAPSHOT_PROMOTION');
   assert.equal(buildReceipt.artifact_contract_pass,true);
   assert.equal(buildReceipt.workspace_site_restored,true);
   assert.equal(buildReceipt.production_published,false);
