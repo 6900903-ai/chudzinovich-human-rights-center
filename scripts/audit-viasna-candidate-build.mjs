@@ -14,7 +14,6 @@ function inside(parent,child){const rel=relative(parent,child);return rel===''||
 function sha256(data){return createHash('sha256').update(data).digest('hex');}
 function envInt(name,fallback,{min=0,max=Number.MAX_SAFE_INTEGER}={}){const raw=process.env[name];if(raw==null||raw==='')return fallback;const value=Number.parseInt(raw,10);if(!Number.isInteger(value)||value<min||value>max)throw new Error(`${name}_INVALID`);return value;}
 function assertHexSha(name,value){if(!/^[a-f0-9]{64}$/.test(String(value||'')))throw new Error(`${name}_INVALID`);}
-async function readJson(path){return JSON.parse(await readFile(path,'utf8'));}
 async function pathExists(path){try{await stat(path);return true;}catch(error){if(error?.code==='ENOENT')return false;throw error;}}
 async function walk(dir,base=dir,outFiles=[]){for(const entry of await readdir(dir,{withFileTypes:true})){const path=join(dir,entry.name);if(entry.isDirectory())await walk(path,base,outFiles);else if(entry.isFile()){const info=await stat(path);outFiles.push({path,relative:relative(base,path).replaceAll('\\','/'),bytes:info.size});}}return outFiles;}
 function run(command,args,env){const started=Date.now();const result=spawnSync(command,args,{cwd:repoRoot,env,encoding:'utf8',maxBuffer:64*1024*1024});return{...result,duration_ms:Date.now()-started};}
@@ -65,6 +64,7 @@ const wholeStarted=Date.now();
 const workspaceBackup=join(repoRoot,`.candidate-build-site-backup-${process.pid}-${Date.now()}`);
 const hadPreviousSite=await pathExists(out);
 if(hadPreviousSite)await rename(out,workspaceBackup);
+let result=null;
 
 try{
   const build=run(npm,['run','build'],env);
@@ -88,7 +88,7 @@ try{
     for(const shardUrl of shardUrls){if(!shardUrl.startsWith(`${SITE}/sitemap-`))throw new Error(`VIASNA_CANDIDATE_SITEMAP_SHARD_ORIGIN_INVALID:${shardUrl}`);const xml=await readFile(join(out,basename(new URL(shardUrl).pathname)),'utf8');sitemapUrlCount+=sitemapLocs(xml).length;}
   }
 
-  const result={
+  result={
     state:'REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED',
     audit_version:1,
     audited_at:new Date().toISOString(),
@@ -108,19 +108,22 @@ try{
     budgets:{max_site_bytes:maxSiteBytes,max_build_seconds:maxBuildSeconds,max_total_audit_seconds:maxTotalSeconds,max_single_file_bytes:maxSingleFileBytes},
     artifact_contract_pass:true,
     private_file_leaks:0,
-    workspace_site_restored:true,
+    workspace_site_restored:false,
     public_repo_mutated:false,
     deployment_performed:false,
     production_published:false,
     next_gate:'EXPLICIT_SNAPSHOT_PROMOTION'
   };
-  await mkdir(dirname(buildReceiptPath),{recursive:true,mode:0o700});
-  await writeFile(buildReceiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
-  console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} published=false deploy=false`);
-  console.log(`VIASNA_CANDIDATE_BUILD_AUDIT_RECEIPT=${buildReceiptPath}`);
-  console.log(JSON.stringify(result));
 }finally{
   await rm(out,{recursive:true,force:true});
   if(hadPreviousSite&&await pathExists(workspaceBackup))await rename(workspaceBackup,out);
   else await rm(workspaceBackup,{recursive:true,force:true});
 }
+
+if(!result)throw new Error('VIASNA_CANDIDATE_BUILD_AUDIT_RESULT_MISSING');
+result.workspace_site_restored=true;
+await mkdir(dirname(buildReceiptPath),{recursive:true,mode:0o700});
+await writeFile(buildReceiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
+console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} restored=true published=false deploy=false`);
+console.log(`VIASNA_CANDIDATE_BUILD_AUDIT_RECEIPT=${buildReceiptPath}`);
+console.log(JSON.stringify(result));
