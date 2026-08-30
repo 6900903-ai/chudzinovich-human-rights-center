@@ -1,7 +1,29 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-08-30T20:59:28.013Z",
+  "fetched_at": "2026-08-30T23:26:08.106Z",
   "materials": [
+    {
+      "material_id": "mfm-6be92ef193b3c6ff",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/8/31/696684/",
+      "title": "В Украине создали четыре варианта охотников на реактивные «Шахеды»",
+      "published_at": "2026-08-30T22:17:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2359c177c1ad8b55",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33843531.html",
+      "title": "Ужо сёньня: 85 гадоў таму пасьля пачатку нацысцкай акупацыі Мазыра больш за 20 гараджанаў зьдзейсьнілі акт самаспаленьня",
+      "published_at": "2026-08-30T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-3ab4edbc8380c3b1",
       "source_id": "src-charter97",
@@ -443,17 +465,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-5214ebc2aba25742",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/8/30/696661/",
-      "title": "Россиянка потеряла сознание в очереди за бензином",
-      "published_at": "2026-08-30T15:16:37.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-68f854ba74ed4a35",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -812,8 +823,8 @@
       "source_url": "https://www.svaboda.org/a/33842718.html",
       "title": "У Польшчы за паветраную кантрабанду цыгарэтаў затрымалі чатырох беларусаў",
       "published_at": "2026-08-28T17:55:57.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "incidents",
+      "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
       "metadata_only": true
     },
     {
@@ -911,17 +922,6 @@
       "source_url": "https://www.svaboda.org/a/33840716.html",
       "title": "Сьцяна з вады і гразі. Сотні людзей зьніклі бязь вестак пасьля раптоўнай паводкі на мяжы Нэпалу і Тыбэту, расьце колькасьць ахвяр. ФОТА",
       "published_at": "2026-08-26T19:25:15.000Z",
-      "feed_scope": "incidents",
-      "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f79e0c6eff4117f8",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33840597.html",
-      "title": "У пункце пропуску «Красны Камень» на мяжы Беларусі і Расеі ўпаў бесьпілётнік. Рух спынялі",
-      "published_at": "2026-08-26T14:49:22.000Z",
       "feed_scope": "incidents",
       "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
       "metadata_only": true
