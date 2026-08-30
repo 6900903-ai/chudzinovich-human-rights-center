@@ -4,6 +4,7 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { parseViasnaCsv, validateViasnaUrl } from './adapters/viasna.mjs';
+import { detectObservationAnomalies } from './lib/anomaly.mjs';
 import { prepareViasnaSnapshot } from './lib/viasna-snapshot-preparer.mjs';
 
 const repoRoot=resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -44,6 +45,7 @@ const minCoverage=envRatio('VIASNA_MIN_PARSER_COVERAGE',0.75);
 const maxEmptyNameRatio=envRatio('VIASNA_MAX_EMPTY_NAME_RATIO',0.01);
 const maxQuarantineRatio=envRatio('VIASNA_MAX_QUARANTINE_RATIO',0.20);
 const expectedStatusCounts={active:envOptionalInt('VIASNA_EXPECTED_ACTIVE'),former:envOptionalInt('VIASNA_EXPECTED_FORMER'),np:envOptionalInt('VIASNA_EXPECTED_NP')};
+const expectedReviewFindings=envOptionalInt('VIASNA_EXPECTED_REVIEW_FINDINGS');
 const asOf=process.env.CHRC_AS_OF||new Date().toISOString();
 
 const raw=await readFile(source);
@@ -67,6 +69,11 @@ for(const observation of parsed.observations){const code=observation.source_stat
 for(const code of ['active','former','np']){const expected=expectedStatusCounts[code];if(expected!==null&&sourceStatusCounts[code]!==expected)throw new Error(`VIASNA_SOURCE_STATUS_COUNT_MISMATCH:${code}:${sourceStatusCounts[code]}:${expected}`);}
 if(sourceStatusCounts.other>0&&Object.values(expectedStatusCounts).some(value=>value!==null))throw new Error(`VIASNA_SOURCE_STATUS_UNKNOWN_ROWS:${sourceStatusCounts.other}`);
 
+const anomalies=detectObservationAnomalies(parsed.observations,{asOf});
+const reviewFindings=anomalies.filter(item=>item.severity==='REVIEW');
+const reviewCodes=Object.fromEntries([...new Set(reviewFindings.map(item=>item.code))].sort().map(code=>[code,reviewFindings.filter(item=>item.code===code).length]));
+if(expectedReviewFindings!==null&&reviewFindings.length!==expectedReviewFindings)throw new Error(`VIASNA_REVIEW_FINDING_COUNT_MISMATCH:${reviewFindings.length}:${expectedReviewFindings}`);
+
 const publicManifestPath=join(repoRoot,'data','public','current','manifest.json');
 const publicManifestBefore=await readFile(publicManifestPath);
 const stage=spawnSync(process.execPath,[join(repoRoot,'scripts','stage-viasna-file.mjs')],{
@@ -80,6 +87,7 @@ if(!stageRunId)throw new Error('VIASNA_STAGE_RUN_ID_MISSING');
 const prepared=await prepareViasnaSnapshot({sourceFile:source,outputRoot:preparedRoot,currentPublicDir:join(repoRoot,'data','public','current'),sourcePageUrl,locale,asOf});
 const quarantineRatio=parsed.observations.length?prepared.quarantined/parsed.observations.length:1;
 if(quarantineRatio>maxQuarantineRatio)throw new Error(`VIASNA_IMPORT_QUARANTINE_RATIO_TOO_HIGH:${quarantineRatio}:${maxQuarantineRatio}`);
+if(prepared.reviewRequired!==reviewFindings.length)throw new Error(`VIASNA_REVIEW_FINDING_PIPELINE_MISMATCH:${prepared.reviewRequired}:${reviewFindings.length}`);
 
 const publicManifestAfter=await readFile(publicManifestPath);
 if(!publicManifestBefore.equals(publicManifestAfter))throw new Error('VIASNA_IMPORT_PUBLIC_MANIFEST_MUTATED');
@@ -89,12 +97,13 @@ const receiptId=`viasna-import-${asOf.replace(/[-:.]/g,'')}-${sourceSha256.slice
 const receipt={
   state:'PREPARED_FOR_PRIVATE_REVIEW_NOT_PUBLISHED',source_id:'src-viasna',source_page_url:sourcePageUrl,source_sha256:sourceSha256,source_bytes:raw.byteLength,source_locale:locale,imported_at:asOf,
   parsed_rows:parsed.observations.length,source_status_counts:sourceStatusCounts,parser_coverage:parsed.parser_coverage,diagnostics_count:parsed.diagnostics.length,empty_name_count:emptyNameCount,
+  review_required_findings:reviewFindings.length,review_required_codes:reviewCodes,
   stage_run_id:stageRunId,prepared_run_id:prepared.runId,candidate_snapshot_id:prepared.snapshotId,candidate_snapshot_manifest_sha256:candidateManifestSha256,
   people:prepared.people,prisons:prepared.prisons,quarantined_rows:prepared.quarantined,quarantine_ratio:quarantineRatio,
   public_repo_mutated:false,production_published:false,next_gate:'PRIVATE_EDITORIAL_REVIEW_AND_EXPLICIT_SNAPSHOT_PROMOTION'
 };
 await writeFile(join(receiptsRoot,`${receiptId}.json`),JSON.stringify(receipt,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
 
-console.log(`VIASNA_OFFICIAL_IMPORT=PASS state=${receipt.state} rows=${receipt.parsed_rows} active=${sourceStatusCounts.active} former=${sourceStatusCounts.former} np=${sourceStatusCounts.np} people=${receipt.people} prisons=${receipt.prisons} quarantined=${receipt.quarantined_rows} source_sha256=${sourceSha256}`);
+console.log(`VIASNA_OFFICIAL_IMPORT=PASS state=${receipt.state} rows=${receipt.parsed_rows} active=${sourceStatusCounts.active} former=${sourceStatusCounts.former} np=${sourceStatusCounts.np} people=${receipt.people} prisons=${receipt.prisons} quarantined=${receipt.quarantined_rows} review=${receipt.review_required_findings} source_sha256=${sourceSha256}`);
 console.log(`VIASNA_IMPORT_RECEIPT=${join(receiptsRoot,`${receiptId}.json`)}`);
 console.log(`VIASNA_CANDIDATE_SNAPSHOT=${prepared.snapshotDir}`);
