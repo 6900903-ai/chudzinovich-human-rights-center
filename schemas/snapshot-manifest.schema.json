@@ -27,7 +27,18 @@
         "properties": {
           "source_id": {"type": "string"},
           "observed_at": {"type": "string", "format": "date-time"},
-          "source_manifest_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+          "source_manifest_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "source_page_url": {"type": ["string", "null"], "format": "uri"},
+          "source_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "parsed_rows": {"type": ["integer", "null"], "minimum": 0},
+          "clean_rows": {"type": ["integer", "null"], "minimum": 0},
+          "quarantined_rows": {"type": ["integer", "null"], "minimum": 0},
+          "review_required_findings": {"type": ["integer", "null"], "minimum": 0},
+          "identity_resolution_applied": {"type": "boolean"},
+          "identity_resolution_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "candidate_snapshot_id": {"type": ["string", "null"], "pattern": "^snap-[0-9]{8}T[0-9]{6}Z-[a-f0-9]{8}$"},
+          "candidate_manifest_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "candidate_audit_receipt_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
         },
         "additionalProperties": false
       }
