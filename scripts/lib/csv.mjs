@@ -3,6 +3,11 @@ function firstLogicalRow(text) {
   let row = '';
   for (let i = 0; i < text.length; i++) {
     const ch = text[i];
+    if (quoted && ch === '\\' && text[i + 1] === '"') {
+      row += '\\"';
+      i++;
+      continue;
+    }
     if (ch === '"') {
       if (quoted && text[i + 1] === '"') {
         row += '""';
@@ -24,6 +29,10 @@ function countUnquoted(row, delimiter) {
   let count = 0;
   for (let i = 0; i < row.length; i++) {
     const ch = row[i];
+    if (quoted && ch === '\\' && row[i + 1] === '"') {
+      i++;
+      continue;
+    }
     if (ch === '"') {
       if (quoted && row[i + 1] === '"') {
         i++;
@@ -68,7 +77,10 @@ export function parseCsv(text, { delimiter = null, strictColumns = false } = {})
   for (let i = 0; i < input.length; i++) {
     const ch = input[i];
     if (quoted) {
-      if (ch === '"') {
+      if (ch === '\\' && input[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else if (ch === '"') {
         if (input[i + 1] === '"') {
           field += '"';
           i++;

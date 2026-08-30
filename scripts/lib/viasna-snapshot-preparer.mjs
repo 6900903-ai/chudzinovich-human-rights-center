@@ -61,26 +61,28 @@ export async function prepareViasnaSnapshot({
         source_observed_at:asOf,
         parsed_rows:parsed.observations.length,
         clean_rows:promoted.people.length,
-        quarantined_rows:promoted.quarantine.count
+        quarantined_rows:promoted.quarantine.count,
+        review_required_findings:promoted.review?.count||0
       }]
     });
     const integrity=await verifySnapshot(created.snapshotDir);
     if(!integrity.ok)throw new Error(`VIASNA_PREPARE_SNAPSHOT_INTEGRITY_FAIL:${JSON.stringify(integrity.failures)}`);
 
     await writeJson(join(privateReview,'quarantine.json'),promoted.quarantine);
+    await writeJson(join(privateReview,'review-required.json'),promoted.review||{count:0,findings:[]});
     await writeJson(join(privateReview,'diagnostics.json'),[...parsed.diagnostics,...promoted.diagnostics]);
     await writeJson(join(privateReview,'source-evidence.json'),{
       source_id:'src-viasna',source_page_url:sourcePageUrl,source_filename:basename(sourceFile),source_sha256:sourceDigest,
       source_bytes:raw.byteLength,prepared_at:asOf,parser_version:parsed.parser_version,parsed_rows:parsed.observations.length,
-      clean_rows:promoted.people.length,quarantined_rows:promoted.quarantine.count
+      clean_rows:promoted.people.length,quarantined_rows:promoted.quarantine.count,review_required_findings:promoted.review?.count||0
     });
     await writeJson(join(runDir,'PREPARED_CANDIDATE.json'),{
       state:'PREPARED_NOT_PUBLISHED',snapshot_id:created.snapshotId,snapshot_dir:created.snapshotDir,
-      people:promoted.people.length,prisons:promoted.prisons.length,quarantined_rows:promoted.quarantine.count,
+      people:promoted.people.length,prisons:promoted.prisons.length,quarantined_rows:promoted.quarantine.count,review_required_findings:promoted.review?.count||0,
       source_sha256:sourceDigest,publication_state:'CANDIDATE_REVIEW',public_repo_mutated:false
     });
     await rm(normalizedInput,{recursive:true,force:true});
-    return {runId,runDir,snapshotId:created.snapshotId,snapshotDir:created.snapshotDir,people:promoted.people.length,prisons:promoted.prisons.length,quarantined:promoted.quarantine.count,sourceSha256:sourceDigest};
+    return {runId,runDir,snapshotId:created.snapshotId,snapshotDir:created.snapshotDir,people:promoted.people.length,prisons:promoted.prisons.length,quarantined:promoted.quarantine.count,reviewRequired:promoted.review?.count||0,sourceSha256:sourceDigest};
   }catch(error){
     await rm(runDir,{recursive:true,force:true});
     throw error;
