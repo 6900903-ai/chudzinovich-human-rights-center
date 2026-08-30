@@ -97,7 +97,6 @@ if(people.length>0){
     if(!page.includes('CHUDO_PROFILE_CONTEXT_V1'))throw new Error(`PERSON_PROFILE_CONTEXT_MISSING:${lang}:${sample.person_id}`);
     if(!page.includes('/assets/js/profile-tools.js'))throw new Error(`PERSON_PROFILE_TOOLS_MISSING:${lang}:${sample.person_id}`);
     if(!page.includes(`Snapshot: ${manifest.snapshot_id}`))throw new Error(`PERSON_PROFILE_SNAPSHOT_CONTEXT_MISSING:${lang}:${sample.person_id}`);
-    if(sample.publication_state!=='PUBLIC_DISPUTED'&&manifest.publication_state==='PUBLISHED'&&!sitemap?.includes?.('')){};
   }
 }
 
@@ -115,7 +114,12 @@ if (!robots.includes(`Sitemap: ${SITE}/news-sitemap.xml`)) throw new Error('PAGE
 
 if(people.length>0&&manifest.publication_state==='PUBLISHED'){
   const sample=people.find(person=>person.publication_state!=='PUBLIC_DISPUTED');
-  if(sample){for(const lang of langs){const path=profileRelativePath(sample,lang);if(!sitemap.includes(`<loc>${absolute(lang,path)}</loc>`))throw new Error(`PERSON_PROFILE_MISSING_FROM_SITEMAP:${lang}:${sample.person_id}`);}}
+  if(sample){
+    for(const lang of langs){
+      const path=profileRelativePath(sample,lang);
+      if(!sitemap.includes(`<loc>${absolute(lang,path)}</loc>`))throw new Error(`PERSON_PROFILE_MISSING_FROM_SITEMAP:${lang}:${sample.person_id}`);
+    }
+  }
 }
 
 for (const lang of langs) {
