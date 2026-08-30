@@ -13,7 +13,7 @@ const candidateAuditMode=process.env.CHRC_CANDIDATE_BUILD_MODE==='AUDIT_ONLY';
 if (!/^snap-\d{8}T\d{6}Z-[a-f0-9]{8}$/.test(manifest.snapshot_id)) {
   throw new Error('Invalid snapshot_id');
 }
-if(candidateAuditMode&&manifest.publication_state!=='CANDIDATE_REVIEW')throw new Error(`Candidate build requires CANDIDATE_REVIEW snapshot: ${manifest.publication_state||'missing'}`);
+if(candidateAuditMode&&manifest.publication_state!=='PUBLISHED')throw new Error(`Candidate full-build preview requires PUBLISHED render state: ${manifest.publication_state||'missing'}`);
 if(!candidateAuditMode&&!['DEVELOPMENT_EMPTY','PUBLISHED'].includes(manifest.publication_state))throw new Error(`Invalid public snapshot state: ${manifest.publication_state||'missing'}`);
 if (!Array.isArray(people)) throw new Error('people.json must be an array');
 const ids = new Set();
