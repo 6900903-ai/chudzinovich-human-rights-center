@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, mkdtemp, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -57,16 +58,32 @@ const maxBuildSeconds=envInt('CHRC_CANDIDATE_MAX_BUILD_SECONDS',480,{min:1,max:1
 const maxTotalSeconds=envInt('CHRC_CANDIDATE_MAX_TOTAL_AUDIT_SECONDS',600,{min:maxBuildSeconds,max:1500});
 const maxSingleFileBytes=envInt('CHRC_CANDIDATE_MAX_SINGLE_FILE_BYTES',25_000_000,{min:1024,max:100_000_000});
 
-const env={...process.env,CHRC_PUBLIC_DATA_DIR:candidate,CHRC_CANDIDATE_BUILD_MODE:'AUDIT_ONLY'};
-delete env.CHRC_VIASNA_PROMOTION_AUTHORIZED;
-const npm=process.platform==='win32'?'npm.cmd':'npm';
 const wholeStarted=Date.now();
+const previewRoot=await mkdtemp(join(tmpdir(),'chudo-viasna-published-preview-'));
 const workspaceBackup=join(repoRoot,`.candidate-build-site-backup-${process.pid}-${Date.now()}`);
 const hadPreviousSite=await pathExists(out);
-if(hadPreviousSite)await rename(out,workspaceBackup);
+let workspaceActivated=false;
 let result=null;
 
 try{
+  for(const file of manifest.files||[]){
+    const source=join(candidate,file.path);const target=join(previewRoot,file.path);
+    await mkdir(dirname(target),{recursive:true,mode:0o700});
+    await copyFile(source,target);
+  }
+  const previewManifest={...manifest,publication_state:'PUBLISHED'};
+  await writeFile(join(previewRoot,'manifest.json'),JSON.stringify(previewManifest,null,2)+'\n',{encoding:'utf8',mode:0o600});
+  const previewIntegrity=await verifySnapshot(previewRoot);
+  if(!previewIntegrity.ok)throw new Error(`VIASNA_BUILD_AUDIT_PUBLISHED_PREVIEW_INTEGRITY_FAIL:${JSON.stringify(previewIntegrity.failures)}`);
+  if(previewIntegrity.manifest.publication_state!=='PUBLISHED')throw new Error('VIASNA_BUILD_AUDIT_PUBLISHED_PREVIEW_STATE_INVALID');
+
+  const env={...process.env,CHRC_PUBLIC_DATA_DIR:previewRoot,CHRC_CANDIDATE_BUILD_MODE:'AUDIT_ONLY'};
+  delete env.CHRC_VIASNA_PROMOTION_AUTHORIZED;
+  const npm=process.platform==='win32'?'npm.cmd':'npm';
+
+  if(hadPreviousSite)await rename(out,workspaceBackup);
+  workspaceActivated=true;
+
   const build=run(npm,['run','build'],env);
   if(build.status!==0)throw new Error(`VIASNA_CANDIDATE_FULL_BUILD_FAILED:${(build.stderr||build.stdout||'').slice(-12000)}`);
   if(build.duration_ms>maxBuildSeconds*1000)throw new Error(`VIASNA_CANDIDATE_BUILD_TIME_BUDGET_EXCEEDED:${build.duration_ms}:${maxBuildSeconds*1000}`);
@@ -95,6 +112,9 @@ try{
     snapshot_id:manifest.snapshot_id,
     candidate_manifest_sha256:candidateManifestSha256,
     candidate_audit_receipt_sha256:auditSha256,
+    candidate_publication_state:'CANDIDATE_REVIEW',
+    rendered_publication_state:'PUBLISHED',
+    published_preview_ephemeral:true,
     people:manifest.counts.people,
     build_duration_ms:build.duration_ms,
     artifact_validation_duration_ms:artifactValidation.duration_ms,
@@ -109,21 +129,26 @@ try{
     artifact_contract_pass:true,
     private_file_leaks:0,
     workspace_site_restored:false,
+    preview_removed:false,
     public_repo_mutated:false,
     deployment_performed:false,
     production_published:false,
     next_gate:'EXPLICIT_SNAPSHOT_PROMOTION'
   };
 }finally{
-  await rm(out,{recursive:true,force:true});
-  if(hadPreviousSite&&await pathExists(workspaceBackup))await rename(workspaceBackup,out);
-  else await rm(workspaceBackup,{recursive:true,force:true});
+  if(workspaceActivated){
+    await rm(out,{recursive:true,force:true});
+    if(hadPreviousSite&&await pathExists(workspaceBackup))await rename(workspaceBackup,out);
+    else await rm(workspaceBackup,{recursive:true,force:true});
+  }
+  await rm(previewRoot,{recursive:true,force:true});
 }
 
 if(!result)throw new Error('VIASNA_CANDIDATE_BUILD_AUDIT_RESULT_MISSING');
 result.workspace_site_restored=true;
+result.preview_removed=true;
 await mkdir(dirname(buildReceiptPath),{recursive:true,mode:0o700});
 await writeFile(buildReceiptPath,JSON.stringify(result,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
-console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} restored=true published=false deploy=false next_gate=${result.next_gate}`);
+console.log(`REAL_VIASNA_CANDIDATE_BUILD_AUDIT=PASS snapshot=${result.snapshot_id} people=${result.people} render_state=${result.rendered_publication_state} html=${result.html_files} files=${result.total_files} site_bytes=${result.site_bytes} build_ms=${result.build_duration_ms} total_ms=${result.total_duration_ms} sitemap_shards=${result.sitemap_shards} sitemap_urls=${result.sitemap_urls} restored=true preview_removed=true published=false deploy=false next_gate=${result.next_gate}`);
 console.log(`VIASNA_CANDIDATE_BUILD_AUDIT_RECEIPT=${buildReceiptPath}`);
 console.log(JSON.stringify(result));
