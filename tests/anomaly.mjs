@@ -87,3 +87,4 @@ if (!compare.some(item => item.code === 'ANOMALOUS_TOTAL_DROP')) throw new Error
 if (!compare.some(item => item.code === 'MISSING_PRISON_RATE_SPIKE')) throw new Error('Prison null spike not detected');
 
 console.log('ANOMALY_TEST=PASS field_review=PASS structural_fail_closed=PASS identity_collision_gate=PASS');
+await import('./viasna-identity-review-packet.mjs');
