@@ -28,6 +28,7 @@ try{
       VIASNA_EXPECTED_ACTIVE:'1',
       VIASNA_EXPECTED_FORMER:'1',
       VIASNA_EXPECTED_NP:'2',
+      VIASNA_EXPECTED_REVIEW_FINDINGS:'1',
       VIASNA_MAX_QUARANTINE_RATIO:'1',
       CHRC_AS_OF:'2026-08-30T08:00:00.000Z'
     }
@@ -36,23 +37,29 @@ try{
   assert.match(run.stdout,/VIASNA_OFFICIAL_IMPORT=PASS/);
   assert.match(run.stdout,/state=PREPARED_FOR_PRIVATE_REVIEW_NOT_PUBLISHED/);
   assert.match(run.stdout,/active=1 former=1 np=2/);
+  assert.match(run.stdout,/review=1/);
   const receipts=await readdir(join(importRoot,'receipts'));
   assert.equal(receipts.length,1);
   const receipt=JSON.parse(await readFile(join(importRoot,'receipts',receipts[0]),'utf8'));
   assert.equal(receipt.parsed_rows,4);
   assert.deepEqual(receipt.source_status_counts,{active:1,former:1,np:2,other:0});
+  assert.equal(receipt.review_required_findings,1);
+  assert.deepEqual(receipt.review_required_codes,{SOURCE_DEATH_CLAIM_WITHHELD:1});
   assert.equal(receipt.public_repo_mutated,false);
   assert.equal(receipt.production_published,false);
   assert.equal(receipt.next_gate,'PRIVATE_EDITORIAL_REVIEW_AND_EXPLICIT_SNAPSHOT_PROMOTION');
   assert.match(receipt.source_sha256,/^[a-f0-9]{64}$/);
   assert.match(receipt.candidate_snapshot_manifest_sha256,/^[a-f0-9]{64}$/);
   assert.ok(receipt.candidate_snapshot_id);
-  assert.equal(receipt.people,3,'death-claim row must remain quarantined from candidate');
-  assert.equal(receipt.quarantined_rows,1);
+  assert.equal(receipt.people,4,'review-only field must not remove the person');
+  assert.equal(receipt.quarantined_rows,0);
   const stageRuns=await readdir(join(importRoot,'staging','viasna-sync'));
   assert.equal(stageRuns.length,1);
   const preparedRuns=await readdir(join(importRoot,'prepared'));
   assert.equal(preparedRuns.length,1);
+  const review=JSON.parse(await readFile(join(importRoot,'prepared',preparedRuns[0],'private-review','review-required.json'),'utf8'));
+  assert.equal(review.count,1);
+  assert.equal(review.findings[0].code,'SOURCE_DEATH_CLAIM_WITHHELD');
   const after=await readFile(publicManifest);
   assert.ok(before.equals(after),'official import must not mutate public manifest');
 
@@ -70,6 +77,13 @@ try{
   assert.notEqual(wrongStatus.status,0);
   assert.match((wrongStatus.stderr||'')+(wrongStatus.stdout||''),/VIASNA_SOURCE_STATUS_COUNT_MISMATCH:active/);
 
+  const wrongReview=spawnSync(process.execPath,[join(root,'scripts/import-viasna-official-file.mjs')],{
+    encoding:'utf8',
+    env:{...process.env,CHRC_TEST_MODE:'1',VIASNA_SOURCE_FILE:input,CHRC_VIASNA_IMPORT_ROOT:join(work,'wrong-review'),VIASNA_EXPECTED_MIN_ROWS:'4',VIASNA_EXPECTED_MAX_ROWS:'10',VIASNA_EXPECTED_REVIEW_FINDINGS:'2'}
+  });
+  assert.notEqual(wrongReview.status,0);
+  assert.match((wrongReview.stderr||'')+(wrongReview.stdout||''),/VIASNA_REVIEW_FINDING_COUNT_MISMATCH/);
+
   const wrongSha=spawnSync(process.execPath,[join(root,'scripts/import-viasna-official-file.mjs')],{
     encoding:'utf8',
     env:{...process.env,CHRC_TEST_MODE:'1',VIASNA_SOURCE_FILE:input,CHRC_VIASNA_IMPORT_ROOT:join(work,'wrong-sha'),VIASNA_EXPECTED_MIN_ROWS:'4',VIASNA_EXPECTED_MAX_ROWS:'10',VIASNA_EXPECTED_SOURCE_SHA256:'0'.repeat(64)}
@@ -77,7 +91,7 @@ try{
   assert.notEqual(wrongSha.status,0);
   assert.match((wrongSha.stderr||'')+(wrongSha.stdout||''),/VIASNA_SOURCE_SHA256_MISMATCH/);
 
-  console.log('VIASNA_OFFICIAL_IMPORT_TEST=PASS machine_export=true status_attestation=true high_risk_quarantine=true public_mutation=false fail_closed=true');
+  console.log('VIASNA_OFFICIAL_IMPORT_TEST=PASS machine_export=true status_attestation=true field_review=true public_mutation=false fail_closed=true');
 }finally{
   await rm(work,{recursive:true,force:true});
 }
