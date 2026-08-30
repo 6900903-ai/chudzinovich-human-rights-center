@@ -7,7 +7,7 @@ import { loadTelegramRegistry } from './lib/telegram-registry.mjs';
 import { loadMediaRegistry } from './lib/media-registry.mjs';
 import { loadCombinedPublicNewsWithMedia } from './lib/media-feed.mjs';
 import { newsRelativePath } from './lib/news.mjs';
-import { profileRelativePath, publishedPeople } from './lib/catalog.mjs';
+import { prisonRelativePath, profileRelativePath, publishedPeople } from './lib/catalog.mjs';
 import { validateYoutubeSnapshot } from './lib/youtube.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -45,6 +45,7 @@ function absolute(lang, routePath) { const prefix=lang==='ru'?'':`/${lang}`; ret
 
 const manifest = await readJson(join(dataDir, 'manifest.json'));
 const people=publishedPeople(await readJson(join(dataDir,'people.json')),{allowFixtures:testMode});
+const prisons=(await readJson(join(dataDir,'prisons.json'))).filter(prison=>['PUBLIC_CONFIRMED','PUBLIC_SOURCE_ATTRIBUTED','PUBLIC_DISPUTED'].includes(prison.publication_state));
 const telegramRegistry = await loadTelegramRegistry();
 const mediaRegistry = await loadMediaRegistry();
 const news = await loadCombinedPublicNewsWithMedia(root, dataDir, telegramRegistry, mediaRegistry);
@@ -63,8 +64,9 @@ await requireFile(join(out, 'news-sitemap.xml'), 'news-sitemap');
 await requireFile(join(out, 'feed.xml'), 'rss');
 await requireFile(join(out, 'build-manifest.json'), 'build-manifest');
 await requireFile(join(out,'assets','js','profile-tools.js'),'profile-tools-js');
+await requireFile(join(out,'assets','js','prison-directory.js'),'prison-directory-js');
 
-const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/', '/database/', ...guideRoutes];
+const requiredRoutes = ['/news/', '/channels/', '/media/', '/videos/', '/sources/', '/search/', '/help/', '/transparency/', '/editorial-policy/', '/database/', '/prisons/', ...guideRoutes];
 for (const lang of langs) {
   await requireFile(outputPath(lang, '/'), `${lang}:home`);
   for (const routePath of requiredRoutes) await requireFile(outputPath(lang, routePath), `${lang}:${routePath}`);
@@ -99,10 +101,20 @@ if(people.length>0){
     if(!page.includes(`Snapshot: ${manifest.snapshot_id}`))throw new Error(`PERSON_PROFILE_SNAPSHOT_CONTEXT_MISSING:${lang}:${sample.person_id}`);
   }
 }
+if(prisons.length>0){
+  const sample=prisons.find(prison=>prison.publication_state!=='PUBLIC_DISPUTED')||prisons[0];
+  for(const lang of langs){
+    const path=prisonRelativePath(sample,lang);
+    await requireFile(outputPath(lang,path),`${lang}:prison-detail-sample`);
+    const page=await readFile(outputPath(lang,path),'utf8');
+    if(!page.includes('CHUDO_DETENTION_DIRECTORY_V1'))throw new Error(`DETENTION_DETAIL_CONTEXT_MISSING:${lang}:${sample.prison_id}`);
+    if(!page.includes(`Snapshot: ${manifest.snapshot_id}`))throw new Error(`DETENTION_DETAIL_SNAPSHOT_CONTEXT_MISSING:${lang}:${sample.prison_id}`);
+  }
+}
 
 const html = await htmlFiles(out);
-const minimumHtml = 60 + langs.length * (news.length + channels.length + mediaSources.length + videos.length + people.length);
-if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:people=${people.length}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
+const minimumHtml = 60 + langs.length * (news.length + channels.length + mediaSources.length + videos.length + people.length + prisons.length);
+if (html.length < minimumHtml) throw new Error(`PAGES_ARTIFACT_TRUNCATED:html=${html.length}:minimum=${minimumHtml}:people=${people.length}:prisons=${prisons.length}:news=${news.length}:channels=${channels.length}:media=${mediaSources.length}:videos=${videos.length}`);
 
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8');
 for (const requiredUrl of [`${SITE}/`, `${SITE}/news/`, `${SITE}/channels/`, `${SITE}/media/`, `${SITE}/videos/`, `${SITE}/sources/`, `${SITE}/transparency/`, `${SITE}/editorial-policy/`, ...guideRoutes.map(path=>`${SITE}${path}`)]) {
@@ -121,6 +133,15 @@ if(people.length>0&&manifest.publication_state==='PUBLISHED'){
     }
   }
 }
+if(prisons.length>0&&manifest.publication_state==='PUBLISHED'){
+  const sample=prisons.find(prison=>prison.publication_state!=='PUBLIC_DISPUTED');
+  if(sample){
+    for(const lang of langs){
+      const path=prisonRelativePath(sample,lang);
+      if(!sitemap.includes(`<loc>${absolute(lang,path)}</loc>`))throw new Error(`DETENTION_DETAIL_MISSING_FROM_SITEMAP:${lang}:${sample.prison_id}`);
+    }
+  }
+}
 
 for (const lang of langs) {
   for (const routePath of ['/transparency/','/editorial-policy/',...guideRoutes]) {
@@ -132,12 +153,20 @@ for (const lang of langs) {
 for(const lang of langs){
   const database=await readFile(outputPath(lang,'/database/'),'utf8');
   const databaseUrl=absolute(lang,'/database/');
+  const prisonIndex=await readFile(outputPath(lang,'/prisons/'),'utf8');
+  const prisonIndexUrl=absolute(lang,'/prisons/');
   if(manifest.publication_state==='PUBLISHED'){
     if(hasNoIndex(database))throw new Error(`PUBLISHED_DATABASE_HUB_NOT_INDEXABLE:${lang}`);
     if(!sitemap.includes(`<loc>${databaseUrl}</loc>`))throw new Error(`PUBLISHED_DATABASE_HUB_MISSING_FROM_SITEMAP:${lang}`);
+    if(hasNoIndex(prisonIndex))throw new Error(`PUBLISHED_DETENTION_DIRECTORY_NOT_INDEXABLE:${lang}`);
+    if(!prisonIndex.includes('data-detention-directory'))throw new Error(`DETENTION_DIRECTORY_MARKER_MISSING:${lang}`);
+    if(prisons.length&&!prisonIndex.includes('/assets/js/prison-directory.js'))throw new Error(`DETENTION_DIRECTORY_JS_MISSING:${lang}`);
+    if(!sitemap.includes(`<loc>${prisonIndexUrl}</loc>`))throw new Error(`PUBLISHED_DETENTION_DIRECTORY_MISSING_FROM_SITEMAP:${lang}`);
   }else{
     if(!hasNoIndex(database))throw new Error(`EMPTY_DATABASE_HUB_INDEXABLE:${lang}`);
     if(sitemap.includes(`<loc>${databaseUrl}</loc>`))throw new Error(`EMPTY_DATABASE_HUB_IN_SITEMAP:${lang}`);
+    if(!hasNoIndex(prisonIndex))throw new Error(`EMPTY_DETENTION_DIRECTORY_INDEXABLE:${lang}`);
+    if(sitemap.includes(`<loc>${prisonIndexUrl}</loc>`))throw new Error(`EMPTY_DETENTION_DIRECTORY_IN_SITEMAP:${lang}`);
   }
 }
 
@@ -187,4 +216,4 @@ if (manifest.publication_state !== 'PUBLISHED') {
   }
 }
 
-console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} people=${people.length} profile_context=PASS guide_pages=${guideRoutes.length*langs.length} database_hub=PASS news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
+console.log(`PAGES_ARTIFACT_CONTRACT=PASS html=${html.length} minimum=${minimumHtml} people=${people.length} prisons=${prisons.length} profile_context=PASS detention_directory=PASS guide_pages=${guideRoutes.length*langs.length} database_hub=PASS news=${news.length} channels=${channels.length} media=${mediaSources.length} videos=${videos.length} trust=PASS guide=PASS index_quality=PASS publication_state=${manifest.publication_state}`);
