@@ -14,11 +14,18 @@ function assertInt(name,value){if(!Number.isInteger(value)||value<0)throw new Er
 function assertSha(name,value){if(!/^[a-f0-9]{64}$/.test(String(value||'')))throw new Error(`${name}_INVALID`);return String(value);}
 function runScript(script,env,label){const result=spawnSync(process.execPath,[join(repoRoot,'scripts',script)],{cwd:repoRoot,env,encoding:'utf8',maxBuffer:64*1024*1024});if(result.status!==0)throw new Error(`${label}_FAILED:${(result.stderr||result.stdout||'').slice(-16000)}`);return result.stdout;}
 function capture(text,pattern,label){const value=text.match(pattern)?.[1]?.trim();if(!value)throw new Error(`${label}_MISSING`);return value;}
+function arg(name){const index=process.argv.indexOf(name);if(index<0)return null;const value=process.argv[index+1];if(!value||value.startsWith('--'))throw new Error(`VIASNA_REHEARSAL_ARGUMENT_VALUE_MISSING:${name}`);return value;}
 async function readJson(path){return JSON.parse(await readFile(path,'utf8'));}
 
+if(process.argv.includes('--help')){
+  console.log('Usage: node scripts/rehearse-viasna-release.mjs --source <external.csv> --output <external-private-dir> [--profile <profile.json>] [--as-of <ISO-8601>]');
+  console.log('This command audits and fully builds a private PUBLISHED preview. It never promotes or deploys the real database.');
+  process.exit(0);
+}
+
 const testMode=process.env.CHRC_TEST_MODE==='1';
-const sourceInput=process.env.VIASNA_SOURCE_FILE;
-const rehearsalRootInput=process.env.CHRC_VIASNA_REHEARSAL_DIR;
+const sourceInput=arg('--source')||process.env.VIASNA_SOURCE_FILE;
+const rehearsalRootInput=arg('--output')||process.env.CHRC_VIASNA_REHEARSAL_DIR;
 if(!sourceInput)throw new Error('VIASNA_SOURCE_FILE_NOT_CONFIGURED');
 if(!rehearsalRootInput)throw new Error('CHRC_VIASNA_REHEARSAL_DIR_NOT_CONFIGURED');
 if(process.env.CHRC_VIASNA_IDENTITY_RESOLUTION_FILE)throw new Error('VIASNA_BASELINE_REHEARSAL_REQUIRES_NO_IDENTITY_RESOLUTION');
@@ -31,7 +38,7 @@ if(!testMode&&inside(repo,source))throw new Error('REAL_VIASNA_SOURCE_FILE_INSID
 if(!testMode&&inside(repo,rehearsalRoot))throw new Error('VIASNA_REHEARSAL_OUTPUT_INSIDE_PUBLIC_REPO');
 await mkdir(rehearsalRoot,{recursive:true,mode:0o700});
 
-const profilePath=resolve(process.env.CHRC_VIASNA_RELEASE_PROFILE||defaultProfile);
+const profilePath=resolve(arg('--profile')||process.env.CHRC_VIASNA_RELEASE_PROFILE||defaultProfile);
 const profile=await readJson(profilePath);
 if(profile.source_id!=='src-viasna')throw new Error('VIASNA_REHEARSAL_PROFILE_SOURCE_INVALID');
 const expectedSourceSha=assertSha('VIASNA_REHEARSAL_PROFILE_SOURCE_SHA256',profile.source_sha256);
@@ -47,11 +54,13 @@ if(profile.publication_authorized!==false)throw new Error('VIASNA_REHEARSAL_PROF
 const sourceRaw=await readFile(source);const actualSourceSha=sha256(sourceRaw);
 if(actualSourceSha!==expectedSourceSha)throw new Error(`VIASNA_REHEARSAL_SOURCE_SHA256_MISMATCH:${actualSourceSha}:${expectedSourceSha}`);
 if(sourceRaw.byteLength!==profile.source_bytes)throw new Error(`VIASNA_REHEARSAL_SOURCE_BYTES_MISMATCH:${sourceRaw.byteLength}:${profile.source_bytes}`);
-const asOf=process.env.CHRC_AS_OF||new Date().toISOString();
-const runId=`viasna-release-rehearsal-${asOf.replace(/[-:.]/g,'')}-${actualSourceSha.slice(0,12)}`;
+const asOf=arg('--as-of')||process.env.CHRC_AS_OF||new Date().toISOString();
+const parsedAsOf=new Date(asOf);if(Number.isNaN(parsedAsOf.getTime()))throw new Error('VIASNA_REHEARSAL_AS_OF_INVALID');
+const normalizedAsOf=parsedAsOf.toISOString();
+const runId=`viasna-release-rehearsal-${normalizedAsOf.replace(/[-:.]/g,'')}-${actualSourceSha.slice(0,12)}`;
 const runDir=join(rehearsalRoot,runId);await mkdir(runDir,{recursive:false,mode:0o700});
 
-const commonEnv={...process.env,VIASNA_SOURCE_FILE:source,VIASNA_SOURCE_PAGE_URL:profile.source_page_url||'https://prisoners.spring96.org/ru/list',VIASNA_SOURCE_LOCALE:profile.source_locale||'ru',VIASNA_EXPECTED_SOURCE_SHA256:actualSourceSha,CHRC_AS_OF:asOf};
+const commonEnv={...process.env,VIASNA_SOURCE_FILE:source,VIASNA_SOURCE_PAGE_URL:profile.source_page_url||'https://prisoners.spring96.org/ru/list',VIASNA_SOURCE_LOCALE:profile.source_locale||'ru',VIASNA_EXPECTED_SOURCE_SHA256:actualSourceSha,CHRC_AS_OF:normalizedAsOf};
 delete commonEnv.CHRC_VIASNA_PROMOTION_AUTHORIZED;
 delete commonEnv.CHRC_VIASNA_IDENTITY_RESOLUTION_FILE;
 const publicBefore=sha256(await readFile(publicManifestPath));
