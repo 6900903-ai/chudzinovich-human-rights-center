@@ -4,11 +4,30 @@ Status: `IMPLEMENTED_ON_REVIEW_BRANCH`
 
 Wave 43 adds the missing pre-publication rehearsal for a real Viasna candidate. It performs the same full static build and final Pages artifact validation used by the site, but reads the immutable candidate from an external private directory and never promotes or deploys it.
 
+## Gate chain
+
+The release chain is now explicit and fail-closed:
+
+```text
+CANDIDATE_REVIEW
+→ REAL_VIASNA_CANDIDATE_AUDIT_PASS_NOT_PUBLISHED
+→ FULL_CANDIDATE_BUILD_AUDIT
+→ REAL_VIASNA_CANDIDATE_BUILD_AUDIT_PASS_NOT_PUBLISHED
+→ EXPLICIT_SNAPSHOT_PROMOTION
+→ PUBLISHED
+```
+
+The ordinary candidate audit no longer hands directly to publication. Its receipt must have:
+
+```text
+next_gate=FULL_CANDIDATE_BUILD_AUDIT
+```
+
 ## Required private inputs
 
 ```text
 CHRC_VIASNA_CANDIDATE_DIR=<external candidate snapshot>
-CHRC_VIASNA_AUDIT_RECEIPT_FILE=<external Wave 39/42 candidate audit receipt>
+CHRC_VIASNA_AUDIT_RECEIPT_FILE=<external candidate audit receipt>
 CHRC_VIASNA_BUILD_AUDIT_RECEIPT_FILE=<external new receipt path>
 ```
 
@@ -24,12 +43,13 @@ CHRC_EXPECTED_VIASNA_AUDIT_RECEIPT_SHA256=<64 hex>
 ## What the audit runs
 
 1. verifies immutable candidate integrity and requires `CANDIDATE_REVIEW`;
-2. verifies the existing candidate audit receipt and its binding to the same snapshot;
+2. verifies the existing candidate audit receipt, requires `next_gate=FULL_CANDIDATE_BUILD_AUDIT`, and binds it to the same snapshot;
 3. executes the complete `npm run build` using the external candidate as the data source;
 4. executes `scripts/validate-pages-artifact.mjs` against that exact build;
 5. measures build duration, total audit duration, artifact bytes, file count, HTML count, largest file, sitemap URL count and sitemap shard count;
 6. rejects any CSV/private-review/quarantine/identity-resolution material found in `_site`;
-7. writes a private immutable build-audit receipt only after all checks pass.
+7. restores the pre-existing `_site` before PASS can be emitted;
+8. writes a private immutable build-audit receipt only after all checks pass.
 
 ## Default budgets
 
@@ -63,4 +83,22 @@ production_published=false
 next_gate=EXPLICIT_SNAPSHOT_PROMOTION
 ```
 
-Wave 43 adds the mechanism and regression coverage only. It does not publish the real Viasna database. The real 2026-08-30 candidate must still be built with the external private snapshot after identity review and candidate audit are complete.
+## Promotion is now dependent on Wave 43
+
+`scripts/promote-viasna-snapshot.mjs` requires the Wave 43 build receipt in addition to the candidate and ordinary audit receipt:
+
+```text
+CHRC_VIASNA_PROMOTION_AUTHORIZED=YES_I_AUTHORIZE_PUBLICATION
+CHRC_VIASNA_CANDIDATE_DIR=<external candidate>
+CHRC_VIASNA_AUDIT_RECEIPT_FILE=<external candidate audit receipt>
+CHRC_VIASNA_BUILD_AUDIT_RECEIPT_FILE=<external build audit receipt>
+CHRC_EXPECTED_VIASNA_CANDIDATE_MANIFEST_SHA256=<64 hex>
+CHRC_EXPECTED_VIASNA_AUDIT_RECEIPT_SHA256=<64 hex>
+CHRC_EXPECTED_VIASNA_BUILD_AUDIT_RECEIPT_SHA256=<64 hex>
+```
+
+In real mode all three exact SHA values are mandatory. Promotion verifies that the build receipt is for the same candidate and the same candidate-audit receipt, that the Pages artifact contract passed, that no private file leaked, that the normal workspace was restored, and that neither deployment nor production publication occurred during the rehearsal.
+
+The eventual public snapshot manifest records the aggregate SHA-256 of both private audit receipts but never copies either private receipt into the public repository.
+
+Wave 43 adds the mechanism and regression coverage only. It does not publish the real Viasna database. The real 2026-08-30 candidate must still be prepared after identity review, audited, fully built in private audit mode, and only then explicitly promoted.
