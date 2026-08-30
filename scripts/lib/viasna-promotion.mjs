@@ -18,6 +18,7 @@ function idNum(id){const m=String(id||'').match(/^p-(\d{7})$/);return m?Number(m
 function prisonId(facility,address=''){const key=normalizeForMatch(`${facility}|${address}`);return `pr-${createHash('sha256').update(key).digest('hex').slice(0,12)}`;}
 function eventId(prefix,personId,row){return `${prefix}-${personId.slice(2)}-${String(row).padStart(5,'0')}`;}
 function obsUrl(observation){return observation.source_person_url||observation.source_url;}
+function observationKey(observation){const id=String(observation.source_record_id||'').trim();return id||`row:${observation.row_number}`;}
 function unique(values){return [...new Set(values.filter(Boolean))];}
 
 function statusSummary(type){
@@ -80,8 +81,7 @@ function appendObservation(person,observation,prisonsById,asOf){
 function buildPerson(group,primary,personId,identities,prisonsById,asOf){
   const birth=publicDate(primary.birth_date);
   const resolvedGender=gender(primary.gender_raw)!=='UNKNOWN'?gender(primary.gender_raw):(group.map(item=>gender(item.gender_raw)).find(value=>value!=='UNKNOWN')||'UNKNOWN');
-  const sourcePrimary=sourceRecord(primary);
-  const person={person_id:personId,canonical_name:localized(primary.reported_name),aliases:unique(group.map(item=>String(item.reported_name||'').trim())),source_identity_keys:identities,birth_date:birth,gender:resolvedGender,region:null,photo:null,facts:{},cases:[],detentions:[],charges:[],judgments:[],sentences:[],prison_placements:[],release_events:[],status_events:[],health_claims:[],risk_assessments:[],sources:[sourcePrimary],evidence:[],change_history:[],publication_state:'PUBLIC_SOURCE_ATTRIBUTED'};
+  const person={person_id:personId,canonical_name:localized(primary.reported_name),aliases:unique(group.map(item=>String(item.reported_name||'').trim())),source_identity_keys:identities,birth_date:birth,gender:resolvedGender,region:null,photo:null,facts:{},cases:[],detentions:[],charges:[],judgments:[],sentences:[],prison_placements:[],release_events:[],status_events:[],health_claims:[],risk_assessments:[],sources:[sourceRecord(primary)],evidence:[],change_history:[],publication_state:'PUBLIC_SOURCE_ATTRIBUTED'};
   if(birth)person.facts.birth_date=fact(birth,primary);
   const ordered=[...group.filter(item=>item!==primary),primary];
   for(const observation of ordered)appendObservation(person,observation,prisonsById,asOf);
@@ -91,10 +91,10 @@ function buildPerson(group,primary,personId,identities,prisonsById,asOf){
 export function promoteViasnaObservations(observations,{existingPeople=[],asOf=new Date().toISOString(),identityResolution=null}={}){
   const partition=partitionViasnaObservations(observations,{asOf,identityResolution});
   const known=identityMap(existingPeople);const nextRef={value:Math.max(0,...(existingPeople||[]).map(x=>idNum(x.person_id)))+1};
-  const cleanById=new Map(partition.clean.map(item=>[String(item.source_record_id||''),item]));
+  const cleanById=new Map(partition.clean.map(item=>[String(item.source_record_id||''),item]).filter(([id])=>id));
   const people=[];const prisonsById=new Map();const consumed=new Set();
   for(const observation of partition.clean){
-    const recordId=String(observation.source_record_id||'');if(consumed.has(recordId))continue;
+    const key=observationKey(observation);if(consumed.has(key))continue;
     const decision=resolutionDecisionForObservation(observation,identityResolution);
     let group=[observation];let primary=observation;
     if(decision?.action==='MERGE_SAME_PERSON'){
@@ -103,7 +103,7 @@ export function promoteViasnaObservations(observations,{existingPeople=[],asOf=n
       primary=cleanById.get(decision.primary_source_record_id);
       if(!primary)throw new Error(`VIASNA_IDENTITY_MERGE_PRIMARY_QUARANTINED:${decision.decision_id}`);
     }
-    for(const item of group)consumed.add(String(item.source_record_id||''));
+    for(const item of group)consumed.add(observationKey(item));
     if(!primary.reported_name)continue;
     const {personId,identities}=personIdForGroup(group,known,nextRef);
     people.push(buildPerson(group,primary,personId,identities,prisonsById,asOf));
