@@ -1,6 +1,6 @@
 {
   "name": "chudzinovich-human-rights-center",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "private": true,
   "type": "module",
   "description": "Static-first public portal for CHUDO HUMAN RIGHTS CENTER",
@@ -15,6 +15,7 @@
     "pages:gate": "node scripts/pages-release-status.mjs",
     "viasna:stage-file": "node scripts/stage-viasna-file.mjs",
     "viasna:prepare-snapshot": "node scripts/prepare-viasna-snapshot.mjs",
+    "viasna:import-official": "node scripts/import-viasna-official-file.mjs",
     "deployment:validate": "node scripts/validate-deployment.mjs",
     "test:adapter": "node tests/viasna-adapter.mjs",
     "test:viasna-promotion": "node tests/viasna-promotion.mjs",
@@ -50,11 +51,12 @@
     "test:guide": "node tests/guide.mjs",
     "test:performance": "node tests/performance-budget.mjs",
     "test:viasna-offline": "node tests/viasna-offline-staging.mjs",
+    "test:viasna-official-import": "node tests/viasna-official-import.mjs",
     "test:deployment": "node tests/deployment-validation.mjs",
     "test:pages-release-gate": "node tests/pages-release-gate.mjs",
     "test:deployment-evidence": "node tests/deployment-evidence.mjs",
     "test:smoke": "node tests/smoke.mjs",
-    "test": "npm run test:adapter && npm run test:viasna-promotion && npm run test:viasna-snapshot && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:media-live && npm run test:telegram && npm run test:telegram-live && npm run test:youtube && npm run test:news && npm run test:news-indexes && npm run test:live-news-seo && npm run test:release && npm run test:policy && npm run test:sources && npm run test:public-sections && npm run test:public-navigation && npm run test:channels && npm run test:media && npm run test:case-index && npm run test:regional-timeline && npm run test:global-search && npm run test:site-finalization && npm run test:seo && npm run test:topical-authority && npm run test:help-center && npm run test:entity-seo && npm run test:trust-center && npm run test:guide && npm run test:performance && npm run test:viasna-offline && npm run test:deployment && npm run test:pages-release-gate && npm run test:deployment-evidence && npm run test:smoke",
+    "test": "npm run test:adapter && npm run test:viasna-promotion && npm run test:viasna-snapshot && npm run test:anomaly && npm run test:snapshot && npm run test:wave3 && npm run test:wave4 && npm run test:wave5 && npm run test:media-live && npm run test:telegram && npm run test:telegram-live && npm run test:youtube && npm run test:news && npm run test:news-indexes && npm run test:live-news-seo && npm run test:release && npm run test:policy && npm run test:sources && npm run test:public-sections && npm run test:public-navigation && npm run test:channels && npm run test:media && npm run test:case-index && npm run test:regional-timeline && npm run test:global-search && npm run test:site-finalization && npm run test:seo && npm run test:topical-authority && npm run test:help-center && npm run test:entity-seo && npm run test:trust-center && npm run test:guide && npm run test:performance && npm run test:viasna-offline && npm run test:viasna-official-import && npm run test:deployment && npm run test:pages-release-gate && npm run test:deployment-evidence && npm run test:smoke",
     "wave6:check": "npm run validate && npm run build && npm test && npm run release:status",
     "wave7:check": "npm run validate && npm run build && npm test && npm run release:status",
     "wave8:check": "npm run validate && npm run build && npm test && npm run release:status",
@@ -83,7 +85,8 @@
     "wave31:check": "npm run validate && npm run build && npm test && npm run pages:gate",
     "wave32:check": "npm run validate && npm run build && npm test && npm run pages:gate",
     "wave33:check": "npm run validate && npm run build && npm test && npm run pages:gate",
-    "wave34:check": "npm run validate && npm run build && npm test && npm run pages:gate"
+    "wave34:check": "npm run validate && npm run build && npm test && npm run pages:gate",
+    "wave35:check": "npm run validate && npm run build && npm test && npm run pages:gate"
   },
   "engines": {
     "node": ">=22"
