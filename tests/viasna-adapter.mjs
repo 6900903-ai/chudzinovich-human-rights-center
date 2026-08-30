@@ -34,11 +34,34 @@ if (beta.source_status_claim.claim_type !== 'FORMER_POLITICAL_PRISONER') throw n
 if (!beta.source_status_claim.recognized_ex_post_facto) throw new Error('Ex post facto marker not recognized');
 if (!beta.release_claim) throw new Error('Release claim not recognized');
 
+const machineCsv = await readFile(join(root, 'tests/fixtures/viasna.machine-export.synthetic.csv'), 'utf8');
+const machine = parseViasnaCsv(machineCsv, {
+  sourceUrl:'https://prisoners.spring96.org/ru/list',
+  fetchedAt:'2026-08-30T07:00:00Z',
+  observedAt:'2026-08-30T07:00:00Z',
+  locale:'ru'
+});
+if (machine.observations.length !== 4) throw new Error('Machine export row count failed');
+if (machine.parser_coverage < 0.9) throw new Error(`Machine export coverage too low: ${machine.parser_coverage}`);
+if (machine.diagnostics.some(item => item.code === 'CSV_COLUMN_COUNT_MISMATCH')) throw new Error('Machine export column mismatch');
+const [mActive,mFormer,mNp1,mNp2] = machine.observations;
+if (mActive.source_record_id !== '1001' || mActive.source_identity_key !== 'src-viasna-record:1001') throw new Error('Machine source identity mapping failed');
+if (mActive.source_person_url !== 'https://prisoners.spring96.org/ru/person/synthetic-active') throw new Error('Machine source URL mapping failed');
+if (mActive.source_status_claim.claim_type !== 'CURRENT_POLITICAL_PRISONER') throw new Error('active code mapping failed');
+if (mFormer.source_status_claim.claim_type !== 'FORMER_POLITICAL_PRISONER') throw new Error('former code mapping failed');
+if (mFormer.release_date?.value !== '2025-07-08') throw new Error('release_date mapping failed');
+if (mNp1.source_status_claim.claim_type !== 'NO_DESIGNATION' || mNp1.source_status_claim.source_status_code !== 'np') throw new Error('np code mapping failed');
+if (mNp1.source_identity_key === mNp2.source_identity_key) throw new Error('Distinct source IDs collapsed by same-name identity');
+if (mNp2.died_raw !== '1') throw new Error('Death-claim preservation failed');
+
 const ru = parsePartialDate('12 мая 2026');
 const be = parsePartialDate('12 траўня 2026');
 if (ru.value !== '2026-05-12' || be.value !== '2026-05-12') throw new Error('RU/BE date parsing failed');
 if (classifyStatusClaim('Бывший политзаключенный').claim_type !== 'FORMER_POLITICAL_PRISONER') throw new Error('RU status parsing failed');
 if (classifyStatusClaim('Палітвязень').claim_type !== 'CURRENT_POLITICAL_PRISONER') throw new Error('BE status parsing failed');
+if (classifyStatusClaim('active').claim_type !== 'CURRENT_POLITICAL_PRISONER') throw new Error('active source code failed');
+if (classifyStatusClaim('former').claim_type !== 'FORMER_POLITICAL_PRISONER') throw new Error('former source code failed');
+if (classifyStatusClaim('np').claim_type !== 'NO_DESIGNATION') throw new Error('np source code failed');
 
 validateViasnaUrl('https://prisoners.spring96.org/en/list');
 for (const bad of [
@@ -52,9 +75,7 @@ for (const bad of [
   if (!failed) throw new Error(`Unsafe URL accepted: ${bad}`);
 }
 
-if (isPublicIp('127.0.0.1') || isPublicIp('10.1.2.3') || isPublicIp('192.168.1.1') || isPublicIp('::1')) {
-  throw new Error('Private IP incorrectly allowed');
-}
+if (isPublicIp('127.0.0.1') || isPublicIp('10.1.2.3') || isPublicIp('192.168.1.1') || isPublicIp('::1')) throw new Error('Private IP incorrectly allowed');
 if (!isPublicIp('1.1.1.1') || !isPublicIp('2606:4700:4700::1111')) throw new Error('Public IP incorrectly rejected');
 
-console.log('VIASNA_ADAPTER_TEST=PASS');
+console.log('VIASNA_ADAPTER_TEST=PASS machine_export=PASS source_codes=PASS');
