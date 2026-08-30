@@ -34,10 +34,12 @@ export function detectObservationAnomalies(observations, { asOf = new Date().toI
       ['release_date', observation.release_date]
     ]) {
       if (partial?.parse_state === 'UNPARSED') anomalies.push({ severity:'MEDIUM', code:'UNPARSED_DATE', field, row_number:observation.row_number, raw:partial.raw });
-      if (field !== 'birth_date' && comparePartialDateToAsOf(partial, asOf) > 0) anomalies.push({ severity:'HIGH', code:'FUTURE_EVENT_DATE', field, row_number:observation.row_number, value:partial.value });
+      if (field !== 'birth_date' && comparePartialDateToAsOf(partial, asOf) > 0) {
+        anomalies.push({ severity:'REVIEW', code:'FUTURE_EVENT_DATE_WITHHELD', field, row_number:observation.row_number, value:partial.value });
+      }
     }
 
-    if (observation.died_raw) anomalies.push({ severity:'HIGH', code:'SOURCE_DEATH_CLAIM_REQUIRES_REVIEW', row_number:observation.row_number, raw:observation.died_raw });
+    if (observation.died_raw) anomalies.push({ severity:'REVIEW', code:'SOURCE_DEATH_CLAIM_WITHHELD', row_number:observation.row_number, raw:observation.died_raw });
 
     const recordId = observation.source_record_id;
     if (recordId) {
