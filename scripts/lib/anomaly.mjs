@@ -9,6 +9,58 @@ function comparePartialDateToAsOf(partial, asOf) {
   return 0;
 }
 
+function groupBy(observations, keyFor) {
+  const groups = new Map();
+  for (const observation of observations) {
+    const key = keyFor(observation);
+    if (!key) continue;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(observation);
+  }
+  return groups;
+}
+
+function sourceRecordIds(group) {
+  return [...new Set(group.map(item => String(item.source_record_id || '').trim()).filter(Boolean))].sort();
+}
+
+function addStructuralIdentityCollisions(observations, anomalies) {
+  const byPersonUrl = groupBy(observations, item => item.source_person_url || null);
+  for (const [sourcePersonUrl, group] of byPersonUrl) {
+    const recordIds = sourceRecordIds(group);
+    if (group.length < 2 || recordIds.length < 2) continue;
+    for (const observation of group) {
+      anomalies.push({
+        severity:'HIGH',
+        code:'SOURCE_PERSON_URL_IDENTITY_COLLISION',
+        row_number:observation.row_number,
+        source_person_url:sourcePersonUrl,
+        source_record_ids:recordIds
+      });
+    }
+  }
+
+  const byStrongSignature = groupBy(observations, item => {
+    const birth = item.birth_date;
+    const name = String(item.normalized_name || '').trim();
+    if (!name || birth?.parse_state !== 'PARSED' || birth.precision !== 'day' || !birth.value) return null;
+    return `${name}|${birth.value}`;
+  });
+  for (const [signature, group] of byStrongSignature) {
+    const recordIds = sourceRecordIds(group);
+    if (group.length < 2 || recordIds.length < 2) continue;
+    for (const observation of group) {
+      anomalies.push({
+        severity:'HIGH',
+        code:'STRONG_PERSON_SIGNATURE_COLLISION',
+        row_number:observation.row_number,
+        person_signature:signature,
+        source_record_ids:recordIds
+      });
+    }
+  }
+}
+
 export function deriveMetrics(observations) {
   const current = observations.filter(item => item.source_status_claim?.claim_type === 'CURRENT_POLITICAL_PRISONER');
   const missingPrison = current.filter(item => !item.prison?.facility).length;
@@ -53,6 +105,8 @@ export function detectObservationAnomalies(observations, { asOf = new Date().toI
       else seenIdentity.set(key, observation.row_number);
     }
   }
+
+  addStructuralIdentityCollisions(observations, anomalies);
 
   if (Number.isInteger(expectedCount) && expectedCount !== observations.length) anomalies.push({ severity:'HIGH', code:'SOURCE_COUNT_MISMATCH', expected:expectedCount, parsed:observations.length });
   return anomalies;
