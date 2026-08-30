@@ -26,8 +26,8 @@ try{
   assert.ok(html.includes(`Snapshot: ${manifest.snapshot_id}`));
   assert.equal((html.match(/CHUDO_PROFILE_CONTEXT_V1/g)||[]).length,1);
 
-  const enPath=profileRelativePath(people[0],'en');
-  const en=await readFile(join(root,'_site',enPath.replace(/^\//,'').replace(/\/$/,''),'index.html'),'utf8');
+  const enPath=profileRelativePath(people[0],'en').replace(/^\//,'').replace(/\/$/,'');
+  const en=await readFile(join(root,'_site','en',enPath,'index.html'),'utf8');
   assert.ok(en.includes('People database'));
   assert.ok(en.includes('COPY LINK'));
 
