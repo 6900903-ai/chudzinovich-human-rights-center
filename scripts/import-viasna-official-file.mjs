@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { parseViasnaCsv, validateViasnaUrl } from './adapters/viasna.mjs';
 import { detectObservationAnomalies } from './lib/anomaly.mjs';
+import { loadViasnaIdentityResolution } from './lib/viasna-identity-resolution.mjs';
 import { prepareViasnaSnapshot } from './lib/viasna-snapshot-preparer.mjs';
 
 const repoRoot=resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -15,6 +16,7 @@ function sha256(data){return createHash('sha256').update(data).digest('hex');}
 function envInt(name,fallback,{min=0,max=Number.MAX_SAFE_INTEGER}={}){const raw=process.env[name];if(raw==null||raw==='')return fallback;const value=Number.parseInt(raw,10);if(!Number.isInteger(value)||value<min||value>max)throw new Error(`${name}_INVALID`);return value;}
 function envOptionalInt(name){const raw=process.env[name];if(raw==null||raw==='')return null;const value=Number.parseInt(raw,10);if(!Number.isInteger(value)||value<0)throw new Error(`${name}_INVALID`);return value;}
 function envRatio(name,fallback){const raw=process.env[name];if(raw==null||raw==='')return fallback;const value=Number(raw);if(!Number.isFinite(value)||value<0||value>1)throw new Error(`${name}_INVALID`);return value;}
+function assertExpected(name,actual,expected){if(expected!==null&&actual!==expected)throw new Error(`${name}_MISMATCH:${actual}:${expected}`);}
 
 const sourceInput=process.env.VIASNA_SOURCE_FILE;
 const importRootInput=process.env.CHRC_VIASNA_IMPORT_ROOT;
@@ -49,6 +51,9 @@ const expectedReviewFindings=envOptionalInt('VIASNA_EXPECTED_REVIEW_FINDINGS');
 const expectedQuarantined=envOptionalInt('VIASNA_EXPECTED_QUARANTINED');
 const expectedPeople=envOptionalInt('VIASNA_EXPECTED_PEOPLE');
 const expectedPrisons=envOptionalInt('VIASNA_EXPECTED_PRISONS');
+const expectedIdentityComponents=envOptionalInt('VIASNA_EXPECTED_IDENTITY_COMPONENTS');
+const expectedResolvedComponents=envOptionalInt('VIASNA_EXPECTED_IDENTITY_RESOLVED_COMPONENTS');
+const expectedUnresolvedComponents=envOptionalInt('VIASNA_EXPECTED_IDENTITY_UNRESOLVED_COMPONENTS');
 const asOf=process.env.CHRC_AS_OF||new Date().toISOString();
 
 const raw=await readFile(source);
@@ -79,9 +84,23 @@ const structuralFindings=anomalies.filter(item=>item.severity==='HIGH'||item.sev
 const structuralCodes=Object.fromEntries([...new Set(structuralFindings.map(item=>item.code))].sort().map(code=>[code,structuralFindings.filter(item=>item.code===code).length]));
 if(expectedReviewFindings!==null&&reviewFindings.length!==expectedReviewFindings)throw new Error(`VIASNA_REVIEW_FINDING_COUNT_MISMATCH:${reviewFindings.length}:${expectedReviewFindings}`);
 
+const identityResolution=await loadViasnaIdentityResolution({
+  file:process.env.CHRC_VIASNA_IDENTITY_RESOLUTION_FILE||null,
+  repoRoot,
+  observations:parsed.observations,
+  sourceSha256,
+  asOf,
+  testMode:process.env.CHRC_TEST_MODE==='1'
+});
+if(identityResolution){
+  assertExpected('VIASNA_IDENTITY_COMPONENT_COUNT',identityResolution.components_total,expectedIdentityComponents);
+  assertExpected('VIASNA_IDENTITY_RESOLVED_COMPONENT_COUNT',identityResolution.resolved_components,expectedResolvedComponents);
+  assertExpected('VIASNA_IDENTITY_UNRESOLVED_COMPONENT_COUNT',identityResolution.unresolved_components,expectedUnresolvedComponents);
+}else if(expectedResolvedComponents!==null&&expectedResolvedComponents!==0){throw new Error(`VIASNA_IDENTITY_RESOLUTION_REQUIRED:${expectedResolvedComponents}`);}
+
 const publicManifestPath=join(repoRoot,'data','public','current','manifest.json');
 const publicManifestBefore=await readFile(publicManifestPath);
-const stage=spawnSync(process.execPath,[join(repoRoot,'scripts','stage-viasna-file.mjs')],{
+const stage=spawnSync(process.execPath,[join(repoRoot,'scripts/stage-viasna-file.mjs')],{
   encoding:'utf8',
   env:{...process.env,VIASNA_SOURCE_FILE:source,VIASNA_SOURCE_PAGE_URL:sourcePageUrl,VIASNA_SOURCE_LOCALE:locale,CHRC_PRIVATE_REVIEW_DIR:stagingRoot}
 });
@@ -89,7 +108,7 @@ if(stage.status!==0)throw new Error(`VIASNA_STAGE_FAILED:${(stage.stderr||stage.
 const stageRunId=stage.stdout.match(/run=([^\s]+)/)?.[1]||null;
 if(!stageRunId)throw new Error('VIASNA_STAGE_RUN_ID_MISSING');
 
-const prepared=await prepareViasnaSnapshot({sourceFile:source,outputRoot:preparedRoot,currentPublicDir:join(repoRoot,'data','public','current'),sourcePageUrl,locale,asOf});
+const prepared=await prepareViasnaSnapshot({sourceFile:source,outputRoot:preparedRoot,currentPublicDir:join(repoRoot,'data','public','current'),sourcePageUrl,locale,asOf,identityResolution});
 const quarantineRatio=parsed.observations.length?prepared.quarantined/parsed.observations.length:1;
 if(expectedQuarantined!==null&&prepared.quarantined!==expectedQuarantined)throw new Error(`VIASNA_CANDIDATE_QUARANTINE_COUNT_MISMATCH:${prepared.quarantined}:${expectedQuarantined}`);
 if(expectedPeople!==null&&prepared.people!==expectedPeople)throw new Error(`VIASNA_CANDIDATE_PEOPLE_COUNT_MISMATCH:${prepared.people}:${expectedPeople}`);
@@ -102,16 +121,21 @@ if(!publicManifestBefore.equals(publicManifestAfter))throw new Error('VIASNA_IMP
 const candidateManifest=await readFile(join(prepared.snapshotDir,'manifest.json'));
 const candidateManifestSha256=sha256(candidateManifest);
 const receiptId=`viasna-import-${asOf.replace(/[-:.]/g,'')}-${sourceSha256.slice(0,12)}`;
+const identitySummary=identityResolution?{
+  file_sha256:identityResolution.file_sha256,components_total:identityResolution.components_total,resolved_components:identityResolution.resolved_components,
+  unresolved_components:identityResolution.unresolved_components,resolved_rows:identityResolution.resolved_rows,unresolved_rows:identityResolution.unresolved_rows,
+  keep_distinct_components:identityResolution.keep_distinct_components,merge_components:identityResolution.merge_components
+}:null;
 const receipt={
   state:'PREPARED_FOR_PRIVATE_REVIEW_NOT_PUBLISHED',source_id:'src-viasna',source_page_url:sourcePageUrl,source_sha256:sourceSha256,source_bytes:raw.byteLength,source_locale:locale,imported_at:asOf,
   parsed_rows:parsed.observations.length,source_status_counts:sourceStatusCounts,parser_coverage:parsed.parser_coverage,diagnostics_count:parsed.diagnostics.length,empty_name_count:emptyNameCount,
-  review_required_findings:reviewFindings.length,review_required_codes:reviewCodes,structural_findings:structuralFindings.length,structural_codes:structuralCodes,
+  review_required_findings:reviewFindings.length,review_required_codes:reviewCodes,structural_findings:structuralFindings.length,structural_codes:structuralCodes,identity_resolution:identitySummary,
   stage_run_id:stageRunId,prepared_run_id:prepared.runId,candidate_snapshot_id:prepared.snapshotId,candidate_snapshot_manifest_sha256:candidateManifestSha256,
   people:prepared.people,prisons:prepared.prisons,quarantined_rows:prepared.quarantined,quarantine_ratio:quarantineRatio,
-  public_repo_mutated:false,production_published:false,next_gate:'PRIVATE_EDITORIAL_REVIEW_AND_EXPLICIT_SNAPSHOT_PROMOTION'
+  public_repo_mutated:false,production_published:false,next_gate:identitySummary?.unresolved_components===0?'REAL_VIASNA_CANDIDATE_AUDIT_AND_EXPLICIT_SNAPSHOT_PROMOTION':'PRIVATE_IDENTITY_RESOLUTION_THEN_REAL_VIASNA_CANDIDATE_AUDIT'
 };
 await writeFile(join(receiptsRoot,`${receiptId}.json`),JSON.stringify(receipt,null,2)+'\n',{encoding:'utf8',mode:0o600,flag:'wx'});
 
-console.log(`VIASNA_OFFICIAL_IMPORT=PASS state=${receipt.state} rows=${receipt.parsed_rows} active=${sourceStatusCounts.active} former=${sourceStatusCounts.former} np=${sourceStatusCounts.np} people=${receipt.people} prisons=${receipt.prisons} quarantined=${receipt.quarantined_rows} review=${receipt.review_required_findings} structural=${receipt.structural_findings} source_sha256=${sourceSha256}`);
+console.log(`VIASNA_OFFICIAL_IMPORT=PASS state=${receipt.state} rows=${receipt.parsed_rows} active=${sourceStatusCounts.active} former=${sourceStatusCounts.former} np=${sourceStatusCounts.np} people=${receipt.people} prisons=${receipt.prisons} quarantined=${receipt.quarantined_rows} review=${receipt.review_required_findings} structural=${receipt.structural_findings} identity_resolved=${identitySummary?.resolved_components||0} identity_unresolved=${identitySummary?.unresolved_components??'unknown'} source_sha256=${sourceSha256}`);
 console.log(`VIASNA_IMPORT_RECEIPT=${join(receiptsRoot,`${receiptId}.json`)}`);
 console.log(`VIASNA_CANDIDATE_SNAPSHOT=${prepared.snapshotDir}`);

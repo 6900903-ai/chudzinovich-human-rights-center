@@ -50,9 +50,10 @@ try{
   assert.deepEqual(receipt.review_required_codes,{SOURCE_DEATH_CLAIM_WITHHELD:1});
   assert.equal(receipt.structural_findings,0);
   assert.deepEqual(receipt.structural_codes,{});
+  assert.equal(receipt.identity_resolution,null);
   assert.equal(receipt.public_repo_mutated,false);
   assert.equal(receipt.production_published,false);
-  assert.equal(receipt.next_gate,'PRIVATE_EDITORIAL_REVIEW_AND_EXPLICIT_SNAPSHOT_PROMOTION');
+  assert.equal(receipt.next_gate,'PRIVATE_IDENTITY_RESOLUTION_THEN_REAL_VIASNA_CANDIDATE_AUDIT');
   assert.match(receipt.source_sha256,/^[a-f0-9]{64}$/);
   assert.match(receipt.candidate_snapshot_manifest_sha256,/^[a-f0-9]{64}$/);
   assert.ok(receipt.candidate_snapshot_id);
@@ -118,7 +119,7 @@ try{
   assert.notEqual(wrongSha.status,0);
   assert.match((wrongSha.stderr||'')+(wrongSha.stdout||''),/VIASNA_SOURCE_SHA256_MISMATCH/);
 
-  console.log('VIASNA_OFFICIAL_IMPORT_TEST=PASS machine_export=true status_attestation=true field_review=true candidate_attestation=true public_mutation=false fail_closed=true');
+  console.log('VIASNA_OFFICIAL_IMPORT_TEST=PASS machine_export=true status_attestation=true field_review=true candidate_attestation=true identity_resolution_boundary=true public_mutation=false fail_closed=true');
 }finally{
   await rm(work,{recursive:true,force:true});
 }
