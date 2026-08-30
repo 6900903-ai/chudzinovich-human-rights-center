@@ -48,9 +48,11 @@ const [mActive,mFormer,mNp1,mNp2] = machine.observations;
 if (mActive.source_record_id !== '1001' || mActive.source_identity_key !== 'src-viasna-record:1001') throw new Error('Machine source identity mapping failed');
 if (mActive.source_person_url !== 'https://prisoners.spring96.org/ru/person/synthetic-active') throw new Error('Machine source URL mapping failed');
 if (mActive.source_status_claim.claim_type !== 'CURRENT_POLITICAL_PRISONER') throw new Error('active code mapping failed');
+if (mActive.prison.facility !== 'ИК № 1' || mActive.prison.address !== '220000, г. Тест') throw new Error('Machine prison facility/address split failed');
 if (mFormer.source_status_claim.claim_type !== 'FORMER_POLITICAL_PRISONER') throw new Error('former code mapping failed');
 if (mFormer.release_date?.value !== '2025-07-08') throw new Error('release_date mapping failed');
 if (mNp1.source_status_claim.claim_type !== 'NO_DESIGNATION' || mNp1.source_status_claim.source_status_code !== 'np') throw new Error('np code mapping failed');
+if (!mNp1.prison.at_liberty_claim || mNp1.prison.facility !== null) throw new Error('At-liberty source state misclassified as prison');
 if (mNp1.source_identity_key === mNp2.source_identity_key) throw new Error('Distinct source IDs collapsed by same-name identity');
 if (mNp2.died_raw !== '1') throw new Error('Death-claim preservation failed');
 
@@ -78,4 +80,4 @@ for (const bad of [
 if (isPublicIp('127.0.0.1') || isPublicIp('10.1.2.3') || isPublicIp('192.168.1.1') || isPublicIp('::1')) throw new Error('Private IP incorrectly allowed');
 if (!isPublicIp('1.1.1.1') || !isPublicIp('2606:4700:4700::1111')) throw new Error('Public IP incorrectly rejected');
 
-console.log('VIASNA_ADAPTER_TEST=PASS machine_export=PASS source_codes=PASS');
+console.log('VIASNA_ADAPTER_TEST=PASS machine_export=PASS source_codes=PASS prison_shape=PASS');
