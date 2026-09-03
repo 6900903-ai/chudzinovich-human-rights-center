@@ -1,7 +1,51 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-03T19:45:30.205Z",
+  "fetched_at": "2026-09-03T22:30:17.971Z",
   "materials": [
+    {
+      "material_id": "mfm-d0911dac3daf6176",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33845797.html",
+      "title": "Ужо сёньня: 90 гадоў з дня нараджэньня Сакрата Яновіча",
+      "published_at": "2026-09-03T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-308b8e0b45cefbed",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/3/697203/",
+      "title": "WSJ: Канада готова сопротивляться",
+      "published_at": "2026-09-03T20:46:53.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-bd2c5f55381ab0db",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/3/697202/",
+      "title": "Reuters: Дыра в бюджете России растет",
+      "published_at": "2026-09-03T20:24:07.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5d2e84e38acf91b8",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/3/697212/",
+      "title": "Алесь Беляцкий: Мы уже не постсоветское общество",
+      "published_at": "2026-09-03T19:59:50.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-038b092429ea761e",
       "source_id": "src-charter97",
@@ -51,7 +95,7 @@
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
       "source_url": "https://www.svaboda.org/a/33846511.html",
-      "title": "«Мы ўжо не постсавецкае грамадзтва». Алесь Бяляцкі выступіў на Нобэлеўскай канфэрэнцыі",
+      "title": "«Мы ўжо ня постсавецкае грамадзтва». Алесь Бяляцкі выступіў на Нобэлеўскай канфэрэнцыі",
       "published_at": "2026-09-03T19:09:57.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
@@ -498,28 +542,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-a793974fc001928a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/3/697177/",
-      "title": "В Германии началось производство дальнобойных БПЛА для Украины",
-      "published_at": "2026-09-03T15:26:49.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-8cd4cbe9d209bff0",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/3/697176/",
-      "title": "Гибридные автомобили Honda раскупаются мгновенно",
-      "published_at": "2026-09-03T15:22:03.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-7a4efd6730f017bc",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -528,17 +550,6 @@
       "published_at": "2026-09-03T15:22:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3525d1d6a8c6665f",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/3/697175/",
-      "title": "В восточной части Польши ограничат воздушное движение",
-      "published_at": "2026-09-03T15:16:08.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -812,8 +823,8 @@
       "source_url": "https://www.svaboda.org/a/33845766.html",
       "title": "У Нямеччыне за дзень адбылося дзьве дывэрсіі на электрасетках у розных канцах краіны",
       "published_at": "2026-09-02T17:45:14.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "incidents",
+      "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
       "metadata_only": true
     },
     {
@@ -913,17 +924,6 @@
       "published_at": "2026-08-30T14:34:17.000Z",
       "feed_scope": "incidents",
       "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-42f3f7e602de3e4f",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33843502.html",
-      "title": "Зьнікаюць бязь сьледу. Чаму ААН прыраўняла беларускія турмы да выкраданьняў",
-      "published_at": "2026-08-30T13:11:19.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     }
   ]
