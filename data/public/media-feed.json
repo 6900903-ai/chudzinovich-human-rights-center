@@ -1,13 +1,112 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-05T18:59:27.731Z",
+  "fetched_at": "2026-09-05T21:09:21.360Z",
   "materials": [
+    {
+      "material_id": "mfm-8876c6700ec033d5",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33847570.html",
+      "title": "Ужо сёньня: пяць гадоў таму асудзілі Марыю Калесьнікаву і Максіма Знака",
+      "published_at": "2026-09-05T21:05:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-19a28f601c91bc97",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-kostyukovichakh-proshlo-torzhestvennoe-otkrytie-xxxiii-dnya-belorusskoy-pismennosti-1647074/",
+      "title": "В Костюковичах прошло торжественное открытие XXXIII Дня белорусской письменности",
+      "published_at": "2026-09-05T20:15:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-800aa9608f6a01c8",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/5/697423/",
+      "title": "Президент Сербии Вучич идет в премьеры",
+      "published_at": "2026-09-05T19:55:09.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-332a6c60d99c1892",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/arina-sobolenko-proshla-v-4-y-krug-otkrytogo-chempionata-ssha-2026-1647056/",
+      "title": "Арина Соболенко прошла в 4-й круг Открытого чемпионата США 2026",
+      "published_at": "2026-09-05T19:46:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-a9d8d5251b9c296e",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/5/697422/",
+      "title": "Сибига предупредил Европу",
+      "published_at": "2026-09-05T19:36:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e47df078693adf9e",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/startoval-19-y-chempionat-kontinentalnoy-khokkeynoy-ligi-1647053/",
+      "title": "Стартовал 19-й чемпионат Континентальной хоккейной лиги",
+      "published_at": "2026-09-05T19:30:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e8dc929dc001b242",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/5/697421/",
+      "title": "Фейгин раскрыл страхи кремлевской верхушки",
+      "published_at": "2026-09-05T19:24:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-313a5906490266cb",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/5/697378/",
+      "title": "Экс-политзаключенный рассказал, что никогда не простит режиму",
+      "published_at": "2026-09-05T19:15:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-20cbd573fcf4bafa",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/5/697420/",
+      "title": "«КГБ и ГРУ будут ждать, когда украинский дрон залетит в их офисы»",
+      "published_at": "2026-09-05T19:01:37.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-5f1a1f0d3891d3c0",
       "source_id": "src-charter97",
       "source_name": "Charter97",
       "source_url": "https://charter97.org/ru/news/2026/9/5/697419/",
-      "title": "Чиновники рассказали, как будут избавляться от авто в Минске",
+      "title": "Чиновники отрапортавали, как будут избавляться от авто в Минске",
       "published_at": "2026-09-05T18:52:12.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
@@ -366,39 +465,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-bc310a0d6073ac58",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/5/697338/",
-      "title": "Украина закрывает небо над Россией: Кремль не в состоянии ответить зеркально",
-      "published_at": "2026-09-05T15:51:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-41e04052cf770c57",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/5/697399/",
-      "title": "Заменить Некрасова Шекспиром",
-      "published_at": "2026-09-05T15:50:13.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c31691d5130435ff",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/5/697398/",
-      "title": "РФ дронами атаковала поезд, следовавший в Херсон",
-      "published_at": "2026-09-05T15:45:38.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-05f9347fb45be976",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -418,28 +484,6 @@
       "published_at": "2026-09-05T15:38:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-6551f50ebd20ce06",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/5/697397/",
-      "title": "Зумеры возвращают в моду CD-диски",
-      "published_at": "2026-09-05T15:36:02.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-916e842e3908c3fa",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/5/697396/",
-      "title": "«Американцы, вероятно, придумали новый план»",
-      "published_at": "2026-09-05T15:29:47.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -608,39 +652,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-e88568a2fd33f3a0",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/predstavitelnitsy-belarusi-uspeshno-zavershili-gruppovoy-raund-chempionata-evropy-po-plyazhnomu-vole-1647000/",
-      "title": "Представительницы Беларуси успешно завершили групповой раунд чемпионата Европы по пляжному волейболу среди юниоров 2026",
-      "published_at": "2026-09-05T11:56:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-2825d17b3ff5f2e4",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/artem-karkotskiy-v-tselom-u-nas-khoroshiy-sostav-dostatochno-opytnykh-igrokov-kotorye-vystupali-na-s-1646999/",
-      "title": "Артем Каркоцкий: \"В целом у нас хороший состав: достаточно опытных игроков, которые выступали на самом высоком уровне\"",
-      "published_at": "2026-09-05T11:24:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-527a80aa9b39666a",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/v-ritme-kamennogo-veka-v-yurovichakh-vo-vtoroy-raz-prokhodit-autentichnyy-festival-mamont-by-1647020/",
-      "title": "В ритме каменного века. В Юровичах во второй раз прошел аутентичный фестиваль «Мамонт.by»",
-      "published_at": "2026-09-05T11:17:28.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-4ff40fda3fe25ac0",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -801,17 +812,6 @@
       "source_url": "https://www.svaboda.org/a/vzyali-dva-chemodana-sobaku-i-uleteli/33846830.html",
       "title": "Расейцы пачалі пакідаць краіну падчас чутак аб новай хвалі мабілізацыі на вайну з Украінай",
       "published_at": "2026-09-04T09:01:42.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-0dc8eb764f093a42",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33846876.html",
-      "title": "У выведцы Літвы адрэагавалі на словы Ціханоўскай: росту ваеннай пагрозы з боку Беларусі ня бачым",
-      "published_at": "2026-09-04T08:37:44.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
