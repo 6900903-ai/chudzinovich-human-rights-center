@@ -1,0 +1,54 @@
+name: CHUDO Reviewed Snapshot Contract
+
+on:
+  push:
+    branches: [main, wave36-reviewed-snapshot-release]
+    paths:
+      - 'scripts/lib/reviewed-snapshot.mjs'
+      - 'scripts/audit-reviewed-snapshot.mjs'
+      - 'scripts/promote-reviewed-snapshot.mjs'
+      - 'tests/reviewed-snapshot-release.mjs'
+      - '.github/workflows/reviewed-snapshot-contract.yml'
+  pull_request:
+    paths:
+      - 'scripts/lib/reviewed-snapshot.mjs'
+      - 'scripts/audit-reviewed-snapshot.mjs'
+      - 'scripts/promote-reviewed-snapshot.mjs'
+      - 'tests/reviewed-snapshot-release.mjs'
+      - '.github/workflows/reviewed-snapshot-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reviewed-snapshot-contract-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fail-closed-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Test private audit and gated atomic promotion
+        run: node tests/reviewed-snapshot-release.mjs
+      - name: Confirm real release gates are not supplied to CI
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in \
+            LEGAL_DATA_REUSE_GATE PRIVACY_DPIA_GATE EDITORIAL_REVIEW_GATE \
+            SOURCE_ATTRIBUTION_GATE IMAGE_RIGHTS_GATE REAL_DATA_RELEASE_AUTHORIZATION
+          do
+            if [[ -n "${!name:-}" ]]; then
+              echo "Unexpected real release gate in ordinary CI: $name" >&2
+              exit 1
+            fi
+          done
+          echo 'ORDINARY_CI_REAL_RELEASE_GATES=ABSENT'

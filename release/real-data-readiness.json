@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-29T00:00:00Z",
+  "state": "OFFICIAL_EXPORT_DISCOVERED_PRIVATE_SNAPSHOT_VALIDATED_NOT_PUBLISHED",
+  "source": {
+    "source_id": "src-viasna",
+    "acquisition": "FIRST_PARTY_CSV_EXPORT_DISCOVERED_THROUGH_PUBLIC_LIST_INTERFACE",
+    "raw_export_in_public_git": false,
+    "personal_records_in_this_file": false
+  },
+  "private_validation": {
+    "minimum_people_gate": 5000,
+    "minimum_people_gate_passed": true,
+    "snapshot_publication_state": "PUBLISHED_CANDIDATE",
+    "manifest_integrity": "PASS",
+    "file_hashes_and_byte_counts": "PASS",
+    "record_id_uniqueness": "PASS",
+    "source_provenance": "PASS",
+    "fixture_records": 0,
+    "full_production_build": "PASS",
+    "exact_pages_artifact_validation": "PASS"
+  },
+  "public_effect": {
+    "canonical_snapshot_mutated": false,
+    "production_site_mutated": false,
+    "political_prisoner_autodesignation": false
+  },
+  "remaining_release_gates": [
+    "LEGAL_DATA_REUSE_GATE",
+    "PRIVACY_DPIA_GATE",
+    "EDITORIAL_REVIEW_GATE",
+    "SOURCE_ATTRIBUTION_GATE",
+    "IMAGE_RIGHTS_GATE",
+    "REAL_DATA_RELEASE_AUTHORIZATION"
+  ],
+  "production_authorized": false
+}
