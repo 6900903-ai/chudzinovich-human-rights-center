@@ -9,7 +9,7 @@ import { resolvePublicDataDir } from '../scripts/lib/public-data.mjs';
 
 const root=new URL('../',import.meta.url).pathname;
 const dataDir=resolvePublicDataDir(root);
-for(const script of ['build.mjs','build-news.mjs','build-news-indexes.mjs','build-policy-pages.mjs','build-sources-page.mjs','build-public-sections.mjs','build-channel-pages.mjs','build-media-pages.mjs','build-youtube-pages.mjs','build-global-search.mjs','build-topical-authority.mjs','build-help-center.mjs','build-trust-center.mjs','enhance-public-shell.mjs','enhance-seo.mjs','finalize-site.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
+for(const script of ['build.mjs','build-news.mjs','build-news-indexes.mjs','build-policy-pages.mjs','build-sources-page.mjs','build-public-sections.mjs','build-channel-pages.mjs','build-media-pages.mjs','build-youtube-pages.mjs','build-global-search.mjs','build-topical-authority.mjs','build-help-center.mjs','build-trust-center.mjs','enhance-transparency-provenance.mjs','enhance-public-shell.mjs','enhance-seo.mjs','finalize-site.mjs'])execFileSync(process.execPath,[join(root,'scripts',script)],{stdio:'inherit'});
 
 const media=await loadMediaRegistry();
 const telegram=await loadTelegramRegistry();
@@ -31,6 +31,7 @@ assert.ok(ru.includes(`>${activeMedia.length}<`));
 assert.ok(ru.includes(`>${channels.length}<`));
 assert.ok(ru.includes(`>${news.length}<`));
 assert.ok(ru.includes('Каноническая база людей ещё не опубликована'));
+assert.ok(!ru.includes('CHUDO_DATA_PROVENANCE_TRANSPARENCY_V1'));
 assert.ok(editorial.includes('Редакционная политика'));
 assert.ok(editorial.includes('Источник не равен факту'));
 assert.ok(en.includes('Data transparency'));
@@ -43,3 +44,5 @@ assert.ok(!ru.includes('name="robots" content="noindex'));
 assert.ok(sitemap.includes('<loc>https://chudzinovich.pp.ua/transparency/</loc>'));
 assert.ok(sitemap.includes('<loc>https://chudzinovich.pp.ua/editorial-policy/</loc>'));
 console.log(`TRUST_CENTER_TEST=PASS media=${media.sources.length} active_media=${activeMedia.length} telegram=${channels.length} news=${news.length} locales=4 sitemap=PASS`);
+
+await import('./transparency-provenance.mjs');
