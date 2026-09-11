@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-29T00:00:00Z",
+  "canonical_site": "https://chudzinovich.pp.ua/",
+  "technical_support": {
+    "url_prefix_html_tag": "IMPLEMENTED_FAIL_CLOSED",
+    "repository_variable": "GOOGLE_SITE_VERIFICATION",
+    "guarded_activation_workflow": "CHUDO Activate Search Console Verification",
+    "live_canonical_host_monitor": "IMPLEMENTED",
+    "sitemap_index": "https://chudzinovich.pp.ua/sitemap-index.xml"
+  },
+  "verification": {
+    "token_fabricated": false,
+    "domain_property_dns_txt": "OWNER_DNS_GATE",
+    "url_prefix_property": "OWNER_GOOGLE_ACCOUNT_GATE",
+    "search_console_verified": false
+  }
+}
