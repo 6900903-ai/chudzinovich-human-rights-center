@@ -1,7 +1,73 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-12T19:14:51.982Z",
+  "fetched_at": "2026-09-12T22:12:53.181Z",
   "materials": [
+    {
+      "material_id": "mfm-f84f2a82539af6f8",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33852878.html",
+      "title": "Ужо сёньня: Дзень нараджэньня Андрэя Мрыя",
+      "published_at": "2026-09-12T21:03:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e8b1263cb124f4f4",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/sinti-pop-na-frantsuzskom-gomel-zazhigaet-vmeste-s-tantsevalnoy-gruppoy-parad-planet/",
+      "title": "Синти-поп на французском: Гомель зажигал вместе с танцевальной группой \"Парад планет\"",
+      "published_at": "2026-09-12T20:22:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2ab68d42c71f4667",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/a-dozhd-na-oknakh-risuet-gruppa-hi-fi-spela-svoi-khity-nepodvlastnye-vremeni-1647720/",
+      "title": "А дождь на окнах рисует: группа Hi-Fi спела свои хиты, неподвластные времени",
+      "published_at": "2026-09-12T19:43:12.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9ea5435d2eace1fb",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/sbornaya-belarusi-po-plyazhnomu-futbolu-dobylp-pervuyu-pobedu-v-superfinale-evroligi-2026-1647717/",
+      "title": "Сборная Беларуси по пляжному футболу добылп первую победу в Суперфинале Евролиги 2026",
+      "published_at": "2026-09-12T19:32:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9d0ca83647b9eb0d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/12/698234/",
+      "title": "Украинские военные обучают армию США современной войне дронов",
+      "published_at": "2026-09-12T19:27:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d0ec3a222852cdcb",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/potomu-chto-nelzya-byt-krasivoy-takoy-na-dne-goroda-gruppa-belyy-orel-1647718/",
+      "title": "Потому что нельзя быть красивой такой: на Дне города - группа \"Белый орел\"",
+      "published_at": "2026-09-12T19:18:10.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-f5303d7e0af2f3bb",
       "source_id": "src-charter97",
@@ -11,6 +77,17 @@
       "published_at": "2026-09-12T19:12:00.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2eb1285be3820686",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/minskoe-dinamo-poterpelo-trete-porazhenie-podryad-v-novom-sezone-kkhl-1647723/",
+      "title": "Минское \"Динамо\" потерпело третье поражение подряд в новом сезоне КХЛ",
+      "published_at": "2026-09-12T19:10:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -97,17 +174,6 @@
       "source_url": "https://charter97.org/ru/news/2026/9/12/698170/",
       "title": "Зеленский предложил Путину встретиться в Майами",
       "published_at": "2026-09-12T18:00:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9d0ca83647b9eb0d",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/12/698234/",
-      "title": "Украинские военные обучают армию США современной войне дронов",
-      "published_at": "2026-09-12T17:55:00.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
@@ -608,17 +674,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-64165ae94c5fb156",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/mozyrskaya-slaviya-minimalno-ustupila-minsku-1647691/",
-      "title": "Мозырская \"Славия\" минимально уступила \"Минску\"",
-      "published_at": "2026-09-12T12:54:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-509fbc217db536fa",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -630,28 +685,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-13eaabef2410f778",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/v-ramkakh-dnya-goroda-v-gomele-sostoyalos-grandioznoe-zakrytie-motosezona-prazdnik-dlya-lyubiteley-s-1647686/",
-      "title": "В рамках Дня города в Гомеле состоялось грандиозное закрытие мотосезона – праздник для любителей скорости, свободы и двухколесного транспорта",
-      "published_at": "2026-09-12T12:25:09.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-418d8d5b060a873c",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/poka-gorod-prazdnuet-predstaviteli-ryada-sluzhb-stoyat-na-strazhe-poryadka-zdorovya-chistoty-i-sozda-1647679/",
-      "title": "Пока город празднует, представители ряда служб стоят на страже порядка, здоровья, чистоты и создают хорошее настроение",
-      "published_at": "2026-09-12T12:03:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-0bbd15a7e79a222a",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -660,28 +693,6 @@
       "published_at": "2026-09-12T11:43:28.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-0699bb5a32d46b0f",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/na-raznykh-yazykakh-mira-v-skvere-druzhby-prokhodit-festival-dialog-natsionalnykh-kultur/",
-      "title": "На разных языках мира: в сквере Дружбы прошел фестиваль «Диалог национальных культур»",
-      "published_at": "2026-09-12T11:40:04.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-091d3f067f703fe3",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/nazvan-sostav-minskogo-dinamo-na-pervyy-vyezd-novogo-sezona-kkhl-2026-2027-1647658/",
-      "title": "Назван состав минского \"Динамо\" на первый выезд нового сезона КХЛ 2026/2027",
-      "published_at": "2026-09-12T11:38:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -812,8 +823,8 @@
       "source_url": "https://www.svaboda.org/a/33852312.html",
       "title": "Хроніка перасьледу 11 верасьня: стала вядома пра завочны вырак Кацярыне Манкевіч з гурту Dymna Lotva",
       "published_at": "2026-09-11T09:58:45.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "courts_repression",
+      "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
       "metadata_only": true
     },
     {
@@ -913,17 +924,6 @@
       "published_at": "2026-09-09T15:30:00.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-51c760bceb8417cb",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33850331.html",
-      "title": "Цягнікі ў Беларусі накіроўвалі ў аб’езд, бо на Браншчыне падарвалі рэйкі, — Супольнасьць чыгуначнікаў Беларусі",
-      "published_at": "2026-09-08T16:51:02.000Z",
-      "feed_scope": "incidents",
-      "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
       "metadata_only": true
     }
   ]
