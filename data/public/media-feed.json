@@ -1,7 +1,40 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-13T19:23:25.984Z",
+  "fetched_at": "2026-09-13T22:22:14.894Z",
   "materials": [
+    {
+      "material_id": "mfm-cc8f7abc10757f74",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33853338.html",
+      "title": "Ужо сёньня: дзень народзінаў Лявона Вольскага",
+      "published_at": "2026-09-13T21:05:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-88ed030230875a2a",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/13/698332/",
+      "title": "Лось парализовал движение поездов в центре Варшавы",
+      "published_at": "2026-09-13T19:38:54.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-370487d515091b37",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/13/698326/",
+      "title": "В Черном море произошел первый в истории бой морских дронов",
+      "published_at": "2026-09-13T19:29:34.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-dbf24ecc3392f6d1",
       "source_id": "src-charter97",
@@ -388,17 +421,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-2beb8f3f02d35efd",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/13/698305/",
-      "title": "Ракеты «Фламинго» разнесли главный цех химзавода в Волгограде",
-      "published_at": "2026-09-13T15:21:04.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-ec6b97a7284ef63b",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -407,17 +429,6 @@
       "published_at": "2026-09-13T15:14:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-40e4ff42e3225a59",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/13/698307/",
-      "title": "Пчел отправили в зону отчуждения",
-      "published_at": "2026-09-13T15:12:45.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -812,8 +823,8 @@
       "source_url": "https://www.svaboda.org/a/33852955.html",
       "title": "У Нямеччыне назвалі імя беларуса, якога падазраюць ва ўдзеле ў дывэрсіі ў Ляйпцыгу супраць украінскага самалёту",
       "published_at": "2026-09-12T11:43:28.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "incidents",
+      "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
       "metadata_only": true
     },
     {
@@ -913,17 +924,6 @@
       "published_at": "2026-09-09T17:24:41.000Z",
       "feed_scope": "courts_repression",
       "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-7ada795f082c8d45",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33850987.html",
-      "title": "Коўл рыхтуе вызваленьне палітвязьняў. Новы кантроль за выездам беларусаў. Булінг у Баранавічах. Навіны 9 верасьня",
-      "published_at": "2026-09-09T15:30:00.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     }
   ]
