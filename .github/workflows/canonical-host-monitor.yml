@@ -1,0 +1,62 @@
+name: CHUDO Canonical Host Monitor
+
+on:
+  schedule:
+    - cron: '41 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: canonical-host-monitor
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITE: https://chudzinovich.pp.ua
+    steps:
+      - name: Verify HTTPS, redirects, canonical and language signals
+        shell: bash
+        run: |
+          set -euo pipefail
+          host='chudzinovich.pp.ua'
+          getent ahosts "$host" > /tmp/dns.txt
+
+          http_headers="$(curl --silent --show-error --head --max-time 30 --retry 3 --retry-all-errors http://chudzinovich.pp.ua/)"
+          http_status="$(printf '%s\n' "$http_headers" | awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}')"
+          http_location="$(printf '%s\n' "$http_headers" | awk 'BEGIN{IGNORECASE=1} /^location:/ {sub(/\r$/,"",$2); print $2}' | tail -1)"
+          case "$http_status" in 301|302|307|308) ;; *) echo "HTTP_REDIRECT_STATUS_INVALID:$http_status" >&2; exit 1;; esac
+          [[ "$http_location" == https://chudzinovich.pp.ua/* ]] || { echo "HTTP_REDIRECT_LOCATION_INVALID:$http_location" >&2; exit 1; }
+
+          curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 --retry 3 --retry-all-errors --max-time 30 "$SITE/" -o /tmp/home.html
+          grep -Fq '<link rel="canonical" href="https://chudzinovich.pp.ua/">' /tmp/home.html
+          grep -Fq '<link rel="alternate" hreflang="ru" href="https://chudzinovich.pp.ua/">' /tmp/home.html
+          grep -Fq '<link rel="alternate" hreflang="be" href="https://chudzinovich.pp.ua/be/">' /tmp/home.html
+          grep -Fq '<link rel="alternate" hreflang="en" href="https://chudzinovich.pp.ua/en/">' /tmp/home.html
+          grep -Fq '<link rel="alternate" hreflang="pl" href="https://chudzinovich.pp.ua/pl/">' /tmp/home.html
+          grep -Fq '<link rel="alternate" hreflang="x-default" href="https://chudzinovich.pp.ua/">' /tmp/home.html
+          ! grep -Fq 'content="noindex' /tmp/home.html
+
+          for path in /robots.txt /sitemap-index.xml /sitemap.xml /news-sitemap.xml /.well-known/security.txt /manifest.webmanifest; do
+            curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 --retry 3 --retry-all-errors --max-time 30 "$SITE$path" -o /dev/null
+          done
+
+          github_status="$(curl --silent --show-error --head --max-time 30 --retry 3 --retry-all-errors https://6900903-ai.github.io/chudzinovich-human-rights-center/ | awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}')"
+          case "$github_status" in 200|301|302|307|308|404) ;; *) echo "GITHUB_PAGES_ORIGIN_STATUS_UNEXPECTED:$github_status" >&2; exit 1;; esac
+
+          {
+            echo '## CHUDO canonical-host monitor'
+            echo
+            echo "- DNS: PASS"
+            echo "- HTTP → HTTPS: PASS ($http_status)"
+            echo '- Canonical URL: PASS'
+            echo '- RU/BE/EN/PL hreflang: PASS'
+            echo '- x-default: PASS'
+            echo '- Sitemap and accountability surfaces: PASS'
+            echo "- GitHub Pages origin response: $github_status"
+          } >> "$GITHUB_STEP_SUMMARY"

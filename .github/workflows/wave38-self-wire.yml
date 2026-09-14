@@ -1,0 +1,97 @@
+name: CHUDO Wave 38 Self Wire
+
+on:
+  push:
+    branches: [wave38-search-console-readiness]
+    paths: ['.github/workflows/wave38-self-wire.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wave38-self-wire
+  cancel-in-progress: true
+
+jobs:
+  wire:
+    if: github.repository == '6900903-ai/chudzinovich-human-rights-center'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: wave38-search-console-readiness
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Wire build, tests, Pages variable and artifact checks
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs');
+          const crypto=require('node:crypto');
+          const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+          pkg.version='0.38.0';
+          if(!pkg.scripts.build.includes('apply-google-site-verification.mjs')){
+            pkg.scripts.build=pkg.scripts.build.replace(
+              'node scripts/enhance-search-authority.mjs',
+              'node scripts/enhance-search-authority.mjs && node scripts/apply-google-site-verification.mjs'
+            );
+          }
+          pkg.scripts['test:google-site-verification']='node tests/google-site-verification.mjs';
+          if(!pkg.scripts.test.includes('test:google-site-verification')){
+            pkg.scripts.test=pkg.scripts.test.replace(
+              'npm run test:original-search-authority &&',
+              'npm run test:original-search-authority && npm run test:google-site-verification &&'
+            );
+          }
+          pkg.scripts['wave38:check']='npm run validate && npm run build && npm run test:google-site-verification && node scripts/validate-pages-artifact.mjs && npm run pages:gate';
+          fs.writeFileSync('package.json',JSON.stringify(pkg,null,2)+'\n');
+
+          const pagesPath='.github/workflows/pages.yml';
+          let pages=fs.readFileSync(pagesPath,'utf8');
+          const lines=pages.split('\n');
+          const out=[];
+          for(let i=0;i<lines.length;i++){
+            const line=lines[i];
+            if(/^\s*run:\s*npm run build\s*$/.test(line)){
+              const indent=line.match(/^(\s*)/)[1];
+              const recent=out.slice(Math.max(0,out.length-8)).join('\n');
+              if(!recent.includes('GOOGLE_SITE_VERIFICATION:')){
+                out.push(`${indent}env:`);
+                out.push(`${indent}  GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}`);
+              }
+            }
+            out.push(line);
+          }
+          pages=out.join('\n');
+          fs.writeFileSync(pagesPath,pages);
+
+          const validatorPath='scripts/validate-pages-artifact.mjs';
+          let validator=fs.readFileSync(validatorPath,'utf8');
+          if(!validator.includes("'search-console-readiness.json'")){
+            validator=validator.replace(
+              "'manifest.webmanifest','humans.txt','.well-known/security.txt','search-authority.json',",
+              "'manifest.webmanifest','humans.txt','.well-known/security.txt','search-authority.json','search-console-readiness.json',"
+            );
+          }
+          if(!validator.includes('PAGES_ARTIFACT_GOOGLE_VERIFICATION_STATE_INVALID')){
+            validator=validator.replace(
+              "if(!(await text('.well-known/security.txt')).includes(`Canonical: ${SITE}/.well-known/security.txt`))throw new Error('PAGES_ARTIFACT_SECURITY_TXT_INVALID');",
+              `if(!(await text('.well-known/security.txt')).includes(\`Canonical: \${SITE}/.well-known/security.txt\`))throw new Error('PAGES_ARTIFACT_SECURITY_TXT_INVALID');\nconst searchConsole=JSON.parse(await text('search-console-readiness.json'));\nconst verificationTag=/<meta\\s+[^>]*name=[\\"']google-site-verification[\\"'][^>]*content=[\\"']([A-Za-z0-9_-]{20,200})[\\"'][^>]*>/i;\nconst localizedHomes=['index.html','be/index.html','en/index.html','pl/index.html'];\nconst foundTokens=[];\nfor(const path of localizedHomes){const html=await text(path);const match=html.match(verificationTag);if(match)foundTokens.push(match[1]);}\nif(searchConsole.state==='CONFIGURED_FOR_URL_PREFIX_VERIFICATION'){\n  if(foundTokens.length!==4||new Set(foundTokens).size!==1)throw new Error('PAGES_ARTIFACT_GOOGLE_VERIFICATION_STATE_INVALID');\n  const digest=require('node:crypto').createHash('sha256').update(foundTokens[0]).digest('hex');\n  if(searchConsole.token_sha256!==digest||searchConsole.token_value_exposed_in_report!==false||searchConsole.fabricated_token!==false)throw new Error('PAGES_ARTIFACT_GOOGLE_VERIFICATION_REPORT_INVALID');\n}else if(searchConsole.state==='NOT_CONFIGURED'){\n  if(foundTokens.length!==0||searchConsole.token_present!==false||searchConsole.fabricated_token!==false)throw new Error('PAGES_ARTIFACT_GOOGLE_VERIFICATION_STALE_OR_FABRICATED');\n}else throw new Error('PAGES_ARTIFACT_GOOGLE_VERIFICATION_STATE_UNKNOWN');`
+            );
+            validator="import { createHash as createHashForGoogleVerification } from 'node:crypto';\n"+validator;
+            validator=validator.replace("const digest=require('node:crypto').createHash('sha256').update(foundTokens[0]).digest('hex');","const digest=createHashForGoogleVerification('sha256').update(foundTokens[0]).digest('hex');");
+          }
+          fs.writeFileSync(validatorPath,validator);
+          NODE
+          rm -f .github/workflows/wave38-self-wire.yml
+      - name: Commit wiring and remove temporary workflow
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package.json scripts/validate-pages-artifact.mjs .github/workflows/pages.yml .github/workflows/wave38-self-wire.yml
+          git commit -m 'Wave 38: wire owner Google token into final Pages artifact'
+          git push origin HEAD:wave38-search-console-readiness
