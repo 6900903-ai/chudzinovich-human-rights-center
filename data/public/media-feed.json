@@ -1,14 +1,333 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-17T11:34:50.651Z",
+  "fetched_at": "2026-09-17T16:53:16.835Z",
   "materials": [
     {
-      "material_id": "mfm-fcbbb7bbecae4ee1",
+      "material_id": "mfm-fdce9b5af1b7f818",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-svetlogorske-na-gorodskom-marshrute-rabotal-prazdnichnyy-avtobus-edinstva-1648212/",
+      "title": "В Светлогорске на городском маршруте работал праздничный «Автобус единства»",
+      "published_at": "2026-09-17T16:42:35.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1eb1565a6672c78c",
       "source_id": "src-charter97",
       "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698740/",
-      "title": "Президент Литвы: Мы видим Лукашенко без розовых очков",
-      "published_at": "2026-09-17T11:26:18.000Z",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698822/",
+      "title": "Навроцкий в годовщину агрессии СССР против Польши: Россия не меняется",
+      "published_at": "2026-09-17T16:41:57.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-52948db31741bc8e",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/my-belorusy-den-narodnogo-edinstva-obedinil-zhiteley-gomelskogo-rayona-1648210/",
+      "title": "«Мы – белорусы!»: День народного единства объединил жителей Гомельского района»",
+      "published_at": "2026-09-17T16:32:47.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7bfa3bbe3067f543",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698821/",
+      "title": "Брэд Питт подшутил над курьером, назвавшись Мэттом Деймоном",
+      "published_at": "2026-09-17T16:32:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-82ef4a76309f6275",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33858343.html",
+      "title": "За 8 месяцаў ува Ўкраіне атрымала раненьні і загінулі больш людзей, чым за ўвесь 2025 год — місія ААН",
+      "published_at": "2026-09-17T16:28:31.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-164d44ead5a2200e",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/uchashchiesya-zhlobinskikh-kolledzhey-stali-uchastnikami-otkrytogo-dialoga-edinyy-vektor-dialog-na-r-1648209/",
+      "title": "Учащиеся жлобинских колледжей стали участниками открытого диалога «Единый вектор: диалог на равных»",
+      "published_at": "2026-09-17T16:25:17.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e700dd650ad29dbd",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698819/",
+      "title": "Почти 80% территориальных «завоеваний» армии РФ в 2026 году оказались фейком",
+      "published_at": "2026-09-17T16:22:47.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-dd95d55ae0c16b8e",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/kumokha-osennyaya-kak-ne-navlech-bedu-18-sentyabrya-i-chto-podskazhut-narodnye-primety-1648174/",
+      "title": "Кумоха Осенняя: как не навлечь беду 18 сентября и что подскажут народные приметы",
+      "published_at": "2026-09-17T16:20:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f08fdf217d1b15ab",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698818/",
+      "title": "Математик развенчал 2000-летний миф об оптических иллюзиях Парфенона",
+      "published_at": "2026-09-17T16:12:59.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-6cf3896638205d40",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/delegatsiya-gomelskoy-oblasti-prinyala-uchastie-v-tseremonii-vozlozheniya-tsvetov-k-memorialu-uznika-1648205/",
+      "title": "Делегация Гомельской области приняла участие в церемонии возложения цветов к мемориалу узникам концлагеря «Береза Картузская»",
+      "published_at": "2026-09-17T16:08:10.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-be017b26caed6f44",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698817/",
+      "title": "Лукашенко снова заявил, что «уже наелся этой власти»",
+      "published_at": "2026-09-17T16:05:54.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-30edcded8376ac4f",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698816/",
+      "title": "Зеленский рассказал об обещании, которое дал Шону Пенну",
+      "published_at": "2026-09-17T16:03:45.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8bccd2dcf44f019c",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698815/",
+      "title": "«Эвертон» предлагает любому стать футболистом на 48 часов",
+      "published_at": "2026-09-17T15:56:23.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e6a30ed6d35e014d",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-rogacheve-proshli-masshtabnyy-avtoprobeg-i-avtomobilnyy-fleshmob-posvyashchennye-dnyu-narodnogo-ed-1648203/",
+      "title": "В Рогачеве прошли масштабный автопробег и автомобильный флешмоб, посвященные Дню народного единства",
+      "published_at": "2026-09-17T15:51:19.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-35847937567964ef",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698814/",
+      "title": "Спецпосланник США по Беларуси Джон Коул посетил Латвию",
+      "published_at": "2026-09-17T15:47:04.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-58344d4638ef0998",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698813/",
+      "title": "Президент Румынии выдвинул третью кандидатуру на пост премьер-министра",
+      "published_at": "2026-09-17T15:40:24.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ea9c8ca70c534a78",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-agrogorodke-dobryn-elskogo-rayona-torzhestvenno-otkryt-mini-dendropark-1648196/",
+      "title": "В агрогородке Добрынь Ельского района торжественно открыт мини-дендропарк",
+      "published_at": "2026-09-17T15:33:59.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-36503a2cb1fdb5dc",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698812/",
+      "title": "Гомельского военкома-ябатьку, который получил от Лукашенко «заряд бодрости», уволили в запас",
+      "published_at": "2026-09-17T15:33:43.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-93f08f1f276d75a8",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33858183.html",
+      "title": "Што будзе з палітвязьнямі? Былы пасол Расеі атрымаў зямлю ў Драздах. Беларуска выйшла з турмы ў ЗША. Навіны 17 верасьня",
+      "published_at": "2026-09-17T15:30:00.000Z",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-13cffc53c509fa33",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/novosti-belarusi/lukashenko-edinstvo-belorusskogo-naroda-ravno-nezavisimosti-gosudarstva-1648199/",
+      "title": "Лукашенко: единство белорусского народа равно независимости государства",
+      "published_at": "2026-09-17T15:18:23.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-801391f9abe0d7bc",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698811/",
+      "title": "Польша показывает Западной Европе мастер-класс",
+      "published_at": "2026-09-17T15:16:41.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1514ea43cf4c473b",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698810/",
+      "title": "Под Варшавой лоси позвонили в домофон и разбудили хозяев",
+      "published_at": "2026-09-17T15:09:10.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8389aff4d7731dbf",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/novosti-belarusi/kochanova-belarus-i-alzhir-svyazyvayut-davnie-druzheskie-otnosheniya-obshchaya-zadacha-dostich-tovar-1648197/",
+      "title": "Кочанова: Беларусь и Алжир связывают давние дружеские отношения, общая задача - достичь товарооборота в $500 млн",
+      "published_at": "2026-09-17T15:04:27.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d88f817fd92464c0",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698809/",
+      "title": "СМИ: Трамп намерен подписать законопроект об «адских санкциях» против России",
+      "published_at": "2026-09-17T15:03:06.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f07f40c0d84dbfe9",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698808/",
+      "title": "Россиянин: В Беларуси научился переходить дорогу на «зеленый»",
+      "published_at": "2026-09-17T14:59:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b83efbef8cc8cc7d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698807/",
+      "title": "Почти половина российских АЗС осталась без бензина",
+      "published_at": "2026-09-17T14:51:26.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-46245c5712b41d96",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698806/",
+      "title": "Психолог назвал главные секреты хорошего общения",
+      "published_at": "2026-09-17T14:46:17.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d2a6ec6c09f434db",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/avto/gai-gomelskoy-oblasti-usilit-kontrol-na-trassakh-r-82-i-m-5-v-vykhodnye-1648171/",
+      "title": "ГАИ Гомельской области усилит контроль на трассах Р 82 и М 5 в выходные",
+      "published_at": "2026-09-17T14:46:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-514503107e4407f1",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698805/",
+      "title": "Операция «Вивальди» застала российскую армию врасплох",
+      "published_at": "2026-09-17T14:41:07.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-6ba2bf00bef4a99b",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698804/",
+      "title": "Белорусы о россиянах: Хамы и неучи с манией величия",
+      "published_at": "2026-09-17T14:35:20.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
@@ -19,31 +338,273 @@
       "source_name": "Charter97",
       "source_url": "https://charter97.org/ru/news/2026/9/17/698742/",
       "title": "«У меня единственный вопрос: где мои деньги?»",
-      "published_at": "2026-09-17T11:21:36.000Z",
+      "published_at": "2026-09-17T14:35:00.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
-      "material_id": "mfm-becf4d5e77190546",
+      "material_id": "mfm-4c6809456f3d2a9b",
       "source_id": "src-charter97",
       "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698780/",
-      "title": "Белорусские ученые научились выращивать раков почти втрое быстрее",
-      "published_at": "2026-09-17T11:20:37.000Z",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698803/",
+      "title": "Премьер Швеции подал в отставку после поражения на выборах",
+      "published_at": "2026-09-17T14:33:01.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
-      "material_id": "mfm-357a1e874ffa8311",
+      "material_id": "mfm-89e5709aee341234",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/zdorove/v-den-narodnogo-edinstva-v-elskoy-rayonnoy-bolnitse-otkryli-obnovlennoe-terapevticheskoe-otdelenie-1648193/",
+      "title": "В День народного единства в Ельской районной больнице открыли обновленное терапевтическое отделение",
+      "published_at": "2026-09-17T14:30:12.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c677cd5f9238f65e",
       "source_id": "src-charter97",
       "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698779/",
-      "title": "В небе над центральной Польшей раздался громкий звук",
-      "published_at": "2026-09-17T11:17:56.000Z",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698802/",
+      "title": "Франция выдвинула фильм Звягинцева на «Оскар»",
+      "published_at": "2026-09-17T14:22:48.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-444c5f568084f370",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698801/",
+      "title": "На западной границе Беларуси устанавливают блокпосты",
+      "published_at": "2026-09-17T14:19:45.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ece7650a62357000",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-gomelskoy-oblasti-sostoyalas-gumanitarnaya-missiya-mezhdu-grazhdanskimi-litsami-rossii-i-ukrainy-1648192/",
+      "title": "В Гомельской области состоялась гуманитарная миссия между гражданскими лицами России и Украины",
+      "published_at": "2026-09-17T14:17:49.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c65645e1ae5a5fc2",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698800/",
+      "title": "Рейтинг Путина обвалился накануне выборов",
+      "published_at": "2026-09-17T14:10:31.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-0c99bd7f1abd23e5",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/kaleidoscope/mts-otkryvaet-nabor-v-shkolu-tsifrovoy-gramotnosti-dlya-starshego-pokoleniya-1648190/",
+      "title": "МТС открывает набор в школу цифровой грамотности для старшего поколения",
+      "published_at": "2026-09-17T14:06:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b9158268112a57c3",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698749/",
+      "title": "«Загорелись все красные лампочки»",
+      "published_at": "2026-09-17T14:04:45.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e1f38ff4e5c1dc0a",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/kaleidoscope/butikavto-otkroet-avtokhaus-v-svetlogorske-samaya-bolshaya-set-avtokhausov-belarusi-prodolzhaet-ros-1648189/",
+      "title": "BUTIKAVTO откроет автохаус в Светлогорске: самая большая сеть автохаусов Беларуси продолжает рост",
+      "published_at": "2026-09-17T14:00:40.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f5f149ff9c0daaab",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698799/",
+      "title": "В Японии создали необычный гибрид Mazda и Chevrolet Corvette",
+      "published_at": "2026-09-17T13:54:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7d1174497f4de595",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698798/",
+      "title": "Конгресс дал Трампу «кувалду» для давления на Кремль",
+      "published_at": "2026-09-17T13:47:34.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b7dc0bed2142dd5e",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698797/",
+      "title": "Коул обсудил Беларусь с президентом и премьером Литвы",
+      "published_at": "2026-09-17T13:44:07.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1ab588a117756f52",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-gomele-organizuyut-yarmarku-vakansiy-dlya-lyudey-pensionnogo-vozrasta-i-s-invalidnostyu-1648187/",
+      "title": "В Гомеле организуют ярмарку вакансий для людей пенсионного возраста и с инвалидностью",
+      "published_at": "2026-09-17T13:38:25.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8edd554d39e686e1",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698796/",
+      "title": "Пашинян сделал резкое заявление о российской военной базе",
+      "published_at": "2026-09-17T13:31:21.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-0887765e435a2ee2",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698795/",
+      "title": "В Бресте выставили на продажу квартиру с жильцами",
+      "published_at": "2026-09-17T13:26:18.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9acfd14ee58928c0",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33858225.html",
+      "title": "Польскія ўлады заявілі пра «новы выклік» ад Расеі пасьля чарговага дрону каля сваёй тэрыторыі",
+      "published_at": "2026-09-17T13:22:15.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d3040598ac15f961",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/17/698794/",
+      "title": "Что нужно знать о выборах в Госдуму России",
+      "published_at": "2026-09-17T13:13:26.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-fe292584665a32ec",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obrazovanie/v-den-narodnogo-edinstva-v-gomele-proshel-oblastnoy-turnir-sredi-shkolnikov-znatoki-gosudarstva-i-pr-1648172/",
+      "title": "В День народного единства в Гомеле прошел областной турнир среди школьников «Знатоки государства и права»",
+      "published_at": "2026-09-17T13:10:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e82d5c5692a43581",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/lichnomu-sostavu-oblastnogo-voennogo-komissariata-i-voennosluzhashchim-gomelskogo-garnizona-predstav-1648180/",
+      "title": "Личному составу областного военного комиссариата и военнослужащим Гомельского гарнизона представлен новый военком Андрей Онуфриюк",
+      "published_at": "2026-09-17T12:44:48.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-6ca032ce7f602301",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/avto/den-bez-avtomobilya-stala-izvestna-programma-meropriyatiy-ekologicheskoy-aktsii-v-gomele-1648169/",
+      "title": "День без автомобиля. Стала известна программа мероприятий экологической акции в Гомеле",
+      "published_at": "2026-09-17T12:37:55.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2246ac6bd690e314",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33858164.html",
+      "title": "Беларуса, якога абмянялі на Пачобута, спрабавалі судзіць у Польшчы, але ён не прыехаў на свой суд",
+      "published_at": "2026-09-17T12:15:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e65f4f0780689254",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/kgk-provedet-18-sentyabrya-goryachuyu-liniyu-po-voprosam-tekhnicheskoy-inventarizatsii-i-gosudarstve-1648162/",
+      "title": "КГК проведет 18 сентября горячую линию по вопросам технической инвентаризации и государственной регистрации недвижимости",
+      "published_at": "2026-09-17T12:14:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f59c01dfbe4ba710",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-oktyabrskom-sostoyalsya-ii-rayonnyy-festival-my-vmeste-s-chempionatom-po-kolke-drov-rabi-yak-batsk-1648161/",
+      "title": "В Октябрьском состоялся II районный фестиваль «Мы — вместе!» с чемпионатом по колке дров «Рабі, як Бацька. Версия 2:0»",
+      "published_at": "2026-09-17T11:51:10.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-abee334d0c464020",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-gomele-seminar-ucheba-obedinil-uchastnikov-proekta-shkola-molodogo-rukovoditelya-1648170/",
+      "title": "В Гомеле семинар-учеба объединил участников проекта «Школа молодого руководителя»",
+      "published_at": "2026-09-17T11:38:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -58,17 +619,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-3a7b9d52b2a72160",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698778/",
-      "title": "Белорусские вузы массово закупают нары",
-      "published_at": "2026-09-17T10:59:22.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-b26704a81ee22d50",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -80,28 +630,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-376d4713553dd6b2",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698777/",
-      "title": "Хорошие новости для Украины и плохие — для России",
-      "published_at": "2026-09-17T10:52:47.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9edb2f8948640860",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698776/",
-      "title": "Под Жлобином продают производство, которое когда-то называли уникальным",
-      "published_at": "2026-09-17T10:42:36.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-0d251c81f7e85c7f",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -110,28 +638,6 @@
       "published_at": "2026-09-17T10:41:54.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a43111b1133e5903",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698775/",
-      "title": "Raiffeisen столкнулся с новой проблемой из-за российского бизнеса",
-      "published_at": "2026-09-17T10:40:29.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c20cfb4565d9998f",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698774/",
-      "title": "Эксперты назвали упражнение для сохранения силы после 40 лет",
-      "published_at": "2026-09-17T10:31:40.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -157,72 +663,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-0050f1aea2ad17ae",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698773/",
-      "title": "Не тот шаман",
-      "published_at": "2026-09-17T10:25:02.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b93ec9606c0266f1",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698772/",
-      "title": "По Гродно начал ездить необычный ретроавтобус",
-      "published_at": "2026-09-17T10:13:09.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3c506d6aa19758b4",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obrazovanie/studentam-ggtu-imeni-p-o-sukhogo-prochita-1648163/",
-      "title": "На лидирующих позициях. А в чем-то и первые в мире. Студентам ГГТУ имени П. О. Сухого прочитали лекцию о достижениях энергетической отрасли за четверть века",
-      "published_at": "2026-09-17T10:12:46.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5f4f53de6e631455",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698771/",
-      "title": "Мерц может лишиться поста канцлера Германии до конца недели",
-      "published_at": "2026-09-17T10:06:45.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-7e84ca315357f35f",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698770/",
-      "title": "Стало известно, сколько Арина Соболенко заработала призовых в этом году",
-      "published_at": "2026-09-17T10:03:08.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-56e5303112100ec7",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698769/",
-      "title": "Ким Чен Ын разбогател на рабском труде собственных граждан",
-      "published_at": "2026-09-17T10:02:02.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-ef17c9c8587492b7",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -231,116 +671,6 @@
       "published_at": "2026-09-17T09:52:57.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-2373199d44aa8029",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obrazovanie/kak-zhivet-gomelskiy-detsad-kotoryy-dva-goda-nazad-podarili-gorozhanam-ko-dnyu-narodnogo-edinstva-1648159/",
-      "title": "Как живет гомельский детсад, который два года назад подарили горожанам ко Дню народного единства",
-      "published_at": "2026-09-17T09:50:33.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-85e1627cd1881e3d",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698768/",
-      "title": "Во Вроцлаве состоится встреча с Натальей Радиной и Александрой Герасименей",
-      "published_at": "2026-09-17T09:47:49.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-e18a3f65d39fb061",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698767/",
-      "title": "Польша передаст Украине дефицитные ракеты для Patriot",
-      "published_at": "2026-09-17T09:43:18.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-2cf612b13f0c0bcb",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698766/",
-      "title": "Новейший пикап Ram продали за $1,5 миллиона",
-      "published_at": "2026-09-17T09:41:06.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-6ab576de340de61c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698765/",
-      "title": "«После выборов в РФ могут закрыть границы»",
-      "published_at": "2026-09-17T09:30:26.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9cf56b6c6a59d7cd",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/v-punkte-propuska-novaya-guta-v-gomelskoy-oblasti-sostoyalsya-ocherednoy-obmen-telami-pogibshikh-voe-1648158/",
-      "title": "В пункте пропуска «Новая Гута» в Гомельской области состоялся очередной обмен телами погибших военнослужащих между Россией и Украиной по формуле 252 на 23",
-      "published_at": "2026-09-17T09:30:25.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-bc64dbbade93d5f1",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698763/",
-      "title": "«Людей просто выбросили за борт»",
-      "published_at": "2026-09-17T09:21:36.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cb9fd281771e29e7",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698764/",
-      "title": "The Atlantic: Гавана взмолилась о пощаде?",
-      "published_at": "2026-09-17T09:19:40.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-0f4836b64615650b",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obrazovanie/vtoroy-v-oblasti-i-pyatyy-v-strane-gomelskomu-meditsinskomu-kolledzhu-prisvoen-status-mirotvorchesko-1648157/",
-      "title": "Второй в области и пятый в стране. Гомельскому медицинскому колледжу присвоен статус миротворческого",
-      "published_at": "2026-09-17T09:14:11.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-03101fd8879ef534",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698762/",
-      "title": "Белорус, которого обменяли на Почобута, не приехал на свой суд в Польше",
-      "published_at": "2026-09-17T09:10:08.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -355,83 +685,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-bc37a5d8f11528d8",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698761/",
-      "title": "Маша Захарова — настоящая, истинная «куколка»",
-      "published_at": "2026-09-17T09:06:35.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-e2114f2e67adce84",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/v-chem-dlya-vas-smysl-prazdnika-den-narodnogo-edinstva-govoryat-zhiteli-gomelskoy-oblasti-1648153/",
-      "title": "В чем для вас смысл праздника День народного единства? Отвечают известные люди Гомельской области",
-      "published_at": "2026-09-17T08:53:01.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cf1c4a93ea3a978a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698760/",
-      "title": "Николай Статкевич: Вчера я радовался и огорчался одновременно",
-      "published_at": "2026-09-17T08:52:33.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b6c267a0bbef52bc",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698759/",
-      "title": "В Литве начались масштабные военные учения «Гром Перкунаса»",
-      "published_at": "2026-09-17T08:51:45.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cbc365952734fa78",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698758/",
-      "title": "Самый могущественный человек в сфере ИИ уверен в светлом будущем",
-      "published_at": "2026-09-17T08:44:10.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-1b5d04422e1f2ca7",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698757/",
-      "title": "Forbes: Кремль совершил «предупредительный выстрел»",
-      "published_at": "2026-09-17T08:42:05.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-7f8a059004858ec0",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/krashe-i-sovremennee-na-zasedanii-oblispolkoma-obsudili-blagoustroystvo-naselennykh-punktov-gomelshch-1648152/",
-      "title": "Краше и современнее. На заседании облисполкома обсудили благоустройство населенных пунктов Гомельщины",
-      "published_at": "2026-09-17T08:39:02.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-c379ef004c444459",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -440,17 +693,6 @@
       "published_at": "2026-09-17T08:30:38.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-531f65315a88e4a5",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698756/",
-      "title": "«С грибами у меня в этом сезоне все»: белоруска показала видео из леса",
-      "published_at": "2026-09-17T08:29:20.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -465,39 +707,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-21b5bba7307ec6cb",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/aktualno/v-oblispolkome-rassmotreli-optimizatsiyu-kolichestva-obektov-sverkhnormativnogo-nezavershennogo-stro-1648151/",
-      "title": "В облисполкоме рассмотрели оптимизацию количества объектов сверхнормативного незавершенного строительства на Гомельщине. Результаты положительные",
-      "published_at": "2026-09-17T08:25:08.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-6c84a3fbe51928f5",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698755/",
-      "title": "СБУ поразила шесть российских самолетов и вертолетов в Ростове",
-      "published_at": "2026-09-17T08:23:10.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-e356085dad691518",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698754/",
-      "title": "Аркадий Мошес о переговорах Коула и Лукашенко: Гора родила мышь",
-      "published_at": "2026-09-17T08:18:51.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-4e51f3d205aff9a7",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -506,39 +715,6 @@
       "published_at": "2026-09-17T08:04:27.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-fde6ac8a8d232eae",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698753/",
-      "title": "Советник президента Украины: Российские «Шахеды» используют мобильные сети Беларуси",
-      "published_at": "2026-09-17T07:55:16.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-74d5a14bf4a5d7c5",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/rogachev-obedinil-talanty-i-vdokhnovenie-na-festivale-tvorchestva-lyudey-s-invalidnostyu-pover-v-seb-1648144/",
-      "title": "Рогачев объединил таланты и вдохновение на фестивале творчества людей с инвалидностью «Поверь в себя»",
-      "published_at": "2026-09-17T07:40:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f95b323c53e9b444",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/kholoda-ne-strashny-na-zasedanii-oblispolkoma-pod-predsedatelstvom-gubernatora-ivana-krupko-otsenili-1648149/",
-      "title": "Холода не страшны. На заседании облисполкома под председательством губернатора Ивана Крупко оценили подготовку к работе в осенне-зимний период",
-      "published_at": "2026-09-17T07:08:56.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -564,17 +740,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-388b0a4adb5a91c2",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/avto/gde-stoyat-datchiki-kontrolya-skorosti-v-gomelskoy-oblasti-17-sentyabrya-rasskazali-v-gai-1648148/",
-      "title": "Где стоят датчики контроля скорости в Гомельской области 17 сентября, рассказали в ГАИ",
-      "published_at": "2026-09-17T06:34:30.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-539ddac10928dc71",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -586,17 +751,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-2cb268ef89f18b50",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/novosti-mira/tramp-dopustil-polnyy-otkaz-ot-torgovli-s-evropeyskimi-stranami-1648147/",
-      "title": "Трамп допустил полный отказ от торговли с европейскими странами",
-      "published_at": "2026-09-17T06:08:35.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-bd00ea39fd5d8711",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -605,39 +759,6 @@
       "published_at": "2026-09-17T05:59:04.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b9f10aab18c4d536",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/kazhdyy-god-17-sentyabrya-belarus-otmechaet-den-narodnogo-edinstva-1647937/",
-      "title": "Каждый год 17 сентября Беларусь отмечает День народного единства",
-      "published_at": "2026-09-17T05:40:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-09b48e673fedb47a",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/zhiteley-gomelshchiny-s-dnem-narodnogo-edinstva-pozdravilo-rukovodstvo-gomelskoy-oblasti-1648146/",
-      "title": "Жителей Гомельщины с Днем народного единства поздравило руководство Гомельской области",
-      "published_at": "2026-09-17T05:28:16.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c65165267d6af3bb",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/novosti-belarusi/aleksandr-lukashenko-den-narodnogo-edinstva-simvoliziruet-natsionalnoe-dostoinstvo-i-istoricheskuyu--1648145/",
-      "title": "Александр Лукашенко: День народного единства символизирует национальное достоинство и историческую справедливость",
-      "published_at": "2026-09-17T05:02:31.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -663,28 +784,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-1fd30d71b6780e5a",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/v-gomelskom-rayone-sostoyalos-torzhestvennoe-otkrytie-pamyatnogo-znaka-posvyashchennogo-zhertvam-fash-1648135/",
-      "title": "В Гомельском районе состоялось торжественное открытие памятного знака, посвященного жертвам фашизма",
-      "published_at": "2026-09-16T17:51:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c607dacbc5fbfbc1",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obrazovanie/v-gomele-sudebnye-eksperty-vstretilis-so-studentami-medikami-1648117/",
-      "title": "В Гомеле судебные эксперты встретились со студентами-медиками",
-      "published_at": "2026-09-16T17:34:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-962b079af1365d0f",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -696,39 +795,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-694e2b6bddd79572",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/v-gomelskoy-oblasti-17-sentyabrya-v-trinadtsati-rayonakh-otklyuchat-elektrichestvo-uznayte-gde-imenn/",
-      "title": "В Гомельской области 17 сентября в тринадцати районах отключат электричество. Узнайте, где именно",
-      "published_at": "2026-09-16T17:11:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5770294b620e431c",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/belolobyy-gumennik-kazarka-i-drugie-s-19-sentyabrya-v-belarusi-nachnetsya-sezon-okhoty-na-gusey-1648015/",
-      "title": "Белолобый, гуменник, казарка и другие. С 19 сентября в Беларуси начнется сезон охоты на гусей",
-      "published_at": "2026-09-16T16:46:23.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-070d1c9d964d8b48",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obrazovanie/predstaviteli-goskomiteta-sudebnykh-ekspertiz-vstretilis-s-budushchimi-kollegami-v-gomelskom-meduniv-1648116/",
-      "title": "Представители Госкомитета судебных экспертиз встретились с будущими коллегами в Гомельском медуниверситете",
-      "published_at": "2026-09-16T16:19:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-79db2d2b369e3361",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -737,28 +803,6 @@
       "published_at": "2026-09-16T16:07:56.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-4c7c968fb3864d8a",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/bolee-polutora-milliona-rubley-napravleno-profsoyuzami-gomelshchiny-na-podgotovku-detey-k-shkole-v-e-1648007/",
-      "title": "Более полутора миллиона рублей направлено профсоюзами Гомельщины на подготовку детей к школе в этом году",
-      "published_at": "2026-09-16T16:00:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-711437c62ed796fc",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/zdorove/poshel-v-zal-i-nabral-ves-pochemu-vesy-vrut-i-pochemu-nelzya-brosat-trenirovki-1647379/",
-      "title": "Пошел в зал – и набрал вес: почему весы врут и почему нельзя бросать тренировки?",
-      "published_at": "2026-09-16T15:53:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -806,25 +850,14 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-b8a4e6c5ec20792e",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33857492.html",
-      "title": "Санкцыі скасоўваюць, а вызваляюць менш. Экспэрты пракамэнтавалі дамоўленасьці Лукашэнкі і Коўла",
-      "published_at": "2026-09-16T12:25:34.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-9d1ddedd7c0e45cd",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
       "source_url": "https://www.svaboda.org/a/33857380.html",
       "title": "Каго вызвалілі ў выніку перамоваў Коўла з Лукашэнкам. Сабралі дэталі",
       "published_at": "2026-09-16T10:00:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     },
     {
@@ -834,8 +867,8 @@
       "source_url": "https://www.svaboda.org/a/33857372.html",
       "title": "Стваральнік «Арт Сядзібы» і Symbal.by Павал Белавус вызвалены пасьля 5 год за кратамі",
       "published_at": "2026-09-16T09:56:30.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     },
     {
@@ -891,39 +924,6 @@
       "published_at": "2026-09-15T19:56:57.000Z",
       "feed_scope": "incidents",
       "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-2131d69d5f3fb7eb",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33856821.html",
-      "title": "Пасьля апошняга буйнога памілаваньня палітвязьнямі прызналі яшчэ 224 чалавекі",
-      "published_at": "2026-09-15T14:18:05.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-6b2cabffc303a745",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33855912.html",
-      "title": "«Джон Коўл і амэрыканскі перамоўны трэк вярнулі нам веру ў жыцьцё», — Кацярына Андрэева пра вызваленьні палітвязьняў",
-      "published_at": "2026-09-15T10:04:23.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-ea8122f744438deb",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33855860.html",
-      "title": "Хроніка перасьледу 15 верасьня: украінку асудзілі ў Менску за «садзейнічаньне экстрэмісцкай дзейнасьці»",
-      "published_at": "2026-09-15T09:05:41.000Z",
-      "feed_scope": "courts_repression",
-      "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
       "metadata_only": true
     }
   ]
