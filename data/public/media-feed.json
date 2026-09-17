@@ -1,7 +1,40 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-17T20:14:43.506Z",
+  "fetched_at": "2026-09-17T23:31:10.510Z",
   "materials": [
+    {
+      "material_id": "mfm-c78f461c4ac30478",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698842/",
+      "title": "Премьер Таиланда сделал странное заявление",
+      "published_at": "2026-09-17T23:18:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-656ba285195f5b7d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698841/",
+      "title": "Лавров и «теща» Путина оказались пассажирами одних бизнес-джетов",
+      "published_at": "2026-09-17T22:57:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9432eb4dd581d296",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33858330.html",
+      "title": "Ужо сёньня: 35 гадоў таму Станіслава Шушкевіча абралі кіраўніком Беларусі",
+      "published_at": "2026-09-17T21:05:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-5b10f1af001d0f85",
       "source_id": "src-charter97",
@@ -432,17 +465,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-8bccd2dcf44f019c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698815/",
-      "title": "«Эвертон» предлагает любому стать футболистом на 48 часов",
-      "published_at": "2026-09-17T15:56:23.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-e6a30ed6d35e014d",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -451,17 +473,6 @@
       "published_at": "2026-09-17T15:51:19.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-35847937567964ef",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/17/698814/",
-      "title": "Спецпосланник США по Беларуси Джон Коул посетил Латвию",
-      "published_at": "2026-09-17T15:47:04.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -834,8 +845,8 @@
       "source_url": "https://www.svaboda.org/a/33857446.html",
       "title": "BySol абвясьціў тэрміновы збор для вызваленых 25 палітвязьняў. За 6 гадзін суму сабралі цалкам",
       "published_at": "2026-09-16T15:50:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     },
     {
@@ -911,17 +922,6 @@
       "source_url": "https://www.svaboda.org/a/33857228.html",
       "title": "У Кіргізстане завяршылі пошукі беларускага альпініста. Ягонае цела не знайшлі і больш ня будуць шукаць",
       "published_at": "2026-09-16T06:20:20.000Z",
-      "feed_scope": "incidents",
-      "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f393f475a72d75f2",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33856923.html",
-      "title": "Узламаны сайт адной з найпапулярнейшых беларускіх турыстычных кампаній",
-      "published_at": "2026-09-15T19:56:57.000Z",
       "feed_scope": "incidents",
       "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
       "metadata_only": true
