@@ -1,13 +1,145 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-18T18:21:41.232Z",
+  "fetched_at": "2026-09-18T21:37:02.461Z",
   "materials": [
+    {
+      "material_id": "mfm-59b2c2e9c79f948f",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33859065.html",
+      "title": "Ужо сёньня: 35 гадоў таму бел-чырвона-белы сьцяг і «Пагоня» сталі дзяржаўнымі сымбалямі",
+      "published_at": "2026-09-18T21:05:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-46dd8403c1ff79b3",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698928/",
+      "title": "ВСУ ломают российский план наступления на Донбассе",
+      "published_at": "2026-09-18T19:57:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-827e4f147d52d853",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698966/",
+      "title": "Зеленский: На саммите «Карпатской восьмерки» подготовили более 50 соглашений",
+      "published_at": "2026-09-18T19:41:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1922692778c6cc6c",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698965/",
+      "title": "Германия получила свой первый истребитель F-35",
+      "published_at": "2026-09-18T19:30:51.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-4dc68a47f81636fe",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698964/",
+      "title": "«Это очень много значит для меня»",
+      "published_at": "2026-09-18T19:23:04.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9f138a5e4958f7f6",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698937/",
+      "title": "Россию накрыла новая волна топливного кризиса",
+      "published_at": "2026-09-18T19:13:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b4fcefc560b6664f",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698959/",
+      "title": "Аэропорты Барселоны и Дюссельдорфа названы лучшими в мире",
+      "published_at": "2026-09-18T19:02:11.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-49a12f4aa2ac036e",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698920/",
+      "title": "Экс-глава Ганцевичской милиции сбежал из психдиспансера",
+      "published_at": "2026-09-18T18:54:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-faea6da359a4aa3b",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698941/",
+      "title": "Третий корпус ВСУ парализовал работу элитного подразделения РФ «Рубикон»",
+      "published_at": "2026-09-18T18:49:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e60eecdc87202ee5",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698958/",
+      "title": "Уничтожены Ми-8 и самолеты: появились снимки аэропорта в Ростове после удара Украины",
+      "published_at": "2026-09-18T18:48:38.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3feef12a39f69616",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698957/",
+      "title": "Испуганный Песков",
+      "published_at": "2026-09-18T18:36:08.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d36e89a8fb1a3c3f",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/18/698956/",
+      "title": "Макрон созывает экстренное заседание G7",
+      "published_at": "2026-09-18T18:30:20.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-bffa7af619892adf",
       "source_id": "src-charter97",
       "source_name": "Charter97",
       "source_url": "https://charter97.org/ru/news/2026/9/18/698955/",
-      "title": "Марсоход Curiosity обнаружил на Марсе странные «отпечатки ног»",
+      "title": "Марсоход Curiosity обнаружил на Марсе странные отпечатки",
       "published_at": "2026-09-18T18:14:43.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
@@ -256,17 +388,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-faea6da359a4aa3b",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698941/",
-      "title": "Третий корпус ВСУ парализовал работу элитного подразделения РФ «Рубикон»",
-      "published_at": "2026-09-18T16:20:06.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-fb8dae49d9a8c62a",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -286,17 +407,6 @@
       "published_at": "2026-09-18T16:18:40.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-46dd8403c1ff79b3",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698928/",
-      "title": "ВСУ ломают российский план наступления на Донбассе",
-      "published_at": "2026-09-18T16:18:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -322,39 +432,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-b9be7162d165343d",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698938/",
-      "title": "Жизнь российского новобранца на фронте может длиться 20-30 минут",
-      "published_at": "2026-09-18T15:58:40.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f59cc265b929817b",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698857/",
-      "title": "Наталья Радина: Лукашенко нарывается",
-      "published_at": "2026-09-18T15:53:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9f138a5e4958f7f6",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698937/",
-      "title": "Россию накрыла новая волна топливного кризиса",
-      "published_at": "2026-09-18T15:52:14.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-5ac064e4951c5540",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -363,28 +440,6 @@
       "published_at": "2026-09-18T15:51:59.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b0437fce0a8d9364",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698936/",
-      "title": "Жителей Гомельской области на военные сборы отправляли с алкотестером",
-      "published_at": "2026-09-18T15:42:05.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a12f328515c79971",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698935/",
-      "title": "Новое видео с Путиным вызвало вопросы у россиян",
-      "published_at": "2026-09-18T15:39:19.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -399,39 +454,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-3a091b5f5ca7fe15",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698934/",
-      "title": "Ученые: Нечто странное происходит в океане",
-      "published_at": "2026-09-18T15:32:09.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c44e5cda58225a60",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698933/",
-      "title": "Украинские дроны уничтожили пусковую установку С-400, которой оккупанты били по Киеву",
-      "published_at": "2026-09-18T15:19:45.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-812b616e84fc8976",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698932/",
-      "title": "10 освобожденных политзаключенных приехали в Польшу",
-      "published_at": "2026-09-18T15:09:40.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-9a77af4d84cf75b9",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -440,17 +462,6 @@
       "published_at": "2026-09-18T15:07:10.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-d5a3ffd07d7765e9",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/18/698929/",
-      "title": "ЕС закладывает 100 миллиардов евро на поддержку Украины",
-      "published_at": "2026-09-18T14:59:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -834,17 +845,6 @@
       "source_url": "https://www.svaboda.org/a/33858164.html",
       "title": "Беларуса, якога абмянялі на Пачобута, спрабавалі судзіць у Польшчы, але ён не прыехаў на свой суд",
       "published_at": "2026-09-17T12:15:13.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-0d251c81f7e85c7f",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33858097.html",
-      "title": "Пасьля вяртаньня зь Менску Джон Коўл сустрэўся з прэзыдэнтам і прэм’ерам Літвы. Гаварылі пра Беларусь",
-      "published_at": "2026-09-17T10:41:54.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
