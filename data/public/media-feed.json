@@ -1,7 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-19T20:33:20.753Z",
+  "fetched_at": "2026-09-19T22:56:04.143Z",
   "materials": [
+    {
+      "material_id": "mfm-4f98fede7e97d462",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33535143.html",
+      "title": "Ужо сёньня: дні нараджэньня паэтак Натальлі Арсеньневай і Ніны Мацяш",
+      "published_at": "2026-09-19T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-8ad1aa37f9f89ba9",
       "source_id": "src-charter97",
@@ -845,8 +856,8 @@
       "source_url": "https://www.svaboda.org/a/33858653.html",
       "title": "Урад ЗША выключыў з санкцыйнага сьпісу дзьве беларускія кампаніі, пра якія казаў Джон Коўл у Менску",
       "published_at": "2026-09-18T05:39:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     },
     {
@@ -911,17 +922,6 @@
       "source_url": "https://www.svaboda.org/a/33857996.html",
       "title": "У ЗША з-пад варты вызвалілі беларуску, якая зьвярталася па статус уцекача. Што вядома",
       "published_at": "2026-09-17T06:59:10.000Z",
-      "feed_scope": "courts_repression",
-      "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-962b079af1365d0f",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33857689.html",
-      "title": "Былога прэзыдэнта Косава Тачы і ягоных суўдзельнікаў асудзілі ў Гаазе за ваенныя злачынствы",
-      "published_at": "2026-09-16T17:31:05.000Z",
       "feed_scope": "courts_repression",
       "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
       "metadata_only": true
