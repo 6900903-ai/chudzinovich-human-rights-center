@@ -1,7 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-19T22:56:04.143Z",
+  "fetched_at": "2026-09-20T01:01:03.393Z",
   "materials": [
+    {
+      "material_id": "mfm-ff7fc57320d869c3",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699016/",
+      "title": "Россию неумолимо подталкивают к обрыву",
+      "published_at": "2026-09-20T01:00:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-4f98fede7e97d462",
       "source_id": "src-radio-svaboda",
@@ -462,17 +473,6 @@
       "published_at": "2026-09-19T13:25:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-1aadf197cb5c5428",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699011/",
-      "title": "Уничтожено 300 комплексов: Мадяр подвел итог операции «ПВОпад-2026»",
-      "published_at": "2026-09-19T13:22:41.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
