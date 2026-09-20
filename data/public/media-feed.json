@@ -1,7 +1,51 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-20T19:23:16.605Z",
+  "fetched_at": "2026-09-20T22:23:10.626Z",
   "materials": [
+    {
+      "material_id": "mfm-2f5b92526c7942a8",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33859727.html",
+      "title": "Ужо сёньня: Міжнародны дзень міру; дзень нараджэньня Віктара Івашкевіча",
+      "published_at": "2026-09-20T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-71a77853f03853b1",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699124/",
+      "title": "СМИ рассказали, что за «Пеликан» летел на Москву",
+      "published_at": "2026-09-20T19:53:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d5ea45eeb4d309bc",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699123/",
+      "title": "ВСУ уничтожили российский ЗРК «Оса» в тылу на Донетчине",
+      "published_at": "2026-09-20T19:38:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3629a1ac2aba7c4f",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699121/",
+      "title": "Центризбирком РФ опубликовал первые результаты «выборов» в Госдуму",
+      "published_at": "2026-09-20T19:27:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-e951ea1f485f6f2c",
       "source_id": "src-charter97",
@@ -363,39 +407,6 @@
       "published_at": "2026-09-20T15:21:40.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-ada36e643ad906c5",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/20/699098/",
-      "title": "WSJ: Состояние здоровья Си Цзиньпина вызвало шквал вопросов перед его встречей с Трампом",
-      "published_at": "2026-09-20T15:13:04.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-abb7e12dc400cfa5",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/20/699097/",
-      "title": "Глава Škoda возглавит Volvo Cars",
-      "published_at": "2026-09-20T15:08:20.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f0764b02a3c355e2",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/20/699096/",
-      "title": "Президент Ирана едет в Нью-Йорк",
-      "published_at": "2026-09-20T15:07:14.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -812,17 +823,6 @@
       "source_url": "https://www.svaboda.org/a/33859020.html",
       "title": "Былы начальнік Ганцавіцкага РАУС уцёк з псыхбольніцы",
       "published_at": "2026-09-18T16:18:40.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-28786dc669c07339",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33858969.html",
-      "title": "Публікацыі Радыё Свабода атрымалі ўзнагароды на конкурсе «Вольнае слова»",
-      "published_at": "2026-09-18T14:35:57.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
