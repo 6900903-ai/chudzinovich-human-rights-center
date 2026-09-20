@@ -1,7 +1,117 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-20T01:01:03.393Z",
+  "fetched_at": "2026-09-20T06:08:27.710Z",
   "materials": [
+    {
+      "material_id": "mfm-10add66e3c7e4f97",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/novosti-belarusi/lukashenko-belorusskie-tamozhenniki-reshayut-postavlennye-zadachi-na-samom-vysokom-urovne--1648373/",
+      "title": "Лукашенко: белорусские таможенники решают поставленные задачи на самом высоком уровне",
+      "published_at": "2026-09-20T06:01:42.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-80d4ac8998c36f4d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699047/",
+      "title": "Хуситы ударили ракетами и дронами по столице Саудовской Аравии",
+      "published_at": "2026-09-20T05:54:31.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-efa21e90986a48a0",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/pozdravlenie-rukovodstva-gomelskoy-oblasti-s-dnem-rabotnikov-lesa-1648311/",
+      "title": "Поздравление руководства Гомельской области с Днем работников леса",
+      "published_at": "2026-09-20T05:51:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-aca384a9790e783c",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699046/",
+      "title": "Школе в Новогрудке присвоили имя художника, которого называют «белорусским Леонардо да Винчи»",
+      "published_at": "2026-09-20T05:50:01.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c1a726707ee7386d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699045/",
+      "title": "В Москве пылает НПЗ, который обеспечивает 40% топлива столицы РФ",
+      "published_at": "2026-09-20T05:39:57.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3a42115948bcc096",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699044/",
+      "title": "Дроны массировано атаковали Москву и Подмосковье",
+      "published_at": "2026-09-20T05:27:05.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8c524e92ac0850cd",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699043/",
+      "title": "Под Москвой раздались взрывы: атакованы крупные хабы",
+      "published_at": "2026-09-20T05:12:54.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-900c27c06ba98efd",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699018/",
+      "title": "В Европе предсказали плачевный конец Путину",
+      "published_at": "2026-09-20T03:30:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1a1fd3fab061a851",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699042/",
+      "title": "Белорусы Бельгии передали автомобили солдатам в Украине",
+      "published_at": "2026-09-20T03:15:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-0d245c5e63df969a",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/20/699017/",
+      "title": "Новое фото Киркорова «взорвало» социальные сети",
+      "published_at": "2026-09-20T02:15:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-ff7fc57320d869c3",
       "source_id": "src-charter97",
@@ -333,28 +443,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-02c06719afe289d9",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699021/",
-      "title": "Жителя Норильска удивила «прикольная» особенность белорусского менталитета",
-      "published_at": "2026-09-19T14:58:34.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9653eeff59c30443",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699020/",
-      "title": "«Черная птица» для оккупантов",
-      "published_at": "2026-09-19T14:48:46.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-b569697a1aaa03dc",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -377,28 +465,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-4a9c9cac594daae1",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699019/",
-      "title": "В Мюнхене открылся 191-й Октоберфест",
-      "published_at": "2026-09-19T14:42:38.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a0f7c49c1d9bcf5f",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/698988/",
-      "title": "Джон Коул: Смотрю в глаза освобожденным и вижу, что для них значит свобода",
-      "published_at": "2026-09-19T14:31:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-69c1eb9cf10063b6",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -410,39 +476,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-9927dc8ba2b14e0c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/698991/",
-      "title": "Буданов поздравил таинственного топ-генерала украинской разведки",
-      "published_at": "2026-09-19T14:08:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-77d19c86e0b1d481",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699015/",
-      "title": "Финалы Лиги чемпионов вернутся на культовые стадионы",
-      "published_at": "2026-09-19T14:04:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3b89dae90bc64a18",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699014/",
-      "title": "Глава МИД Латвии: Нужно давить на Лукашенко",
-      "published_at": "2026-09-19T14:02:25.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-6f1395757840ab21",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -451,17 +484,6 @@
       "published_at": "2026-09-19T13:51:22.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-60c3ba8acdcc7f56",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/19/699013/",
-      "title": "Война внутри",
-      "published_at": "2026-09-19T13:48:34.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -568,7 +590,7 @@
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
       "source_url": "https://gp.by/novosti/obshchestvo/s-prazdnikom-lyubimyy-mozyr-gorod-nad-pripyatyu-vstrechaet-871-y-den-rozhdeniya-1648337/",
-      "title": "С праздником, любимый Мозырь! Город над Припятью встречает 871-й день рождения",
+      "title": "С праздником, любимый Мозырь! Город над Припятью встретил 871-й день рождения",
       "published_at": "2026-09-19T10:51:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
@@ -671,28 +693,6 @@
       "published_at": "2026-09-19T08:00:00.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-abc5eeb8fced9053",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/zdorove/segodnya-otmechaetsya-mezhdunarodnyy-den-khirurga-1648269/",
-      "title": "Сегодня отмечается Международный день хирурга",
-      "published_at": "2026-09-19T07:42:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-10c532bc9b0aabfd",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/chp-i-kriminal/uberegli-ot-poteri-kvartiry-v-gomele-predotvratili-krupnoe-moshennichestvo-1648313/",
-      "title": "Уберегли от потери квартиры: в Гомеле предотвратили крупное мошенничество",
-      "published_at": "2026-09-19T07:17:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
