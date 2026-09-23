@@ -1,7 +1,40 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-23T20:15:15.360Z",
+  "fetched_at": "2026-09-23T23:37:29.540Z",
   "materials": [
+    {
+      "material_id": "mfm-f2b4861f2eba0530",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/24/699502/",
+      "title": "В Канаде запустили систему, которая может изменить работу шиномонтажных мастерских",
+      "published_at": "2026-09-23T23:17:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2a5121f80ad96105",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/24/699499/",
+      "title": "Украина отправила пленных солдат КНДР в Южную Корею",
+      "published_at": "2026-09-23T22:58:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-74061a531ac9c968",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33862938.html",
+      "title": "Ужо сёньня: 25 гадоў ад пачатку кругласутачнай вахты ў Курапатах",
+      "published_at": "2026-09-23T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-2898cef8b28547c9",
       "source_id": "src-charter97",
@@ -410,28 +443,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-1434089560163608",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/23/699474/",
-      "title": "В Минске начнут включать отопление",
-      "published_at": "2026-09-23T16:26:13.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-ce502ff7637ea946",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/23/699473/",
-      "title": "Украинская авиация нанесла прицельный удар по позициям российских оккупантов",
-      "published_at": "2026-09-23T16:25:21.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-6570a06c6f82dae9",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -823,8 +834,8 @@
       "source_url": "https://www.svaboda.org/a/33861323.html",
       "title": "Джон Коўл будзе займацца вызваленьнем і расейскіх палітвязьняў",
       "published_at": "2026-09-22T19:20:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     },
     {
@@ -913,17 +924,6 @@
       "published_at": "2026-09-21T07:20:12.000Z",
       "feed_scope": "courts_repression",
       "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-939ff4bbda30b7bf",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33858062.html",
-      "title": "«Ёсьць людзі, якія былі побач». Як праваабаронцы атрымліваюць новыя сьведчаньні пра сьмерці за кратамі",
-      "published_at": "2026-09-19T08:00:00.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     }
   ]
