@@ -1,7 +1,106 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-25T18:31:00.364Z",
+  "fetched_at": "2026-09-25T22:14:41.836Z",
   "materials": [
+    {
+      "material_id": "mfm-f3888a3fc9abaa66",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33864462.html",
+      "title": "Ужо сёньня: Эўрапейскі дзень моваў",
+      "published_at": "2026-09-25T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2e646f2207099f0d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699668/",
+      "title": "Зеленский: Украина получит лицензии для Patriot",
+      "published_at": "2026-09-25T19:54:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e191741e2be99afa",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699726/",
+      "title": "В Варшаве под открытым небом открылась выставка, посвященная уроженцу Минска Ежи Гедройцу",
+      "published_at": "2026-09-25T19:41:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5c02b4e635d8654c",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699725/",
+      "title": "WSJ: Украина сдерживает огромную Россию, потому что воюет совсем по-другому",
+      "published_at": "2026-09-25T19:28:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-83bb5199f697f941",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699724/",
+      "title": "Подача белорусской теннисистки вызвала бурную реакцию в соцсетях",
+      "published_at": "2026-09-25T19:17:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1b294b582026e969",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699723/",
+      "title": "Зеленский провел Ставку",
+      "published_at": "2026-09-25T19:07:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3f993f2327efa3f8",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699722/",
+      "title": "Литва отрабатывает вторжение с территории Беларуси",
+      "published_at": "2026-09-25T19:03:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3bf6f8ed44f9296a",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699721/",
+      "title": "В России уничтожили больше 40 тонн сала, которое везли из Беларуси",
+      "published_at": "2026-09-25T18:54:32.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7f175feb9e1f2957",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/25/699720/",
+      "title": "В Германии тысячи школьников протестовали против срочной службы",
+      "published_at": "2026-09-25T18:41:02.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-8b9f4ee2616435d5",
       "source_id": "src-charter97",
@@ -66,6 +165,17 @@
       "published_at": "2026-09-25T17:51:30.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7813ea050c6f6f05",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/chp-i-kriminal/voditel-elektrovelosipeda-skonchalsya-posle-dtp-v-elske-1648882/",
+      "title": "Водитель электровелосипеда скончался после ДТП в Ельске",
+      "published_at": "2026-09-25T17:44:31.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -366,50 +476,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-acfc9a5402876a7e",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699701/",
-      "title": "В Санкт-Петербурге в день приезда Путина отключили мобильный интернет",
-      "published_at": "2026-09-25T15:16:25.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cc5dd82366437439",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699700/",
-      "title": "У подростка обнаружили память, которая превосходит возможности 99,9 % людей",
-      "published_at": "2026-09-25T15:10:27.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9b5d7c4303e1928a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699699/",
-      "title": "Bloomberg объяснил слова Си Трампу о «ловушке Фукидида»",
-      "published_at": "2026-09-25T15:09:22.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-d825cca174ddcdf8",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699698/",
-      "title": "В ЮАР тысячи людей вышли на барбекю ради рекорда",
-      "published_at": "2026-09-25T15:03:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-b0dc6f5e93d05e4d",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -418,28 +484,6 @@
       "published_at": "2026-09-25T14:59:45.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-8bf0fbba24a45b9a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699682/",
-      "title": "«По полтриллиона в месяц население уносит в нал»",
-      "published_at": "2026-09-25T14:55:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-194eae55d6b67949",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699697/",
-      "title": "27-летнего авиатора приговорили к 13 годам колонии за «госизмену»",
-      "published_at": "2026-09-25T14:47:02.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -462,17 +506,6 @@
       "published_at": "2026-09-25T14:40:51.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-05183ac814637706",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699696/",
-      "title": "Трамп заявил об успешных переговорах с Си Цзиньпином",
-      "published_at": "2026-09-25T14:37:25.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -517,17 +550,6 @@
       "published_at": "2026-09-25T14:27:40.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-26ad95a7bd915ede",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/25/699695/",
-      "title": "Украинские бойцы мощно ударили дронами по транспорту РФ на Запорожском направлении",
-      "published_at": "2026-09-25T14:21:34.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -663,17 +685,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-aa190a671e79de0c",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/upor-na-kachestvo-servis-i-raznoobrazie-otdykha-v-khode-vyezdnoy-sessii-oblastnogo-soveta-deputatov--1648831/",
-      "title": "Упор на качество, сервис и разнообразие отдыха. В ходе выездной сессии областного Совета депутатов обсудили развитие сферы туризма",
-      "published_at": "2026-09-25T11:19:56.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-9017cb27e676fa98",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -801,17 +812,6 @@
       "source_url": "https://www.svaboda.org/a/33863769.html",
       "title": "Беларусы найчасьцей заказваюць турыстычныя паездкі ў Расею і Турэччыну",
       "published_at": "2026-09-24T16:53:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-928e8efd54d147c6",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33863690.html",
-      "title": "Кубракоў разьвязвае рукі міліцыі. Ціханоўскі не спыняецца. Lady Gaga і беларус. Навіны 24 верасьня",
-      "published_at": "2026-09-24T15:30:00.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
