@@ -1,0 +1,24 @@
+{
+  "snapshot_id": "snap-20260830T160100Z-deadbeef",
+  "created_at": "2026-08-30T16:01:00.000Z",
+  "publication_state": "PUBLISHED",
+  "counts": {
+    "people": 3,
+    "political_prisoners_current": 1,
+    "former_political_prisoners": 1,
+    "repressed_total": 3
+  },
+  "source_snapshots": [
+    {
+      "source_id": "src-viasna",
+      "observed_at": "2026-08-30T12:00:00.000Z",
+      "source_page_url": "https://prisoners.spring96.org/ru/list",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "parsed_rows": 4,
+      "clean_rows": 2,
+      "quarantined_rows": 1,
+      "review_required_findings": 0
+    }
+  ],
+  "files": []
+}
