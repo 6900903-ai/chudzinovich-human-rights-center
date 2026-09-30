@@ -1,7 +1,51 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-09-29T20:41:53.160Z",
+  "fetched_at": "2026-09-30T00:21:16.389Z",
   "materials": [
+    {
+      "material_id": "mfm-d42e48e538d7e7c2",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/30/700180/",
+      "title": "Трамп подписал указ о создании онлайн-портала госуслуг США",
+      "published_at": "2026-09-30T00:09:19.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-272653122328d687",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/30/700179/",
+      "title": "От Opel до BMW: какие машины белорусы берут в лизинг",
+      "published_at": "2026-09-29T23:43:58.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-766f9a9149661be8",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/9/30/700178/",
+      "title": "Для Путина на Урале построили «бункер Судного дня»",
+      "published_at": "2026-09-29T22:52:50.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-0e78d6d3f324bd0d",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33866651.html",
+      "title": "Ужо сёньня: Гадавіна першага Чарнобыльскага шляху",
+      "published_at": "2026-09-29T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-b57bf356df1f6f1f",
       "source_id": "src-charter97",
@@ -399,28 +443,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-7651f54364d543c3",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/29/700155/",
-      "title": "Хмара посетил командные пункты Воздушных сил на Киевщине",
-      "published_at": "2026-09-29T16:09:37.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-ef2ff1a371bc0846",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/29/700154/",
-      "title": "В Польше, США и Канаде отмечают День кофе",
-      "published_at": "2026-09-29T16:00:12.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-31a4bacdd7a8f27d",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -429,17 +451,6 @@
       "published_at": "2026-09-29T15:55:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3b1e7051901733e3",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/9/29/700153/",
-      "title": "Генсек НАТО о потерях РФ в Украине: Эти цифры огромны",
-      "published_at": "2026-09-29T15:51:51.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -801,17 +812,6 @@
       "source_url": "https://www.svaboda.org/a/33865925.html",
       "title": "Мабільнага аператара A1 аштрафавалі больш як на 100 млн рублёў",
       "published_at": "2026-09-28T16:16:06.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-2179aa0929e54ff1",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33865855.html",
-      "title": "Чырвоны касьцёл у Менску не адновіць працу ў заплянаваны тэрмін",
-      "published_at": "2026-09-28T14:23:30.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
