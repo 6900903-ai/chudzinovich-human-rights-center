@@ -1,7 +1,40 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-10-20T20:30:41.687Z",
+  "fetched_at": "2026-10-20T23:48:40.241Z",
   "materials": [
+    {
+      "material_id": "mfm-a5ca8aac081cb8b4",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/21/702591/",
+      "title": "Скоро начнется основной цирк",
+      "published_at": "2026-10-20T23:42:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5d473b4b22878681",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/21/702590/",
+      "title": "Великобритания направит в Саудовскую Аравию истребители",
+      "published_at": "2026-10-20T22:52:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-62f5b988c5a7a37f",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33879578.html",
+      "title": "Ужо сёньня: 100 гадоў таму ў Менску адкрыўся Беларускі дзяржаўны габрэйскі тэатар",
+      "published_at": "2026-10-20T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-00e8a58afb23be9c",
       "source_id": "src-charter97",
@@ -128,7 +161,7 @@
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
       "source_url": "https://www.svaboda.org/a/33880370.html",
-      "title": "У Варшаве памёр беларускі актывіст, журналіст, валянтэр і барыста Ян Памедор Рэуцкі",
+      "title": "«Тонкі, цудоўны чалавек зь вялікім сэрцам». У Варшаве памёр беларускі актывіст, журналіст, валянтэр і барыста Ян Памедор Рэуцкі",
       "published_at": "2026-10-20T18:18:42.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
@@ -443,17 +476,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-e2b52f5ed0eef1fa",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/20/702534/",
-      "title": "Демократы собирают рекордные суммы перед выборами в Конгресс",
-      "published_at": "2026-10-20T15:52:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-84d7dc1d9a65f946",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -462,17 +484,6 @@
       "published_at": "2026-10-20T15:48:24.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-e815cbca043bc066",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/20/702566/",
-      "title": "Дочь Путина мечтает «обмануть Бога»",
-      "published_at": "2026-10-20T15:36:09.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -1043,8 +1054,8 @@
       "source_url": "https://www.svaboda.org/a/33879388.html",
       "title": "Хроніка перасьледу 19 кастрычніка: афіцэра спэцназу асудзілі за «здраду дзяржаве» на 19 гадоў калёніі",
       "published_at": "2026-10-19T10:51:11.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "political_prisoners",
+      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     },
     {
@@ -1131,17 +1142,6 @@
       "source_url": "https://www.svaboda.org/a/33877775.html",
       "title": "7 палітзьняволеных жанчын у «Навінках», яшчэ 100 за кратамі. Пра што не раскажуць чыноўнікі ў «Год беларускай жанчыны»",
       "published_at": "2026-10-16T07:54:39.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-42ddc12f306776d5",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33877696.html",
-      "title": "Віленскі саміт свабоды заклікаў улады Беларусі тэрмінова і без умоў вызваліць усіх палітзьняволеных",
-      "published_at": "2026-10-16T05:49:56.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
