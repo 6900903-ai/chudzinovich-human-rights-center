@@ -1,7 +1,183 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-10-26T19:12:10.611Z",
+  "fetched_at": "2026-10-26T23:47:56.089Z",
   "materials": [
+    {
+      "material_id": "mfm-3f9545d68c08c6a3",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/27/703286/",
+      "title": "Трамп пообещал миллион долларов каждому, кто сообщит о фальсификациях на выборах в США",
+      "published_at": "2026-10-26T23:16:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e232d933627180d8",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/27/703291/",
+      "title": "Гарри Кейн стал обладателем «Золотого мяча»",
+      "published_at": "2026-10-26T22:59:37.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5acbcc8deef04b9a",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/27/703285/",
+      "title": "Украинские воины прямым наведением из танка разрушили позицию вместе с оккупантами",
+      "published_at": "2026-10-26T22:46:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c3d679ede2d69019",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33883597.html",
+      "title": "Ужо сёньня: Дзень памяці Вітаўта Вялікага",
+      "published_at": "2026-10-26T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e2061ada19113bd9",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703284/",
+      "title": "Совет ЕС одобрил выделение €4,9 млрд на поддержку Украины",
+      "published_at": "2026-10-26T20:54:04.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-feb2cbd31f71bfd1",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703283/",
+      "title": "Путин теряет одного из последних союзников в Европе",
+      "published_at": "2026-10-26T20:38:29.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-744edbd7b1428007",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703282/",
+      "title": "Действующий обладатель «Золотого мяча» прибыл на церемонию в Лондоне",
+      "published_at": "2026-10-26T20:28:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-a032574b60b25ff4",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703281/",
+      "title": "«Франция, Германия и Польша стоят плечом к плечу»",
+      "published_at": "2026-10-26T20:26:11.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9e9c2b8c17c6a51d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703233/",
+      "title": "В Варшаве простятся с журналистом «Хартии-97» Константином Ивановым",
+      "published_at": "2026-10-26T20:15:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-bd277acfb7351a81",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703196/",
+      "title": "Юрий Гаравский признан виновным в похищении Анатолия Красовского",
+      "published_at": "2026-10-26T20:15:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b606a8973647e598",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33884698.html",
+      "title": "Славенія патлумачыла, чаму будзе пярэчыць уступленьню Сэрбіі ў Эўразьвяз",
+      "published_at": "2026-10-26T20:10:14.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f6fd69647c6e7755",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703280/",
+      "title": "Украина вводит режим прекращения огня в районе Олешек",
+      "published_at": "2026-10-26T20:01:39.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1979ed9f87dd0760",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703279/",
+      "title": "SpaceX заключила многомиллиардное соглашение для закупки чипов Nvidia",
+      "published_at": "2026-10-26T19:49:56.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c831da06663238a5",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703278/",
+      "title": "В Москве на три дня отключат мобильный интернет из-за саммитов с участием Путина",
+      "published_at": "2026-10-26T19:37:55.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f1b8616e6bcda89e",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703276/",
+      "title": "ВСУ уничтожили 12 единиц техники в тылу россиян",
+      "published_at": "2026-10-26T19:28:11.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-a0afc4e9ba0f0d37",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703275/",
+      "title": "Президент Ирана прибыл в Москву",
+      "published_at": "2026-10-26T19:15:27.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-e0a4750a92e645be",
       "source_id": "src-charter97",
@@ -245,17 +421,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-3693b71b404acd10",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703260/",
-      "title": "«Мы ждали тебя»: как венесуэльцы встречали Марию Мачадо",
-      "published_at": "2026-10-26T17:04:17.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-b959087972964818",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -289,39 +454,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-5531913fb58e88df",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703259/",
-      "title": "Украинские военные провели две уникальные воздушные эвакуации раненых",
-      "published_at": "2026-10-26T16:47:31.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-79555e206f0a4a76",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703258/",
-      "title": "Ученые выяснили, как творчество влияет на эмоциональное состояние",
-      "published_at": "2026-10-26T16:43:54.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b5ae27fc6f22efb2",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703257/",
-      "title": "«Хартия» опубликовала интервью с оккупантами, которых взяли в плен в трубе в Купянском районе",
-      "published_at": "2026-10-26T16:36:07.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-00d23837a0ee213b",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -344,17 +476,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-076dcca0e26cd598",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703256/",
-      "title": "До «Крепкого орешка» Брюс Уиллис был звездой бара в Нью-Йорке",
-      "published_at": "2026-10-26T16:23:34.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-473097b429898066",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
@@ -363,17 +484,6 @@
       "published_at": "2026-10-26T16:22:11.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-d4ecc2a7c5d65c7c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703255/",
-      "title": "Немецкий спецназ начали готовить к возможной войне с Россией",
-      "published_at": "2026-10-26T16:18:26.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -388,39 +498,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-e6b221be4680bc10",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703254/",
-      "title": "Две семьи в Китае 200 лет спорили за границу их участков",
-      "published_at": "2026-10-26T16:08:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c3af7229278b2e99",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703253/",
-      "title": "Саудовская Аравия решила хранить нефть в Сингапуре",
-      "published_at": "2026-10-26T16:04:37.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-1bb245edce4f284b",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703252/",
-      "title": "BMW предложит рабочим 650 тысяч евро за увольнение",
-      "published_at": "2026-10-26T16:03:12.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-7ee189d496245604",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -429,39 +506,6 @@
       "published_at": "2026-10-26T15:59:47.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-66b826d5c16f367c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703251/",
-      "title": "Украина ломает российскую формулу «земля в обмен на мир»",
-      "published_at": "2026-10-26T15:59:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3bfcc5040a32311a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703249/",
-      "title": "Возвращение Мачадо меняет расклад в Венесуэле",
-      "published_at": "2026-10-26T15:40:15.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-0c592072c3c13be0",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703248/",
-      "title": "Гродненскую область хотят заполнить трудовыми мигрантами из Таджикистана",
-      "published_at": "2026-10-26T15:36:51.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -484,28 +528,6 @@
       "published_at": "2026-10-26T15:30:00.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-dca3211565f3ec68",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703247/",
-      "title": "Украинский пилот поделился эффектными кадрами ночной охоты на российский дрон",
-      "published_at": "2026-10-26T15:29:48.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9521112e214fe48d",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/26/703246/",
-      "title": "Названы лучшие продукты с высоким содержанием омега-3",
-      "published_at": "2026-10-26T15:27:05.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -1032,28 +1054,6 @@
       "source_url": "https://www.svaboda.org/a/33883837.html",
       "title": "Ілан Маск абвінаваціў Украіну ў парушэньні правілаў Starlink. У чым справа?",
       "published_at": "2026-10-25T08:31:12.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b82dfb198324f25e",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33883586.html",
-      "title": "Ужо сёньня: 90 гадоў з дня нараджэньня рэжысэра Віктара Турава",
-      "published_at": "2026-10-24T21:05:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9d4ead2f9143e01d",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33883582.html",
-      "title": "Паўла Севярынца выбралі кіраўніком партыі БХД. За яго прагаласавалі амаль усе дэлегаты",
-      "published_at": "2026-10-24T14:41:07.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
