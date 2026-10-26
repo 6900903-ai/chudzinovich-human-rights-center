@@ -1,7 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-10-25T21:41:28.631Z",
+  "fetched_at": "2026-10-26T00:12:28.272Z",
   "materials": [
+    {
+      "material_id": "mfm-38f3db39d49b6a60",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/26/703152/",
+      "title": "Маск призвал «пожалеть» российских оккупантов",
+      "published_at": "2026-10-25T23:17:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-e012c5c47adc90e9",
       "source_id": "src-radio-svaboda",
@@ -339,17 +350,6 @@
       "source_url": "https://charter97.org/ru/news/2026/10/25/703130/",
       "title": "Юношеская сборная Беларуси по футболу разгромила соперника со счетом 20:0",
       "published_at": "2026-10-25T16:20:42.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-2ae0e407ba0a6ea8",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/25/703129/",
-      "title": "Трамп получил тревожный сигнал за несколько дней до выборов",
-      "published_at": "2026-10-25T16:12:59.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
