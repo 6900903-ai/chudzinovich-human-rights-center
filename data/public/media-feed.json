@@ -1,7 +1,51 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-10-27T21:15:06.497Z",
+  "fetched_at": "2026-10-28T01:14:05.585Z",
   "materials": [
+    {
+      "material_id": "mfm-ed5d486acc8ff478",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/28/703421/",
+      "title": "Игаль Левин: Путин продолжит гнать россиян на убой",
+      "published_at": "2026-10-28T00:52:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d78474ac0912b170",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/28/703420/",
+      "title": "Трампу бросают вызов в Латинской Америке",
+      "published_at": "2026-10-27T23:34:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e982263778aa77eb",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/10/28/703419/",
+      "title": "Зверь стал на порядок опаснее",
+      "published_at": "2026-10-27T22:59:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ef56136e82c0370c",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33884501.html",
+      "title": "Ужо сёньня. Дзень памяці Расьціслава Лапіцкага",
+      "published_at": "2026-10-27T21:01:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-a6c27b8ee4647bf9",
       "source_id": "src-charter97",
@@ -190,6 +234,17 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-11abb7e319322ea5",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/gorod-v-kill-zone-chem-unikalna-situaciya-v-oleshkax-s-voennoj-tochki-/217190/",
+      "title": "Город в килл-зоне: чем уникальна ситуация в Олешках с военной точки зрения",
+      "published_at": "2026-10-27T18:31:18.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-64b1cecf648fc1bd",
       "source_id": "src-charter97",
       "source_name": "Charter97",
@@ -344,36 +399,14 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-91f65776feaba17b",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/27/703395/",
-      "title": "Беларусь и РФ утвердили правила объединенного рынка электроэнергии",
-      "published_at": "2026-10-27T17:09:54.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-54e0c217210e3a9c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/27/703394/",
-      "title": "Мелания Трамп: Зону прекращения огня расширили за пределы Олешек",
-      "published_at": "2026-10-27T17:06:08.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5f60a37c40932338",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/10/27/703393/",
-      "title": "Стало известно, кто сыграет родителей Гарри Поттера в новом сериале",
-      "published_at": "2026-10-27T17:02:58.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "material_id": "mfm-8923767e17ce6c43",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/pochemu-itog-vyborov-v-serbii-eto-bolshe-chem-porazhenie-vuchicha/217189/",
+      "title": "Почему итог выборов в Сербии — это больше, чем поражение Вучича",
+      "published_at": "2026-10-27T17:10:17.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -421,6 +454,17 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-153c4b9700c80c86",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/vashyngton-ne-spyashaeczcza-lukashenka-nervueczcza-shto-adbyvaeczcza-z/217188/",
+      "title": "Вашынгтон не сьпяшаецца, Лукашэнка нэрвуецца. Што адбываецца зь перамовамі?",
+      "published_at": "2026-10-27T16:09:58.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-b1be6f72d3770a93",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -462,6 +506,17 @@
       "published_at": "2026-10-27T15:20:16.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-79405e8016230e01",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/maxovskij-belarus-privlekaet-gastarbajterov-chtoby-platit-im-bolshe-ch/217187/",
+      "title": "Маховский: «Беларусь привлекает гастарбайтеров, чтобы платить им больше, чем местным. Это абсолютно абсурдная история»",
+      "published_at": "2026-10-27T15:04:34.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -509,6 +564,17 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-804bb47de0fa1523",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/syn-trampa-letal-na-oxotu-v-mongoliyu-s-rossijskim-oligarxom/217186/",
+      "title": "Сын Трампа летал на охоту в Монголию с российским олигархом",
+      "published_at": "2026-10-27T14:14:38.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-62f4440df59a46f1",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -517,6 +583,17 @@
       "published_at": "2026-10-27T14:01:04.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-99f726c79edd4c9f",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/vojna-27-oktyabrya-raketoj-po-studencheskomu-obshhezhitiyu-chem-ukrain/217173/",
+      "title": "Война, 27 октября. Сколько будет действовать режим прекращения огня в Олешках. Лидеры Финляндии и Норвегии созвонились с Путиным и Зеленским",
+      "published_at": "2026-10-27T14:00:53.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -575,6 +652,17 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-87b375ae306b2695",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/latviya-planiruet-prodlit-zapret-na-neregulyarnye-avtobusnye-rejsy-s-b/217185/",
+      "title": "Латвия планирует продлить запрет на нерегулярные автобусные рейсы с Беларусью еще на год",
+      "published_at": "2026-10-27T12:48:35.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-886a6ba0db5d67e6",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -594,6 +682,17 @@
       "published_at": "2026-10-27T12:04:15.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5144c693e074a0e6",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/fotafakt-inicyyatyva-maldzis-nabyla-rannyuyu-karcinu-mixaila-kikoina/217184/",
+      "title": "Фотафакт. Ініцыятыва MALDZIS набыла раннюю карціну Міхаіла Кікоіна",
+      "published_at": "2026-10-27T12:02:04.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -630,6 +729,17 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-ed4b385a0d3eef62",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/pradstaunik-prezydenta-polshchy-nya-bachu-prychyn-dlya-tago-kab-zmyany/217183/",
+      "title": "Прадстаўнік прэзыдэнта Польшчы: Ня бачу прычын для таго, каб зьмяняць санкцыйную палітыку ў дачыненьні Менску",
+      "published_at": "2026-10-27T11:20:07.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-a537a37e41216163",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -660,6 +770,17 @@
       "published_at": "2026-10-27T10:55:11.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-4fc9396a06ec867d",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/shrajbman-rassypalas-filosofiya-oborony-belarusi-do-six-por-ona-byla-v/217182/",
+      "title": "Шрайбман: «Рассыпалась философия обороны Беларуси. До сих пор она была в том, что Россия придет на помощь»",
+      "published_at": "2026-10-27T10:36:58.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -707,6 +828,17 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-acf9d37ee181cf0b",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/konvejer-repressij-storonnika-lukashenko-kotoryj-oskorblyal-svetlanu-t/217181/",
+      "title": "Конвейер репрессий. По «делу BYPOL» осудили троих беларусов. Сторонника Лукашенко, который оскорблял Светлану Тихановскую в Тредсе, отправили на сутки",
+      "published_at": "2026-10-27T08:02:54.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-026c50ced208c5ba",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -715,6 +847,28 @@
       "published_at": "2026-10-27T07:32:41.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9df443f497e99f20",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/putin-v-bunkere-tolko-nastupaet-kazhdyj-den-po-vsem-napravleniyam-a-v-/217180/",
+      "title": "«Путин в бункере только наступает каждый день по всем направлениям, а в беларуском телевизоре «Украина уже проиграла»",
+      "published_at": "2026-10-27T07:31:24.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-89d270c2e6e257c6",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/andzhej-pochobut-vernetsya-v-belarus/217179/",
+      "title": "Анджей Почобут вернется в Беларусь",
+      "published_at": "2026-10-27T07:06:39.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -729,6 +883,39 @@
       "metadata_only": true
     },
     {
+      "material_id": "mfm-9a3801b869414dea",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/azerbajdzhanskij-turist-minsk-za-tri-dnya-eto-kakoj-to-kulturnyj-shok/217178/",
+      "title": "Азербайджанский турист: «Минск за три дня — это какой-то культурный шок»",
+      "published_at": "2026-10-27T06:55:25.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-a3946440def6c9d3",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/na-grodnenshhinu-pozvali-rabotnikov-iz-tadzhikistana/217177/",
+      "title": "На Гродненщину позвали работников из Таджикистана",
+      "published_at": "2026-10-27T06:24:36.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8ef377b11f9c0983",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/kak-ozon-v-minske-dogonyaet-wildberries/217176/",
+      "title": "Как Ozon в Минске догоняет Wildberries",
+      "published_at": "2026-10-27T06:22:29.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
       "material_id": "mfm-760688b0dae8fb83",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -737,6 +924,39 @@
       "published_at": "2026-10-27T06:04:21.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-90de19c113c81a50",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/byt-studentom-v-shvecii-besplatno-ne-xalyava-a-marketingovaya-strategi/217175/",
+      "title": "Быть студентом в Швеции: «бесплатно» – не халява, а маркетинговая стратегия",
+      "published_at": "2026-10-27T05:50:59.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e8b66bc486fd18da",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/nu-prosto-odin-pomeshhik-peredaet-drugomu-svoix-krepostnyx/217174/",
+      "title": "«Ну просто один помещик передает другому своих крепостных»",
+      "published_at": "2026-10-27T05:40:44.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c51993fd0519c93b",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/do-six-por-zabyt-ne-mogu-kak-prishlos-vykinut-tazik-tertoj-kartoshki/217172/",
+      "title": "«До сих пор забыть не могу, как пришлось выкинуть тазик тертой картошки»",
+      "published_at": "2026-10-27T05:35:05.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -770,6 +990,17 @@
       "published_at": "2026-10-26T20:10:14.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-4b7ea61ff4746d45",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.com/post/takoga-ne-bylo-navat-za-savetami-yak-znikayucz-litaraturnyya-vydanni-b/217171/",
+      "title": "«Такога не было нават за Саветамі». Як знікаюць літаратурныя выданні Беларусі",
+      "published_at": "2026-10-26T19:00:19.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
@@ -834,17 +1065,6 @@
       "source_url": "https://www.svaboda.org/a/33884442.html",
       "title": "«Стаміліся чакаць». Беларускія палітвязьні, праваабаронцы і аналітыкі — пра зварот да лідэраў краін Эўропы",
       "published_at": "2026-10-26T11:31:05.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-bf7df86c4b5901b7",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33884391.html",
-      "title": "На Вушаччыне зьнікла чырванакніжная драпежная птушка. Што вядома",
-      "published_at": "2026-10-26T10:25:00.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
