@@ -1,7 +1,601 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-11-03T15:01:11.788Z",
+  "fetched_at": "2026-11-03T20:56:08.424Z",
   "materials": [
+    {
+      "material_id": "mfm-b3ffe6ba439a76a0",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704205/",
+      "title": "Под Самарой вторые сутки горит одно из крупнейших хранилищ нефти в Европе",
+      "published_at": "2026-11-03T20:52:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-9291f998b49335bb",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704220/",
+      "title": "В Литве торжественно отметили 100‑летие бывшего президента Валдаса Адамкуса",
+      "published_at": "2026-11-03T20:43:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d62740d4202c3c6c",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704219/",
+      "title": "230-метровый газовоз в Южной Корее заправили безуглеродным топливом",
+      "published_at": "2026-11-03T20:38:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-71d934f47202e709",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704215/",
+      "title": "«Идет просто отлов»",
+      "published_at": "2026-11-03T20:23:32.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ba17010785646f88",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704214/",
+      "title": "Хакеры стерли данные облачных клиентов одного из крупнейших хостингов рунета",
+      "published_at": "2026-11-03T20:17:28.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7f401118bfcee540",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704213/",
+      "title": "В Витебской области из-за выбежавшего на дорогу лося произошло ДТП",
+      "published_at": "2026-11-03T20:09:30.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-23a52a20b413d749",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704132/",
+      "title": "«Ни разу в истории США этого не происходило»",
+      "published_at": "2026-11-03T20:02:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-21ee72ab3e25a624",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704212/",
+      "title": "В США объявили первые результаты выборов в Конгресс",
+      "published_at": "2026-11-03T20:01:25.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7f716253819e51d8",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.info/post/kak-lukashenko-zerkalil-trampa-i-pytalsya-sdelat-emu-priyatno/217320/",
+      "title": "Как Лукашенко зеркалил Трампа и пытался сделать ему приятно",
+      "published_at": "2026-11-03T19:58:48.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b23a4298c2b7021e",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704211/",
+      "title": "«С едой не входить»",
+      "published_at": "2026-11-03T19:55:41.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-bc368ea4850d0155",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704210/",
+      "title": "FT: Трамп отказался от ключевого требования к Украине, о котором просил Кремль",
+      "published_at": "2026-11-03T19:52:15.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2298f640df5fb587",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704209/",
+      "title": "Украинские бойцы с помощью перехватчиков Sting сбили два российских дрона «Князь Владимир Святославович»",
+      "published_at": "2026-11-03T19:46:34.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7f4c49cd35c2a657",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704208/",
+      "title": "Джонни Депп может вернуться к роли Джека Воробья",
+      "published_at": "2026-11-03T19:37:22.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b7abee26224a2431",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704207/",
+      "title": "Немецкий стартап создаст морской дрон для слежки за теневым флотом России",
+      "published_at": "2026-11-03T19:29:38.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ed00fd752e73be82",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704206/",
+      "title": "В России умер изобретатель «Новичка»",
+      "published_at": "2026-11-03T19:09:51.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8d8a5fbeb0ed5693",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704204/",
+      "title": "Официанты рассказали о жадности и хамстве российских звезд",
+      "published_at": "2026-11-03T18:52:58.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-2f227cdfbfd6fcdd",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704203/",
+      "title": "«Всегда тянуло в шахту»",
+      "published_at": "2026-11-03T18:44:16.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-321b8843fc981258",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704202/",
+      "title": "Трамп: США перестанут оказывать финансовую помощь Израилю",
+      "published_at": "2026-11-03T18:38:08.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7fa9c83b28bf059b",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.info/post/byalyaczki-mayo-vyartanne-dakladna-u-turmu-geta-uzho-100-tut-navat-bez/217319/",
+      "title": "Бяляцкі: «Маё вяртанне — дакладна ў турму. Гэта ўжо 100%, тут нават без шанцаў»",
+      "published_at": "2026-11-03T18:33:38.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-acd02d091f1793df",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704201/",
+      "title": "Binance раскрыла схему хакеров для кражи криптовалюты на сумму $6,34 млрд",
+      "published_at": "2026-11-03T18:26:25.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-15ce9df9148a599d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704126/",
+      "title": "Более 120 дронов: ВСУ подожгли один из крупнейших российских НПЗ",
+      "published_at": "2026-11-03T18:18:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1ab0c3db0761bde4",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704200/",
+      "title": "В Витебске продают настоящий дворец",
+      "published_at": "2026-11-03T18:09:59.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-16bc2863c30e7552",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704199/",
+      "title": "NYT: Пять признаков уверенной победы демократов",
+      "published_at": "2026-11-03T18:06:47.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5b29623d3d9d83f0",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704198/",
+      "title": "Apple получила рекордную выручку",
+      "published_at": "2026-11-03T18:03:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-0916365cc371a4f5",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/arina-sobolenko-okazalas-samym-vostrebovannym-u-reklamodateley-sportsmenom-2026-1652141/",
+      "title": "Арина Соболенко оказалась самым востребованным у рекламодателей спортсменом 2026",
+      "published_at": "2026-11-03T17:52:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-c831f4b0409032b1",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704197/",
+      "title": "Подлодка «Лайка»: очередной военный мегапроект Кремля застрял на чертежах",
+      "published_at": "2026-11-03T17:50:44.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-7be03da40bcd6517",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704196/",
+      "title": "Лига чемпионов: «Барселона» примет «Астон Виллу», «Атлетико» сразится с «Баварией»",
+      "published_at": "2026-11-03T17:46:04.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-de4688a4bc3b2d02",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704195/",
+      "title": "Жена сооснователя OpenAI стала одним из крупнейших спонсоров Республиканской партии",
+      "published_at": "2026-11-03T17:38:51.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-240f5efc227b2704",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33889890.html",
+      "title": "Пашыньян: Армэнія можа падаць заяўку ў Эўразьвяз у наступным годзе",
+      "published_at": "2026-11-03T17:33:09.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-03d950bb303b4098",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/vystavki/v-gomele-pokazhut-starinnye-veshchi-naznachenie-kotorykh-segodnya-trudno-ugadat-1652095/",
+      "title": "В Гомеле покажут старинные вещи, назначение которых сегодня трудно угадать",
+      "published_at": "2026-11-03T17:30:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f825702737ebe03a",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704194/",
+      "title": "Лукашенко заявил, что протесты в Европе могут перекинуться на Беларусь",
+      "published_at": "2026-11-03T17:26:06.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-825065b86d467194",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704193/",
+      "title": "Мерц анонсировал новую встречу лидеров «коалиции желающих»",
+      "published_at": "2026-11-03T17:18:16.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3280cd5002808eff",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704192/",
+      "title": "Синоптики пересмотрели дату первого снега в Беларуси",
+      "published_at": "2026-11-03T17:16:28.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e1ab38c56688acfc",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/chp-i-kriminal/v-kormyanskom-rayone-na-pozhare-v-shestikvartirnom-dome-pogib-muzhchina/",
+      "title": "В Кормянском районе на пожаре в шестиквартирном доме погиб мужчина",
+      "published_at": "2026-11-03T17:15:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-53e0b00edba5400f",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/napadayushchiy-minskogo-dinamo-timofey-kovgorenya-napomnil-igroku-moskovskogo-dinamo-andreyu-nikonov-1652140/",
+      "title": "Нападающий минского \"Динамо\" Тимофей Ковгореня напомнил игроку московского \"Динамо\" Андрею Никонову, что за свои слова нужно будет отвечать",
+      "published_at": "2026-11-03T17:14:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-64e4b8ed558d64c4",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704191/",
+      "title": "Америка ждет ответов на главные вопросы",
+      "published_at": "2026-11-03T17:07:41.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-607004c835a6461d",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/3/704117/",
+      "title": "Республиканцы шокированы последней речью Трампа",
+      "published_at": "2026-11-03T17:07:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ab7d87ca0c9d5062",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/4-noyabrya-bez-sveta-ostanutsya-trinadtsat-rayonov-gomelskoy-oblasti-a-takzhe-gomel-proverte-svoy-ad/",
+      "title": "4 ноября без света останутся тринадцать районов Гомельской области, а также Гомель. Проверьте свой адрес",
+      "published_at": "2026-11-03T17:03:32.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f07649c638a786f1",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.info/post/sotrudnichayut-so-sledstviem-dayut-priznatelnye-pokazaniya-zaderzhany-/217318/",
+      "title": "«Сотрудничают со следствием, дают признательные показания». Задержаны представители компании «Bayer»",
+      "published_at": "2026-11-03T16:49:57.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-650466420428b1ac",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/obshchestvo/v-tsentre-vnimaniya-poymennye-zemli-v-petrikovskom-rayone-proinspektirovali-khod-vypolneniya-poruche-1652165/",
+      "title": "В центре внимания – пойменные земли: в Петриковском районе проинспектировали ход выполнения поручения Президента",
+      "published_at": "2026-11-03T16:48:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8cd58f00064bcaea",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33889872.html",
+      "title": "У Кіеве адключылі ваду пасьля расейскіх удараў па энэргетыцы",
+      "published_at": "2026-11-03T16:45:29.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1504f871022a3064",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/universitety/komanda-belguta-stala-pobeditelem-mezhdunarodnykh-transportnykh-proektnykh-sorevnovaniy-v-rossii-1652092/",
+      "title": "Команда БелГУТа стала победителем международных транспортных проектных соревнований в России",
+      "published_at": "2026-11-03T16:44:42.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-cb6efc244e65e6cf",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.info/post/pyat-evropejskij-stran-otkazalis-igrat-s-rossiyanami-na-chempionate-mi/217317/",
+      "title": "Пять европейский стран отказались играть с россиянами на чемпионате мира по хоккею",
+      "published_at": "2026-11-03T16:31:55.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-ee1f949e0b15b709",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.info/post/vojna-3-noyabrya-rossiyane-udarili-po-zhilomu-domu-v-dnepre-i-bolnice-/217301/",
+      "title": "Война, 3 ноября. В Киеве разворачивают пункты обогрева. Выросло число жертв варварского удара по Камышевахе. Туск заявил об инциденте на границе с Россией",
+      "published_at": "2026-11-03T16:30:11.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-274bbe997885cca6",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/chp-i-kriminal/poverte-vam-eto-nuzhno-moshenniki-pytalis-oformit-na-zhlobinchanina-kredity-1652142/",
+      "title": "Поверьте, вам это нужно: мошенники пытались оформить на жлобинчанина кредиты",
+      "published_at": "2026-11-03T16:21:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-256a9689716fb4bb",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/chp-i-kriminal/predstaviteli-bayer-uklonilis-ot-uplaty-nalogov-vozbuzhdeno-ugolovnoe-delo-1652162/",
+      "title": "Представители Bayer уклонились от уплаты налогов, возбуждено уголовное дело",
+      "published_at": "2026-11-03T16:09:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-6e96d51fa3cca151",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/kultura/v-gomele-torzhestvenno-otkrylis-xii-oblastnye-pokrovskie-obrazovatelnye-chteniya--1652152/",
+      "title": "В Гомеле торжественно открылись XII областные Покровские образовательные чтения",
+      "published_at": "2026-11-03T16:03:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-1d3446ee260d3c0b",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33889846.html",
+      "title": "Сьледчы камітэт заявіў пра затрыманьне прадстаўнікоў міжнароднага хімічнага і фармацэўтычнага гіганта",
+      "published_at": "2026-11-03T15:58:21.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-e55b6fa6d5e16296",
+      "source_id": "src-salidarnasts",
+      "source_name": "Salidarnasts",
+      "source_url": "https://gazetaby.info/post/radz-sumnyavayusya-shto-ukraina-budze-gatovaya-dacz-1/217316/",
+      "title": "Радзь: «Сумняваюся, што Украіна будзе гатовая даць Беларусі магчымасць быць нейтральным гульцом або дазволіць ёй стаць перамоўнай пляцоўкай»",
+      "published_at": "2026-11-03T15:54:03.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gazetaby.com/rss/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-541da39317ed256e",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/glavnyy-trener-mozyrskoy-slavii-ivan-bionchik-u-polya-na-kotorom-igrali-byl-skazhu-tak-anturazh-1910-1652138/",
+      "title": "Главный тренер мозырской \"Славии\" Иван Биончик: \"У поля, на котором играли, был, скажу так, антураж 1910 года\"",
+      "published_at": "2026-11-03T15:54:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5059758a7b5a7f42",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/kaleidoscope/pochemu-odinakovye-shtory-po-raznomu-smotryatsya-v-raznykh-intererakh-1652118/",
+      "title": "Почему одинаковые шторы по-разному смотрятся в разных интерьерах",
+      "published_at": "2026-11-03T15:36:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-53b83a2b3d3d6666",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/novosti-belarusi/lukashenko-na-polyakh-minskoy-konferentsii-predlozhil-kandidaturu-novogo-genseka-oon-kotoryy-rasshev-1652170/",
+      "title": "Лукашенко на полях Минской конференции предложил кандидатуру нового генсека ООН, который \"расшевелит это болото\"",
+      "published_at": "2026-11-03T15:35:10.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-f74bb331cf205730",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/kaleidoscope/chto-effektivnee-kursy-ili-repetitor-1652119/",
+      "title": "Что эффективнее курсы или репетитор",
+      "published_at": "2026-11-03T15:31:59.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-779238415683b095",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/opredelen-luchshiy-igrok-khokkeynogo-gomelya-v-oktyabre-2026-1652129/",
+      "title": "Определен лучший игрок хоккейного \"Гомеля\" в октябре 2026",
+      "published_at": "2026-11-03T15:12:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-8036ca792ab755b5",
       "source_id": "src-radio-svaboda",
@@ -14,32 +608,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-8f50b58b340ce3fc",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704172/",
-      "title": "Советник президента Литвы: Вильнюс не намерен снимать санкции с режима Лукашенко",
-      "published_at": "2026-11-03T14:55:21.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-643f0f98d19508af",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704171/",
-      "title": "Три вопроса, которые определят влияние технократов на власть в США",
-      "published_at": "2026-11-03T14:50:08.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-746a94b418177689",
+      "material_id": "mfm-d42f6b520e9d7b24",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/kovalenko-oktyabr-stal-xudshim-mesyacem-dlya-okkupantov-s-nachala-poln/217315/",
+      "source_url": "https://gazetaby.info/post/kovalenko-oktyabr-stal-xudshim-mesyacem-dlya-okkupantov-s-nachala-poln/217315/",
       "title": "Коваленко: «Октябрь стал худшим месяцем для оккупантов с начала полномасштабной войны — такова объективная реальность»",
       "published_at": "2026-11-03T14:46:17.000Z",
       "feed_scope": "general",
@@ -58,17 +630,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-d8307eae282d0970",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704170/",
-      "title": "Ученые пытаются разгадать еще одну загадку Марса",
-      "published_at": "2026-11-03T14:41:57.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-b9c3c53c93996869",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -77,39 +638,6 @@
       "published_at": "2026-11-03T14:39:21.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-36cd722bc1df9a6e",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704169/",
-      "title": "Белорусы не смогли договориться, чем заменить драники",
-      "published_at": "2026-11-03T14:35:08.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-7daad313cf0647ee",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704168/",
-      "title": "Как Трамп проведет день выборов?",
-      "published_at": "2026-11-03T14:30:40.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cdf9bbaba3eb48e4",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704166/",
-      "title": "Немецкая компания создаст беспилотный корабль для охоты на «теневой флот» России",
-      "published_at": "2026-11-03T14:21:56.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -124,39 +652,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-d7a9695b227961af",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704165/",
-      "title": "Путин лишился сверхдоходов от дорогой нефти",
-      "published_at": "2026-11-03T14:16:13.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-805b598fa5aaa7d4",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704083/",
-      "title": "Миф развеян",
-      "published_at": "2026-11-03T14:14:52.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3cc1ee4335cb5df5",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704164/",
-      "title": "Минчанка: У нас в дворниках - бывшие медсестры, продавцы и швеи",
-      "published_at": "2026-11-03T14:10:34.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-c941c4d806d53fad",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -165,17 +660,6 @@
       "published_at": "2026-11-03T14:04:00.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-7c9f0f0a89589a53",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704163/",
-      "title": "Республиканцы потратили более $200 миллионов на рекламу в интернете",
-      "published_at": "2026-11-03T14:01:31.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -190,17 +674,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-a3f0b9219397b351",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704167/",
-      "title": "В Польше пройдут учения 11 союзников Киева из «коалиции желающих»",
-      "published_at": "2026-11-03T13:57:21.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-613239db2385c8f8",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -209,17 +682,6 @@
       "published_at": "2026-11-03T13:54:16.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-20652ed410f49fd8",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704162/",
-      "title": "На границе Беларуси с ЕС скопились тысячи автомобилей",
-      "published_at": "2026-11-03T13:50:23.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -234,14 +696,14 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-459b7cf14f434e27",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704161/",
-      "title": "Лавров подтвердил, что Кремль не хочет мира",
-      "published_at": "2026-11-03T13:45:31.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "material_id": "mfm-75235bd289af2eb6",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/sport/zhlobinskiy-metallurg-opublikoval-interesnye-statisticheskie-pokazateli-komandy-v-oktyabre-2026--1652132/",
+      "title": "Жлобинский \"Металлург\" назвал ТОП снайперов в октябре 2026",
+      "published_at": "2026-11-03T13:46:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -256,39 +718,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-bdeca75aea29e862",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704160/",
-      "title": "Психологи объяснили, как перестать откладывать важные решения",
-      "published_at": "2026-11-03T13:33:22.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-764e4bbe7a94b43b",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704159/",
-      "title": "Россияне стали реже покупать еду",
-      "published_at": "2026-11-03T13:31:24.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-7f8dd6986bbd251e",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704158/",
-      "title": "Трампу грозят расследования, если демократы вернут Конгресс",
-      "published_at": "2026-11-03T13:29:36.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-a8b2bf031d8903f2",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -297,39 +726,6 @@
       "published_at": "2026-11-03T13:28:18.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a96c7d304db483c4",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704157/",
-      "title": "Фотофакт: Василь Быков и Снуп Дог в центре Витебска",
-      "published_at": "2026-11-03T13:26:02.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-41eee2e219ae45d6",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704156/",
-      "title": "Путин стал проклятием России",
-      "published_at": "2026-11-03T13:18:38.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-ad142500fed27b8d",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704155/",
-      "title": "Минчанин: С каких пор куриное филе стоит 18 рублей?",
-      "published_at": "2026-11-03T13:16:37.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -344,65 +740,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-f085fe0b97ae6e05",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704154/",
-      "title": "«Главное для меня — чтобы обе войны прекратились»",
-      "published_at": "2026-11-03T13:12:05.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-1be6082bd48a76af",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704153/",
-      "title": "Tesla может вскоре начать принимать заказы на человекоподобного робота Optimus",
-      "published_at": "2026-11-03T13:09:12.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-517a9fea1ef5c1b3",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704152/",
-      "title": "«Святые небеса! Не ядерный ли боеприпас здесь разорвался?»",
-      "published_at": "2026-11-03T13:06:49.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a777c9c38c754ba3",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704151/",
-      "title": "Белорусские таможенники пресекли попытку ввоза товаров из России",
-      "published_at": "2026-11-03T13:04:23.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-235dfeca5df812ed",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/zashchitnik-kristian-khenkel-prokommentiroval-svoe-vozvrashchenie-v-minskoe-dinamo-1652128/",
-      "title": "Защитник Кристиан Хенкель прокомментировал свое возвращение в минское \"Динамо\"",
-      "published_at": "2026-11-03T13:02:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3d4e190217ab8071",
+      "material_id": "mfm-8647660ae189aee4",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/dumacz-pra-buduchynyu-ci-bracz-czum-zadnim-chyslom/217314/",
+      "source_url": "https://gazetaby.info/post/dumacz-pra-buduchynyu-ci-bracz-czum-zadnim-chyslom/217314/",
       "title": "Думаць пра будучыню ці «браць ЦУМ» заднім чыслом?..",
       "published_at": "2026-11-03T13:01:32.000Z",
       "feed_scope": "general",
@@ -421,127 +762,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-714b9c09c932b9ba",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704150/",
-      "title": "«И это самое важное, что может случиться на выборах в США»",
-      "published_at": "2026-11-03T12:49:55.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5da92e730b586651",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704149/",
-      "title": "В Минске рухнули продажи квартир",
-      "published_at": "2026-11-03T12:47:31.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3234775c663f0d0c",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/belpochta-dosrochno-vyplatit-pensii-i-posobiya-za-7-noyabrya-1652130/",
-      "title": "«Белпочта» досрочно выплатит пенсии и пособия за 7 ноября",
-      "published_at": "2026-11-03T12:44:07.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-58fdb1b75b1f38ae",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704148/",
-      "title": "Зеленского попросили описать его отношения с Трампом одним словом",
-      "published_at": "2026-11-03T12:38:20.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-d35d6bb42fb8127a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704092/",
-      "title": "Гиркин посмеялся над заявлением Путина",
-      "published_at": "2026-11-03T12:35:21.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-10bb2358747aaf90",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704147/",
-      "title": "Белорусы за сутки собрали деньги на лечение молодой матери",
-      "published_at": "2026-11-03T12:34:49.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-c89cea3fc18c2dbf",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704146/",
-      "title": "Синяя волна: чего ждать от результатов промежуточных выборов в Конгресс США",
-      "published_at": "2026-11-03T12:30:52.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9d0172ebb7c8572c",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/sila-i-vynoslivost-v-gomele-proshel-turnir-po-funktsionalnomu-mnogoboryu-volat-1652134/",
-      "title": "Сила и выносливость: в Гомеле прошел турнир по функциональному многоборью «Волат»",
-      "published_at": "2026-11-03T12:21:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-00723e2cfab9792c",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/3/704145/",
-      "title": "Норвегия объявила бойкот России на ЧМ по хоккею",
-      "published_at": "2026-11-03T12:12:30.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cd199d65d0d30400",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/kaleidoscope/kakie-kharakteristiki-vazhny-dlya-promyshlennogo-preobrazovatelya-interfeysov-1652115/",
-      "title": "Какие характеристики важны для промышленного преобразователя интерфейсов",
-      "published_at": "2026-11-03T12:10:43.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a642ff8caac36fca",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/arina-sobolenko-uzhe-ne-smozhet-v-etom-sezone-vernut-sebe-pervuyu-strochku-mirovogo-reytinga-1652083/",
-      "title": "Арина Соболенко уже не сможет в этом сезоне вернуть себе первую строчку мирового рейтинга",
-      "published_at": "2026-11-03T11:54:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-94c3a9015ebb39d8",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -550,28 +770,6 @@
       "published_at": "2026-11-03T11:53:28.000Z",
       "feed_scope": "political_prisoners",
       "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-57b5c4a57a3a6360",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/chp-i-kriminal/v-rogacheve-iz-za-neispravnoy-provodki-vygoreli-komnata-i-balkon/",
-      "title": "В Рогачеве из-за неисправной проводки выгорели комната и балкон",
-      "published_at": "2026-11-03T11:42:51.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-0eaa74e4e7bfe1c8",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/kaleidoscope/kak-zagovorit-na-angliyskom-i-ne-rasteryatsya-ot-neozhidannogo-voprosa-1652114/",
-      "title": "Как заговорить на английском и не растеряться от неожиданного вопроса",
-      "published_at": "2026-11-03T11:30:34.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -586,10 +784,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-d148452956a4b89e",
+      "material_id": "mfm-23baf7daa43d695c",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/bruxan-cel-informacionnoj-kampanii-vokrug-oleshek-popytka-prodat-sebya/217313/",
+      "source_url": "https://gazetaby.info/post/bruxan-cel-informacionnoj-kampanii-vokrug-oleshek-popytka-prodat-sebya/217313/",
       "title": "Брухан: «Цель информационной кампании вокруг Олешек — попытка продать себя как нейтральную сторону и площадку для переговоров»",
       "published_at": "2026-11-03T11:28:12.000Z",
       "feed_scope": "general",
@@ -597,65 +795,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-b6fe86cd5309fff5",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/kapitan-minskogo-dinamo-o-bezogovorochnom-porazhenii-ot-moskovskogo-dinamo-dumayu-svoey-igroy-my-ne--1652081/",
-      "title": "Капитан минского \"Динамо\" о безоговорочном поражении от московского \"Динамо\": \"Думаю, своей игрой мы не заслужили победу\"",
-      "published_at": "2026-11-03T11:16:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-e37c2994161261f4",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/chp-i-kriminal/organy-prokuratury-gomelskoy-oblasti-potrebovali-ustranit-narusheniya-v-sfere-ispolzovaniya-lesnykh--1652094/",
-      "title": "Органы прокуратуры Гомельской области потребовали устранить нарушения в сфере использования лесных ресурсов",
-      "published_at": "2026-11-03T11:01:37.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-57bfa97916c57114",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/obshchestvo/kak-pogoda-vliyaet-na-posevy-v-gomelskoy-oblasti-prognoz-agrometeorologov-1652085/",
-      "title": "Как погода влияет на посевы в Гомельской области — прогноз агрометеорологов",
-      "published_at": "2026-11-03T10:40:37.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f1341531d17cce22",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/kaleidoscope/generalnye-gruzy-chto-eto-vidy-i-osobennosti-perevozki-1652113/",
-      "title": "Генеральные грузы: что это, виды и особенности перевозки",
-      "published_at": "2026-11-03T10:37:38.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-3ddb30405abad664",
+      "material_id": "mfm-1c8c4f2164f84291",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/vojna-3-noyabrya-rossiyane-udarili-po-zhilomu-domu-v-dnepre-i-bolnice-/217301/",
-      "title": "Война, 3 ноября. «Весь мир должен это увидеть». В Днепре ракета попала в хоспис для смертельно больных",
-      "published_at": "2026-11-03T10:30:11.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-d9f980388ef187d5",
-      "source_id": "src-salidarnasts",
-      "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/konvejer-repressij-ksendza-anatoliya-paraxnevicha-osudili-na-tri-goda-/217312/",
+      "source_url": "https://gazetaby.info/post/konvejer-repressij-ksendza-anatoliya-paraxnevicha-osudili-na-tri-goda-/217312/",
       "title": "Конвейер репрессий. Ксендза Анатолия Парахневича осудили на три года. Сайт беларуской спецроты «Воля» внесли в список «экстремистских материалов»",
       "published_at": "2026-11-03T10:28:46.000Z",
       "feed_scope": "general",
@@ -674,17 +817,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-8494e44e8c786af7",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/novosti-mira/peregovory-ssha-ukrainy-i-rossii-proydut-v-abu-dabi-10-11-noyabrya-1652089/",
-      "title": "Переговоры США, Украины и России пройдут в Абу-Даби 10-11 ноября",
-      "published_at": "2026-11-03T10:13:37.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-d80bb3803cae40f6",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -696,43 +828,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-b184787a3a1251f0",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/brylin-tretiy-s-kontsa-v-reytinge-deystvuyushchikh-glavnykh-trenerov-komand-kontinentalnoy-khokkeyno-1652080/",
-      "title": "Брылин - третий с конца в рейтинге действующих главных тренеров команд Континентальной хоккейной лиги",
-      "published_at": "2026-11-03T09:50:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a6635a565dec1ecd",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/chp-i-kriminal/pod-svetlogorskom-rabotniki-leskhoza-vyveli-iz-lesnogo-massiva-zabludivshegosya-gribnika-1652088/",
-      "title": "Под Светлогорском работники лесхоза вывели из лесного массива заблудившегося грибника",
-      "published_at": "2026-11-03T09:34:03.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-6a3bd131412efd6e",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/sport/rybakina-oboshla-sobolenko-po-kolichestvu-titulov-zavoevannykh-v-sezone-2026-1652079/",
-      "title": "Рыбакина обошла Соболенко по количеству титулов, завоеванных в сезоне 2026",
-      "published_at": "2026-11-03T09:18:00.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-fd8566c7ca2cfa64",
+      "material_id": "mfm-00a51d7ee02d12b8",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/lukashenko-vojna-v-ukraine-v-blizhajshie-mesyacy-budet-zakonchena/217311/",
+      "source_url": "https://gazetaby.info/post/lukashenko-vojna-v-ukraine-v-blizhajshie-mesyacy-budet-zakonchena/217311/",
       "title": "Лукашенко «Война в Украине в ближайшие месяцы будет закончена»",
       "published_at": "2026-11-03T09:13:09.000Z",
       "feed_scope": "general",
@@ -751,21 +850,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-957a1e25a7c48332",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/novosti-belarusi/nado-iskat-tochki-dlya-deeskalatsii-lukashenko-privel-v-primer-rabotu-lantratovoy-i-lubintsa-po-alesh-1652104/",
-      "title": "Надо искать точки для деэскалации. Лукашенко привел в пример работу Лантратовой и Лубинца по Алешкам",
-      "published_at": "2026-11-03T09:08:04.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-15d07b770b35d2f2",
+      "material_id": "mfm-207628721e9b50b7",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/yon-mauchau-uves-dzen-a-zranicy-prachnuusya-uves-sivy/217310/",
+      "source_url": "https://gazetaby.info/post/yon-mauchau-uves-dzen-a-zranicy-prachnuusya-uves-sivy/217310/",
       "title": "«Ён маўчаў увесь дзень, а зраніцы прачнуўся ўвесь сівы»",
       "published_at": "2026-11-03T08:56:49.000Z",
       "feed_scope": "general",
@@ -795,10 +883,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-fa2f5a0ac1f91408",
+      "material_id": "mfm-e851f11d1a47924c",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/ot-zastupnichestva-trampa-rossijskim-zavodam-vreda-bolshe-chem-polzy/217309/",
+      "source_url": "https://gazetaby.info/post/ot-zastupnichestva-trampa-rossijskim-zavodam-vreda-bolshe-chem-polzy/217309/",
       "title": "«От заступничества Трампа российским заводам вреда больше, чем пользы»",
       "published_at": "2026-11-03T08:02:29.000Z",
       "feed_scope": "general",
@@ -806,10 +894,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-8871368a6ea55c79",
+      "material_id": "mfm-2b0161be4bec5c69",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/ya-gotova-eshhe-lechitsya-a-bolshe-nechem-minzdrav-predlagaet-za-svoj-/217308/",
+      "source_url": "https://gazetaby.info/post/ya-gotova-eshhe-lechitsya-a-bolshe-nechem-minzdrav-predlagaet-za-svoj-/217308/",
       "title": "«Я готова еще лечиться, а больше нечем. Минздрав предлагает за свой счет»",
       "published_at": "2026-11-03T07:45:18.000Z",
       "feed_scope": "general",
@@ -839,10 +927,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-16a351ade92ad2b0",
+      "material_id": "mfm-0f114b4b251dbb49",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/krasnyj-kostel-po-prezhnemu-naxoditsya-za-vysokim-zaborom/217307/",
+      "source_url": "https://gazetaby.info/post/krasnyj-kostel-po-prezhnemu-naxoditsya-za-vysokim-zaborom/217307/",
       "title": "Красный костел по-прежнему находится за высоким забором",
       "published_at": "2026-11-03T06:44:42.000Z",
       "feed_scope": "general",
@@ -850,10 +938,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-a11f2491a561b65b",
+      "material_id": "mfm-121407fe5d933ea8",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/shchyrakova-kali-pachobut-paexau-padumala-shto-i-ya-magla-b/217306/",
+      "source_url": "https://gazetaby.info/post/shchyrakova-kali-pachobut-paexau-padumala-shto-i-ya-magla-b/217306/",
       "title": "Шчыракова: «Адразу як толькі што — я тут, на нізкім старце, назіраю за мяжою, калі адчыніцца і можна будзе ехаць»",
       "published_at": "2026-11-03T06:37:07.000Z",
       "feed_scope": "general",
@@ -861,10 +949,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-a02519637447bcba",
+      "material_id": "mfm-a0213911d12ba221",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/zaxa-xadid-edinstvennoe-chto-nikogda-ne-soglasilas-by-postroit-tyurma/217305/",
+      "source_url": "https://gazetaby.info/post/zaxa-xadid-edinstvennoe-chto-nikogda-ne-soglasilas-by-postroit-tyurma/217305/",
       "title": "Заха Хадид: «Единственное, что никогда не согласилась бы построить, – тюрьма»",
       "published_at": "2026-11-03T06:22:49.000Z",
       "feed_scope": "general",
@@ -872,10 +960,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-7c4c26e97675b800",
+      "material_id": "mfm-42aec79347809f00",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/sergej-antusevich-imena-vaczlava-areshko-i-vsex-belaruskix-politzaklyu/217304/",
+      "source_url": "https://gazetaby.info/post/sergej-antusevich-imena-vaczlava-areshko-i-vsex-belaruskix-politzaklyu/217304/",
       "title": "Сергей Антусевич: «Имена Вацлава Арешко и всех беларуских политзаключенных должны звучать во всем мире»",
       "published_at": "2026-11-03T06:16:41.000Z",
       "feed_scope": "general",
@@ -883,10 +971,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-b561eb2cbcf369e8",
+      "material_id": "mfm-4f5e000562606b74",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/yuliya-miczkevich-ideologiya-rezhima-i-lukashenko-antigendernaya-seksi/217303/",
+      "source_url": "https://gazetaby.info/post/yuliya-miczkevich-ideologiya-rezhima-i-lukashenko-antigendernaya-seksi/217303/",
       "title": "Юлия Мицкевич: «Идеология режима и Лукашенко – антигендерная, сексистская и мизогинная»",
       "published_at": "2026-11-03T06:02:05.000Z",
       "feed_scope": "general",
@@ -894,10 +982,10 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-7c7c68dde948de96",
+      "material_id": "mfm-f00b42cae14cc74d",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/v-rossii-obostrilsya-deficit-topliva-posle-dizelnoj-sdelki-trampa-i-pu/217302/",
+      "source_url": "https://gazetaby.info/post/v-rossii-obostrilsya-deficit-topliva-posle-dizelnoj-sdelki-trampa-i-pu/217302/",
       "title": "В России обострился дефицит топлива после дизельной сделки Трампа и Путина",
       "published_at": "2026-11-03T05:54:48.000Z",
       "feed_scope": "general",
@@ -938,28 +1026,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-45315eafc9432ef5",
-      "source_id": "src-salidarnasts",
-      "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/dich-kak-v-filmax-uzhasov-minchanka-pokazala-kak-vyglyadit-palata-v-de/217300/",
-      "title": "«Дичь, как в фильмах ужасов». Минчанка показала, как выглядит палата в детской больнице",
-      "published_at": "2026-11-02T17:27:48.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-9fe2d3528b3d53df",
-      "source_id": "src-salidarnasts",
-      "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/pastuxov-v-pervom-priblizhenii-eto-otkryvaet-dlya-ukrainy-perspektivu-/217299/",
-      "title": "Пастухов: «В первом приближении это открывает для Украины перспективу возвращения Америки к «нормальной» политике. Но есть нюансы»",
-      "published_at": "2026-11-02T17:10:18.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-f895f3b6b623c2d0",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -979,72 +1045,6 @@
       "published_at": "2026-11-02T16:22:55.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-85410ac20a96b102",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33888837.html",
-      "title": "Што варта ведаць пра выбары ў ЗША 3 лістапада",
-      "published_at": "2026-11-02T16:00:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-1b7ed13a41966b50",
-      "source_id": "src-salidarnasts",
-      "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/pytalis-natravit-devyanosto-chelovek-na-odnu-zhenshhinu/217298/",
-      "title": "«Пытались натравить девяносто человек на одну женщину»",
-      "published_at": "2026-11-02T15:34:35.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-cf548fbf19353062",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33888967.html",
-      "title": "Хто кіраваў пратэстамі? «Кібэрпартызаны» ўзламалі Расстат. Беларусы адзначаюць Дзяды. Відэанавіны 2 лістапада",
-      "published_at": "2026-11-02T15:30:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5f2829c89c845d3c",
-      "source_id": "src-salidarnasts",
-      "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/kruk-xocz-zarobki-rastucz-geta-adlyustrouvae-ne-vyalikiya-dasyagnenni-/217297/",
-      "title": "Крук: «Хоць заробкі растуць, гэта адлюстроўвае не вялікія дасягненні беларускай эканомікі, а структурны недахоп кадраў»",
-      "published_at": "2026-11-02T14:51:42.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5d671f9d68e6724e",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33888984.html",
-      "title": "За беларускімі платнымі дарогамі будзе сачыць штучны інтэлект",
-      "published_at": "2026-11-02T14:39:12.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-5337d9e08e8fb3c1",
-      "source_id": "src-salidarnasts",
-      "source_name": "Salidarnasts",
-      "source_url": "https://gazetaby.com/post/nyaklyaeu-ya-ne-veru-shto-belarusi-ne-stane/217296/",
-      "title": "Някляеў: «Я не веру, што Беларусі не стане»",
-      "published_at": "2026-11-02T14:16:55.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gazetaby.com/rss/",
       "metadata_only": true
     },
     {
