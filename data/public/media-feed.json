@@ -1,7 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-11-14T21:23:32.701Z",
+  "fetched_at": "2026-11-15T01:48:55.351Z",
   "materials": [
+    {
+      "material_id": "mfm-dd9302ec6b5c4dea",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33898710.html",
+      "title": "На выезьдзе зь Менску маршрутка сутыкнулася зь легкавіком. 1 чалавек загінуў, 15 атрымалі траўмы",
+      "published_at": "2026-11-14T21:43:06.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-5d70848ffe6e9155",
       "source_id": "src-radio-svaboda",
@@ -1032,8 +1043,8 @@
       "source_url": "https://www.svaboda.org/a/33897998.html",
       "title": "Хроніка перасьледу 13 лістапада: супраць гісторыка Аляксандра Пашкевіча завочна завялі крымінальную справу",
       "published_at": "2026-11-13T12:05:13.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "feed_scope": "courts_repression",
+      "endpoint_url": "https://www.svaboda.org/api/zmrpp_l-vomx-tpeyt_py",
       "metadata_only": true
     },
     {
@@ -1133,17 +1144,6 @@
       "published_at": "2026-11-10T21:35:02.000Z",
       "feed_scope": "incidents",
       "endpoint_url": "https://www.svaboda.org/api/zopppil-vomx-tpepj_pm",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-f6ea37d4a04ccfac",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33894537.html",
-      "title": "Былыя палітвязьні расказалі пра начныя праверкі і спробы вэрбаваньня ў КДБ пасьля вызваленьня",
-      "published_at": "2026-11-10T11:18:43.000Z",
-      "feed_scope": "political_prisoners",
-      "endpoint_url": "https://www.svaboda.org/api/zomvmql-vomx-tpep-umq",
       "metadata_only": true
     }
   ]
