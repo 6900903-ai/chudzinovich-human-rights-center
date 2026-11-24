@@ -1,7 +1,150 @@
 {
   "schema_version": "1.0.0",
-  "fetched_at": "2026-11-23T21:14:29.939Z",
+  "fetched_at": "2026-11-24T05:56:22.377Z",
   "materials": [
+    {
+      "material_id": "mfm-e3eec0436106a019",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/it/s-29-noyabrya-beltelekom-povyshaet-tarify-uznali-tseny-na-internet-i-telefonnuyu-svyaz-1655610/",
+      "title": "С 29 ноября «Белтелеком» повышает тарифы. Узнали цены на интернет и телефонную связь",
+      "published_at": "2026-11-24T05:45:00.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-8a95e1ebfd2b9f74",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706631/",
+      "title": "Глава Минобороны Британии прервал выступление в Киеве из-за взрыва российского БПЛА",
+      "published_at": "2026-11-24T05:44:52.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-78b6d4d991238fcf",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706630/",
+      "title": "Ливия назвала атаку на российский корвет «Меркурий» равносильной объявлению войны",
+      "published_at": "2026-11-24T05:38:39.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-63351676909981e2",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706629/",
+      "title": "НАТО дало первый ответ на вторжение российских ракет в Польшу",
+      "published_at": "2026-11-24T05:31:59.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-d566a5b3412c2450",
+      "source_id": "src-gomel-pravda",
+      "source_name": "Gomelskaya Pravda",
+      "source_url": "https://gp.by/novosti/kultura/ushel-iz-zhizni-zasluzhennyy-deyatel-iskusstv-belarusi-aleksandr-kolyadenko-1655628/",
+      "title": "Ушел из жизни заслуженный деятель искусств Беларуси Александр Коляденко",
+      "published_at": "2026-11-24T05:30:48.000Z",
+      "feed_scope": "general",
+      "endpoint_url": "https://gp.by/feed/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-af3ad150e07e5e01",
+      "source_id": "src-radio-svaboda",
+      "source_name": "Radio Svaboda",
+      "source_url": "https://www.svaboda.org/a/33904649.html",
+      "title": "Расейскія войскі атакавалі Запарожжа: 2 чалавекі загінулі, 32 атрымалі раненьні. У Польшчу зноў заляцеў дрон",
+      "published_at": "2026-11-24T05:29:08.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-cb8cfad24eb158cd",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706628/",
+      "title": "Российский дрон залетел в Польшу во время ночной атаки на Украину",
+      "published_at": "2026-11-24T05:21:13.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-6837fa0aa6c87e4e",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706627/",
+      "title": "Южная Корея подняла истребители из-за российских самолетов у острова Уллин",
+      "published_at": "2026-11-24T05:08:59.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-553f265a82e7879b",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706626/",
+      "title": "Украина потопила любимый корвет Путина",
+      "published_at": "2026-11-24T04:16:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-3831fe1c6cb2f8cf",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706625/",
+      "title": "Как НАТО может наказать РФ",
+      "published_at": "2026-11-24T03:31:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-5a09b4c950006c66",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706624/",
+      "title": "«Нет никакого вундерваффе»",
+      "published_at": "2026-11-24T02:46:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b61010d4d403ddfb",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706623/",
+      "title": "Зеленский: Украинские морские операции продолжатся",
+      "published_at": "2026-11-24T01:00:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
+    {
+      "material_id": "mfm-b2e39c4da3cbc339",
+      "source_id": "src-charter97",
+      "source_name": "Charter97",
+      "source_url": "https://charter97.org/ru/news/2026/11/24/706621/",
+      "title": "Почему голливудский спецназ не выжил бы на украинском фронте",
+      "published_at": "2026-11-23T22:59:00.000Z",
+      "feed_scope": "all_news",
+      "endpoint_url": "https://charter97.org/ru/rss/all/",
+      "metadata_only": true
+    },
     {
       "material_id": "mfm-3800ba896a4c7b01",
       "source_id": "src-radio-svaboda",
@@ -289,39 +432,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-6ce71baaa2e6ee31",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706600/",
-      "title": "Ученые обнаружили неожиданную пользу кофе",
-      "published_at": "2026-11-23T17:43:56.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-4a37560ddddaf481",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706599/",
-      "title": "Цены на золото выросли",
-      "published_at": "2026-11-23T17:42:25.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-e25056d4fd3d72c8",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706598/",
-      "title": "Каждые пять минут на войне с Украиной погибает один российский военный",
-      "published_at": "2026-11-23T17:30:51.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-1b9c7150b53c7abe",
       "source_id": "src-salidarnasts",
       "source_name": "Salidarnasts",
@@ -344,17 +454,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-2d9baceddc012749",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706596/",
-      "title": "Тогда верните Крым и Донбасс: глава МИД Германии высмеял требования Путина",
-      "published_at": "2026-11-23T17:21:03.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-4ca78d707a608066",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -363,28 +462,6 @@
       "published_at": "2026-11-23T17:13:04.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-a887b2689be89531",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706559/",
-      "title": "«Тут все горит!»: россиянин показал трассу в Крым после атак дронов",
-      "published_at": "2026-11-23T17:07:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-b788cf4014744b2a",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706595/",
-      "title": "В Канаде состоится встреча с Андреем Санниковым",
-      "published_at": "2026-11-23T17:04:57.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -410,28 +487,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-727fe7d6ec12cf64",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706594/",
-      "title": "На месте поиска Ноева ковчега нашли древесину XXIV века до нашей эры",
-      "published_at": "2026-11-23T16:51:33.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-d4cd3b9b5d44b3a2",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706593/",
-      "title": "В Беларуси вырастет базовая ставка",
-      "published_at": "2026-11-23T16:39:05.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-3612fab5fe19fa2e",
       "source_id": "src-gomel-pravda",
       "source_name": "Gomelskaya Pravda",
@@ -451,28 +506,6 @@
       "published_at": "2026-11-23T16:27:38.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-6a54a8c0529da2ac",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706533/",
-      "title": "Новый этап войны: зачем Украина подорвала корабли РФ в Ливии",
-      "published_at": "2026-11-23T16:20:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-01519d218bbbd65f",
-      "source_id": "src-charter97",
-      "source_name": "Charter97",
-      "source_url": "https://charter97.org/ru/news/2026/11/23/706592/",
-      "title": "Цена нефти Brent опустилась ниже $88",
-      "published_at": "2026-11-23T16:14:21.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://charter97.org/ru/rss/all/",
       "metadata_only": true
     },
     {
@@ -784,17 +817,6 @@
       "metadata_only": true
     },
     {
-      "material_id": "mfm-3a182b3276ac36e1",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/it/zhiteli-semi-rayonov-gomelskoy-oblasti-ostanutsya-bez-televideniya-i-radio-na-tri-dnya-1655580/",
-      "title": "Жители семи районов Гомельской области останутся без телевидения и радио на три дня",
-      "published_at": "2026-11-23T10:40:03.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
-      "metadata_only": true
-    },
-    {
       "material_id": "mfm-b8a26623a78e7664",
       "source_id": "src-radio-svaboda",
       "source_name": "Radio Svaboda",
@@ -803,17 +825,6 @@
       "published_at": "2026-11-23T10:32:38.000Z",
       "feed_scope": "all_news",
       "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-37a5f5bbd0755188",
-      "source_id": "src-gomel-pravda",
-      "source_name": "Gomelskaya Pravda",
-      "source_url": "https://gp.by/novosti/novosti-belarusi/lukashenko-poruchil-podobrat-kandidatov-na-vakansii-v-rukovodstve-brestskoy-oblasti-1655594/",
-      "title": "Лукашенко поручил подобрать кандидатов на вакансии в руководстве Брестской области",
-      "published_at": "2026-11-23T10:28:59.000Z",
-      "feed_scope": "general",
-      "endpoint_url": "https://gp.by/feed/",
       "metadata_only": true
     },
     {
@@ -1012,17 +1023,6 @@
       "published_at": "2026-11-23T05:27:54.000Z",
       "feed_scope": "general",
       "endpoint_url": "https://gazetaby.com/rss/",
-      "metadata_only": true
-    },
-    {
-      "material_id": "mfm-52fa49fdb5e78305",
-      "source_id": "src-radio-svaboda",
-      "source_name": "Radio Svaboda",
-      "source_url": "https://www.svaboda.org/a/33903557.html",
-      "title": "Ужо сёньня: 120 год таму выйшаў першы нумар «Нашай нівы»",
-      "published_at": "2026-11-22T21:01:00.000Z",
-      "feed_scope": "all_news",
-      "endpoint_url": "https://www.svaboda.org/api/zyvqp_l-vomx-tpetqppv",
       "metadata_only": true
     },
     {
